@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import Habit from './habit';
 
 class Habits extends Component {
-    handleIncrement = () => {
-        this.props.onIncrement(this.props.habit);
+    handleIncrement = habit => {
+        console.log("habits Increment");
+        this.props.onIncrement(habit);
     };
 
-    handleDecrement = () => {
-        this.props.onDecrement(this.props.habit);
+    handleDecrement = habit => {
+        console.log("habits Decrement");
+        this.props.onDecrement(habit);
     };
 
-    handleDelete = () => {
-        this.props.onDelete(this.props.habit);
+    handleDelete = habit => {
+        console.log("habits Delete");
+        this.props.onDelete(habit);
     };
 
     render() {

@@ -14,6 +14,7 @@ class App extends Component {
   handleIncrement = (habit) => {
     const habits = [...this.state.habits];
     const index = habits.indexOf(habit);
+    console.log(index);
     habits[index].count++;
     this.setState({ habits });
   };
@@ -39,7 +40,12 @@ class App extends Component {
       <>
         <nav></nav>
         <div className="add"></div>
-        <Habits></Habits>
+        <Habits 
+          habits={this.state.habits}
+          onIncrement={this.handleIncrement}
+          onDecrement={this.handleDecrement}
+          onDelete={this.handleDelete}
+        ></Habits>
         <div className="reset"></div>
       </>
     )
