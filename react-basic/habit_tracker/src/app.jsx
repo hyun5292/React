@@ -3,7 +3,6 @@ import './app.css';
 import Habits from './components/habits';
 import Add from './components/addHabit';
 import Navbar from './components/navbar';
-import Reset from './components/resetHabit';
 
 class App extends Component {
   state = {
@@ -45,8 +44,13 @@ class App extends Component {
   };
   
   handleReset = () => {
-      const habits = [];
+      const habits = this.state.habits.map(habit => {
+        habit.count = 0;
+        return habit;
+      });
       this.setState({ habits });
+      // const habits = [];
+      // this.setState({ habits });
   };
 
   render() {
@@ -61,8 +65,8 @@ class App extends Component {
           onIncrement={this.handleIncrement}
           onDecrement={this.handleDecrement}
           onDelete={this.handleDelete}
+          onReset={this.handleReset}
         />
-        <Reset onReset={this.handleReset} />
       </>
     )
   }
