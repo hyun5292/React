@@ -8,7 +8,7 @@ class ResetHabit extends Component {
 
     render() {
         return (
-            <button onClick={this.handleReset}>Reset All</button>
+            <button className="habits-reset" onClick={this.handleReset}>Reset All</button>
         );
     }
 }
