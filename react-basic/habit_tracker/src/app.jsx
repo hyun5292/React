@@ -50,19 +50,19 @@ class App extends Component {
   };
 
   render() {
-    const totalCnt = 0;
-    
     return ( 
       <>
-        <Navbar totalCnt={totalCnt}></Navbar>
+        <Navbar 
+          totalCnt={this.state.habits.filter(item => item.count > 0).length}
+        />
         <Add onAdd={this.handleAdd}></Add>
         <Habits 
           habits={this.state.habits}
           onIncrement={this.handleIncrement}
           onDecrement={this.handleDecrement}
           onDelete={this.handleDelete}
-        ></Habits>
-        <Reset onReset={this.handleReset}></Reset>
+        />
+        <Reset onReset={this.handleReset} />
       </>
     )
   }
