@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Habit from './habit';
 
 class Habits extends Component {
+    /*
     handleIncrement = habit => {
         console.log("habits Increment");
         this.props.onIncrement(habit);
@@ -16,6 +17,7 @@ class Habits extends Component {
         console.log("habits Delete");
         this.props.onDelete(habit);
     };
+    */
 
     render() {
         const habits = this.props.habits;
@@ -26,9 +28,12 @@ class Habits extends Component {
                         <Habit 
                             key={habit.id} 
                             habit={habit} 
-                            onIncrement={this.handleIncrement}
-                            onDecrement={this.handleDecrement}
-                            onDelete={this.handleDelete}
+                            // onIncrement={this.handleIncrement}
+                            // onDecrement={this.handleDecrement}
+                            // onDelete={this.handleDelete}
+                            onIncrement={this.props.onIncrement}
+                            onDecrement={this.props.onDecrement}
+                            onDelete={this.props.onDelete}
                         />
                     ))
                 }
