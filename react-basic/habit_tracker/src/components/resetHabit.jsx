@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
 class ResetHabit extends Component {
+    handleReset = () => {
+        console.log("Reset");
+        this.props.onReset();
+    };
+
     render() {
         return (
-            <div>
-                
-            </div>
+            <button onClick={this.handleReset}>Reset All</button>
         );
     }
 }
