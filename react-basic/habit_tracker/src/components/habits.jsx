@@ -20,12 +20,11 @@ class Habits extends Component {
     */
 
     render() {
-        const habits = this.props.habits;
         return (
             <>
                 <ul>
                     {
-                        habits.map(habit => (
+                        this.props.habits.map(habit => (
                             <Habit 
                                 key={habit.id} 
                                 habit={habit} 
