@@ -1,66 +1,26 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 
-class AddHabit extends PureComponent {
-    inputRef = React.createRef();
+const AddHabit = memo((props) => {
+    const inputRef = React.createRef();
 
-    onSubmit = event => {
+    const onSubmit = event => {
         event.preventDefault();
-        const name = this.inputRef.current.value;
-        name && this.props.onAdd(name);
-        this.inputRef.current.value = "";
+        const name = inputRef.current.value;
+        name && props.onAdd(name);
+        inputRef.current.value = "";
     };
 
-    handleReset = () => {
-        console.log("Reset");
-        this.props.onReset();
-    };
-
-    render() {
-        return (
-            <form className="add-form" onSubmit={this.onSubmit}>
-                <input 
-                    ref={this.inputRef}
-                    className="add-input" 
-                    type="text" 
-                    placeholder='Habit' 
-                />
-                <button className="add-button">Add</button>
-            </form>
-        );
-    }
-    // state = {
-    //     input_value: "",
-    // };
-
-    // handleAdd = event => {
-    //     console.log("Add");
-    //     const nameHabit = this.state.input_value;
-    //     this.setState({input_value: ""});
-    //     this.props.onAdd(nameHabit);
-    // };
-
-    // handleChange = event => {
-    //     this.setState({input_value: event.target.value});
-    // };
-
-    // render() {
-    //     return (
-    //         <>
-    //             <input 
-    //                 className="add-input" 
-    //                 name="hName" 
-    //                 value={this.state.input_value} 
-    //                 onChange={this.handleChange}
-    //                 type="text" 
-    //                 placeholder='Habit' 
-    //             />
-    //             <button 
-    //                 className="add-button" 
-    //                 onClick={this.handleAdd}
-    //             >Add</button>
-    //         </>
-    //     );
-    // }
-}
+    return (
+        <form className="add-form" onSubmit={onSubmit}>
+            <input 
+                ref={inputRef}
+                className="add-input" 
+                type="text" 
+                placeholder='Habit' 
+            />
+            <button className="add-button">Add</button>
+        </form>
+    );
+});
 
 export default AddHabit;
