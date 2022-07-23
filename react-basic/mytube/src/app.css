@@ -1,6 +1,11 @@
-.App {
-  box-sizing: border-box;
+html, body {
   margin: 0 auto;
   width: 1206px;
   max-width: 1206px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.App {
 }
