@@ -4,9 +4,10 @@ ul, li {
 
 .videos_ul {
     display: flex;
-    width: 100%;
+    justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .videos_li {
-
+    flex: 1 1 40%;
 }
