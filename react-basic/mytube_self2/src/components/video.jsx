@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
 import styles from '../css/video.module.css';
 
 class Video extends Component {
-  handleDetail = (video) => {
-    
-  };
+  handleDetail = withRouter(({ history }) => {
+    console.log("ㅠㅠ");
+    history.push(`/detail/:${this.props.video}`);
+  });
 
   render() {
-    const i = this.props.i;
-
     return (
       <div 
         className={styles.video}
-        onclick={this.handleDetail}
+        onClick={this.handleDetail}
       >
         <img 
             className={styles.video_img} 
-            src={i.snippet.thumbnails.high["url"]} 
+            src={this.props.video.snippet.thumbnails.high["url"]} 
             alt="비디오 썸네일 이미지"
         />
         <div className={styles.video_info}>
             <span className={styles.video_info_title}>
-              {i.snippet.localized["title"]}
+              {this.props.video.snippet.localized["title"]}
             </span>
             <span className={styles.video_info_singer}>
-              {i.snippet.localized["description"]}
+              {this.props.video.snippet.localized["description"]}
             </span>
         </div>
       </div>

@@ -1,8 +1,10 @@
 import './app.css';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/header';
 import Videos from './components/videos';
-import axios from 'axios';
+import Detail from './components/videoDetail';
 
 function App() {
   const [playList, setPlayList] = useState([]);
@@ -25,6 +27,10 @@ function App() {
       <Videos
         playList={playList}
       />
+      <BrowserRouter>
+        <Route path="/" exact element={<Videos playList={playList} />} />
+        <Route path="/detail" component={Detail} />
+      </BrowserRouter>
     </>
   );
 }
