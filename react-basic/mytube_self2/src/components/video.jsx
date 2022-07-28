@@ -2,11 +2,18 @@ import React, { Component } from 'react'
 import styles from '../css/video.module.css';
 
 class Video extends Component {
+  handleDetail = (video) => {
+    
+  };
+
   render() {
     const i = this.props.i;
 
     return (
-      <div className={styles.video}>
+      <div 
+        className={styles.video}
+        onclick={this.handleDetail}
+      >
         <img 
             className={styles.video_img} 
             src={i.snippet.thumbnails.high["url"]} 
