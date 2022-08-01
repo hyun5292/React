@@ -1,18 +1,11 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom';
 import styles from '../css/video.module.css';
 
 class Video extends Component {
-  handleDetail = withRouter(({ history }) => {
-    console.log("ㅠㅠ");
-    history.push(`/detail/:${this.props.video}`);
-  });
-
   render() {
     return (
-      <div 
+      <div
         className={styles.video}
-        onClick={this.handleDetail}
       >
         <img 
             className={styles.video_img} 
