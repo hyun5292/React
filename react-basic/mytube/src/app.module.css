@@ -9,3 +9,7 @@ html, body {
 
 .App {
 }
+.app {
+  max-width: 80rem;
+}
+
