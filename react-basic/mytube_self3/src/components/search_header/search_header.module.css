@@ -17,6 +17,11 @@
     margin-right: 0.5em;
 }
 
+.form {
+    display: flex;
+    width: 100%;
+}
+
 .input {
     width: 100%;
 }
