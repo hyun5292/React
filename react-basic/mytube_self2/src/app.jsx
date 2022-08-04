@@ -1,6 +1,5 @@
 import './app.css';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Header from './components/header';
 import Videos from './components/videos';
 
@@ -8,15 +7,15 @@ function App() {
   const [playList, setPlayList] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCkuA_gDjISfGgbdp02BUwyQ&maxResults=10&key=AIzaSyC5ewrm4dgSFclcbwkBPpgxjR2gTZUPbWQ"
-      )
-      .then((res) => {
-        console.log(res);
-        setPlayList(res.data.items);
-      })
-      .catch(() => {})
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch("https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyC5ewrm4dgSFclcbwkBPpgxjR2gTZUPbWQ&=AIzaSyC5ewrm4dgSFclcbwkBPpgxjR2gTZUPbWQ", requestOptions)
+      .then(response => response.text())
+      .then(result => setPlayList(result))
+      .catch(error => console.log('error', error));
   }, []);
 
   return (

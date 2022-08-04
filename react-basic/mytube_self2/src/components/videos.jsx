@@ -8,14 +8,8 @@ class Videos extends Component {
         
         return (
             <div className={styles.videos_ul}>
-                {playList && playList.map((video, idx) => {
-                    return (
-                        <div className={styles.videos_li} key={idx}>
-                            <Video 
-                                video={video}
-                            />
-                        </div>
-                    );
+                {playList && playList.map((video) => {
+                        <Video video={video} />
                 })}
             </div>
         );
