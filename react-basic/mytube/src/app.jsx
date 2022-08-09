@@ -18,9 +18,21 @@ function App() {
       .catch(error => console.log('error', error));
   }, []);
 
+  const search = (query) => {
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResult=25&q=${query}&key=AIzaSyC5ewrm4dgSFclcbwkBPpgxjR2gTZUPbWQ&=AIzaSyC5ewrm4dgSFclcbwkBPpgxjR2gTZUPbWQ`, requestOptions)
+      .then(response => response.json())
+      .then(result => setVideos(result.items))
+      .catch(error => console.log('error', error));
+  };
+
   return (
     <div className={styles.app}>
-      <SearchHeader />
+      <SearchHeader onSearch={search} />
       <VideoList videos={videos} />
     </div>
   );
