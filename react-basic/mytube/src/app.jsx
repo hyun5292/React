@@ -24,9 +24,10 @@ function App() {
       redirect: 'follow'
     };
     
-    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResult=25&q=${query}&key=AIzaSyC5ewrm4dgSFclcbwkBPpgxjR2gTZUPbWQ&=AIzaSyC5ewrm4dgSFclcbwkBPpgxjR2gTZUPbWQ`, requestOptions)
+    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResult=25&q=${query}&type=video&key=AIzaSyC5ewrm4dgSFclcbwkBPpgxjR2gTZUPbWQ&=AIzaSyC5ewrm4dgSFclcbwkBPpgxjR2gTZUPbWQ`, requestOptions)
       .then(response => response.json())
-      .then(result => setVideos(result.items))
+      .then(result => result.items.map(item => ({...item, id: item.id.videoId})))
+      .then(items => setVideos(items))
       .catch(error => console.log('error', error));
   };
 
