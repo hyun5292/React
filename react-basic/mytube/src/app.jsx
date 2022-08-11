@@ -6,11 +6,11 @@ import styles from './app.module.css';
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
 
-  useEffect((query) => {    
+  useEffect(() => {    
     youtube
-      .mostPopular(query)
+      .mostPopular()
       .then(videos => setVideos(videos));
-  });
+  }, []);
 
   const search = (query) => {
     youtube
