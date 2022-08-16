@@ -9,7 +9,7 @@ class Youtube {
                 part: 'snippet',
                 chart: 'mostPopular',
                 maxResults: 25,
-            }
+            },
         });
 
         return response.data.items;
@@ -22,7 +22,7 @@ class Youtube {
                 maxResults: 25,
                 type: 'video',
                 q: query,
-            }
+            },
         });
 
         return response.data.items.map(item => ({ ...item, id: item.id.videoId }));
