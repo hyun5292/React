@@ -7,8 +7,6 @@ html, body {
   line-height: 1.5;
 }
 
-.App {
-}
 .app {
   max-width: 80rem;
 }
@@ -24,3 +22,4 @@ html, body {
 .list {
   flex: 1 1 30%;
 }
+
