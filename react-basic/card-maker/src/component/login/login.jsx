@@ -3,6 +3,7 @@ import Header from './../header/header';
 import Footer from './../footer/footer';
 import styles from './login.module.css';
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Login = ({ authService }) => {
     const history = useHistory();
@@ -11,6 +12,7 @@ const Login = ({ authService }) => {
             pathname: '/maker',
             state: { id: userId },
         });
+        window.location.reload();
     };
 
     const onLogin = (event) => {
@@ -18,6 +20,12 @@ const Login = ({ authService }) => {
             .login(event.currentTarget.textContent)
             .then(data => goToMaker(data.user.uid));
     };
+
+    useEffect(() => {
+        authService.onAuthChange(user => {
+            user && goToMaker(user.uid);
+        });
+    });
 
     return (
         <section className={styles.login}>
