@@ -1,2 +1,10 @@
+.maker {
+    width: 100%;
+    max-width: 1260px;
+}
 
-
+.comp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
