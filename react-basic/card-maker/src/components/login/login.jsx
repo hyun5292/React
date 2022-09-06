@@ -11,13 +11,21 @@ const Login = ({ authService }) => {
     };
 
     return (
-        <section>
+        <section className={styles.login}>
             <Header />
             <section>
                 <h1>Login</h1>
-                <ul>
-                    <li><button onClick={onLogin}>Google</button></li>
-                    <li><button onClick={onLogin}>Github</button></li>
+                <ul className={styles.list}>
+                    <li className={styles.item}>
+                        <button className={styles.button} onClick={onLogin}>
+                            Google
+                        </button>
+                    </li>
+                    <li className={styles.item}>
+                        <button className={styles.button} onClick={onLogin}>
+                            Github
+                        </button>
+                    </li>
                 </ul>
             </section>
             <Footer />

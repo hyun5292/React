@@ -3,10 +3,9 @@ import Login from './components/login/login';
 
 function App({ authService }) {
   return (
-    <>
-      <h1>Appppp</h1>
+    <div className={styles.app}>
       <Login authService={ authService } />
-    </>
+    </div>
   );
 }
 
