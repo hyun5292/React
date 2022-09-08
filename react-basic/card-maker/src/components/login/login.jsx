@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../footer/footer';
 import Header from '../header/header';
@@ -18,6 +19,13 @@ const Login = ({ authService }) => {
             .login(event.currentTarget.textContent)
             .then(data => goToMaker(data.user.uid));
     };
+
+    useEffect(() => {
+        authService
+            .onAuthChange(user => {
+                user && goToMaker(user.uid);
+            });
+    });
 
     return (
         <section className={styles.login}>
