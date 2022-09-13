@@ -1,0 +1,11 @@
+.maker {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1260px;
+    height: 100%;
+}
+
+.container {
+    flex: 1;
+}
