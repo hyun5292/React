@@ -13,12 +13,12 @@ const Maker = ({ authService }) => {
             id: '1',
             name: 'Grog',
             company: 'LG',
-            theme: 'light',
+            theme: 'dark',
             title: 'Front Developer',
             email: 'tytyjacob@naver.com',
             message: 'I am Grog',
             fileName: 'Grog',
-            fileURL: 'url'
+            fileURL: null
         },
         {
             id: '2',
@@ -29,18 +29,18 @@ const Maker = ({ authService }) => {
             email: 'tytyjacob@naver.com',
             message: 'I am Grog',
             fileName: 'Grog',
-            fileURL: 'url'
+            fileURL: 'default_logo.png'
         },
         {
             id: '3',
             name: 'Grog',
             company: 'LG',
-            theme: 'light',
+            theme: 'colorful',
             title: 'Front Developer',
             email: 'tytyjacob@naver.com',
             message: 'I am Grog',
             fileName: 'Grog',
-            fileURL: 'url'
+            fileURL: 'default_logo.png'
         },
     ]);
     const navigate = useNavigate();
