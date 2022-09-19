@@ -3,7 +3,7 @@ import Button from '../button/button';
 import ImageFileInput from '../image_file_input/image_file_input';
 import styles from './card_add_form.module.css';
 
-const CardAddForm = (onAdd) => {
+const CardAddForm = ({ onAdd }) => {
     const formRef = useRef();
     const nameRef = useRef();
     const companyRef = useRef();
@@ -29,7 +29,7 @@ const CardAddForm = (onAdd) => {
     };
 
     return (
-        <form className={styles.form}>
+        <form ref={formRef} className={styles.form}>
             <input
                 ref={nameRef}
                 className={styles.input}
