@@ -50,9 +50,9 @@ const CardAddForm = ({ onAdd }) => {
                 name="theme"
                 placeholder="theme"
             >
-                <option placeholder="light">Light</option>
-                <option placeholder="dark">Dark</option>
-                <option placeholder="colorful">Colorful</option>
+                <option placeholder="light">light</option>
+                <option placeholder="dark">dark</option>
+                <option placeholder="colorful">colorful</option>
             </select>
             <input
                 ref={titleRef}
