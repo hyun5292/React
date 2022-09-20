@@ -83,7 +83,7 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
                 onChange={onChange}
             ></textarea>
             <div className={styles.fileInput}>
-                <ImageFileInput />
+                <ImageFileInput fileName={fileName} fileURL={fileURL} />
             </div>
             <Button name='Delete' onClick={onSubmit} />
         </form>

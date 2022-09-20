@@ -18,7 +18,7 @@ const Maker = ({ authService }) => {
             email: 'tytyjacob@naver.com',
             message: 'I am Grog',
             fileName: 'Grog',
-            fileURL: null
+            fileURL: './images/default_logo.png'
         },
         '2': {
             id: '2',
@@ -28,8 +28,8 @@ const Maker = ({ authService }) => {
             title: 'Front Developer',
             email: 'tytyjacob@naver.com',
             message: 'I am Grog',
-            fileName: 'Grog',
-            fileURL: 'default_logo.png'
+            fileName: null,
+            fileURL: null
         },
         '3': {
             id: '3',
@@ -39,8 +39,8 @@ const Maker = ({ authService }) => {
             title: 'Front Developer',
             email: 'tytyjacob@naver.com',
             message: 'I am Grog',
-            fileName: 'Grog',
-            fileURL: 'default_logo.png'
+            fileName: null,
+            fileURL: null
         },
     });
     const navigate = useNavigate();

@@ -1,0 +1,22 @@
+@value makerBlack, makerPink, makerLightGrey from '../../common/colors.css';
+
+.ImgFile {
+    padding: 0.5em;
+    width: 100%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.ImgFile:hover {
+    opacity: 0.8;
+}
+
+.NotNull {
+    background-color: makerPink;
+}
+
+.YesNull {
+    background-color: makerLightGrey;
+}
+
