@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './image_file_input.module.css';
 
-const ImageFillInput = ({ fileName, fileURL }) => {
+const ImageFileInput = ({ imageUploader, name, onFileChange }) => {
+    const inputRef = useRef();
+    const onButtonClick = (event) => {
+        event.preventDefault();
+        inputRef.current.click();
+    };
+    const onChange = async event => {
+        console.log(event.target.files[0]);
+        const uploaded = await imageUploader.upload(event.target.files[0]);
+        console.log(uploaded);
+        onFileChange({
+            name: uploaded.original_fileName,
+            url: uploaded.url,
+        });
+    };
     return (
-        <button
-            className={`${styles.ImgFile} ${CheckImg(fileName)}`}
-        >{fileName ? fileName : 'No file'}</button>
+        <div className={styles.container}>
+            <input
+                ref={inputRef}
+                className={styles.input}
+                type="file"
+                accept="image/*"
+                name="file"
+                onChange={onChange}
+            />
+            <button className={styles.button} onClick={onButtonClick}>
+                {name || 'No file'}
+            </button>
+        </div>
     );
 };
 
-function CheckImg(fileName) {
-    if (fileName)
-        return styles.NotNull;
-    else
-        return styles.YesNull;
-};
-
-export default ImageFillInput;
+export default ImageFileInput;

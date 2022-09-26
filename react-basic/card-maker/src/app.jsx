@@ -3,13 +3,20 @@ import styles from './app.module.css';
 import Login from './components/login/login';
 import Maker from './components/maker/maker';
 
-function App({ authService }) {
+function App({ FileInput, authService }) {
   return (
     <div className={styles.app}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login authService={authService} />}></Route>
-          <Route path="/maker" element={<Maker authService={authService} />}></Route>
+          <Route
+            path="/maker"
+            element={
+              <Maker
+                authService={authService}
+                FileInput={FileInput}
+              />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>
