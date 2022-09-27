@@ -3,7 +3,6 @@ import Button from '../button/button';
 import styles from './card_add_form.module.css';
 
 const CardAddForm = ({ FileInput, onAdd }) => {
-    console.log(FileInput);
     const formRef = useRef();
     const nameRef = useRef();
     const companyRef = useRef();
@@ -84,7 +83,7 @@ const CardAddForm = ({ FileInput, onAdd }) => {
                 placeholder="message"
             ></textarea>
             <div className={styles.fileInput}>
-                <FileInput onFileChange={onFileChange} />
+                <FileInput name={file.fileName} onFileChange={onFileChange} />
             </div>
             <Button name='Add' onClick={onSubmit} />
         </form>
