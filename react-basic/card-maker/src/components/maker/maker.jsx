@@ -7,42 +7,10 @@ import Header from "../header/header";
 import Preview from "../preview/preview";
 import styles from "./maker.module.css";
 
-const Maker = ({ FileInput, authService }) => {
-  const [cards, setCards] = useState({
-    1: {
-      id: "1",
-      name: "Grog1",
-      company: "LG",
-      theme: "dark",
-      title: "Front Developer",
-      email: "tytyjacob@naver.com",
-      message: "I am Grog",
-      fileName: "Grog",
-      fileURL: null,
-    },
-    2: {
-      id: "2",
-      name: "Grog2",
-      company: "KAKAOTALK",
-      theme: "light",
-      title: "Front Developer",
-      email: "tytyjacob@naver.com",
-      message: "I am Grog",
-      fileName: null,
-      fileURL: null,
-    },
-    3: {
-      id: "3",
-      name: "Grog3",
-      company: "SAMSUNG",
-      theme: "colorful",
-      title: "Front Developer",
-      email: "tytyjacob@naver.com",
-      message: "I am Grog",
-      fileName: null,
-      fileURL: null,
-    },
-  });
+const Maker = ({ FileInput, authService, cardRepository }) => {
+  const navState = useNavigate().state;
+  const [cards, setCards] = useState({});
+  const [userId, setUserId] = useState(navState && navState.id);
   const navigate = useNavigate();
   const onLogout = () => {
     authService.logout();
@@ -55,6 +23,7 @@ const Maker = ({ FileInput, authService }) => {
       updated[card.id] = card;
       return updated;
     });
+    cardRepository.saveCard(userId, card);
   };
 
   const deleteCard = (card) => {
@@ -67,7 +36,10 @@ const Maker = ({ FileInput, authService }) => {
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      if (!user) {
+      if (user) {
+        setUserId(user.uid);
+        console.log(userId);
+      } else {
         navigate("/");
       }
     });
