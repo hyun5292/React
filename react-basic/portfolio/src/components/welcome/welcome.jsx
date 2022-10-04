@@ -1,6 +1,11 @@
 import React from "react";
+import Title from "../title/title";
 import styles from "./welcome.module.css";
 
-const Welcome = (props) => <h1 className={styles.welcome}>Welcome</h1>;
+const Welcome = (props) => (
+  <div className={styles.welcome}>
+    <Title txtTitle="Welcome" />
+  </div>
+);
 
 export default Welcome;

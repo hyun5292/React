@@ -1,0 +1,5 @@
+@value sudolBlue from '../../common/colors.css';
+
+.projects {
+  background-color: sudolBlue;
+}

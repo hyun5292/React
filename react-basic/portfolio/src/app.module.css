@@ -1,0 +1,38 @@
+@value sudolWhite from './common/colors.css';
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  color: sudolWhite;
+  text-decoration: none;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Pretendard-Regular";
+  font-size: 1em;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.5;
+  color: sudolWhite;
+  word-break: keep-all;
+}

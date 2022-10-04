@@ -1,2 +1,36 @@
+@value sudolYellow, headerGrey from '../../common/colors.css';
 
+@font-face {
+  font-family: "HSYuji-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  background-color: headerGrey;
+}
+
+.header .mainLogo {
+  margin-left: 2rem;
+  font-family: "HSYuji-Regular";
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: sudolYellow;
+}
+
+.header .mainLogo_info {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 1.2em;
+}

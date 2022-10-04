@@ -1,2 +1,43 @@
+@value sudolDarkGrey from '../../common/colors.css';
 
+.footer {
+  /* position: fixed;
+  bottom: 0;
+  left: 0; */
+  width: 100%;
+  background-color: sudolDarkGrey;
+}
 
+.icon_wrap {
+  padding-top: 10px;
+}
+
+.icon {
+  margin: 0 5px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  background: none;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.icon:hover {
+  opacity: 0.7;
+}
+
+.phone {
+  background-position: -480px 0;
+}
+.email {
+  background-position: -480px -50px;
+}
+.kakao {
+  background-position: -480px -100px;
+}
+.github {
+  background-position: -530px 0;
+}
+
+.text {
+  padding: 5px 0;
+}

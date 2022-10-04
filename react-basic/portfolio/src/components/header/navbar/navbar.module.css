@@ -1,0 +1,21 @@
+@value sudolDarkOrange from '../../../common/colors.css';
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 18px;
+  font-size: 1.5em;
+}
+
+.nav_list {
+  padding: 0px 10px;
+}
+
+.nowPage {
+  color: sudolDarkOrange;
+}
+
+.otherPage:hover {
+  color: sudolDarkOrange;
+}

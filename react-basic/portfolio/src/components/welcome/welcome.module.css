@@ -1,3 +1,6 @@
+@value sudolGreen from '../../common/colors.css';
+
 .welcome {
-  background-color: grey;
+  height: 200vh;
+  background-color: sudolGreen;
 }
