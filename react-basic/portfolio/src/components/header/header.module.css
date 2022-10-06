@@ -12,6 +12,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 4rem;
   background-color: headerGrey;
 }
@@ -29,4 +32,11 @@
   display: inline-block;
   margin-left: 5px;
   font-size: 1.2em;
+}
+
+.fixed {
+  display: fixed;
+  top: 4rem;
+  left: 0;
+  width: 100%;
 }

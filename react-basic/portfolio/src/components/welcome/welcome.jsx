@@ -23,33 +23,33 @@ const Welcome = (props) => (
       <div className={styles.info_wrap}>
         <ul className={styles.info_list}>
           <li className={styles.info_item}>
-            <i class="fas fa-calendar" className={styles.info_icon}></i>
+            <i className={styles.info_icon}></i>
             <div className={styles.info}>
               <div className={styles.info_text}>생년월일</div>
               <div className={styles.info_data}>1998.05.12</div>
             </div>
           </li>
           <li className={styles.info_item}>
-            <i class="fas fa-mobile-alt" className={styles.info_icon}></i>
+            <i className={styles.info_icon}></i>
             <div className={styles.info}>
               <div className={styles.info_text}>전화번호</div>
               <div className={styles.info_data}>010-9944-5292</div>
             </div>
           </li>
           <li className={styles.info_item}>
-            <i class="fas fa-at" className={styles.info_icon}></i>
+            <i className={styles.info_icon}></i>
             <div className={styles.info}>
               <div className={styles.info_text}>이메일</div>
               <div className={styles.info_data}>tytyjacob@naver.com</div>
             </div>
           </li>
           <li className={styles.info_item}>
-            <i class="fab fa-github" className={styles.info_icon}></i>
+            <i className={styles.info_icon}></i>
             <div className={styles.info}>
               <div className={styles.info_text}>Git</div>
               <div className={styles.info_data}>
-                <a id="git-link" href="https://github.com/hyun5292">
-                  <i class="fas fa-link"></i>
+                <a href="https://github.com/hyun5292">
+                  <i></i>
                   https://github.com/hyun5292
                 </a>
               </div>
