@@ -8,7 +8,7 @@ import styles from "./app.module.css";
 
 function App() {
   return (
-    <div>
+    <div className={styles.app}>
       <Header />
       <BrowserRouter>
         <Routes>
