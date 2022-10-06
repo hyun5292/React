@@ -1,7 +1,19 @@
 @value sudolWhite, sudolDarkGrey from '../../common/colors.css';
 
 .welcome {
-  height: 200vh;
+  height: calc(100vh - 4rem);
   color: sudolDarkGrey;
   background-color: sudolWhite;
+}
+
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.selfie {
+  display: inline-block;
+  height: 30vh;
 }

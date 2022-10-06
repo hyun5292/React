@@ -1,4 +1,4 @@
-@value sudolYellow, headerGrey from '../../common/colors.css';
+@value sudolYellow, headerGrey_fixed, headerGrey from '../../common/colors.css';
 
 @font-face {
   font-family: "HSYuji-Regular";
@@ -12,9 +12,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 4rem;
   background-color: headerGrey;
 }
@@ -35,8 +32,9 @@
 }
 
 .fixed {
-  display: fixed;
-  top: 4rem;
+  position: fixed !important;
+  top: 0;
   left: 0;
   width: 100%;
+  background-color: headerGrey_fixed;
 }

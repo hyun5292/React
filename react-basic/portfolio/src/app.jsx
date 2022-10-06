@@ -8,16 +8,18 @@ import styles from "./app.module.css";
 
 function App() {
   return (
-    <div className={styles.app}>
+    <div>
       <Header />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Welcome />}></Route>
-          <Route path="/skills" element={<Skills />}></Route>
-          <Route path="/projects" element={<Projects />}></Route>
-        </Routes>
-      </BrowserRouter>
-      <Footer />
+      <div className={styles.cont}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Welcome />}></Route>
+            <Route path="/skills" element={<Skills />}></Route>
+            <Route path="/projects" element={<Projects />}></Route>
+          </Routes>
+        </BrowserRouter>
+        <Footer />
+      </div>
     </div>
   );
 }

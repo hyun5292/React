@@ -1,5 +1,6 @@
 @value sudolOrange from '../../common/colors.css';
 
 .skills {
+  height: 200vh;
   background-color: sudolOrange;
 }
