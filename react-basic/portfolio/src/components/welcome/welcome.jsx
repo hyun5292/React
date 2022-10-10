@@ -5,7 +5,7 @@ import styles from "./welcome.module.css";
 const Welcome = (props) => (
   <div className={styles.welcome}>
     <div className={styles.card}>
-      <Title txtTitle="Welcome" />
+      <Title txtTitle="CONTACT ME" />
       <div className={styles.cont}>
         <img className={styles.selfie} src="/images/selfie.png" alt="사진" />
         <div className={styles.explain}>
