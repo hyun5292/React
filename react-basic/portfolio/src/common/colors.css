@@ -12,8 +12,12 @@
 
 @value sudolDarkBlue: #023859;
 
+@value titleGrey: #262626;
+
 @value sudolDarkGrey: #1d1d1d;
 
 @value headerGrey: rgba(38, 38, 38, 1);
 
 @value headerGrey_fixed: rgba(38, 38, 38, 0.7);
+
+@value borderGrey: rgba(38, 38, 38, 0.3);

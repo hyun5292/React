@@ -1,19 +1,61 @@
-@value sudolWhite, sudolDarkGrey from '../../common/colors.css';
+@value sudolWhite, sudolOrange, sudolDarkGrey, borderGrey from '../../common/colors.css';
 
 .welcome {
-  height: calc(100vh - 4rem);
   color: sudolDarkGrey;
   background-color: sudolWhite;
+}
+
+.title .sub {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .cont {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem 0 3.6rem;
   text-align: left;
+}
+
+.explain {
+  padding-left: 2rem;
+  border-left: 1px solid borderGrey;
 }
 
 .selfie {
   display: inline-block;
-  height: 30vh;
+  margin-right: 2rem;
+  width: 40vh;
+}
+
+.intro {
+  border-bottom: 1px solid borderGrey;
+}
+
+.intro_title {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.intro_sect {
+  font-size: 1.5rem;
+}
+
+.info {
+  display: flex;
+}
+
+.info_list {
+  display: flex;
+}
+
+.info_item {
+}
+
+.gitLink {
+  color: black;
+}
+.gitLink:hover {
+  color: sudolOrange;
 }

@@ -19,7 +19,7 @@ li {
 }
 
 a {
-  color: sudolWhite;
+  /* color: sudolWhite; */
   text-decoration: none;
 }
 html,
@@ -33,13 +33,9 @@ body {
   font-size: 1em;
   font-weight: 400;
   text-align: center;
-  line-height: 1.5;
-  color: sudolWhite;
+  line-height: 1.2;
+  /* color: sudolWhite; */
   word-break: keep-all;
-}
-
-.cont {
-  top: 4rem;
 }
 
 .app {
@@ -48,7 +44,7 @@ body {
 
 .cont {
   position: absolute;
-  top: 4rem;
+  top: 4em;
   left: 0;
   width: 100%;
   z-index: -1;

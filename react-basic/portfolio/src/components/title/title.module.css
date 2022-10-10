@@ -1,4 +1,16 @@
+@value titleGrey, borderGrey from '../../common/colors.css';
+
 .title {
-  margin: 0;
-  padding: 0;
+  display: inline-block;
+  margin: 1rem;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: titleGrey;
+  text-transform: uppercase;
+  border-bottom: 1px solid borderGrey;
+}
+
+.bottom_none {
+  margin-bottom: 0;
 }

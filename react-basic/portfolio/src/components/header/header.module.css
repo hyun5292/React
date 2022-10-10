@@ -1,4 +1,4 @@
-@value sudolYellow, headerGrey_fixed, headerGrey from '../../common/colors.css';
+@value sudolYellow, sudolWhite, headerGrey_fixed, headerGrey from '../../common/colors.css';
 
 @font-face {
   font-family: "HSYuji-Regular";
@@ -6,6 +6,10 @@
     format("woff");
   font-weight: normal;
   font-style: normal;
+}
+
+a {
+  color: sudolWhite;
 }
 
 .header {
@@ -29,6 +33,7 @@
   display: inline-block;
   margin-left: 5px;
   font-size: 1.2em;
+  color: sudolWhite;
 }
 
 .fixed {
