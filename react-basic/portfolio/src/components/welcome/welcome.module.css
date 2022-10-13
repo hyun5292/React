@@ -1,8 +1,9 @@
-@value sudolWhite, sudolOrange, sudolDarkGrey, borderGrey from '../../common/colors.css';
+@value sudolWhite, sudolGreen, sudolBlue, sudolOrange, sudolYellow, sudolDarkGrey, borderGrey from '../../common/colors.css';
 
 .welcome {
   color: sudolDarkGrey;
   background-color: sudolWhite;
+  padding-bottom: 0.5rem;
 }
 
 .title .sub {
@@ -10,11 +11,44 @@
   font-size: 1.5rem;
 }
 
+.card_border {
+  display: inline-block;
+  margin: 1rem auto;
+  border: 1px solid borderGrey;
+  border-radius: 25px;
+  box-shadow: 3px 3px 7px 2px #888;
+}
+
+.card_border:hover {
+  box-shadow: 5px 5px 10px 2px #888;
+  transform: translate(-2px, -2px);
+  background-color: sudolDarkGrey;
+  transition: background-color 1s, transform 1s;
+}
+.card_border:hover .welcome {
+  background-color: sudolRed;
+}
+.card_border:hover .funny {
+  color: sudolGreen;
+  font-weight: 600;
+  transition: color 1s, font-weight 1s;
+}
+.card_border:hover .myName {
+  color: sudolYellow;
+  font-size: 2.2rem;
+  border-bottom: 1px solid sudolYellow;
+  transition: color 1s, font-size 1s, border-bottom 1s;
+}
+.card_border:hover .gitLink {
+  color: sudolWhite;
+  transition: color 1s;
+}
+
 .cont {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0 3.6rem;
+  padding: 1rem;
   text-align: left;
 }
 
@@ -44,18 +78,32 @@
 
 .info {
   display: flex;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .info_list {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.info_icon {
+  font-size: 1.2rem;
+}
+
+.info_text {
+  margin-left: 5px;
 }
 
 .info_item {
+  flex: 1 1 40%;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
 }
 
 .gitLink {
-  color: black;
+  color: sudolDarkGrey;
 }
 .gitLink:hover {
-  color: sudolOrange;
+  opacity: 0.6;
 }
