@@ -5,7 +5,7 @@ import sectStyle from ".././sect.module.css";
 
 const Projects = (props) => (
   <div className={`${styles.projects} ${sectStyle.projects}`}>
-    <Title txtTitle="Projects" />
+    <Title txtTitle="Projects" txtColor="grey" />
     <h1>글씨입니다.</h1>
   </div>
 );

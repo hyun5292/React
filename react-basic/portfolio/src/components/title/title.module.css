@@ -1,8 +1,9 @@
-@value titleGrey, borderGrey from '../../common/colors.css';
+@value titleGrey, borderGrey, sudolGreen, sudolWhite from '../../common/colors.css';
 
 .title {
   display: inline-block;
   margin: 1rem;
+  margin-bottom: 0;
   font-size: 3rem;
   font-weight: 600;
   line-height: 1.2;
@@ -11,6 +12,12 @@
   border-bottom: 1px solid borderGrey;
 }
 
-.bottom_none {
-  margin-bottom: 0;
+.green {
+  color: sudolGreen;
+  border-bottom: 1px solid sudolWhite;
+}
+
+.grey {
+  color: titleGrey;
+  border-bottom: 1px solid borderGrey;
 }

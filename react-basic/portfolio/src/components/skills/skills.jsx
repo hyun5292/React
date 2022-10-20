@@ -5,8 +5,10 @@ import sectStyle from ".././sect.module.css";
 
 const Skills = (props) => (
   <div className={`${styles.skills} ${sectStyle.skills}`}>
-    <Title txtTitle="skills" chkMb />
-    <div className="">글씨입니다.</div>
+    <div className={styles.title}>
+      <Title txtTitle="skills" txtColor="grey" />
+      <p className={styles.sub}>각 아이콘 위에 마우스를 올려주세요!</p>
+    </div>
   </div>
 );
 

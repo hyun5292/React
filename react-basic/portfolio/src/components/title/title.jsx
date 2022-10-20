@@ -1,22 +1,21 @@
 import React from "react";
 import styles from "./title.module.css";
 
-const Title = ({ txtTitle, chkMb }) => {
-  console.log(chkMb);
+const Title = ({ txtTitle, txtColor }) => {
   return (
-    <div
-      className={
-        chkMb ? `${styles.title}` : `${styles.title} ${styles.bottom_none}`
-      }
-    >
-      {txtTitle}
-    </div>
+    <div className={`${styles.title} ${setColor(txtColor)}`}>{txtTitle}</div>
   );
 };
 
-Title.defaultProps = {
-  txtTitle: "",
-  chkMb: false,
-};
+function setColor(color) {
+  switch (color) {
+    case "green":
+      return styles.green;
+    case "grey":
+      return styles.grey;
+    default:
+      return new Error(`unknown theme: ${color}`);
+  }
+}
 
 export default Title;
