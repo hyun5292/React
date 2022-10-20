@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./footer.module.css";
+import { faAt, faMobileAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = (props) => {
   const onCopy = (copyText) => {
@@ -16,34 +19,26 @@ const Footer = (props) => {
   return (
     <footer className={styles.footer}>
       <div className={styles.icon_wrap}>
-        <button
-          className={`${styles.icon} ${styles.phone}`}
-          style={{ backgroundImage: "url(/images/sprite.png)" }}
+        <FontAwesomeIcon
+          className={styles.icon}
+          icon={faMobileAlt}
           onClick={() => onCopy("01099445292")}
-        >
-          Phone
-        </button>
-        <button
-          className={`${styles.icon} ${styles.email}`}
-          style={{ backgroundImage: "url(/images/sprite.png)" }}
+        />
+        <FontAwesomeIcon
+          className={styles.icon}
+          icon={faAt}
           onClick={() => onCopy("tytyjacob@naver.com")}
-        >
-          Email
-        </button>
-        <button
-          className={`${styles.icon} ${styles.kakao}`}
-          style={{ backgroundImage: "url(/images/sprite.png)" }}
-          onClick={() => onCopy("sudol5292")}
-        >
-          Kakaotalk
-        </button>
-        <button
-          className={`${styles.icon} ${styles.github}`}
-          style={{ backgroundImage: "url(/images/sprite.png)" }}
-          onClick={() => onCopy("https://github.com/hyun5292")} //현재
-        >
-          Github
-        </button>
+        />
+        <FontAwesomeIcon
+          className={styles.icon}
+          icon={faGithub}
+          onClick={() => onCopy("https://github.com/hyun5292")}
+        />
+        <FontAwesomeIcon
+          className={styles.icon}
+          icon={faInstagram}
+          onClick={() => onCopy("https://www.instagram.com/green_frog_grog/")}
+        />
       </div>
       <div className={styles.text}>
         <div className={styles.sub}>클릭 시 클립보드에 복사됩니다!</div>

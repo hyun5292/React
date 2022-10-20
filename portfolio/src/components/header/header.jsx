@@ -20,10 +20,8 @@ const Header = (props) => {
   const handleScroll = () => {
     if (window.scrollY > 64) {
       setHeaderClass(`${styles.header} ${styles.fixed}`);
-      console.log("headerClass = ", headerClass);
     } else {
       setHeaderClass(`${styles.header}`);
-      console.log("headerClass = ", headerClass);
     }
   };
 

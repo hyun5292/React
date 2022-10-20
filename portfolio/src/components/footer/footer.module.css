@@ -24,19 +24,6 @@
   opacity: 0.7;
 }
 
-.phone {
-  background-position: -480px 0;
-}
-.email {
-  background-position: -480px -50px;
-}
-.kakao {
-  background-position: -480px -100px;
-}
-.github {
-  background-position: -530px 0;
-}
-
 .text {
   padding: 5px 0;
 }

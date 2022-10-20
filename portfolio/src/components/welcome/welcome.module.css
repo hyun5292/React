@@ -8,7 +8,7 @@
       rgba(38, 38, 38, 0.6),
       rgba(29, 29, 29, 0.5)
     ),
-    url(../../clover.png);
+    url(../../images/clover.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -30,27 +30,21 @@
 }
 
 .card_border:hover {
-  transform: translate(-2px, -2px);
   background-color: sudolDarkGrey;
-  transition: background-color 1s, transform 1s;
-}
-.card_border:hover .welcome {
-  background-color: sudolRed;
+  transition: background-color 1s;
 }
 .card_border:hover .funny {
   color: sudolGreen;
-  font-weight: 600;
-  transition: color 1s, font-weight 1s;
+  transition: color 1s;
 }
 .card_border:hover .myName {
   color: sudolYellow;
-  font-size: 2.2rem;
-  border-bottom: 1px solid sudolYellow;
-  transition: color 1s, font-size 1s, border-bottom 1s;
+  transition: color 1s;
 }
 .card_border:hover .gitLink {
   color: sudolWhite;
-  transition: color 1s;
+  border-bottom: 1px solid sudolWhite;
+  transition: color 1s, border-bottom 1s;
 }
 
 .cont {
