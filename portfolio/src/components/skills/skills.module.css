@@ -13,7 +13,6 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  align-items: center;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -38,24 +37,61 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid green;
   padding: 1rem 0;
 }
 
-.icon {
+/* .icon {
   margin: 1rem;
   width: 80px;
   height: 80px;
-  border: 1px solid red;
   background: url(../../images/sprite.png) no-repeat;
+} */
+.icon {
+  margin: 0.5rem;
+  width: 80px;
+  height: 80px;
 }
 .icon:hover {
   transform: scale(1.2);
 }
 
+.icon_info {
+  display: none;
+}
+.icon:hover .icon_info {
+  display: inline-block;
+}
+
 .html {
-  background-position: 0 0;
+  color: #fc490b;
 }
 .css {
-  background-position: -80px 0;
+  color: #2196f3;
+}
+.js {
+  color: #ffdf00;
+}
+.jquery {
+  color: #1169ae;
+}
+.react {
+  color: #00d8ff;
+}
+.postcss {
+  color: #dd3a0a;
+}
+.sass {
+  color: #cc6699;
+}
+.spring {
+  color: #5fb832;
+}
+.mariadb {
+  color: #444b5e;
+}
+.vscode {
+  color: #007acc;
+}
+.cert {
+  color: #e95454;
 }
