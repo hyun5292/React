@@ -1,4 +1,4 @@
-@value sudolOrange, sudolWhite from '../../common/colors.css';
+@value sudolOrange, sudolWhite, skillsGrey from '../../common/colors.css';
 
 .skills {
   background-color: sudolOrange;
@@ -40,12 +40,11 @@
   padding: 1rem 0;
 }
 
-/* .icon {
-  margin: 1rem;
-  width: 80px;
-  height: 80px;
-  background: url(../../images/sprite.png) no-repeat;
-} */
+.icon_item {
+  position: relative;
+  line-height: 1.5;
+}
+
 .icon {
   margin: 0.5rem;
   width: 80px;
@@ -56,10 +55,29 @@
 }
 
 .icon_info {
+  position: absolute;
   display: none;
+  padding: 1rem;
+  bottom: 100%;
+  left: -60%;
+  width: 250px;
+  border-radius: 10px;
+  text-align: left;
+  background-color: skillsGrey;
 }
-.icon:hover .icon_info {
+.icon_item:hover .icon_info {
   display: inline-block;
+}
+
+.info_title {
+  font-size: 1.2rem;
+  color: rgba(13, 107, 165, 0.8);
+  text-transform: uppercase;
+}
+
+.info_cont {
+  margin: 1rem 0 0;
+  color: sudolWhite;
 }
 
 .html {
