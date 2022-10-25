@@ -1,5 +1,16 @@
 @value sudolOrange, sudolWhite, skillsGrey from '../../common/colors.css';
 
+@keyframes Slide {
+  from {
+    opacity: 0;
+    bottom: 0%;
+  }
+  to {
+    opacity: 1;
+    bottom: 100%;
+  }
+}
+
 .skills {
   background-color: sudolOrange;
 }
@@ -14,7 +25,7 @@
   flex-flow: row wrap;
   justify-content: space-evenly;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 .block {
@@ -44,14 +55,19 @@
   position: relative;
   line-height: 1.5;
 }
+.icon_item:hover .icon {
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+.icon_item:hover .icon_info {
+  display: inline-block;
+  animation: Slide 0.5s;
+}
 
 .icon {
   margin: 0.5rem;
   width: 80px;
   height: 80px;
-}
-.icon:hover {
-  transform: scale(1.2);
 }
 
 .icon_info {
@@ -64,9 +80,6 @@
   border-radius: 10px;
   text-align: left;
   background-color: skillsGrey;
-}
-.icon_item:hover .icon_info {
-  display: inline-block;
 }
 
 .info_title {
