@@ -1,5 +1,21 @@
-@value sudolBlue from '../../common/colors.css';
+@value sudolWhite, sudolBlue from '../../common/colors.css';
 
 .projects {
   background-color: sudolBlue;
+}
+
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.arrow {
+  font-size: 3rem;
+  color: sudolWhite;
+  cursor: pointer;
+}
+.arrow:hover {
+  opacity: 0.7;
 }

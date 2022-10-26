@@ -1,0 +1,8 @@
+@value sudolWhite from '../../../common/colors.css';
+
+.project {
+  width: 90%;
+  height: 100vh;
+  border-radius: 10px;
+  background-color: sudolWhite;
+}
