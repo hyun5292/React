@@ -14,12 +14,6 @@
   background-size: cover;
 }
 
-.title .sub {
-  margin: 0;
-  color: sudolWhite;
-  font-size: 1.5rem;
-}
-
 .card_border {
   display: inline-block;
   margin: 1rem auto;

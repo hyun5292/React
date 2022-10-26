@@ -15,10 +15,11 @@ import { TbCertificate } from "react-icons/tb";
 
 const Skills = (props) => (
   <div className={`${styles.skills} ${sectStyle.skills}`}>
-    <div className={styles.title}>
-      <Title txtTitle="i can do these" txtColor="grey" />
-      <p className={styles.sub}>각 아이콘 위에 마우스를 올려주세요!</p>
-    </div>
+    <Title
+      txtTitle="i can do these"
+      txtSub="각 아이콘 위에 마우스를 올려주세요!"
+      txtColor="skills"
+    />
     <div className={styles.cont}>
       <div className={`${styles.block} ${styles.front}`}>
         <div className={styles.block_title}>front end</div>

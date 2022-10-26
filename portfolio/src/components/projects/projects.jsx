@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Title from "../title/title";
 import styles from "./projects.module.css";
 import sectStyle from ".././sect.module.css";
 import Project from "./project/project";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import { FaCircle, FaRegCircle } from "react-icons/fa";
 
 const Projects = (props) => {
+  const [pages, setPages] = useState([true, false, false]);
+
   const files = [
     {
       fileName: "프로젝트1",
@@ -21,14 +24,37 @@ const Projects = (props) => {
     },
   ];
 
+  const onChange = () => {
+    const nowPg = pages.findIndex((pg) => pg === true);
+    console.log("pages1 = ", pages);
+    setPages((pages) => {
+      const updated = { ...pages };
+      updated[nowPg] = false;
+      updated[nowPg + 1] = true;
+      return updated;
+    });
+    console.log("pages2 = ", pages);
+  };
+
   return (
     <div className={`${styles.projects} ${sectStyle.projects}`}>
-      <Title txtTitle="Projects" txtColor="grey" />
+      <Title
+        txtTitle="Projects"
+        txtSub="양 옆 버튼을 눌러주세요!"
+        txtColor="projects"
+      />
       <div className={styles.cont}>
-        <MdNavigateBefore className={styles.arrow} />
+        <MdNavigateBefore className={styles.arrow} onClick={onChange} />
         <Project />
-        <MdNavigateNext className={styles.arrow} />
+        <MdNavigateNext className={styles.arrow} onClick={onChange} />
       </div>
+      {pages.map((pg) =>
+        pg ? (
+          <FaCircle className={styles.circles} />
+        ) : (
+          <FaRegCircle className={styles.circles} />
+        )
+      )}
     </div>
   );
 };

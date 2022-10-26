@@ -14,10 +14,11 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 const Welcome = (props) => (
   <div className={`${styles.welcome} ${sectStyle.welcome}`}>
     <div className={styles.card}>
-      <div className={styles.title}>
-        <Title txtTitle="contact me" txtColor="green" />
-        <p className={styles.sub}>깃허브 링크를 클릭해주세요!</p>
-      </div>
+      <Title
+        txtTitle="contact me"
+        txtSub="깃허브 링크를 클릭해주세요!"
+        txtColor="welcome"
+      />
       <div className={styles.card_border}>
         <div className={styles.cont}>
           <img className={styles.selfie} src="/images/selfie.png" alt="사진" />

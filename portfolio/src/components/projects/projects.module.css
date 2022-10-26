@@ -2,6 +2,12 @@
 
 .projects {
   background-color: sudolBlue;
+  padding-bottom: 1rem;
+}
+
+.title .sub {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .cont {
@@ -18,4 +24,9 @@
 }
 .arrow:hover {
   opacity: 0.7;
+}
+
+.circles {
+  margin: 5px;
+  color: sudolWhite;
 }

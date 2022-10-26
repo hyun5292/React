@@ -15,11 +15,6 @@
   background-color: sudolOrange;
 }
 
-.title .sub {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
 .cont {
   display: flex;
   flex-flow: row wrap;
