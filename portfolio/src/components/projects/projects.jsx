@@ -24,18 +24,6 @@ const Projects = (props) => {
     },
   ];
 
-  const onChange = () => {
-    const nowPg = pages.findIndex((pg) => pg === true);
-    console.log("pages1 = ", pages);
-    setPages((pages) => {
-      const updated = { ...pages };
-      updated[nowPg] = false;
-      updated[nowPg + 1] = true;
-      return updated;
-    });
-    console.log("pages2 = ", pages);
-  };
-
   return (
     <div className={`${styles.projects} ${sectStyle.projects}`}>
       <Title
@@ -44,9 +32,9 @@ const Projects = (props) => {
         txtColor="projects"
       />
       <div className={styles.cont}>
-        <MdNavigateBefore className={styles.arrow} onClick={onChange} />
+        <MdNavigateBefore className={styles.arrow} />
         <Project />
-        <MdNavigateNext className={styles.arrow} onClick={onChange} />
+        <MdNavigateNext className={styles.arrow} />
       </div>
       {pages.map((pg) =>
         pg ? (
