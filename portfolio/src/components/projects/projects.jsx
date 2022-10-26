@@ -3,7 +3,7 @@ import Title from "../title/title";
 import styles from "./projects.module.css";
 import sectStyle from ".././sect.module.css";
 import Project from "./project/project";
-import { GrPrevious, GrNext } from "react-icons/gr";
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
 const Projects = (props) => {
   const files = [
@@ -25,9 +25,9 @@ const Projects = (props) => {
     <div className={`${styles.projects} ${sectStyle.projects}`}>
       <Title txtTitle="Projects" txtColor="grey" />
       <div className={styles.cont}>
-        <GrPrevious className={styles.arrow} />
+        <MdNavigateBefore className={styles.arrow} />
         <Project />
-        <GrNext className={styles.arrow} />
+        <MdNavigateNext className={styles.arrow} />
       </div>
     </div>
   );
