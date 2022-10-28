@@ -1,11 +1,17 @@
-@value sudolWhite from '../../../common/colors.css';
+@value sudolWhite, sudolOrange, sudolBlue, sudolDarkGrey from '../../../common/colors.css';
 
 .project {
   margin: 0 1rem;
-  padding: 1rem;
+  padding: 1rem 3rem 2rem;
   border-radius: 10px;
   background-color: sudolWhite;
   box-shadow: 2px 3px 4px 2px rgba(38, 38, 38, 0.3);
+}
+
+.title {
+  margin: 1rem 0 2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
 }
 
 .cont {
@@ -13,5 +19,19 @@
 }
 
 .img {
-  width: 80vh;
+  width: 500px;
+}
+
+.projectTxt {
+  margin-left: 1rem;
+  min-width: 400px;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.link {
+  color: sudolDarkGrey;
+}
+.link:hover {
+  color: sudolOrange;
 }

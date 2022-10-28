@@ -11,7 +11,6 @@
 }
 
 .cont {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,14 +28,14 @@
 }
 
 .prev {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 1rem;
   transform: translateY(-100%);
 }
 
 .next {
-  position: absolute;
+  position: fixed;
   top: 50%;
   right: 1rem;
   transform: translateY(-100%);
@@ -45,4 +44,5 @@
 .circles {
   margin: 5px;
   color: sudolWhite;
+  cursor: pointer;
 }
