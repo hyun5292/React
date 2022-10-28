@@ -1,4 +1,4 @@
-@value sudolWhite, sudolBlue from '../../common/colors.css';
+@value sudolWhite, sudolBlue, borderGrey from '../../common/colors.css';
 
 .projects {
   background-color: sudolBlue;
@@ -11,10 +11,12 @@
 }
 
 .cont {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
+  overflow-x: visible;
 }
 
 .arrow {
@@ -23,7 +25,21 @@
   cursor: pointer;
 }
 .arrow:hover {
-  opacity: 0.7;
+  color: borderGrey;
+}
+
+.prev {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-100%);
+}
+
+.next {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-100%);
 }
 
 .circles {

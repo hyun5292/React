@@ -11,14 +11,23 @@ const Projects = (props) => {
 
   const files = [
     {
+      fileNum: "1",
       fileName: "프로젝트1",
-      fileImg: "/images/selfie.png",
+      fileImg: "/images/example.png",
       fileInfo:
         "프로젝트 설명이 길어야하니까 어쩔 수 없이 이렇게 길게 설명을 한 번 써보기는 하는데 얼마나 길게 써질지는 모르겠네",
     },
     {
+      fileNum: "2",
       fileName: "프로젝트2",
-      fileImg: "/images/selfie.png",
+      fileImg: "/images/example.png",
+      fileInfo:
+        "프로젝트 설명이 길어야하니까 어쩔 수 없이 이렇게 길게 설명을 한 번 써보기는 하는데 얼마나 길게 써질지는 모르겠네",
+    },
+    {
+      fileNum: "3",
+      fileName: "프로젝트3",
+      fileImg: "/images/example.png",
       fileInfo:
         "프로젝트 설명이 길어야하니까 어쩔 수 없이 이렇게 길게 설명을 한 번 써보기는 하는데 얼마나 길게 써질지는 모르겠네",
     },
@@ -32,9 +41,11 @@ const Projects = (props) => {
         txtColor="projects"
       />
       <div className={styles.cont}>
-        <MdNavigateBefore className={styles.arrow} />
-        <Project />
-        <MdNavigateNext className={styles.arrow} />
+        <MdNavigateBefore className={`${styles.arrow} ${styles.prev}`} />
+        {files.map((file) => {
+          return <Project key={file.fileNum} file={file} />;
+        })}
+        <MdNavigateNext className={`${styles.arrow} ${styles.next}`} />
       </div>
       {pages.map((pg) =>
         pg ? (
