@@ -52,7 +52,13 @@ const Projects = (props) => {
       <div className={styles.cont}>
         <MdNavigateBefore className={`${styles.arrow} ${styles.prev}`} />
         {files.map((file) => {
-          return <Project key={file.fileNum} file={file} />;
+          return (
+            <Project
+              className={styles.project}
+              key={file.fileNum}
+              file={file}
+            />
+          );
         })}
         <MdNavigateNext className={`${styles.arrow} ${styles.next}`} />
       </div>

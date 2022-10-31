@@ -12,10 +12,10 @@
 
 .cont {
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin-left: 3.5rem;
   padding: 1rem 0;
-  overflow-x: visible;
+  overflow-x: hidden;
 }
 
 .arrow {
