@@ -31,6 +31,7 @@
   position: fixed;
   top: 50%;
   left: 1rem;
+  color: borderGrey;
   transform: translateY(-100%);
 }
 
@@ -44,5 +45,4 @@
 .circles {
   margin: 5px;
   color: sudolWhite;
-  cursor: pointer;
 }
