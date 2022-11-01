@@ -1,4 +1,4 @@
-@value sudolWhite, sudolOrange, sudolBlue, sudolDarkGrey from '../../../common/colors.css';
+@value sudolWhite, sudolOrange, sudolBlue, sudolDarkGrey,borderGrey from '../../../common/colors.css';
 
 .project {
   padding: 1rem 3rem 2rem;
@@ -11,6 +11,17 @@
   margin: 1rem 0 2rem;
   font-size: 2.5rem;
   font-weight: 600;
+}
+
+.link_wrap {
+  padding-bottom: 10px;
+  font-size: 1.3rem;
+  text-align: left;
+  border-bottom: 1px solid borderGrey;
+}
+
+.link {
+  margin-left: 10px;
 }
 
 .cont {

@@ -6,6 +6,12 @@ const Project = ({ file }) => {
   return (
     <div className={styles.project}>
       <p className={styles.title}>{fileName}</p>
+      <p className={styles.link_wrap}>
+        <b>사이트 링크:</b>
+        <a className={styles.link} href={fileLink}>
+          {fileLink}
+        </a>
+      </p>
       <div className={styles.cont}>
         <img className={styles.img} src={fileImg} alt="프로젝트 이미지"></img>
         <div className={styles.projectTxt}>
@@ -14,13 +20,6 @@ const Project = ({ file }) => {
           </p>
           <p className={styles.tool}>
             <b>개발환경:</b> {fileTool}
-          </p>
-          <p className={styles.link_wrap}>
-            <b>사이트 링크:</b>
-            <br />
-            <a className={styles.link} href={fileLink}>
-              {fileLink}
-            </a>
           </p>
           <p className={styles.info}>
             <b>프로젝트 설명:</b>
