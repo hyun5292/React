@@ -1,7 +1,6 @@
 @value sudolWhite, sudolOrange, sudolBlue, sudolDarkGrey from '../../../common/colors.css';
 
 .project {
-  margin: 0 4rem;
   padding: 1rem 3rem 2rem;
   border-radius: 10px;
   background-color: sudolWhite;
@@ -19,12 +18,12 @@
 }
 
 .img {
-  width: 500px;
+  width: 80vh;
 }
 
 .projectTxt {
   margin-left: 2rem;
-  min-width: 400px;
+  min-width: 50vh;
   font-size: 1.5rem;
   text-align: left;
 }

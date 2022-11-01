@@ -5,7 +5,6 @@ import sectStyle from ".././sect.module.css";
 import Project from "./project/project";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { FaCircle, FaRegCircle } from "react-icons/fa";
-import { useEffect } from "react";
 
 const Projects = (props) => {
   const pageRef = useRef();
@@ -14,7 +13,7 @@ const Projects = (props) => {
     {
       fileNum: "1",
       fileName: "포트폴리오",
-      fileImg: "/images/example.png",
+      fileImg: "/images/example1.png",
       fileLan: "react",
       fileTool: "visual studio",
       fileLink: "https://sudol5292.netlify.app/",
@@ -24,7 +23,7 @@ const Projects = (props) => {
     {
       fileNum: "2",
       fileName: "포트폴리오",
-      fileImg: "/images/example.png",
+      fileImg: "/images/example2.png",
       fileLan: "react",
       fileTool: "visual studio",
       fileLink: "https://sudol5292.netlify.app/",
@@ -34,7 +33,7 @@ const Projects = (props) => {
     {
       fileNum: "3",
       fileName: "포트폴리오",
-      fileImg: "/images/example.png",
+      fileImg: "/images/example3.png",
       fileLan: "react",
       fileTool: "visual studio",
       fileLink: "https://sudol5292.netlify.app/",
@@ -47,24 +46,22 @@ const Projects = (props) => {
     const nowPg = pageCnt;
     if (nowPg < files.length) {
       setPageCnt(nowPg + 1);
-      // pageRef.current.style.transform = `translateX(${
-      //   window.innerWidth * (nowPg - 1)
-      // })`;
+      console.log("next = ", window.innerWidth * nowPg);
+      pageRef.current.style.transform = `translateX(-${
+        window.innerWidth * nowPg
+      }px)`;
     }
   };
   const handlePrevPg = () => {
     const nowPg = pageCnt;
     if (nowPg > 1) {
       setPageCnt(nowPg - 1);
-      // pageRef.current.style.transform = `translateX(${
-      //   window.innerWidth * (nowPg - 1)
-      // })`;
+      console.log("prev = ", window.innerWidth * nowPg);
+      pageRef.current.style.transform = `translateX(-${
+        window.innerWidth * nowPg
+      }px)`;
     }
   };
-
-  useEffect(() => {
-    console.log("pageCnt = ", pageCnt);
-  }, [pageCnt, files]);
 
   return (
     <div className={`${styles.projects} ${sectStyle.projects}`}>
@@ -73,29 +70,36 @@ const Projects = (props) => {
         txtSub="양 옆 버튼을 눌러주세요!"
         txtColor="projects"
       />
-      <div className={styles.cont} pageRef={pageRef}>
+      <div className={styles.cont}>
         <MdNavigateBefore
           onClick={handlePrevPg}
-          className={`${styles.arrow} ${styles.prev}`}
+          className={`${styles.arrow} ${styles.prev} ${changeArrow(
+            "prev",
+            pageCnt
+          )}`}
         />
-        {files &&
-          files.map((file) => {
-            return (
-              <Project
-                className={styles.project}
-                key={file.fileNum}
-                file={file}
-              />
-            );
-          })}
+        <div className={styles.proList} ref={pageRef}>
+          {files &&
+            files.map((file) => {
+              return (
+                <div className={styles.project}>
+                  <Project key={file.fileNum} file={file} />
+                </div>
+              );
+            })}
+        </div>
         <MdNavigateNext
           onClick={handleNextPg}
-          className={`${styles.arrow} ${styles.next}`}
+          className={`${styles.arrow} ${styles.next} ${changeArrow(
+            "next",
+            pageCnt,
+            files.length
+          )}`}
         />
       </div>
       {files &&
         files.map((file) =>
-          pageCnt === file.fileNum ? (
+          pageCnt == file.fileNum ? (
             <FaCircle className={styles.circles} />
           ) : (
             <FaRegCircle className={styles.circles} />
@@ -104,5 +108,15 @@ const Projects = (props) => {
     </div>
   );
 };
+
+function changeArrow(kind, pgCnt, final) {
+  if (kind === "prev" && pgCnt === 1) {
+    return styles.hoverArrow;
+  } else if (kind === "next" && pgCnt === final) {
+    return styles.hoverArrow;
+  } else {
+    return;
+  }
+}
 
 export default Projects;

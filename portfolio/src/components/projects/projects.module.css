@@ -11,9 +11,6 @@
 }
 
 .cont {
-  display: flex;
-  align-items: center;
-  margin-left: 3.5rem;
   padding: 1rem 0;
   overflow-x: hidden;
 }
@@ -31,7 +28,6 @@
   position: fixed;
   top: 50%;
   left: 1rem;
-  color: borderGrey;
   transform: translateY(-100%);
 }
 
@@ -40,6 +36,22 @@
   top: 50%;
   right: 1rem;
   transform: translateY(-100%);
+}
+
+.proList {
+  display: flex;
+  align-items: center;
+}
+
+.project {
+  /* padding: 0 24vh; */
+  width: 100%;
+  /* border: 1px solid red; */
+}
+
+.hoverArrow {
+  color: borderGrey;
+  cursor: default;
 }
 
 .circles {
