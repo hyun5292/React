@@ -44,9 +44,7 @@
 }
 
 .project {
-  /* padding: 0 24vh; */
-  width: 100%;
-  /* border: 1px solid red; */
+  padding: 0 7rem 0 6rem;
 }
 
 .hoverArrow {

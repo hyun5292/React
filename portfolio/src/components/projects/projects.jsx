@@ -50,6 +50,7 @@ const Projects = (props) => {
       pageRef.current.style.transform = `translateX(-${
         window.innerWidth * nowPg
       }px)`;
+      pageRef.current.style.transition = "transform 0.5s ease";
     }
   };
   const handlePrevPg = () => {
@@ -57,9 +58,10 @@ const Projects = (props) => {
     if (nowPg > 1) {
       setPageCnt(nowPg - 1);
       console.log("prev = ", window.innerWidth * nowPg);
-      pageRef.current.style.transform = `translateX(-${
-        window.innerWidth * nowPg
+      pageRef.current.style.transform = `translateX(${
+        window.innerWidth * (files.length - 1 - nowPg)
       }px)`;
+      pageRef.current.style.transition = "transform 0.5s ease";
     }
   };
 
@@ -71,14 +73,11 @@ const Projects = (props) => {
         txtColor="projects"
       />
       <div className={styles.cont}>
-        <MdNavigateBefore
-          onClick={handlePrevPg}
-          className={`${styles.arrow} ${styles.prev} ${changeArrow(
-            "prev",
-            pageCnt
-          )}`}
-        />
-        <div className={styles.proList} ref={pageRef}>
+        <div
+          ref={pageRef}
+          className={styles.proList}
+          style={{ width: window.innerWidth * files.length }}
+        >
           {files &&
             files.map((file) => {
               return (
@@ -88,6 +87,13 @@ const Projects = (props) => {
               );
             })}
         </div>
+        <MdNavigateBefore
+          onClick={handlePrevPg}
+          className={`${styles.arrow} ${styles.prev} ${changeArrow(
+            "prev",
+            pageCnt
+          )}`}
+        />
         <MdNavigateNext
           onClick={handleNextPg}
           className={`${styles.arrow} ${styles.next} ${changeArrow(
