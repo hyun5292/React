@@ -1,6 +1,7 @@
 @value sudolWhite, sudolGreen, sudolOrange, sudolYellow, sudolDarkGrey, borderGrey from '../../common/colors.css';
 
 .welcome {
+  min-width: 400px;
   color: sudolDarkGrey;
   padding-bottom: 0.5rem;
   background-image: linear-gradient(
@@ -16,7 +17,7 @@
 
 .card_border {
   display: inline-block;
-  margin: 1rem auto;
+  margin: 1rem 2rem;
   border: 1px solid borderGrey;
   border-radius: 25px;
   box-shadow: 5px 5px 7px 2px borderGrey;
@@ -104,4 +105,36 @@
 }
 .gitLink:hover {
   opacity: 0.6;
+}
+
+@media (min-width: 1200px) {
+  .intro_title {
+    font-size: 2.5rem;
+  }
+  .intro_sect {
+    font-size: 1.8rem;
+  }
+  .info {
+    font-size: 1.5rem;
+  }
+  .info_item {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1199px) {
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+@media (max-width: 767px) {
+  .cont {
+    flex-direction: column;
+  }
+
+  .explain {
+    border-left: none;
+  }
+
+  .selfie {
+    margin: 0 auto;
+  }
 }
