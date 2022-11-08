@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 import styles from "./header.module.css";
 import Navbar from "./navbar/navbar";
+import { MdMenu, MdClose } from "react-icons/md";
 
 const Header = (props) => {
   const headerRef = useRef();
@@ -31,7 +32,18 @@ const Header = (props) => {
         <span className={styles.mainLogo}>SUDOL</span>
         <span className={styles.mainLogo_info}>Portfolio</span>
       </div>
-      <Navbar />
+      <div className={styles.menu}>
+        <div className={styles.navbar}>
+          <Navbar />
+        </div>
+        <div className={styles.hamb} href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        {/* <MdMenu className={styles.hamb} />
+        <MdClose className={styles.close} /> */}
+      </div>
     </header>
   );
 };

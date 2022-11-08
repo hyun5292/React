@@ -1,4 +1,4 @@
-@value sudolDarkOrange from '../../../common/colors.css';
+@value sudolDarkOrange, headerGrey_fixed from '../../../common/colors.css';
 
 .nav {
   display: flex;
@@ -18,4 +18,16 @@
 
 .otherPage:hover {
   color: sudolDarkOrange;
+}
+
+@media (max-width: 767px) {
+  .nav {
+    flex-direction: column;
+    margin: 0;
+    border-radius: 0 0 0 10px;
+    background-color: headerGrey_fixed;
+  }
+  .nav_list {
+    padding: 5px 10px;
+  }
 }
