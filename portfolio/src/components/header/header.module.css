@@ -8,27 +8,6 @@
   font-style: normal;
 }
 
-@keyframes turnOffMenu {
-  0% {
-    opacity: 1;
-    transform: rotateX(0deg);
-  }
-  100% {
-    opacity: 0;
-    transform: rotateX(-45deg);
-  }
-}
-@keyframes turnOnClose {
-  0% {
-    opacity: 0;
-    transform: rotateX(0deg);
-  }
-  100% {
-    opacity: 1;
-    transform: rotateX(45deg);
-  }
-}
-
 a {
   color: sudolWhite;
 }
@@ -67,7 +46,14 @@ a {
 }
 
 .menu {
+  position: relative;
   font-size: 1.1rem;
+}
+
+.navbar {
+  position: absolute;
+  top: calc(3rem - 2px);
+  right: 0;
 }
 
 .hamb {
@@ -85,64 +71,46 @@ a {
   border-radius: 5px;
   background-color: sudolWhite;
 }
+.hamb:hover span {
+  opacity: 0.3;
+}
 
 .hamb span:nth-of-type(1) {
   top: 0;
-}
-.actHamb span:nth-of-type(1) {
-  transform: translateY(10.5px) rotate(-45deg);
-  transition: transform 0.5s;
 }
 .hamb span:nth-of-type(2) {
   top: 50%;
   transform: translateY(-50%);
 }
-.actHamb span:nth-of-type(2) {
-  display: none;
-}
 .hamb span:nth-of-type(3) {
   bottom: 0;
 }
-.actHamb span:nth-of-type(3) {
+
+.actHamb .navbar {
+  transform: translateX(0);
+  transition: transform 0.5s;
+}
+.actHamb .hamb span:nth-of-type(1) {
+  transform: translateY(10.5px) rotate(-45deg);
+  transition: transform 0.5s;
+}
+.actHamb .hamb span:nth-of-type(2) {
+  display: none;
+}
+.actHamb .hamb span:nth-of-type(3) {
   transform: translateY(-10.5px) rotate(45deg);
   transition: transform 0.5s;
 }
 
-.hamb:hover span {
-  opacity: 0.3;
+.actClose span {
+  display: inline-block;
+  transform: none;
+  transition: transform 0.5s;
 }
-
-.navbar {
-  display: none;
+.actClose .navbar {
+  transform: translateX(120px);
+  transition: transform 0.5s;
 }
-
-/* .hamb,
-.close {
-  display: none;
-  margin: 0 10px;
-  height: 4rem;
-  color: sudolWhite;
-  font-size: 2.2rem;
-  cursor: pointer;
-} */
 
 @media (max-width: 767px) {
-  /* .menu {
-    position: relative;
-  }
-  .hamb {
-    display: block;
-  }
-  .hamb:hover {
-    animation: turnOnMenu 0.5s;
-  }
-  .hamb:hover .close {
-    animation: turnOnClose 0.5s;
-  }
-  .navbar {
-    position: absolute;
-    display: block;
-    top: 4rem;
-    right: 0;
-  } */
 }

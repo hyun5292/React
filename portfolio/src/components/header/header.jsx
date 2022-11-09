@@ -6,6 +6,7 @@ import Navbar from "./navbar/navbar";
 const Header = (props) => {
   const headerRef = useRef();
   const [headerClass, setHeaderClass] = useState(`${styles.header}`);
+  const [chkHamb, setChkHamb] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,17 +26,25 @@ const Header = (props) => {
     }
   };
 
+  const handleHamb = () => {
+    chkHamb ? setChkHamb(false) : setChkHamb(true);
+  };
+
   return (
     <header ref={headerRef} className={headerClass}>
       <div className={styles.logo}>
         <span className={styles.mainLogo}>SUDOL</span>
         <span className={styles.mainLogo_info}>Portfolio</span>
       </div>
-      <div className={styles.menu}>
+      <div
+        className={`${styles.menu} ${
+          chkHamb ? styles.actHamb : styles.actClose
+        }`}
+      >
         <div className={styles.navbar}>
           <Navbar />
         </div>
-        <div className={styles.hamb} href="#">
+        <div className={styles.hamb} onClick={handleHamb} href="#">
           <span></span>
           <span></span>
           <span></span>
