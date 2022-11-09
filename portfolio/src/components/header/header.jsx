@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 import styles from "./header.module.css";
 import Navbar from "./navbar/navbar";
-import { MdMenu, MdClose } from "react-icons/md";
 
 const Header = (props) => {
   const headerRef = useRef();
@@ -41,8 +40,6 @@ const Header = (props) => {
           <span></span>
           <span></span>
         </div>
-        {/* <MdMenu className={styles.hamb} />
-        <MdClose className={styles.close} /> */}
       </div>
     </header>
   );
