@@ -1,6 +1,5 @@
 .welcome,
 .skills,
 .projects {
-  min-width: 360px;
   min-height: calc(100vh - 11.5rem);
 }

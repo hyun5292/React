@@ -26,8 +26,6 @@
 .block {
   margin: 0 1rem 1rem;
   width: 30%;
-  min-width: 200px;
-  min-height: 50vh;
   border-radius: 1rem;
   background-color: sudolWhite;
   box-shadow: 2px 3px 4px 2px rgba(38, 38, 38, 0.3);

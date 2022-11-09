@@ -24,18 +24,17 @@
   color: borderGrey;
 }
 
-.prev {
-  position: fixed;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-100%);
-}
-
+.prev,
 .next {
   position: fixed;
   top: 50%;
-  right: 1rem;
   transform: translateY(-100%);
+}
+.prev {
+  left: 1rem;
+}
+.next {
+  right: 1rem;
 }
 
 .proList {

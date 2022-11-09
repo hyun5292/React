@@ -1,6 +1,7 @@
 @value sudolWhite, sudolGreen, sudolOrange, sudolYellow, sudolDarkGrey, borderGrey from '../../common/colors.css';
 
 .welcome {
+  min-width: 360px;
   color: sudolDarkGrey;
   padding-bottom: 0.5rem;
   background-image: linear-gradient(

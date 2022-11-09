@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = (props) => {
-  const onCopy = (copyKind, copyText) => {
+  const onCopy = (copyText) => {
     try {
       navigator.clipboard.writeText(copyText);
 
-      alert(copyKind + " 이/가 복사되었습니다!");
+      alert("복사되었습니다!");
     } catch (error) {
       console.log("footer:onCopy Error; ", error);
       alert("복사에 실패했습니다!");
@@ -22,24 +22,22 @@ const Footer = (props) => {
         <FontAwesomeIcon
           className={styles.icon}
           icon={faMobileAlt}
-          onClick={() => onCopy("전화번호", "01099445292")}
+          onClick={() => onCopy("01099445292")}
         />
         <FontAwesomeIcon
           className={styles.icon}
           icon={faAt}
-          onClick={() => onCopy("이메일", "tytyjacob@naver.com")}
+          onClick={() => onCopy("tytyjacob@naver.com")}
         />
         <FontAwesomeIcon
           className={styles.icon}
           icon={faGithub}
-          onClick={() => onCopy("깃허브 주소", "https://github.com/hyun5292")}
+          onClick={() => onCopy("https://github.com/hyun5292")}
         />
         <FontAwesomeIcon
           className={styles.icon}
           icon={faInstagram}
-          onClick={() =>
-            onCopy("인스타URL", "https://www.instagram.com/green_frog_grog/")
-          }
+          onClick={() => onCopy("https://www.instagram.com/green_frog_grog/")}
         />
       </div>
       <div className={styles.text}>

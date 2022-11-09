@@ -46,7 +46,6 @@ const Projects = (props) => {
     const nowPg = pageCnt;
     if (nowPg < files.length) {
       setPageCnt(nowPg + 1);
-      console.log("next = ", window.innerWidth * nowPg);
       pageRef.current.style.transform = `translateX(-${
         window.innerWidth * nowPg
       }px)`;
@@ -57,7 +56,6 @@ const Projects = (props) => {
     const nowPg = pageCnt;
     if (nowPg > 1) {
       setPageCnt(nowPg - 1);
-      console.log("prev = ", window.innerWidth * nowPg);
       pageRef.current.style.transform = `translateX(${
         window.innerWidth * (files.length - 1 - nowPg)
       }px)`;
