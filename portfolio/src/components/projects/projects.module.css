@@ -61,4 +61,29 @@
 @media (min-width: 768px) and (max-width: 1024px) {
 }
 @media (max-width: 767px) {
+  .project {
+    padding: 0 2.5rem 0 1rem;
+  }
+
+  .arrow {
+    color: sudolBlue;
+  }
+
+  .hoverArrow {
+    color: borderGrey;
+    cursor: default;
+  }
+}
+
+@media (max-width: 500px) {
+  .project {
+    padding: 0;
+  }
+
+  .prev {
+    left: -1rem;
+  }
+  .next {
+    right: -1rem;
+  }
 }

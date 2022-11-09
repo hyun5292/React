@@ -3,7 +3,7 @@ import styles from "./project.module.css";
 
 const Project = ({ file, winWidth }) => {
   const { fileName, fileImg, fileLan, fileTool, fileLink, fileInfo } = file;
-  const imgWidth = winWidth * 0.4;
+
   return (
     <div className={styles.project}>
       <p className={styles.title}>{fileName}</p>
@@ -16,7 +16,7 @@ const Project = ({ file, winWidth }) => {
       <div className={styles.cont}>
         <img
           className={styles.img}
-          style={{ width: imgWidth }}
+          style={{ width: chkImgWidth(winWidth) }}
           src={fileImg}
           alt="프로젝트 이미지"
         ></img>
@@ -37,5 +37,15 @@ const Project = ({ file, winWidth }) => {
     </div>
   );
 };
+
+function chkImgWidth(winWidth) {
+  if (winWidth > 1024) {
+    return winWidth * 0.6;
+  } else if (767 < winWidth && winWidth <= 1024) {
+    return winWidth * 0.6;
+  } else {
+    return winWidth * 0.8;
+  }
+}
 
 export default Project;

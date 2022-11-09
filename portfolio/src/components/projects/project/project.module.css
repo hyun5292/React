@@ -24,6 +24,10 @@
   margin-left: 10px;
 }
 
+.img {
+  min-width: 288px;
+}
+
 .cont {
   display: flex;
 }
@@ -44,6 +48,28 @@
 @media (min-width: 1025px) {
 }
 @media (min-width: 768px) and (max-width: 1024px) {
+  .cont {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 @media (max-width: 767px) {
+  .project {
+    padding: 1rem 2rem 2rem;
+  }
+
+  .cont {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .link_wrap {
+    font-size: 1.1rem;
+  }
 }
