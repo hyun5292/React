@@ -5,10 +5,15 @@ import sectStyle from ".././sect.module.css";
 import Project from "./project/project";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { FaCircle, FaRegCircle } from "react-icons/fa";
+import { useEffect } from "react";
 
 const Projects = (props) => {
   const pageRef = useRef();
   const [pageCnt, setPageCnt] = useState(1);
+  const [winSize, setWinSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
   const files = [
     {
       fileNum: "1",
@@ -42,12 +47,22 @@ const Projects = (props) => {
     },
   ];
 
+  const handleResize = () => {
+    setPageCnt(1);
+    pageRef.current.style.transform = "translateX(0)";
+    pageRef.current.style.transition = "transform 0.5s ease";
+    setWinSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  };
+
   const handleNextPg = () => {
     const nowPg = pageCnt;
     if (nowPg < files.length) {
       setPageCnt(nowPg + 1);
       pageRef.current.style.transform = `translateX(-${
-        window.innerWidth * nowPg
+        winSize.width * nowPg
       }px)`;
       pageRef.current.style.transition = "transform 0.5s ease";
     }
@@ -57,11 +72,18 @@ const Projects = (props) => {
     if (nowPg > 1) {
       setPageCnt(nowPg - 1);
       pageRef.current.style.transform = `translateX(${
-        window.innerWidth * (files.length - 1 - nowPg)
+        winSize.width * (files.length - 1 - nowPg)
       }px)`;
       pageRef.current.style.transition = "transform 0.5s ease";
     }
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className={`${styles.projects} ${sectStyle.projects}`}>
@@ -80,7 +102,11 @@ const Projects = (props) => {
             files.map((file) => {
               return (
                 <div className={styles.project}>
-                  <Project key={file.fileNum} file={file} />
+                  <Project
+                    key={file.fileNum}
+                    file={file}
+                    winWidth={winSize.width}
+                  />
                 </div>
               );
             })}

@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./project.module.css";
 
-const Project = ({ file }) => {
+const Project = ({ file, winWidth }) => {
   const { fileName, fileImg, fileLan, fileTool, fileLink, fileInfo } = file;
+  const imgWidth = winWidth * 0.4;
   return (
     <div className={styles.project}>
       <p className={styles.title}>{fileName}</p>
@@ -13,7 +14,12 @@ const Project = ({ file }) => {
         </a>
       </p>
       <div className={styles.cont}>
-        <img className={styles.img} src={fileImg} alt="프로젝트 이미지"></img>
+        <img
+          className={styles.img}
+          style={{ width: imgWidth }}
+          src={fileImg}
+          alt="프로젝트 이미지"
+        ></img>
         <div className={styles.projectTxt}>
           <p className={styles.lan}>
             <b>사용언어:</b> {fileLan}
