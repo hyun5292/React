@@ -17,7 +17,7 @@ a {
   justify-content: space-between;
   align-items: center;
   height: 4rem;
-  min-width: 400px;
+  min-width: 360px;
   background-color: headerGrey;
 }
 
@@ -50,19 +50,13 @@ a {
   font-size: 1.1rem;
 }
 
-.navbar {
-  position: absolute;
-  top: calc(3rem - 2px);
-  right: 0;
-}
-
 .hamb {
+  display: none;
   position: relative;
   width: 2rem;
   height: 1.8rem;
   margin-right: 10px;
 }
-
 .hamb span {
   position: absolute;
   left: 0;
@@ -112,5 +106,20 @@ a {
   transition: transform 0.5s;
 }
 
+@media (min-width: 768px) {
+  .actHamb .navbar,
+  .actClose .navbar {
+    transform: none;
+  }
+}
 @media (max-width: 767px) {
+  .navbar {
+    position: absolute;
+    top: calc(3rem - 2px);
+    right: 0;
+  }
+
+  .hamb {
+    display: block;
+  }
 }
