@@ -11,7 +11,7 @@ function App() {
     <div>
       <Header />
       <div className={styles.cont}>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/" element={<Welcome />}></Route>
             <Route path="/skills" element={<Skills />}></Route>
