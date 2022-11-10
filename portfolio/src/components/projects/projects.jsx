@@ -16,7 +16,7 @@ const Projects = (props) => {
   });
   const files = [
     {
-      fileNum: "1",
+      fileNum: 1,
       fileName: "포트폴리오",
       fileImg: "/images/example1.png",
       fileLan: "react",
@@ -26,7 +26,7 @@ const Projects = (props) => {
         "프로젝트 설명이 길어야하니까 어쩔 수 없이 이렇게 길게 설명을 한 번 써보기는 하는데 얼마나 길게 써질지는 모르겠네",
     },
     {
-      fileNum: "2",
+      fileNum: 2,
       fileName: "포트폴리오",
       fileImg: "/images/example2.png",
       fileLan: "react",
@@ -36,7 +36,7 @@ const Projects = (props) => {
         "프로젝트 설명이 길어야하니까 어쩔 수 없이 이렇게 길게 설명을 한 번 써보기는 하는데 얼마나 길게 써질지는 모르겠네",
     },
     {
-      fileNum: "3",
+      fileNum: 3,
       fileName: "포트폴리오",
       fileImg: "/images/example3.png",
       fileLan: "react",
@@ -101,12 +101,8 @@ const Projects = (props) => {
           {files &&
             files.map((file) => {
               return (
-                <div className={styles.project}>
-                  <Project
-                    key={file.fileNum}
-                    file={file}
-                    winWidth={winSize.width}
-                  />
+                <div key={file.fileNum} className={styles.project}>
+                  <Project file={file} winWidth={winSize.width} />
                 </div>
               );
             })}
@@ -130,9 +126,9 @@ const Projects = (props) => {
       {files &&
         files.map((file) =>
           pageCnt == file.fileNum ? (
-            <FaCircle className={styles.circles} />
+            <FaCircle key={file.fileNum} className={styles.circles} />
           ) : (
-            <FaRegCircle className={styles.circles} />
+            <FaRegCircle key={file.fileNum} className={styles.circles} />
           )
         )}
     </div>
