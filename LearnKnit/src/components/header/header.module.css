@@ -1,0 +1,51 @@
+@value knitOrange, knitOrange_dark, knitWhite from '../../common/colors.css';
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 10px;
+  padding: 5px 10px;
+  color: knitWhite;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  background: knitOrange;
+  cursor: pointer;
+}
+button:hover {
+  background: knitOrange_dark;
+}
+
+span {
+  margin: 0 10px;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.navbar,
+.cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  flex: 2 1 0;
+}
+
+.logo {
+  margin-left: 10px;
+}
+
+.cont {
+  flex: 8 1 0;
+}
