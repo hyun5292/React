@@ -1,16 +1,39 @@
-@value knitBrown from '../../common/colors.css';
+@value knitYellow, knitOrange_dark, knitBrown, knitWhite from '../../common/colors.css';
 
 .navbar {
   display: flex;
   flex-direction: column;
   height: 100%;
+  text-align: left;
 }
 
 .menu {
 }
 
 .menuList {
+  margin: 10px;
+}
+
+.menuTitle,
+.menuItem {
+  padding: 10px;
+}
+
+.menuTitle {
+  color: knitWhite;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  background: knitOrange_dark;
 }
 
 .menuItem {
+  background: knitYellow;
+  cursor: pointer;
+}
+.menuItem:hover {
+  opacity: 0.5;
+}
+.menuItem:last-child {
+  border-radius: 0 0 10px 10px;
 }
