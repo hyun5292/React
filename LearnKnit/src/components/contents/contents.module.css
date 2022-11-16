@@ -1,1 +1,21 @@
+@value knitBrown from '../../common/colors.css';
+.Contents {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
 
+.title {
+  font-weight: 600;
+}
+
+.videoWrap {
+}
+
+.video {
+  width: 90%;
+}
+
+.info {
+  margin: 0 10vh;
+  text-align: left;
+}
