@@ -1,0 +1,16 @@
+@value knitBrown from '../../common/colors.css';
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.menu {
+}
+
+.menuList {
+}
+
+.menuItem {
+}

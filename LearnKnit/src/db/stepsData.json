@@ -1,0 +1,42 @@
+{
+  "crochet": [
+    {
+      "step": "#1-1",
+      "stepTitle": "짧은뜨기",
+      "stepVideoId": 1234,
+      "stepCont": "내용입니다."
+    },
+    {
+      "step": "#1-2",
+      "stepTitle": "한길긴뜨기",
+      "stepVideoId": 1234,
+      "stepCont": "내용입니다."
+    },
+    {
+      "step": "#1-3",
+      "stepTitle": "짧은뜨기",
+      "stepVideoId": 1234,
+      "stepCont": "내용입니다."
+    }
+  ],
+  "knit": [
+    {
+      "step": "#1-1",
+      "stepTitle": "짧은뜨기",
+      "stepVideoId": 1234,
+      "stepCont": "내용입니다."
+    },
+    {
+      "step": "#1-2",
+      "stepTitle": "한길긴뜨기",
+      "stepVideoId": 1234,
+      "stepCont": "내용입니다."
+    },
+    {
+      "step": "#1-3",
+      "stepTitle": "짧은뜨기",
+      "stepVideoId": 1234,
+      "stepCont": "내용입니다."
+    }
+  ]
+}
