@@ -1,12 +1,36 @@
 @value knitYellow, knitOrange_dark, knitBrown, knitWhite from '../../common/colors.css';
 
+a {
+  color: knitWhite;
+}
+a:hover {
+  color: knitBrown;
+}
+
 .navbar {
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: knitWhite;
+  font-weight: 600;
+  padding: 10px;
+  height: 150px;
+  background: knitOrange_dark;
+}
+
+.infoItem {
+  padding: 5px 0;
+}
+
 .menu {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
 }
 
 .menuList {

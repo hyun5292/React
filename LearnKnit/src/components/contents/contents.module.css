@@ -1,6 +1,6 @@
 @value knitBrown from '../../common/colors.css';
 .Contents {
-  padding: 1rem;
+  margin: 1rem 10vh;
   font-size: 1.5rem;
 }
 
@@ -8,14 +8,10 @@
   font-weight: 600;
 }
 
-.videoWrap {
-}
-
 .video {
-  width: 90%;
+  width: 100%;
 }
 
 .info {
-  margin: 0 10vh;
   text-align: left;
 }

@@ -7,6 +7,10 @@
   height: 50px;
 }
 
+.logo {
+  width: 40px;
+}
+
 button {
   display: inline-flex;
   align-items: center;
@@ -39,7 +43,7 @@ span {
 }
 
 .navbar {
-  flex: 2 1 0;
+  flex: 2.5 1 0;
 }
 
 .logo {
@@ -47,5 +51,5 @@ span {
 }
 
 .cont {
-  flex: 8 1 0;
+  flex: 7.5 1 0;
 }

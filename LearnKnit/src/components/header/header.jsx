@@ -14,7 +14,11 @@ const Header = (props) => {
   return (
     <div className={styles.header}>
       <div className={styles.navbar}>
-        <img className={styles.logo} src="" alt="사이트 로고" />
+        <img
+          className={styles.logo}
+          src="./assets/siren.png"
+          alt="사이트 로고"
+        />
         {menu ? (
           <button className={styles.hideMenu}>
             <AiFillCloseCircle
