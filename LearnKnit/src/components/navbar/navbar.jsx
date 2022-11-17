@@ -26,8 +26,8 @@ const Navbar = (props) => {
           <li className={styles.menuTitle}>#1 코바늘</li>
           {stepsData.crochet.map((step) => {
             return (
-              <li className={styles.menuItem} key={step.stepVideoId}>
-                {step.step}
+              <li className={styles.menuItem} key={step.step}>
+                #{step.step}
                 &nbsp;{step.stepTitle}
               </li>
             );
@@ -37,8 +37,8 @@ const Navbar = (props) => {
           <li className={styles.menuTitle}>#2 대바늘</li>
           {stepsData.knit.map((step) => {
             return (
-              <li className={styles.menuItem} key={step.stepVideoId}>
-                {step.step}
+              <li className={styles.menuItem} key={step.step}>
+                #{step.step}
                 &nbsp;{step.stepTitle}
               </li>
             );

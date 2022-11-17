@@ -8,8 +8,10 @@ import {
 } from "react-icons/ai";
 import { useState } from "react";
 
-const Header = (props) => {
-  const [menu, setMenu] = useState(true);
+const Header = ({ menu, handleNavbar }) => {
+  const onOffNavbar = () => {
+    handleNavbar();
+  };
 
   return (
     <div className={styles.header}>
@@ -20,14 +22,14 @@ const Header = (props) => {
           alt="사이트 로고"
         />
         {menu ? (
-          <button className={styles.hideMenu}>
+          <button className={styles.hideMenu} onClick={onOffNavbar}>
             <AiFillCloseCircle
               className={`${styles.icon} ${styles.closeIcon}`}
             />
             <span>메뉴 숨기기</span>
           </button>
         ) : (
-          <button className={styles.hideMenu}>
+          <button className={styles.hideMenu} onClick={onOffNavbar}>
             <AiFillInfoCircle className={`${styles.icon} ${styles.infoIcon}`} />
             <span>메뉴 펼치기</span>
           </button>

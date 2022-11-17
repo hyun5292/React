@@ -7,6 +7,10 @@ a:hover {
   color: knitBrown;
 }
 
+.hidden {
+  display: none;
+}
+
 .navbar {
   display: flex;
   flex-direction: column;
