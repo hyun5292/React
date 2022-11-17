@@ -2,10 +2,14 @@ import React from "react";
 import styles from "./contents.module.css";
 import Comments from "../comments/comments";
 
-const Contents = (props) => {
+const Contents = ({ step }) => {
+  const { stepId, stepTitle, stepVideoId, stepCont } = step;
+
   return (
     <div className={styles.Contents}>
-      <p className={styles.title}>#1-1 짧은뜨기</p>
+      <p className={styles.title}>
+        #{stepId} {stepTitle}
+      </p>
       <div className={styles.videoWrap}>
         <img
           className={styles.video}
@@ -15,15 +19,10 @@ const Contents = (props) => {
       </div>
       <div className={styles.info}>
         <p>
-          내용이 여러줄이겠죠
+          {stepVideoId}
           <br />
-          내가 쓸 수 있는 만큼
-          <br />
-          내가 쓸 수 있는 만큼
-          <br />
-          내가 쓸 수 있는 만큼
-          <br />
-          내가 쓸 수 있는 만큼
+          &nbsp;
+          {stepCont}
         </p>
       </div>
       <Comments />

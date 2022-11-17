@@ -4,11 +4,36 @@ import Navbar from "./components/navbar/navbar";
 import Contents from "./components/contents/contents";
 import { useState } from "react";
 
-function App() {
+function App({ stepsData }) {
   const [menu, setMenu] = useState(true);
+  const [step, setStep] = useState({
+    stepId: "1-1",
+    stepTitle: "짧은뜨기",
+    stepVideoId: 1,
+    stepCont: "내용입니다1-1",
+  });
 
   const handleNavbar = () => {
     setMenu(!menu);
+  };
+
+  const handleStep = (kind, nowStep) => {
+    switch (kind) {
+      case "crochet":
+        setStep(
+          stepsData.crochet.filter((crochet) => crochet.stepId === nowStep)[0]
+        );
+        return;
+      case "knit":
+        setStep(stepsData.knit.filter((knit) => knit.stepId === nowStep)[0]);
+        return;
+      default:
+        setStep(
+          stepsData.crochet.filter((crochet) => crochet.stepId === "1-1")[0]
+        );
+        console.log("Error Wrong Step");
+        return;
+    }
   };
 
   return (
@@ -19,13 +44,13 @@ function App() {
       <div className={styles.cont}>
         {menu ? (
           <div className={styles.navbar}>
-            <Navbar />
+            <Navbar stepsData={stepsData} handleStep={handleStep} />
           </div>
         ) : (
           ""
         )}
         <div className={styles.contents}>
-          <Contents />
+          <Contents step={step} />
         </div>
       </div>
     </div>

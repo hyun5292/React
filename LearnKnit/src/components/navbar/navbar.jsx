@@ -1,8 +1,12 @@
 import React from "react";
+import { useRef } from "react";
 import styles from "./navbar.module.css";
-import stepsData from "../../db/stepsData.json";
 
-const Navbar = (props) => {
+const Navbar = ({ stepsData, handleStep }) => {
+  const onChangeStep = (kind, nowStep) => {
+    handleStep(kind, nowStep);
+  };
+
   return (
     <div className={styles.navbar}>
       <div className={styles.info}>
@@ -26,8 +30,12 @@ const Navbar = (props) => {
           <li className={styles.menuTitle}>#1 코바늘</li>
           {stepsData.crochet.map((step) => {
             return (
-              <li className={styles.menuItem} key={step.step}>
-                #{step.step}
+              <li
+                className={styles.menuItem}
+                onClick={() => onChangeStep("crochet", step.stepId)}
+                key={step.stepId}
+              >
+                #{step.stepId}
                 &nbsp;{step.stepTitle}
               </li>
             );
@@ -37,8 +45,12 @@ const Navbar = (props) => {
           <li className={styles.menuTitle}>#2 대바늘</li>
           {stepsData.knit.map((step) => {
             return (
-              <li className={styles.menuItem} key={step.step}>
-                #{step.step}
+              <li
+                className={styles.menuItem}
+                onClick={() => onChangeStep("knit", step.stepId)}
+                key={step.stepId}
+              >
+                #{step.stepId}
                 &nbsp;{step.stepTitle}
               </li>
             );

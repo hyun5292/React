@@ -1,55 +1,55 @@
 {
   "crochet": [
     {
-      "step": "1-1",
+      "stepId": "1-1",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 1,
       "stepCont": "내용입니다1-1"
     },
     {
-      "step": "1-2",
+      "stepId": "1-2",
       "stepTitle": "한길긴뜨기",
       "stepVideoId": 2,
       "stepCont": "내용입니다1-2"
     },
     {
-      "step": "1-3",
+      "stepId": "1-3",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 3,
       "stepCont": "내용입니다1-3"
     },
     {
-      "step": "1-4",
+      "stepId": "1-4",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 4,
       "stepCont": "내용입니다1-4"
     },
     {
-      "step": "1-5",
+      "stepId": "1-5",
       "stepTitle": "한길긴뜨기",
       "stepVideoId": 5,
       "stepCont": "내용입니다1-5"
     },
     {
-      "step": "1-6",
+      "stepId": "1-6",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 1234,
       "stepCont": "내용입니다1-6"
     },
     {
-      "step": "1-7",
+      "stepId": "1-7",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 1234,
       "stepCont": "내용입니다1-7"
     },
     {
-      "step": "1-8",
+      "stepId": "1-8",
       "stepTitle": "한길긴뜨기",
       "stepVideoId": 1234,
       "stepCont": "내용입니다1-8"
     },
     {
-      "step": "1-9",
+      "stepId": "1-9",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 1234,
       "stepCont": "내용입니다1-9"
@@ -57,40 +57,40 @@
   ],
   "knit": [
     {
-      "step": "1-1",
+      "stepId": "2-1",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 1,
-      "stepCont": "내용입니다1-1"
+      "stepCont": "내용입니다2-1"
     },
     {
-      "step": "1-2",
+      "stepId": "2-2",
       "stepTitle": "한길긴뜨기",
       "stepVideoId": 2,
-      "stepCont": "내용입니다1-2"
+      "stepCont": "내용입니다2-2"
     },
     {
-      "step": "1-3",
+      "stepId": "2-3",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 3,
-      "stepCont": "내용입니다1-3"
+      "stepCont": "내용입니다2-3"
     },
     {
-      "step": "1-4",
+      "stepId": "2-4",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 4,
-      "stepCont": "내용입니다1-4"
+      "stepCont": "내용입니다2-4"
     },
     {
-      "step": "1-5",
+      "stepId": "2-5",
       "stepTitle": "한길긴뜨기",
       "stepVideoId": 5,
-      "stepCont": "내용입니다1-5"
+      "stepCont": "내용입니다2-5"
     },
     {
-      "step": "1-6",
+      "stepId": "2-6",
       "stepTitle": "짧은뜨기",
       "stepVideoId": 6,
-      "stepCont": "내용입니다1-6"
+      "stepCont": "내용입니다2-6"
     }
   ]
 }
