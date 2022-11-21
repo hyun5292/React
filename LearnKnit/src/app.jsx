@@ -6,12 +6,7 @@ import { useState } from "react";
 
 function App({ stepsData }) {
   const [menu, setMenu] = useState(true);
-  const [step, setStep] = useState({
-    stepId: "1-1",
-    stepTitle: "짧은뜨기",
-    stepVideoId: 1,
-    stepCont: "내용입니다1-1",
-  });
+  const [step, setStep] = useState(stepsData.crochet[0]);
 
   const handleNavbar = () => {
     setMenu(!menu);

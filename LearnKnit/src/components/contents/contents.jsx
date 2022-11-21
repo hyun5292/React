@@ -18,12 +18,7 @@ const Contents = ({ step }) => {
         />
       </div>
       <div className={styles.info}>
-        <p>
-          {stepVideoId}
-          <br />
-          &nbsp;
-          {stepCont}
-        </p>
+        <pre className={styles.info_cont}>{stepCont}</pre>
       </div>
       <Comments />
     </div>

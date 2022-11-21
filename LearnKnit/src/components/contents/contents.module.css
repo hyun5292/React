@@ -15,3 +15,8 @@
 .info {
   text-align: left;
 }
+
+.info_cont {
+  font-family: inherit;
+  font-size: 1.5rem;
+}

@@ -33,7 +33,7 @@ const Navbar = ({ stepsData, handleStep }) => {
               <li
                 className={styles.menuItem}
                 onClick={() => onChangeStep("crochet", step.stepId)}
-                key={step.stepId}
+                key={step.stepVideoId}
               >
                 #{step.stepId}
                 &nbsp;{step.stepTitle}
@@ -48,7 +48,7 @@ const Navbar = ({ stepsData, handleStep }) => {
               <li
                 className={styles.menuItem}
                 onClick={() => onChangeStep("knit", step.stepId)}
-                key={step.stepId}
+                key={step.stepVideoId}
               >
                 #{step.stepId}
                 &nbsp;{step.stepTitle}
