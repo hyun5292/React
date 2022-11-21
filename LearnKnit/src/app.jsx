@@ -6,6 +6,7 @@ import { useState } from "react";
 
 function App({ stepsData }) {
   const [menu, setMenu] = useState(true);
+  const [stepId, setStepId] = useState("1-1");
   const [step, setStep] = useState(stepsData.crochet[0]);
 
   const handleNavbar = () => {
@@ -13,6 +14,8 @@ function App({ stepsData }) {
   };
 
   const handleStep = (kind, nowStep) => {
+    setStepId(nowStep);
+    console.log("kind = ", kind);
     switch (kind) {
       case "crochet":
         setStep(
@@ -34,7 +37,12 @@ function App({ stepsData }) {
   return (
     <div className={styles.app}>
       <div className={styles.header}>
-        <Header menu={menu} handleNavbar={handleNavbar} />
+        <Header
+          menu={menu}
+          stepId={stepId}
+          handleStep={handleStep}
+          handleNavbar={handleNavbar}
+        />
       </div>
       <div className={styles.cont}>
         {menu ? (

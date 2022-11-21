@@ -3,7 +3,14 @@ import styles from "./contents.module.css";
 import Comments from "../comments/comments";
 
 const Contents = ({ step }) => {
-  const { stepId, stepTitle, stepVideoId, stepCont } = step;
+  const {
+    stepId,
+    stepTitle,
+    stepVideoId,
+    stepVideoChannel,
+    stepVideoChId,
+    stepCont,
+  } = step;
 
   return (
     <div className={styles.Contents}>

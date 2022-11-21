@@ -6,11 +6,21 @@ import {
   AiFillLeftCircle,
   AiFillRightCircle,
 } from "react-icons/ai";
-import { useState } from "react";
 
-const Header = ({ menu, handleNavbar }) => {
+const Header = ({ menu, stepId, handleStep, handleNavbar }) => {
   const onOffNavbar = () => {
     handleNavbar();
+  };
+
+  const onPrevStep = () => {
+    const step = stepId.split("-");
+    const prevStep = step[0] + "-" + (parseInt(step[1]) - 1);
+    handleStep(step[0], prevStep);
+  };
+  const onNextStep = () => {
+    const step = stepId.split("-");
+    const nextStep = step[0] + "-" + (parseInt(step[1]) + 1);
+    handleStep(step[0], nextStep);
   };
 
   return (
@@ -36,11 +46,12 @@ const Header = ({ menu, handleNavbar }) => {
         )}
       </div>
       <div className={styles.cont}>
-        <button className={styles.prev}>
+        <button className={styles.prev} onClick={() => onPrevStep()}>
           <AiFillLeftCircle className={`${styles.icon} ${styles.beforeIcon}`} />
           <span>이전 영상</span>
         </button>
-        <button className={styles.next}>
+        {stepId}
+        <button className={styles.next} onClick={() => onNextStep()}>
           <span>다음 영상</span>
           <AiFillRightCircle className={`${styles.icon} ${styles.afterIcon}`} />
         </button>
