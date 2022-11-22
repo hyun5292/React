@@ -25,6 +25,7 @@ const Contents = ({ step }) => {
         />
       </div>
       <div className={styles.info}>
+        <p>유튜브: {stepVideoChannel}</p>
         <pre className={styles.info_cont}>{stepCont}</pre>
       </div>
       <Comments />

@@ -2,7 +2,7 @@ import React from "react";
 import { useRef } from "react";
 import styles from "./navbar.module.css";
 
-const Navbar = ({ stepsData, handleStep }) => {
+const Navbar = ({ stepsData, kinds, handleStep }) => {
   const onChangeStep = (kind, nowStep) => {
     handleStep(kind, nowStep);
   };
@@ -26,36 +26,25 @@ const Navbar = ({ stepsData, handleStep }) => {
         </div>
       </div>
       <div className={styles.menu}>
-        <ul className={styles.menuList}>
-          <li className={styles.menuTitle}>#1 코바늘</li>
-          {stepsData.crochet.map((step) => {
-            return (
-              <li
-                className={styles.menuItem}
-                onClick={() => onChangeStep("crochet", step.stepId)}
-                key={step.stepVideoId}
-              >
-                #{step.stepId}
-                &nbsp;{step.stepTitle}
-              </li>
-            );
-          })}
-        </ul>
-        <ul className={styles.menuList}>
-          <li className={styles.menuTitle}>#2 대바늘</li>
-          {stepsData.knit.map((step) => {
-            return (
-              <li
-                className={styles.menuItem}
-                onClick={() => onChangeStep("knit", step.stepId)}
-                key={step.stepVideoId}
-              >
-                #{step.stepId}
-                &nbsp;{step.stepTitle}
-              </li>
-            );
-          })}
-        </ul>
+        {kinds.map((kind) => {
+          return (
+            <ul className={styles.menuList} key={kind}>
+              <li className={styles.menuTitle}>#1 {kind}</li>
+              {stepsData[kind].map((step) => {
+                return (
+                  <li
+                    className={styles.menuItem}
+                    onClick={() => onChangeStep(kind, step.stepId)}
+                    key={step.stepVideoId}
+                  >
+                    #{step.stepId}
+                    &nbsp;{step.stepTitle}
+                  </li>
+                );
+              })}
+            </ul>
+          );
+        })}
       </div>
     </div>
   );

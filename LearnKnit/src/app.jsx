@@ -9,13 +9,19 @@ function App({ stepsData }) {
   const [stepId, setStepId] = useState("1-1");
   const [step, setStep] = useState(stepsData.crochet[0]);
 
+  const kinds = Object.keys(stepsData);
+  const dataL = kinds.map((kind) => {
+    return stepsData[kind].length;
+  });
+
   const handleNavbar = () => {
     setMenu(!menu);
   };
 
+  const handlePrNeStep = (kind, nowstep) => {};
+
   const handleStep = (kind, nowStep) => {
     setStepId(nowStep);
-    console.log("kind = ", kind);
     switch (kind) {
       case "crochet":
         setStep(
@@ -40,14 +46,21 @@ function App({ stepsData }) {
         <Header
           menu={menu}
           stepId={stepId}
-          handleStep={handleStep}
+          stepTitle={step.stepTitle}
+          kinds={kinds}
+          dataL={dataL}
+          handlePrNeStep={handlePrNeStep}
           handleNavbar={handleNavbar}
         />
       </div>
       <div className={styles.cont}>
         {menu ? (
           <div className={styles.navbar}>
-            <Navbar stepsData={stepsData} handleStep={handleStep} />
+            <Navbar
+              stepsData={stepsData}
+              kinds={kinds}
+              handleStep={handleStep}
+            />
           </div>
         ) : (
           ""

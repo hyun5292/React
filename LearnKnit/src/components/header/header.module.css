@@ -53,3 +53,15 @@ span {
 .cont {
   flex: 7.5 1 0;
 }
+
+.title {
+  font-weight: 600;
+}
+/* 
+.btnNone {
+  background: none;
+  cursor: default;
+}
+.btnNone:hover {
+  background: none;
+} */

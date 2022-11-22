@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./header.module.css";
 import {
   AiFillCloseCircle,
@@ -7,20 +7,21 @@ import {
   AiFillRightCircle,
 } from "react-icons/ai";
 
-const Header = ({ menu, stepId, handleStep, handleNavbar }) => {
+const Header = ({
+  menu,
+  stepId,
+  stepTitle,
+  kinds,
+  dataL,
+  handlePrNeStep,
+  handleNavbar,
+}) => {
   const onOffNavbar = () => {
     handleNavbar();
   };
 
-  const onPrevStep = () => {
-    const step = stepId.split("-");
-    const prevStep = step[0] + "-" + (parseInt(step[1]) - 1);
-    handleStep(step[0], prevStep);
-  };
-  const onNextStep = () => {
-    const step = stepId.split("-");
-    const nextStep = step[0] + "-" + (parseInt(step[1]) + 1);
-    handleStep(step[0], nextStep);
+  const onPrevNextStep = (kind) => {
+    console.log("ok");
   };
 
   return (
@@ -46,12 +47,14 @@ const Header = ({ menu, stepId, handleStep, handleNavbar }) => {
         )}
       </div>
       <div className={styles.cont}>
-        <button className={styles.prev} onClick={() => onPrevStep()}>
+        <button className={styles.prev} onClick={() => onPrevNextStep("prev")}>
           <AiFillLeftCircle className={`${styles.icon} ${styles.beforeIcon}`} />
           <span>이전 영상</span>
         </button>
-        {stepId}
-        <button className={styles.next} onClick={() => onNextStep()}>
+        <span className={styles.title}>
+          #{stepId} {stepTitle}
+        </span>
+        <button className={styles.next} onClick={() => onPrevNextStep("next")}>
           <span>다음 영상</span>
           <AiFillRightCircle className={`${styles.icon} ${styles.afterIcon}`} />
         </button>
