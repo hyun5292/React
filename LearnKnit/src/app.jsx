@@ -18,7 +18,24 @@ function App({ stepsData }) {
     setMenu(!menu);
   };
 
-  const handlePrNeStep = (kind, nowstep) => {};
+  const handlePrevStep = () => {
+    const steps = stepId.split("-");
+    const nowKIndex = steps[0] - 1;
+
+    steps[0] !== "1" && steps[1] === "1"
+      ? handleStep(kinds[nowKIndex - 1], nowKIndex + "-" + dataL[nowKIndex - 1])
+      : handleStep(kinds[nowKIndex], steps[0] + "-" + (steps[1] - 1));
+  };
+
+  const handleNextStep = (kind, nowStep) => {
+    const steps = stepId.split("-");
+    const nowKIndex = steps[0] - 1;
+
+    steps[0] !== kinds.length.toString() &&
+    steps[1] === dataL[nowKIndex].toString()
+      ? handleStep(kinds[nowKIndex + 1], parseInt(steps[0]) + 1 + "-" + 1)
+      : handleStep(kinds[nowKIndex], steps[0] + "-" + (parseInt(steps[1]) + 1));
+  };
 
   const handleStep = (kind, nowStep) => {
     setStepId(nowStep);
@@ -49,7 +66,8 @@ function App({ stepsData }) {
           stepTitle={step.stepTitle}
           kinds={kinds}
           dataL={dataL}
-          handlePrNeStep={handlePrNeStep}
+          handlePrevStep={handlePrevStep}
+          handleNextStep={handleNextStep}
           handleNavbar={handleNavbar}
         />
       </div>

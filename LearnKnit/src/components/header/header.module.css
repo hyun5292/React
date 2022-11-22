@@ -1,4 +1,4 @@
-@value knitOrange, knitOrange_dark, knitWhite from '../../common/colors.css';
+@value knitOrange, knitOrange_dark, knitWhite, knitYellow_light2 from '../../common/colors.css';
 
 .header {
   display: flex;
@@ -57,11 +57,11 @@ span {
 .title {
   font-weight: 600;
 }
-/* 
-.btnNone {
-  background: none;
+
+.noUse {
+  background: knitYellow_light2;
   cursor: default;
 }
-.btnNone:hover {
-  background: none;
-} */
+.noUse:hover {
+  background: knitYellow_light2;
+}
