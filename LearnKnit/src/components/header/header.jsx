@@ -30,30 +30,13 @@ const Header = ({
 
   const onPrevStep = () => {
     handlePrevStep();
-    // const nowKIndex = steps[0] - 1;
-
-    // steps[0] !== "1" && steps[1] === "1"
-    //   ? handlePrevStep(
-    //       kinds[nowKIndex - 1],
-    //       nowKIndex + "-" + dataL[nowKIndex - 1]
-    //     )
-    //   : handlePrevStep(kinds[nowKIndex], steps[0] + "-" + (steps[1] - 1));
   };
 
   const onNextStep = () => {
     handleNextStep();
-    // const nowKIndex = steps[0] - 1;
-    // steps[0] !== kinds.length.toString() &&
-    // steps[1] === dataL[nowKIndex].toString()
-    //   ? handleNextStep(kinds[nowKIndex + 1], parseInt(steps[0]) + 1 + "-" + 1)
-    //   : handleNextStep(
-    //       kinds[nowKIndex],
-    //       steps[0] + "-" + (parseInt(steps[1]) + 1)
-    //     );
   };
 
   useEffect(() => {
-    //const lastStep = kinds.length + "-" + dataL[dataL.length - 1];
     setPrev(sId === "1-1" ? false : true);
     setNext(sId === lastStep ? false : true);
   }, [sId]);
@@ -89,7 +72,7 @@ const Header = ({
           <span>이전 영상</span>
         </button>
         <span className={styles.title}>
-          #{stepId} {stepTitle}
+          {kinds[steps[0] - 1]} - #{stepId} {stepTitle}
         </span>
         <button
           className={next ? styles.next : styles.noUse}
