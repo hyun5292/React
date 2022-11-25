@@ -91,9 +91,11 @@ function App({ stepsData, youtube }) {
         ) : (
           ""
         )}
-        <div className={styles.contents}>
-          <Contents step={step} video={nowVideo} />
-        </div>
+        {nowVideo && (
+          <div className={styles.contents}>
+            <Contents step={step} video={nowVideo} />
+          </div>
+        )}
       </div>
     </div>
   );
