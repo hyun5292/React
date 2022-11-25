@@ -2,11 +2,11 @@ import styles from "./app.module.css";
 import Header from "./components/header/header";
 import Navbar from "./components/navbar/navbar";
 import Contents from "./components/contents/contents";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function App({ stepsData }) {
+function App({ stepsData, youtube }) {
+  const [nowVideo, setNowVideo] = useState(null);
   const [menu, setMenu] = useState(true);
-  const [stepId, setStepId] = useState("1-1");
   const [step, setStep] = useState(stepsData.crochet[0]);
 
   const kinds = Object.keys(stepsData);
@@ -19,7 +19,7 @@ function App({ stepsData }) {
   };
 
   const handlePrevStep = () => {
-    const steps = stepId.split("-");
+    const steps = step.stepId.split("-");
     const nowKIndex = steps[0] - 1;
 
     steps[0] !== "1" && steps[1] === "1"
@@ -28,7 +28,7 @@ function App({ stepsData }) {
   };
 
   const handleNextStep = (kind, nowStep) => {
-    const steps = stepId.split("-");
+    const steps = step.stepId.split("-");
     const nowKIndex = steps[0] - 1;
 
     steps[0] !== kinds.length.toString() &&
@@ -37,8 +37,11 @@ function App({ stepsData }) {
       : handleStep(kinds[nowKIndex], steps[0] + "-" + (parseInt(steps[1]) + 1));
   };
 
+  const changeVideo = (video) => {
+    setNowVideo(video);
+  };
+
   const handleStep = (kind, nowStep) => {
-    setStepId(nowStep);
     switch (kind) {
       case "crochet":
         setStep(
@@ -57,12 +60,16 @@ function App({ stepsData }) {
     }
   };
 
+  useEffect(() => {
+    youtube.getVideo(step.stepVideoId).then((video) => setNowVideo(video));
+  }, [youtube, step]);
+
   return (
     <div className={styles.app}>
       <div className={styles.header}>
         <Header
           menu={menu}
-          stepId={stepId}
+          stepId={step.stepId}
           stepTitle={step.stepTitle}
           kinds={kinds}
           dataL={dataL}
