@@ -13,7 +13,8 @@ class YoutubeFetch {
       this.getRequestOptions
     );
     const result = await response.json();
-    return result.items.map((item) => ({ ...item, id: item.id.videoId }));
+    const item = result.items;
+    return { ...item, id: item.id.videoId };
   }
 }
 

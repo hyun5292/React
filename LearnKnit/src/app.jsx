@@ -5,7 +5,8 @@ import Contents from "./components/contents/contents";
 import { useEffect, useState } from "react";
 
 function App({ stepsData, youtube }) {
-  const [nowVideo, setNowVideo] = useState(null);
+  const firstVideo = youtube.getVideo(stepsData.crochet[0].stepVideoId);
+  const [nowVideo, setNowVideo] = useState(firstVideo);
   const [menu, setMenu] = useState(true);
   const [step, setStep] = useState(stepsData.crochet[0]);
 
@@ -61,7 +62,7 @@ function App({ stepsData, youtube }) {
   };
 
   useEffect(() => {
-    youtube.getVideo(step.stepVideoId).then((video) => setNowVideo(video));
+    youtube.getVideo(step.stepVideoId).then((video) => setNowVideo(video[0]));
   }, [youtube, step]);
 
   return (
@@ -91,7 +92,7 @@ function App({ stepsData, youtube }) {
           ""
         )}
         <div className={styles.contents}>
-          <Contents step={step} />
+          <Contents step={step} video={nowVideo} />
         </div>
       </div>
     </div>
