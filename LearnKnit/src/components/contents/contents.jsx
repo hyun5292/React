@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import styles from "./contents.module.css";
-import Comments from "../comments/comments";
 
 const Contents = ({ step, video, video: { snippet } }) => {
   const { stepId, stepTitle, stepVideoId, stepCont } = step;
+  const videoDate = new Date(snippet?.publishedAt);
+  const newVDate =
+    videoDate.getFullYear() +
+    "년 " +
+    (videoDate.getMonth() + 1) +
+    "월 " +
+    videoDate.getDay() +
+    "일";
 
   return (
     <div className={styles.Contents}>
@@ -21,15 +28,13 @@ const Contents = ({ step, video, video: { snippet } }) => {
           frameBorder="0"
           allowFullScreen
         ></iframe>
-        <h2>{snippet?.title}</h2>
-        <h3>{snippet?.channelTitle}</h3>
-        <pre className={styles.description}>{snippet?.description}</pre>
+        <h3 className={styles.videoTitle}>{snippet?.title}</h3>
       </section>
       <div className={styles.info}>
-        {/* <p>유튜브: {video.snippet.channelTitle}</p> */}
+        <p>{newVDate}</p>
+        <p>유튜브: {video.snippet?.channelTitle}</p>
         <pre className={styles.info_cont}>{stepCont}</pre>
       </div>
-      <Comments />
     </div>
   );
 };
