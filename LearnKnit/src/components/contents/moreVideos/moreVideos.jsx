@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import styles from "./moreVideos.module.css";
 import { FaChevronCircleDown, FaTimesCircle } from "react-icons/fa";
 
-const MoreVideos = (props) => {
+const MoreVideos = ({ youtube }) => {
   const [showV, setShowV] = useState(false);
+  const [moreVideos, setMoreVideos] = useState(["왜"]);
 
   const handleMoreView = () => {
     setShowV(!showV);
+    // youtube.search("crochet 링 만드는 법").then((videos) => {
+    //   setMoreVideos(videos);
+    // });
+    console.log("Error = ", youtube.search("crochet 링 만드는 법"));
   };
   return (
     <div className={styles.moreVideos}>
