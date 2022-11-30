@@ -1,29 +1,32 @@
-@value knitBrown from '../../common/colors.css';
+@value knitBrown, knitGray from '../../common/colors.css';
 .Contents {
   margin: 1rem 10vh;
   font-size: 1.5rem;
+  text-align: left;
 }
 
 .title {
   font-weight: 600;
+  text-align: center;
 }
 
 .video {
   width: 100%;
 }
 
-.videoWrap {
-  text-align: left;
+.info {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  line-height: 0.5;
+  border-bottom: 1px solid knitBrown;
 }
 
-.info {
-  font-size: 1.3rem;
-  text-align: left;
+.channelLink {
+  color: knitGray;
 }
 
 .info_cont {
-  padding-top: 1.5rem;
   font-family: inherit;
   font-size: 1.5rem;
-  border-top: 1px solid knitBrown;
+  line-height: 1.2;
 }

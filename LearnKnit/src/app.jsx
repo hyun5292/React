@@ -3,43 +3,39 @@ import Header from "./components/header/header";
 import Navbar from "./components/navbar/navbar";
 import Contents from "./components/contents/contents";
 import { useEffect, useState } from "react";
+import MoreVideos from "./components/contents/moreVideos/moreVideos";
 
 function App({ stepsData, youtube }) {
   const firstVideo = youtube.getVideo(stepsData.crochet[0].stepVideoId);
   const [nowVideo, setNowVideo] = useState(firstVideo);
   const [menu, setMenu] = useState(true);
   const [step, setStep] = useState(stepsData.crochet[0]);
-
+  // const [moreVideo, setMoreVideo] = useState(
+  //   youtube.search(kinds[kinds[0]] + step.stepTitle)
+  // );
   const kinds = Object.keys(stepsData);
   const dataL = kinds.map((kind) => {
     return stepsData[kind].length;
   });
+  const steps = step.stepId.split("-");
+  const nowKIndex = steps[0] - 1;
+  // console.log(youtube.search("crochet 링 만드는 법"));
 
   const handleNavbar = () => {
     setMenu(!menu);
   };
 
   const handlePrevStep = () => {
-    const steps = step.stepId.split("-");
-    const nowKIndex = steps[0] - 1;
-
     steps[0] !== "1" && steps[1] === "1"
       ? handleStep(kinds[nowKIndex - 1], nowKIndex + "-" + dataL[nowKIndex - 1])
       : handleStep(kinds[nowKIndex], steps[0] + "-" + (steps[1] - 1));
   };
 
   const handleNextStep = (kind, nowStep) => {
-    const steps = step.stepId.split("-");
-    const nowKIndex = steps[0] - 1;
-
     steps[0] !== kinds.length.toString() &&
     steps[1] === dataL[nowKIndex].toString()
       ? handleStep(kinds[nowKIndex + 1], parseInt(steps[0]) + 1 + "-" + 1)
       : handleStep(kinds[nowKIndex], steps[0] + "-" + (parseInt(steps[1]) + 1));
-  };
-
-  const changeVideo = (video) => {
-    setNowVideo(video);
   };
 
   const handleStep = (kind, nowStep) => {
@@ -61,8 +57,21 @@ function App({ stepsData, youtube }) {
     }
   };
 
+  // const searchMoreVideos = () => {
+  //   const query = kinds[kinds[nowKIndex]] + step.stepTitle;
+  //   youtube.search(query).then((videos) => {
+  //     setMoreVideo(videos);
+  //   });
+  // };
+
   useEffect(() => {
+    // const query = kinds[nowKIndex] + " " + step.stepTitle;
+
     youtube.getVideo(step.stepVideoId).then((video) => setNowVideo(video[0]));
+    // youtube.search(query).then((videos) => {
+    //   setMoreVideo(videos);
+    // });
+    // console.log(moreVideo);
   }, [youtube, step]);
 
   return (

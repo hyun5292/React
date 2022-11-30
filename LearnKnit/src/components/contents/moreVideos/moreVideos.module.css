@@ -1,0 +1,15 @@
+@value knitYellow_light2, knitBrown from '../../../common/colors.css';
+.moreVideos {
+}
+
+.searchBtn {
+  margin-left: 0;
+  padding: 10px 0 10px 20px;
+  font-size: 0.9rem;
+  background: knitBrown;
+}
+
+.moreIcon {
+  margin: 0 10px;
+  font-size: 1.2rem;
+}

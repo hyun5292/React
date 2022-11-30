@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./contents.module.css";
+import MoreVideos from "./moreVideos/moreVideos.jsx";
 
 const Contents = ({ step, video, video: { snippet } }) => {
   const { stepId, stepTitle, stepVideoId, stepCont } = step;
@@ -32,9 +33,18 @@ const Contents = ({ step, video, video: { snippet } }) => {
       </section>
       <div className={styles.info}>
         <p>{newVDate}</p>
-        <p>유튜브: {video.snippet?.channelTitle}</p>
+        <p>
+          유튜브:
+          <a
+            className={styles.channelLink}
+            href={"https://www.youtube.com/channel/" + video.snippet?.channelId}
+          >
+            {video.snippet?.channelTitle}
+          </a>
+        </p>
         <pre className={styles.info_cont}>{stepCont}</pre>
       </div>
+      <MoreVideos />
     </div>
   );
 };
