@@ -85,7 +85,12 @@ function App({ stepsData, youtube }) {
         )}
         {nowVideo && (
           <div className={styles.contents}>
-            <Contents youtube={youtube} step={step} video={nowVideo} />
+            <Contents
+              youtube={youtube}
+              kind={kinds[nowKIndex]}
+              step={step}
+              video={nowVideo}
+            />
           </div>
         )}
       </div>

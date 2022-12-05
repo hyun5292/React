@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import styles from "./moreVideos.module.css";
 import { AiFillDownCircle, AiFillCloseCircle } from "react-icons/ai";
 
-const MoreVideos = (props) => {
+const MoreVideos = ({ youtube, keyword }) => {
   const [more, setMore] = useState(false);
+  const [videos, setVideos] = useState([]);
 
   const handleMore = () => {
     const newMore = !more;
     setMore(newMore);
+    youtube.moreVideos(keyword).then((videos) => {
+      setVideos(videos);
+    });
+    console.log("videos = ", videos);
   };
 
   return (

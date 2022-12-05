@@ -16,6 +16,23 @@ class Youtube {
 
     return response.data.items;
   }
+
+  async moreVideos(query) {
+    const response = await this.youtube.get("search", {
+      params: {
+        part: "snippet",
+        q: query,
+        maxResults: 10,
+        type: "video",
+      },
+      paramsSerializer: (params) => qs.stringify(params, { encode: false }),
+    });
+
+    return response.data.items.map((item) => ({
+      ...item,
+      id: item.id.videoId,
+    }));
+  }
 }
 
 export default Youtube;
