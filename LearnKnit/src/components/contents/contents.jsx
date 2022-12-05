@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./contents.module.css";
-import MoreVideos from "./moreVideos/moreVideos.jsx";
+import MoreVideos from "../moreVideos/moreVideos.jsx";
 
 const Contents = ({ youtube, step, video, video: { snippet } }) => {
   const { stepId, stepTitle, stepVideoId, stepCont } = step;

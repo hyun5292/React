@@ -1,0 +1,17 @@
+@value knitBrown, knitYellow_light2, knitBrown_light from '../../common/colors.css';
+
+.moreBtn {
+  margin-left: 0;
+  padding: 10px 15px;
+  font-size: 0.8rem;
+  border-radius: 30px;
+  background: knitBrown;
+}
+.moreBtn:hover {
+  background: knitBrown_light;
+}
+
+.moreIcon {
+  margin-left: 10px;
+  font-size: 1.5rem;
+}

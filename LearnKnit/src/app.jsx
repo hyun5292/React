@@ -3,7 +3,6 @@ import Header from "./components/header/header";
 import Navbar from "./components/navbar/navbar";
 import Contents from "./components/contents/contents";
 import { useEffect, useState } from "react";
-import MoreVideos from "./components/contents/moreVideos/moreVideos";
 
 function App({ stepsData, youtube }) {
   const firstVideo = youtube.getVideo(stepsData.crochet[0].stepVideoId);
