@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import styles from "./moreVideos.module.css";
 import { AiFillDownCircle, AiFillCloseCircle } from "react-icons/ai";
+import VideoItem from "../videoItem/videoItem";
 
 const MoreVideos = ({ youtube, keyword }) => {
   const [more, setMore] = useState(false);
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState();
 
   const handleMore = () => {
     const newMore = !more;
-    setMore(newMore);
     youtube.moreVideos(keyword).then((videos) => {
       setVideos(videos);
+      setMore(newMore);
     });
-    console.log("videos = ", videos);
   };
 
   return (
@@ -25,6 +25,14 @@ const MoreVideos = ({ youtube, keyword }) => {
           <AiFillDownCircle className={styles.moreIcon} />
         )}
       </button>
+      <div className={styles.videos}>
+        {videos &&
+          videos.map((video) => {
+            return (
+              <VideoItem key={video.snippet.id} title={video.snippet.title} />
+            );
+          })}
+      </div>
     </div>
   );
 };

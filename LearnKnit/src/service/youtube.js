@@ -11,7 +11,7 @@ class Youtube {
         part: "snippet",
         id: query,
       },
-      parmsSerializer: (params) => qs.stringify(params, { encode: false }),
+      // parmsSerializer: (params) => qs.stringify(params, { encode: false }),
     });
 
     return response.data.items;
@@ -21,11 +21,11 @@ class Youtube {
     const response = await this.youtube.get("search", {
       params: {
         part: "snippet",
-        q: query,
         maxResults: 10,
+        q: query,
         type: "video",
       },
-      paramsSerializer: (params) => qs.stringify(params, { encode: false }),
+      // paramsSerializer: (params) => qs.stringify(params, { encode: false }),
     });
 
     return response.data.items.map((item) => ({
