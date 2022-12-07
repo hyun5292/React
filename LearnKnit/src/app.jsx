@@ -9,29 +9,13 @@ function App({ stepsData, youtube }) {
   const [nowVideo, setNowVideo] = useState(firstVideo);
   const [menu, setMenu] = useState(true);
   const [step, setStep] = useState(stepsData.crochet[0]);
-
   const kinds = Object.keys(stepsData);
   const dataL = kinds.map((kind) => {
     return stepsData[kind].length;
   });
-  const steps = step.stepId.split("-");
-  const nowKIndex = steps[0] - 1;
 
   const handleNavbar = () => {
     setMenu(!menu);
-  };
-
-  const handlePrevStep = () => {
-    steps[0] !== "1" && steps[1] === "1"
-      ? handleStep(kinds[nowKIndex - 1], nowKIndex + "-" + dataL[nowKIndex - 1])
-      : handleStep(kinds[nowKIndex], steps[0] + "-" + (steps[1] - 1));
-  };
-
-  const handleNextStep = () => {
-    steps[0] !== kinds.length.toString() &&
-    steps[1] === dataL[nowKIndex].toString()
-      ? handleStep(kinds[nowKIndex + 1], parseInt(steps[0]) + 1 + "-" + 1)
-      : handleStep(kinds[nowKIndex], steps[0] + "-" + (parseInt(steps[1]) + 1));
   };
 
   const handleStep = (kind, nowStep) => {
@@ -62,12 +46,10 @@ function App({ stepsData, youtube }) {
       <div className={styles.header}>
         <Header
           menu={menu}
-          stepId={step.stepId}
-          stepTitle={step.stepTitle}
+          step={step}
           kinds={kinds}
           dataL={dataL}
-          handlePrevStep={handlePrevStep}
-          handleNextStep={handleNextStep}
+          handleStep={handleStep}
           handleNavbar={handleNavbar}
         />
       </div>
@@ -87,7 +69,7 @@ function App({ stepsData, youtube }) {
           <div className={styles.contents}>
             <Contents
               youtube={youtube}
-              kind={kinds[nowKIndex]}
+              kind={kinds[step.stepId.split("-")[0]]}
               step={step}
               video={nowVideo}
             />

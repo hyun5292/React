@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./contents.module.css";
 import MoreVideos from "../moreVideos/moreVideos.jsx";
 
 const Contents = ({ youtube, kind, step, video, video: { snippet } }) => {
-  const { stepId, stepTitle, stepVideoId, stepCont } = step;
+  const { stepVideoId, stepCont } = step;
   const videoDate = new Date(snippet?.publishedAt);
   const newVDate =
     videoDate.getFullYear() +
@@ -15,9 +15,6 @@ const Contents = ({ youtube, kind, step, video, video: { snippet } }) => {
 
   return (
     <div className={styles.Contents}>
-      <p className={styles.title}>
-        #{stepId} {stepTitle}
-      </p>
       <section className={styles.videoWrap}>
         <iframe
           className={styles.video}
@@ -44,7 +41,11 @@ const Contents = ({ youtube, kind, step, video, video: { snippet } }) => {
         </p>
         <pre className={styles.info_cont}>{stepCont}</pre>
       </div>
-      <MoreVideos youtube={youtube} keyword={kind + " " + step.stepTitle} />
+      <MoreVideos
+        id="morevideos"
+        youtube={youtube}
+        keyword={kind + " " + step.stepTitle}
+      />
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { useRef } from "react";
 import styles from "./navbar.module.css";
 
 const Navbar = ({ stepsData, kinds, handleStep }) => {
@@ -27,9 +26,13 @@ const Navbar = ({ stepsData, kinds, handleStep }) => {
       </div>
       <div className={styles.menu}>
         {kinds.map((kind) => {
+          const nowStep = stepsData[kind][0].stepId.split("-")[0];
+
           return (
             <ul className={styles.menuList} key={kind}>
-              <li className={styles.menuTitle}>#1 {kind}</li>
+              <li className={styles.menuTitle}>
+                #{nowStep} {kind}
+              </li>
               {stepsData[kind].map((step) => {
                 return (
                   <li
