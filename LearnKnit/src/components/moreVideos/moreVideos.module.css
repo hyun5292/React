@@ -1,4 +1,4 @@
-@value knitBrown, knitYellow_light2, knitBrown_light, knitBrown from '../../common/colors.css';
+@value knitBlue, knitGray_light from '../../common/colors.css';
 
 @keyframes spin {
   0% {
@@ -20,10 +20,10 @@
   padding: 10px 15px;
   font-size: 0.8rem;
   border-radius: 30px;
-  background: knitBrown;
+  background: knitBlue;
 }
 .moreBtn:hover {
-  background: knitBrown_light;
+  opacity: 0.8;
 }
 
 .moreIcon {
@@ -35,8 +35,8 @@
   margin: 0 auto;
   width: 50px;
   height: 50px;
-  border: 10px solid knitBrown_light;
-  border-top: 10px solid knitBrown;
+  border: 10px solid knitGray_light;
+  border-top: 10px solid knitBlue;
   border-radius: 50%;
   animation: spin 2s linear infinite;
 }

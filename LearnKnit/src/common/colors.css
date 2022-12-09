@@ -1,29 +1,15 @@
-@value knitRed: #F24B0F;
+@value knitBlueGray_dark: #111827;
 
-@value knitBlue_light: #5C8EF2;
+@value knitBlueGray: #334155;
 
-@value knitBlue: #0057ff;
+@value knitBlue: #3b82fb;
 
-@value knitBlue_dark: #0046cc;
+@value knitGray_dark: #1f2937;
 
-@value knitYellow_light1: #F2DFA7;
+@value knitGray: #374151;
 
-@value knitYellow_light2: #F2D680;
+@value knitGray_light: #64748b;
 
-@value knitYellow: #F2C230;
+@value knitGreen: #16a34a;
 
-@value knitOrange: #f29f05;
-
-@value knitOrange_dark: #f28907;
-
-@value knitGreen: #03A64A;
-
-@value knitBrown: #A66D03;
-
-@value knitBrown_light: #D9B384;
-
-@value knitGray: #363432;
-
-@value knitGray_shadow: rgba(54, 52, 50, 0.53);
-
-@value knitWhite: #fff8ec;
+@value knitWhite: #F0F2F2;

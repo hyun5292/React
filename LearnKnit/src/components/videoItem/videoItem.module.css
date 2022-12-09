@@ -1,4 +1,4 @@
-@value knitBrown, knitGray_shadow from '../../common/colors.css';
+@value knitGray_dark from '../../common/colors.css';
 
 .VideoItem {
   width: 50%;
@@ -11,7 +11,7 @@
   align-items: center;
   margin-bottom: 0.2rem;
   border-radius: 10px;
-  box-shadow: 3px 3px 5px 0px knitGray_shadow;
+  box-shadow: 3px 3px 5px 0px knitGray_dark;
   cursor: pointer;
   transition: transform 250ms ease-in;
 }

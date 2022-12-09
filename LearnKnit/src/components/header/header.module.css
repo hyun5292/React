@@ -1,4 +1,4 @@
-@value knitYellow_light2 from '../../common/colors.css';
+@value knitGray_light from '../../common/colors.css';
 
 .header {
   display: flex;
@@ -43,9 +43,9 @@ span {
 }
 
 .noUse {
-  background: knitYellow_light2;
+  background: knitGray_light;
   cursor: default;
 }
 .noUse:hover {
-  background: knitYellow_light2;
+  background: knitGray_light;
 }
