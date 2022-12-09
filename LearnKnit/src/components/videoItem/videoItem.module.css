@@ -1,17 +1,17 @@
-@value knitGray_dark from '../../common/colors.css';
+@value knitGray_shadow, knitGray_light from '../../common/colors.css';
 
-.VideoItem {
-  width: 50%;
+.videoItem {
   margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 0px knitGray_shadow;
+  background: knitGray_light;
 }
 
 .video {
   display: flex;
   align-items: center;
   margin-bottom: 0.2rem;
-  border-radius: 10px;
-  box-shadow: 3px 3px 5px 0px knitGray_dark;
   cursor: pointer;
   transition: transform 250ms ease-in;
 }

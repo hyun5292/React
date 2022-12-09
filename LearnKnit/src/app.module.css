@@ -1,4 +1,4 @@
-@value knitBlueGray_dark, knitGray_dark, knitGray, knitGray_light, knitWhite from './common/colors.css';
+@value knitGray_shadow, knitBlack, knitGray, knitBlue_dark, knitBlue, knitWhite from './common/colors.css';
 @font-face {
   font-family: "HallymGothic-Regular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2")
@@ -27,11 +27,11 @@ button {
   font-weight: 600;
   border: none;
   border-radius: 20px;
-  background: knitGray;
+  background: knitBlue;
   cursor: pointer;
 }
 button:hover {
-  background: knitGray_light;
+  background: knitBlue_dark;
 }
 
 html,
@@ -53,7 +53,10 @@ body {
 }
 
 .header {
-  background: knitBlueGray_dark;
+  position: relative;
+  background: knitBlack;
+  z-index: 3;
+  box-shadow: 3px 0px 10px 5px knitGray_shadow;
 }
 
 .cont {
@@ -63,12 +66,12 @@ body {
 
 .navbar {
   flex: 2.5 1 0;
-  background: knitGray_dark;
+  background: knitGray;
 }
 
 .contents {
   flex: 7.5 1 0;
   height: calc(100vh - 50px);
   overflow-y: auto;
-  background: knitGray_dark;
+  background: knitGray;
 }

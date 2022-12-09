@@ -57,7 +57,11 @@ const MoreVideos = ({ youtube, keyword }) => {
       <ul className={more ? styles.videoList : styles.noUse}>
         {videos &&
           videos.map((video) => {
-            return <VideoItem key={video.snippet.id} video={video} />;
+            return (
+              <div className={styles.videoItem}>
+                <VideoItem key={video.snippet.id} video={video} />
+              </div>
+            );
           })}
       </ul>
     </div>

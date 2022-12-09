@@ -3,7 +3,7 @@ import styles from "./videoItem.module.css";
 
 const VideoItem = ({ video, video: { snippet } }) => {
   return (
-    <li className={styles.VideoItem}>
+    <li className={styles.videoItem}>
       <iframe
         className={styles.video}
         title={video.snippet?.title}

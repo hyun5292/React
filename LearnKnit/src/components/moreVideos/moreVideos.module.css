@@ -20,10 +20,6 @@
   padding: 10px 15px;
   font-size: 0.8rem;
   border-radius: 30px;
-  background: knitBlue;
-}
-.moreBtn:hover {
-  opacity: 0.8;
 }
 
 .moreIcon {
@@ -47,8 +43,16 @@
 
 .videoList {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
-  padding-left: 0;
+  padding: 0;
+}
+
+.videoItem {
+  width: calc(50% - 0.5rem);
+}
+.videoItem:nth-child(odd) {
+  margin-right: 1rem;
 }

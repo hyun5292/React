@@ -1,4 +1,4 @@
-@value knitWhite from '../../common/colors.css';
+@value knitGray_light, knitWhite from '../../common/colors.css';
 .Contents {
   margin: 1.5rem 10vh 1rem;
   font-size: 1.5rem;
@@ -12,7 +12,7 @@
 .info {
   font-size: 1.3rem;
   line-height: 0.5;
-  border-bottom: 1px solid knitWhite;
+  border-bottom: 1px solid knitGray_light;
 }
 
 .channelLink {

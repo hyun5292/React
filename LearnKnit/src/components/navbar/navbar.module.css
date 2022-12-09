@@ -1,10 +1,10 @@
-@value knitBlueGray_dark, knitGray_dark, knitGray, knitGray_light, knitWhite, knitBlue from '../../common/colors.css';
+@value knitBlack, knitGray_light, knitBlueGray, knitBlue_light, knitWhite from '../../common/colors.css';
 
 a {
   color: knitWhite;
 }
 a:hover {
-  color: knitBlue;
+  color: knitBlue_light;
 }
 
 .hidden {
@@ -25,7 +25,7 @@ a:hover {
   font-weight: 600;
   padding: 10px;
   height: 150px;
-  background: knitGray;
+  background: knitBlueGray;
 }
 
 .infoItem {
@@ -51,17 +51,19 @@ a:hover {
   font-weight: 600;
   text-align: center;
   border-radius: 10px 10px 0 0;
-  background: knitBlueGray_dark;
+  background: knitBlack;
 }
 
 .menuItem {
   color: knitWhite;
-  background: knitGray;
+  background: knitBlueGray;
   cursor: pointer;
+  border-bottom: 1px solid knitBlack;
 }
 .menuItem:hover {
   background: knitGray_light;
 }
 .menuItem:last-child {
   border-radius: 0 0 10px 10px;
+  border-bottom: none;
 }
