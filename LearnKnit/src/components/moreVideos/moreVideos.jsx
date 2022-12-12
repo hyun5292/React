@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import styles from "./moreVideos.module.css";
 import { AiFillDownCircle, AiFillCloseCircle } from "react-icons/ai";
 import VideoItem from "../videoItem/videoItem";
-import { useEffect } from "react";
 
 const MoreVideos = ({ youtube, keyword }) => {
   const [more, setMore] = useState(false);
-  const [videos, setVideos] = useState();
+  const [videos, setVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleMore = () => {
+  const onMore = () => {
     const newMore = !more;
     if (newMore) {
       setIsLoading(true);
@@ -20,18 +19,10 @@ const MoreVideos = ({ youtube, keyword }) => {
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       setMore(newMore);
-      setVideos(null);
     }
   };
-
-  useEffect(() => {
-    setMore(false);
-    setVideos(null);
-    setIsLoading(false);
-  }, [keyword]);
 
   return (
     <div className={styles.moreVideos}>
@@ -39,7 +30,7 @@ const MoreVideos = ({ youtube, keyword }) => {
         {isLoading ? (
           <div className={styles.loading} />
         ) : (
-          <button className={styles.moreBtn} onClick={handleMore}>
+          <button className={styles.moreBtn} onClick={onMore}>
             {more ? (
               <>
                 관련영상닫기
