@@ -1,0 +1,72 @@
+@value knitWhite, knitBlack, knitGray_shadow, knitBlue, knitBlue_dark from '../../common/colors.css';
+
+@keyframes turnBackBox1 {
+  0% {
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1) rotate(5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+@keyframes turnBackBox2 {
+  0% {
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1) rotate(10deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
+.error {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: knitBlack;
+  line-height: 1.5;
+  background: knitGray_shadow;
+}
+
+.error * {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.box {
+  display: inline-block;
+  width: 400px;
+  height: 300px;
+  border: none;
+  border-radius: 1rem;
+}
+
+.errorText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+  z-index: 3;
+  background: knitWhite;
+}
+
+.backBox1 {
+  background: knitBlue;
+  z-index: 2;
+  animation: turnBackBox1 3s infinite;
+}
+
+.backBox2 {
+  background: knitBlue_dark;
+  z-index: 1;
+  animation: turnBackBox2 3s infinite;
+}

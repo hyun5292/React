@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./contents.module.css";
 import MoreVideos from "../moreVideos/moreVideos.jsx";
 
-const Contents = ({ youtube, keyword, step, video, video: { snippet } }) => {
+const Contents = ({ moreVideos, step, video, video: { snippet } }) => {
+  console.log("video = ", video);
   const { stepVideoId, stepCont } = step;
   const videoDate = new Date(snippet?.publishedAt);
   const newVDate =
@@ -41,7 +42,7 @@ const Contents = ({ youtube, keyword, step, video, video: { snippet } }) => {
         </p>
         <pre className={styles.info_cont}>{stepCont}</pre>
       </div>
-      <MoreVideos youtube={youtube} keyword={keyword} />
+      <MoreVideos videos={moreVideos} />
     </div>
   );
 };

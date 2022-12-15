@@ -3,17 +3,17 @@ import Header from "./components/header/header";
 import Navbar from "./components/navbar/navbar";
 import Contents from "./components/contents/contents";
 import { useEffect, useState } from "react";
+import Error from "./components/error/error";
 
 function App({ stepsData, youtube }) {
-  const firstVideo = youtube.getVideo(stepsData.crochet[0].stepVideoId);
-  const [nowVideo, setNowVideo] = useState(firstVideo);
-  const [moreVideos, setMoreVideos] = useState();
-  const [menu, setMenu] = useState(true);
-  const [step, setStep] = useState(stepsData.crochet[0]);
   const kinds = Object.keys(stepsData);
   const dataL = kinds.map((kind) => {
     return stepsData[kind].length;
   });
+  const [menu, setMenu] = useState(true);
+  const [step, setStep] = useState(stepsData.crochet[0]);
+  const [nowVideo, setNowVideo] = useState();
+  const [moreVideos, setMoreVideos] = useState();
 
   const handleNavbar = () => {
     setMenu(!menu);
@@ -39,8 +39,12 @@ function App({ stepsData, youtube }) {
   };
 
   useEffect(() => {
+    const keyword = kinds[step.stepId.split("-")[0]] + " " + step.stepTitle;
     youtube.getVideo(step.stepVideoId).then((video) => setNowVideo(video[0]));
-  }, [youtube]);
+    youtube.moreVideos(keyword).then((videos) => {
+      setMoreVideos(videos);
+    });
+  }, [youtube, step, stepsData, kinds]);
 
   return (
     <div className={styles.app}>
@@ -66,14 +70,13 @@ function App({ stepsData, youtube }) {
         ) : (
           ""
         )}
-        {nowVideo && (
+        {nowVideo ? (
           <div className={styles.contents}>
-            <Contents
-              moreVideos={moreVideos}
-              keyword={kinds[step.stepId.split("-")[0]] + " " + step.stepTitle}
-              step={step}
-              video={nowVideo}
-            />
+            <Contents moreVideos={moreVideos} step={step} video={nowVideo} />
+          </div>
+        ) : (
+          <div className={styles.error}>
+            <Error />
           </div>
         )}
       </div>

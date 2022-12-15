@@ -3,19 +3,15 @@ import styles from "./moreVideos.module.css";
 import { AiFillDownCircle, AiFillCloseCircle } from "react-icons/ai";
 import VideoItem from "../videoItem/videoItem";
 
-const MoreVideos = ({ youtube, keyword }) => {
+const MoreVideos = ({ videos }) => {
   const [more, setMore] = useState(false);
-  const [videos, setVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const onMore = () => {
     const newMore = !more;
     if (newMore) {
       setIsLoading(true);
-      youtube.moreVideos(keyword).then((videos) => {
-        setVideos(videos);
-        setMore(newMore);
-      });
+      setMore(newMore);
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);

@@ -69,7 +69,8 @@ body {
   background: knitGray;
 }
 
-.contents {
+.contents,
+.error {
   flex: 7.5 1 0;
   height: calc(100vh - 50px);
   overflow-y: auto;

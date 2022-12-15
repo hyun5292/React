@@ -8,14 +8,6 @@
   background: knitGray_light;
 }
 
-.video {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.2rem;
-  cursor: pointer;
-  transition: transform 250ms ease-in;
-}
-
 .videoTitle {
   font-size: 1.2rem;
   font-weight: 600;
