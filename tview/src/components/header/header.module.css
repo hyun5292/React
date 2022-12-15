@@ -1,0 +1,26 @@
+@value t_grey from '../../common/colors.css';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid red;
+}
+
+.logo {
+  margin-left: 10px;
+  border: 1px solid red;
+}
+
+.nav {
+  display: flex;
+}
+
+.navItem {
+  padding: 0 2rem;
+  cursor: pointer;
+}
+
+.navItem:last-child {
+  border-left: 2px solid t_grey;
+}
