@@ -5,7 +5,9 @@ import Main from "./components/mainPg/mainPg.jsx";
 function App() {
   return (
     <div className={styles.app}>
-      <Header />
+      <div className={styles.header}>
+        <Header />
+      </div>
       <div className={styles.container}>
         <Main />
       </div>

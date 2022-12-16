@@ -1,26 +1,63 @@
-@value t_grey from '../../common/colors.css';
+@value t_grey, t_blue from '../../common/colors.css';
 
 .header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border: 1px solid red;
+  align-items: center;
+  padding: 1rem 1rem 1rem 2rem;
+  font-size: 1.2rem;
 }
 
 .logo {
-  margin-left: 10px;
-  border: 1px solid red;
+  border: 1px solid green;
 }
 
 .nav {
   display: flex;
+  gap: 10px;
+}
+
+.icon {
+  margin-right: 10px;
 }
 
 .navItem {
-  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
   cursor: pointer;
 }
 
-.navItem:last-child {
-  border-left: 2px solid t_grey;
+.navCont {
+  position: relative;
+}
+
+.navCircle {
+  position: absolute;
+  display: inline-block;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: t_blue;
+  transform: translate(50%);
+  box-shadow: 0px 2px 5px 0px t_grey;
+}
+.navItem:hover {
+  transform: translate(0, -5px);
+  transition: transform 0.5s;
+}
+.navItem:hover .navCircle {
+  width: 100%;
+  transform: translate(-50%, 5px);
+  transition: width 0.5s;
+}
+
+.bar {
+  display: inline-block;
+  width: 1px;
+  height: 15px;
+  background: t_grey;
+  transform: translate(0, 19px);
 }

@@ -3,6 +3,25 @@ body {
   font-family: "SUIT-Regular";
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  margin: 0;
+  list-style: none;
+}
+
 @font-face {
   font-family: "SUIT-Regular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
