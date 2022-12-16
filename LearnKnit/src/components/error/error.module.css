@@ -44,8 +44,9 @@
 
 .box {
   display: inline-block;
-  width: 400px;
-  height: 300px;
+  width: 50%;
+  min-width: 180px;
+  height: 50%;
   border: none;
   border-radius: 1rem;
 }

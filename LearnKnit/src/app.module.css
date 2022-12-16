@@ -1,4 +1,6 @@
 @value knitGray_shadow, knitBlack, knitGray, knitBlue_dark, knitBlue, knitWhite from './common/colors.css';
+@value minWidth from './common/sizes.css';
+
 @font-face {
   font-family: "HallymGothic-Regular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2")
@@ -39,7 +41,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 20px;
-  min-width: 360px;
+  min-width: minWidth;
 }
 
 body {
@@ -50,6 +52,12 @@ body {
   color: knitWhite;
   word-break: keep-all;
   /* overflow-y: hidden; */
+}
+
+.header,
+.cont,
+.error {
+  min-width: minWidth;
 }
 
 .header {
@@ -75,4 +83,26 @@ body {
   height: calc(100vh - 50px);
   overflow-y: auto;
   background: knitGray;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .cont {
+    flex-direction: column;
+  }
+
+  .navbar,
+  .cont,
+  .error {
+    flex: auto;
+  }
 }

@@ -39,12 +39,13 @@ function App({ stepsData, youtube }) {
   };
 
   useEffect(() => {
+    console.log("useEffect");
     const keyword = kinds[step.stepId.split("-")[0]] + " " + step.stepTitle;
     youtube.getVideo(step.stepVideoId).then((video) => setNowVideo(video[0]));
     youtube.moreVideos(keyword).then((videos) => {
       setMoreVideos(videos);
     });
-  }, [youtube, step, stepsData, kinds]);
+  }, [youtube, step, stepsData]);
 
   return (
     <div className={styles.app}>
