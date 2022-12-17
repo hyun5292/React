@@ -45,7 +45,8 @@ function App({ stepsData, youtube }) {
     youtube.moreVideos(keyword).then((videos) => {
       setMoreVideos(videos);
     });
-  }, [youtube, step, stepsData]);
+  }, [youtube]);
+  // }, [youtube, step, stepsData, kinds]);
 
   return (
     <div className={styles.app}>
