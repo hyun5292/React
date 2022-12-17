@@ -1,19 +1,21 @@
-@value t_grey, t_blue from '../../common/colors.css';
+@value t_grey, t_green, t_blue, t_black from '../../common/colors.css';
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem 1rem 2rem;
+  padding: 1rem;
   font-size: 1.2rem;
 }
 
 .logo {
-  border: 1px solid green;
+  width: 180px;
+  height: 60px;
 }
 
 .nav {
   display: flex;
+  padding: 0;
   gap: 10px;
 }
 
@@ -26,6 +28,10 @@
   align-items: center;
   padding: 1rem 2rem;
   cursor: pointer;
+}
+.navItem:hover {
+  transform: translate(0, -5px);
+  transition: transform 0.5s;
 }
 
 .navCont {
@@ -44,9 +50,8 @@
   transform: translate(50%);
   box-shadow: 0px 1px 1px 0px t_grey;
 }
-.navItem:hover {
-  transform: translate(0, -5px);
-  transition: transform 0.5s;
+.loginBar {
+  background: t_green;
 }
 .navItem:hover .navCircle {
   width: 100%;
@@ -60,4 +65,59 @@
   height: 15px;
   background: t_grey;
   transform: translate(0, 19px);
+}
+
+.hamburger {
+  display: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hamBar {
+  margin: 5px 0;
+  width: 30px;
+  height: 5px;
+  border-radius: 5px;
+  background: t_black;
+}
+.hamburger:hover .hamBar:first-child {
+  transform: rotate(45deg) translateY(7px);
+  transition: transform 1s;
+}
+.hamburger:hover .hamBar:nth-child(2) {
+  display: none;
+}
+.hamburger:hover .hamBar:last-child {
+  transform: rotate(-45deg) translateY(-7px);
+  transition: transform 1s;
+}
+
+@media (width < 768px) {
+  .nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+@media (width < 1024px) {
+  .header {
+    font-size: 1rem;
+  }
+
+  .logo {
+    width: 120px;
+    height: 40px;
+  }
+}
+
+@media (1024px <= width) {
+  .nav {
+    display: flex;
+  }
+  .hamburger {
+    display: none;
+  }
 }

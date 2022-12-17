@@ -5,7 +5,11 @@ import { BsInfoCircle, BsSearch, BsPen, BsPerson } from "react-icons/bs";
 const Header = (props) => {
   return (
     <div className={styles.header}>
-      <span className={styles.logo}>로고자리</span>
+      <img
+        className={styles.logo}
+        src="./assets/truck_long.png"
+        alt="사이트 세로버전 로고"
+      />
       <ul className={styles.nav}>
         <li className={styles.navItem}>
           <div className={styles.navCont}>
@@ -33,9 +37,14 @@ const Header = (props) => {
           <div className={styles.navCont}>
             <BsPerson className={styles.icon} />
             로그인
-            <span className={styles.navCircle} />
+            <span className={`${styles.navCircle} ${styles.loginBar}`} />
           </div>
         </li>
+      </ul>
+      <ul className={styles.hamburger}>
+        <li className={styles.hamBar}></li>
+        <li className={styles.hamBar}></li>
+        <li className={styles.hamBar}></li>
       </ul>
     </div>
   );

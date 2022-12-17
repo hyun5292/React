@@ -1,12 +1,17 @@
 @value t_blue, t_black, t_white from './common/colors.css';
+@value t_minWidth from './common/sizes.css';
 
 html,
 body {
   margin: 0;
   padding: 0;
+  min-width: t_minWidth;
   font-size: 16px;
   color: t_black;
   background: t_white;
+}
+
+.app {
 }
 
 .header {
@@ -14,6 +19,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  min-width: t_minWidth;
   height: 87px;
 }
 
@@ -22,5 +28,13 @@ body {
   top: 87px;
   left: 0;
   width: 100%;
-  overflow-y: auto;
+}
+
+@media (width < 768px) {
+  .header {
+    height: 74px;
+  }
+  .container {
+    top: 74px;
+  }
 }
