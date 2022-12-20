@@ -9,6 +9,7 @@ body {
   font-size: 16px;
   color: t_black;
   background: t_white;
+  overflow: auto;
 }
 
 .app {
@@ -28,6 +29,7 @@ body {
   top: 87px;
   left: 0;
   width: 100%;
+  overflow: auto;
 }
 
 @media (width < 768px) {

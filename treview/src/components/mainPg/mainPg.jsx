@@ -4,8 +4,8 @@ import Search from "../searchBar/searchBar.jsx";
 
 const MainPg = (props) => {
   return (
-    <div className={styles.MainPg}>
-      <Search />
+    <div className={styles.mainPg}>
+      <Search className={styles.search} />
     </div>
   );
 };
