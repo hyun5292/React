@@ -1,8 +1,13 @@
 import React from "react";
 import styles from "./mainPg.module.css";
+import Search from "../searchBar/searchBar.jsx";
 
 const MainPg = (props) => {
-  return <h1 className={styles.mainPg}>MainPg</h1>;
+  return (
+    <div className={styles.MainPg}>
+      <Search />
+    </div>
+  );
 };
 
 export default MainPg;
