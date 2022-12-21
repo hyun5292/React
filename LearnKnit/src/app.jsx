@@ -39,14 +39,14 @@ function App({ stepsData, youtube }) {
   };
 
   useEffect(() => {
-    console.log("useEffect");
-    const keyword = kinds[step.stepId.split("-")[0]] + " " + step.stepTitle;
+    const keyword = kinds[step.stepId.split("-")[0] - 1] + " " + step.stepTitle;
     youtube.getVideo(step.stepVideoId).then((video) => setNowVideo(video[0]));
     youtube.moreVideos(keyword).then((videos) => {
       setMoreVideos(videos);
     });
-  }, [youtube]);
-  // }, [youtube, step, stepsData, kinds]);
+    //kinds는 배열이라 종속성으로 사용시 무한루프에 걸린다
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [youtube, step, stepsData /*kinds*/]);
 
   return (
     <div className={styles.app}>

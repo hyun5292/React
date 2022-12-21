@@ -1,12 +1,5 @@
 @value knitBlack, knitGray_light, knitGray, knitBlue_light, knitWhite from '../../common/colors.css';
 
-a {
-  color: knitWhite;
-}
-a:hover {
-  color: knitBlue_light;
-}
-
 .hidden {
   display: none;
 }
@@ -66,4 +59,12 @@ a:hover {
 .menuItem:last-child {
   border-radius: 0 0 10px 10px;
   border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .info {
+    padding: 10px;
+    height: 100px;
+    background: knitGray_light;
+  }
 }

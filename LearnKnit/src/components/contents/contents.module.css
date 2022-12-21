@@ -1,5 +1,5 @@
 @value knitGray_light, knitWhite from '../../common/colors.css';
-.Contents {
+.contents {
   margin: 1.5rem 10vh 1rem;
   font-size: 1.5rem;
   text-align: left;
@@ -9,9 +9,13 @@
   width: 100%;
 }
 
+.videoTitle {
+  padding: 1rem 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
 .info {
-  font-size: 1.3rem;
-  line-height: 0.5;
   border-bottom: 1px solid knitGray_light;
 }
 
@@ -21,6 +25,26 @@
 
 .info_cont {
   font-family: inherit;
-  font-size: 1.5rem;
-  line-height: 1.2;
+  word-break: keep-all;
+}
+
+@media (max-width: 1024px) {
+  .contents {
+    margin: 1.5rem 7vh 1rem;
+    font-size: 1.2rem;
+  }
+
+  .videoTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contents {
+    margin: 1rem 5vh 0.7rem;
+    font-size: 1.2rem;
+  }
+
+  .info_cont {
+  }
 }

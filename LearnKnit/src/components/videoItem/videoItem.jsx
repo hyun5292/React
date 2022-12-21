@@ -14,6 +14,7 @@ const VideoItem = ({ video, video: { snippet } }) => {
         frameBorder="0"
         allowFullScreen
       ></iframe>
+      <br />
       <span className={styles.videoTitle}>{snippet?.title}</span>
     </li>
   );

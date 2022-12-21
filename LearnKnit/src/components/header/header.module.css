@@ -61,14 +61,27 @@ span {
 }
 
 @media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+  button {
+    font-size: 0.6rem;
+  }
+
+  .icon {
+    font-size: 1rem;
+  }
+
+  .hideMenu {
+    min-width: 120px;
+  }
+
   .prev,
   .next,
   .noUse {
     display: none;
   }
-}
 
-@media (max-width: 768px) {
   .navbar {
     flex: 4 1 0;
   }
