@@ -72,9 +72,14 @@ function App({ stepsData, youtube }) {
         ) : (
           ""
         )}
-        {nowVideo ? (
+        {nowVideo && moreVideos ? (
           <div className={styles.contents}>
-            <Contents moreVideos={moreVideos} step={step} video={nowVideo} />
+            <Contents
+              moreVideos={moreVideos}
+              menu={menu}
+              step={step}
+              video={nowVideo}
+            />
           </div>
         ) : (
           <div className={styles.error}>

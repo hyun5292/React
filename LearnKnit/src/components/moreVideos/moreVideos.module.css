@@ -1,3 +1,26 @@
+@value knitWhite, knitBlack, knitBlue, knitBlue_dark from '../../common/colors.css';
+
+@keyframes turnBackBox1 {
+  0% {
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes turnBackBox2 {
+  0% {
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 .header {
   display: flex;
   justify-content: center;
@@ -34,6 +57,34 @@
 }
 .videoItem:nth-child(odd) {
   margin-right: 1rem;
+}
+
+.errorBox {
+  margin: 2rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.error {
+  display: inline-block;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: knitBlack;
+  font-size: 1rem;
+  text-decoration: underline;
+  background: knitWhite;
+}
+
+.backBox1 {
+  background: knitBlue;
+  z-index: 2;
+  animation: turnBackBox1 3s infinite;
+}
+
+.backBox2 {
+  background: knitBlue_dark;
+  z-index: 1;
+  animation: turnBackBox2 3s infinite;
 }
 
 @media (max-width: 768px) {

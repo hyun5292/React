@@ -3,6 +3,7 @@ import styles from "./moreVideos.module.css";
 import Lstyle from "../css/loading.module.css";
 import { AiFillDownCircle, AiFillCloseCircle } from "react-icons/ai";
 import VideoItem from "../videoItem/videoItem";
+import Error from "../error/error";
 
 const MoreVideos = ({ videos }) => {
   const [more, setMore] = useState(false);
