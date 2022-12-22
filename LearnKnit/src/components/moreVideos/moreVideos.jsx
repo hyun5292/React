@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./moreVideos.module.css";
 import Lstyle from "../css/loading.module.css";
 import { AiFillDownCircle, AiFillCloseCircle } from "react-icons/ai";
 import VideoItem from "../videoItem/videoItem";
-import Error from "../error/error";
 
-const MoreVideos = ({ videos }) => {
+const MoreVideos = ({ wSize, videos }) => {
   const [more, setMore] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -52,7 +51,7 @@ const MoreVideos = ({ videos }) => {
           videos.map((video) => {
             return (
               <div key={video.snippet.id} className={styles.videoItem}>
-                <VideoItem key={video.snippet.id} video={video} />
+                <VideoItem key={video.snippet.id} wSize={wSize} video={video} />
               </div>
             );
           })}

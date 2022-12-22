@@ -4,13 +4,14 @@ import Lstyle from "../css/loading.module.css";
 import MoreVideos from "../moreVideos/moreVideos.jsx";
 
 const Contents = ({ moreVideos, menu, step, video, video: { snippet } }) => {
-  const contRef = useRef();
+  const videoRef = useRef();
   const { stepVideoId, stepCont } = step;
   const [isLoading, setIsLoading] = useState(true);
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth - 240,
-    height: (window.innerWidth / 7) * 3.5 - 240,
+    height: ((window.innerWidth - 240) / 7) * 4,
   });
+
   const videoDate = new Date(snippet?.publishedAt);
   const newVDate =
     videoDate.getFullYear() +
@@ -21,26 +22,26 @@ const Contents = ({ moreVideos, menu, step, video, video: { snippet } }) => {
     "일";
 
   useEffect(() => {
-    const ref = contRef.current;
-    return () => {
-      const width = ref.offsetWidth;
-      setWindowSize({
-        width: width - 32,
-        height: (width / 7) * 4,
-      });
-    };
-  }, [menu, contRef]);
-
-  useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
   }, [step, video]);
 
+  useEffect(() => {
+    const ref = videoRef.current;
+    return () => {
+      const width = ref.offsetWidth - 32;
+      setWindowSize({
+        width: width,
+        height: (width / 7) * 4,
+      });
+    };
+  }, [menu]);
+
   return (
-    <div ref={contRef} className={styles.contents}>
-      <section className={styles.videoWrap}>
+    <div className={styles.contents}>
+      <section ref={videoRef} className={styles.videoWrap}>
         {isLoading ? (
           <div className={Lstyle.loading} />
         ) : (
@@ -72,7 +73,7 @@ const Contents = ({ moreVideos, menu, step, video, video: { snippet } }) => {
           {stepCont}
         </pre>
       </div>
-      <MoreVideos videos={moreVideos} />
+      <MoreVideos wSize={windowSize} menu={menu} videos={moreVideos} />
     </div>
   );
 };
