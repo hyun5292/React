@@ -20,7 +20,7 @@ const SearchBar = (props) => {
           시군명
           {selectChk ? <AiFillCaretUp /> : <AiFillCaretDown />}
         </button>
-        {/* <ul className={styles.schOption}>
+        <ul className={selectChk ? styles.schOption : styles.gone}>
           {sigun_nm &&
             sigun_nm.sigum_nm.map((sigun) => {
               return (
@@ -29,7 +29,7 @@ const SearchBar = (props) => {
                 </li>
               );
             })}
-        </ul> */}
+        </ul>
       </section>
       <div className={styles.searchBar}>
         <input type="text" className={styles.schInput} />

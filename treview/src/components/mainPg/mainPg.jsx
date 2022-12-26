@@ -6,6 +6,35 @@ const MainPg = (props) => {
   return (
     <div className={styles.mainPg}>
       <Search className={styles.search} />
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
+      <div>o</div>
     </div>
   );
 };

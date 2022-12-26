@@ -9,7 +9,9 @@ function App() {
         <Header />
       </div>
       <div className={styles.container}>
-        <Main />
+        <div className={styles.mainPg}>
+          <Main />
+        </div>
       </div>
     </div>
   );
