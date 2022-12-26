@@ -2,7 +2,6 @@
 
 @keyframes onSlide {
   0% {
-    display: none;
     opacity: 0;
     height: 0;
   }
@@ -95,5 +94,4 @@
 
 .gone {
   display: none;
-  animation: onSlide 1s reverse !important;
 }
