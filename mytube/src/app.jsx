@@ -9,19 +9,18 @@ function App({ youtube }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
-    youtube
-      .mostPopular()
-      .then((videos) => setVideos(videos));
+    youtube.mostPopular().then((videos) => setVideos(videos));
   }, [youtube]);
 
-  const search = useCallback((query) => {
-    youtube
-      .search(query)
-      .then((videos) => {
+  const search = useCallback(
+    (query) => {
+      youtube.search(query).then((videos) => {
         setVideos(videos);
         setSelectedVideo(null);
       });
-  }, [youtube]);
+    },
+    [youtube]
+  );
 
   const selectVideo = (video) => {
     setSelectedVideo(video);

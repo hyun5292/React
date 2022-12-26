@@ -1,13 +1,9 @@
-.mainPg {
-}
-
-.search,
-.introPg {
-  width: 100%;
+.searchPg {
 }
 
 .search {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }

@@ -26,7 +26,6 @@
 .navItem {
   display: flex;
   align-items: center;
-  padding: 1rem 2rem;
   cursor: pointer;
 }
 .navItem:hover {
@@ -36,6 +35,7 @@
 
 .navCont {
   position: relative;
+  padding: 0 2rem;
 }
 
 .navCircle {
@@ -54,13 +54,14 @@
   background: t_green;
 }
 .navItem:hover .navCircle {
-  width: 100%;
+  width: 65%;
   transform: translate(-50%, 5px);
   transition: width 0.5s;
 }
 
 .bar {
   display: inline-block;
+  margin: -1rem 0 0;
   width: 1px;
   height: 15px;
   background: t_grey;

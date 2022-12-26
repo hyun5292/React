@@ -12,33 +12,33 @@ const Header = (props) => {
       />
       <ul className={styles.nav}>
         <li className={styles.navItem}>
-          <div className={styles.navCont}>
+          <a href="/" className={styles.navCont}>
             <BsInfoCircle className={styles.icon} />
             사이트 소개
             <span className={styles.navCircle} />
-          </div>
+          </a>
         </li>
         <li className={styles.navItem}>
-          <div className={styles.navCont}>
+          <a href="/search" className={styles.navCont}>
             <BsSearch className={styles.icon} />
             검색
             <span className={styles.navCircle} />
-          </div>
+          </a>
         </li>
         <li className={styles.navItem}>
-          <div className={styles.navCont}>
+          <a href="/review" className={styles.navCont}>
             <BsPen className={styles.icon} />
             리뷰
             <span className={styles.navCircle} />
-          </div>
+          </a>
         </li>
         <span className={styles.bar} />
         <li className={styles.navItem}>
-          <div className={styles.navCont}>
+          <a href="/login" className={styles.navCont}>
             <BsPerson className={styles.icon} />
             로그인
             <span className={`${styles.navCircle} ${styles.loginBar}`} />
-          </div>
+          </a>
         </li>
       </ul>
       <ul className={styles.hamburger}>
