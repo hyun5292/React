@@ -1,26 +1,9 @@
-import axios from "axios";
+import sigunList from "./sigun_nm_list.json";
 
 class FactoryList {
   constructor(httpClient) {
     this.fList = httpClient;
   }
-
-  // async getSigunList(query) {
-  //   try {
-  //     await axios
-  //       .get(
-  //         `https://openapi.gg.go.kr/GeneralCourierService/?type=json&key=${process.env.REACT_APP_TRUCK_KEY}&SIGUN_NM=${query.sigun}`
-  //       )
-  //       .then((res) => {
-  //         const result = res.data.GeneralCourierService[1].row[0];
-  //         console.log(result);
-  //         return result;
-  //       });
-  //   } catch (error) {
-  //     console.log("데이터를 가져오는데 실패했습니다. ", error);
-  //     return;
-  //   }
-  // }
 
   async getSigunList(query) {
     try {
@@ -39,6 +22,29 @@ class FactoryList {
       });
 
       return factoryList;
+    } catch (error) {
+      console.log("데이터를 가져오는데 실패했습니다. ", error);
+      return;
+    }
+  }
+
+  async getAllList() {
+    try {
+      const result = [];
+
+      sigunList &&
+        sigunList.sigun_nm.map(async (sigun) => {
+          const response = await this.fList.get("", {
+            params: {
+              pSize: 1000,
+              SIGUN_NM: sigun,
+            },
+          });
+
+          const sigunList = response.data.GeneralCourierService[1].row;
+          result.push(sigunList);
+        });
+      return result;
     } catch (error) {
       console.log("데이터를 가져오는데 실패했습니다. ", error);
       return;

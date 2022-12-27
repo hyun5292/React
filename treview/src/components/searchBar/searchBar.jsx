@@ -44,10 +44,10 @@ const SearchBar = ({ onSearchBar }) => {
         </button>
         <ul className={selectChk ? styles.schOption : styles.gone}>
           {sigun_nm &&
-            sigun_nm.sigum_nm.map((sigun) => {
+            sigun_nm.sigun_nm.map((sigun) => {
               return (
                 <li
-                  key={sigun_nm.sigum_nm.indexOf(sigun)}
+                  key={sigun_nm.sigun_nm.indexOf(sigun)}
                   className={styles.schOption_item}
                   onClick={() => onSigunClick({ sigun }.sigun)}
                   value={sigun}
