@@ -7,12 +7,11 @@ import IntroPg from "./components/introPg/introPg";
 import SearchPg from "./components/searchPg/searchPg";
 import ReviewPg from "./components/reviewPg/reviewPg";
 
-function App() {
-  const [searchF, setSearchF] = useState();
+function App({ factoryDB }) {
+  const [searchF, setSearchF] = useState([]);
 
   const onSearchBar = (schSigun) => {
-    console.log("schSigun.sigun = ", schSigun.sigun);
-    console.log("schSigun.fName = ", schSigun.fName);
+    factoryDB.getSigunList(schSigun).then((fList) => setSearchF(fList));
   };
 
   return (
@@ -30,7 +29,7 @@ function App() {
             <Route path="/intro" element={<IntroPg />}></Route>
             <Route
               path="/search"
-              element={<SearchPg onSearchBar={onSearchBar} />}
+              element={<SearchPg onSearchBar={onSearchBar} searchF={searchF} />}
             ></Route>
             <Route path="/review" element={<ReviewPg />}></Route>
           </Routes>

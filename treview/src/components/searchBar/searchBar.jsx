@@ -47,6 +47,7 @@ const SearchBar = ({ onSearchBar }) => {
             sigun_nm.sigum_nm.map((sigun) => {
               return (
                 <li
+                  key={sigun_nm.sigum_nm.indexOf(sigun)}
                   className={styles.schOption_item}
                   onClick={() => onSigunClick({ sigun }.sigun)}
                   value={sigun}
