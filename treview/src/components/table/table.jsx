@@ -1,0 +1,98 @@
+import React, { useMemo } from "react";
+import { useTable } from "react-table";
+import styles from "./table.module.css";
+
+const Table = (props) => {
+  const columnData = useMemo(
+    () => [
+      {
+        accessor: "SIGUN_NM",
+        Header: "시군명",
+      },
+      {
+        accessor: "BIZPLC_NM",
+        Header: "사업장명",
+      },
+      {
+        accessor: "REFINE_ROADNM_ADDR",
+        Header: "도로명주소",
+      },
+      {
+        accessor: "REFINE_ZIP_CD",
+        Header: "우편번호",
+      },
+      {
+        accessor: "BSN_STATE_NM",
+        Header: "영업상태",
+      },
+      {
+        accessor: "REVIEW_NUM",
+        Header: "리뷰",
+      },
+    ],
+    []
+  );
+  const data = useMemo(
+    () => [
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+    ],
+    []
+  );
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columnData, data });
+  return (
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups &&
+          headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup &&
+                headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </th>
+                ))}
+            </tr>
+          ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows &&
+          rows.map((row) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => (
+                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                ))}
+              </tr>
+            );
+          })}
+      </tbody>
+    </table>
+  );
+};
+
+export default Table;

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SearchBar from "../searchBar/searchBar";
+import Table from "../table/table";
 import styles from "./searchPg.module.css";
 import pgStyle from "../page.module.css";
 
@@ -9,6 +10,7 @@ const SearchPg = ({}) => {
       <div className={styles.search}>
         <SearchBar />
       </div>
+      <Table />
     </div>
   );
 };
