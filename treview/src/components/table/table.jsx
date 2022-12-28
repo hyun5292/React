@@ -3,7 +3,7 @@ import { useTable } from "react-table";
 import styles from "./table.module.css";
 
 const Table = (props) => {
-  const columnData = useMemo(
+  const columns = useMemo(
     () => [
       {
         accessor: "SIGUN_NM",
@@ -63,7 +63,7 @@ const Table = (props) => {
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
-      columnData,
+      columns,
       data,
     });
   return (
