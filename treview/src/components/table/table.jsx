@@ -62,7 +62,10 @@ const Table = (props) => {
     []
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columnData, data });
+    useTable({
+      columnData,
+      data,
+    });
   return (
     <table {...getTableProps()}>
       <thead>
