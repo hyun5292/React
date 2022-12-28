@@ -42,7 +42,10 @@ class FactoryList {
           });
 
           const sigunList = response.data.GeneralCourierService[1].row;
-          result.push(sigunList);
+          sigunList &&
+            sigunList.map((list) => {
+              result.push(list);
+            });
         });
       return result;
     } catch (error) {

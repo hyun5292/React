@@ -4,7 +4,7 @@ import sigun_nm from "../../service/sigun_nm_list.json";
 import { BsSearch } from "react-icons/bs";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
-const SearchBar = ({ onSearchBar }) => {
+const SearchBar = ({}) => {
   const [selectChk, setSelectChk] = useState(false);
   const [sigun, setSigun] = useState("");
   const [fName, setFName] = useState("");
@@ -23,7 +23,7 @@ const SearchBar = ({ onSearchBar }) => {
       alert("시군명을 선택해주세요");
       return;
     }
-    onSearchBar({ sigun, fName });
+    // onSearchBar({ sigun, fName });
     setSigun("");
     setFName("");
     document.getElementById("inputFName").value = "";
