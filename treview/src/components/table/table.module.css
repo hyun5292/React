@@ -1,0 +1,44 @@
+@value t_white, t_black from '../../common/colors.css';
+
+.tCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  width: 100%;
+  font-size: 20px;
+  line-height: 2.5;
+}
+
+.table {
+  text-align: center;
+  width: calc(100% - 2rem);
+  /* border: 1px solid t_black;
+  border-radius: 1.5rem; */
+}
+
+.bStateNm {
+  background-color: #00d82c;
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+}
+
+thead {
+  /* background: t_black; */
+}
+
+tbody {
+}
+
+.tRow {
+  margin-top: 1rem;
+}
+
+.tHColumn {
+}
+
+.tColumn {
+}

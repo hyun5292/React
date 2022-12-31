@@ -32,6 +32,7 @@ const Table = (props) => {
     ],
     []
   );
+
   const data = useMemo(
     () => [
       {
@@ -61,40 +62,52 @@ const Table = (props) => {
     ],
     []
   );
+
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
       columns,
       data,
     });
+
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups &&
-          headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup &&
-                headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                  </th>
-                ))}
-            </tr>
-          ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows &&
-          rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                ))}
+    <div className={styles.tCont}>
+      <table {...getTableProps()} className={styles.table}>
+        <thead className={styles.tHead}>
+          {headerGroups &&
+            headerGroups.map((headerGroup) => (
+              <tr
+                className={styles.tRow}
+                {...headerGroup.getHeaderGroupProps()}
+              >
+                {headerGroup &&
+                  headerGroup.headers.map((column) => (
+                    <th
+                      className={styles.tHColumn}
+                      {...column.getHeaderProps()}
+                    >
+                      {column.render("Header")}
+                    </th>
+                  ))}
               </tr>
-            );
-          })}
-      </tbody>
-    </table>
+            ))}
+        </thead>
+        <tbody className={styles.tBody} {...getTableBodyProps()}>
+          {rows &&
+            rows.map((row) => {
+              prepareRow(row);
+              return (
+                <tr className={styles.tRow} {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <td className={styles.tColumn} {...cell.getCellProps()}>
+                      {cell.render("Cell")}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
