@@ -1,6 +1,9 @@
 import React, { useMemo } from "react";
-import { useTable } from "react-table";
+import { usePagination, useTable } from "react-table";
 import styles from "./table.module.css";
+import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
+import SearchNm from "./searchNm/searchNm";
+import BsnState from "./bsnState/bsnState";
 
 const Table = (props) => {
   const columns = useMemo(
@@ -12,6 +15,7 @@ const Table = (props) => {
       {
         accessor: "BIZPLC_NM",
         Header: "사업장명",
+        Cell: ({ cell: { value } }) => <SearchNm value={value} />,
       },
       {
         accessor: "REFINE_ROADNM_ADDR",
@@ -24,6 +28,7 @@ const Table = (props) => {
       {
         accessor: "BSN_STATE_NM",
         Header: "영업상태",
+        Cell: ({ cell: { value } }) => <BsnState value={value} />,
       },
       {
         accessor: "REVIEW_NUM",
@@ -40,6 +45,78 @@ const Table = (props) => {
         BIZPLC_NM: "(주)태영지엘에스",
         REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
         REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "폐업 등",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
+        BSN_STATE_NM: "운영중",
+        REVIEW_NUM: 70,
+      },
+      {
+        SIGUN_NM: "가평군",
+        BIZPLC_NM: "(주)태영지엘에스",
+        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
+        REFINE_ZIP_CD: "12437",
         BSN_STATE_NM: "운영중",
         REVIEW_NUM: 70,
       },
@@ -63,15 +140,30 @@ const Table = (props) => {
     []
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    prepareRow,
+    page,
+    pageOptions,
+    state: { pageIndex, pageSize },
+    previousPage,
+    nextPage,
+    canPreviousPage,
+    canNextPage,
+  } = useTable(
+    {
       columns,
       data,
-    });
+      initialState: { pageSize: 10 },
+    },
+    usePagination
+  );
 
   return (
     <div className={styles.tCont}>
-      <table {...getTableProps()} className={styles.table}>
+      <table border="1" {...getTableProps()} className={styles.table}>
         <thead className={styles.tHead}>
           {headerGroups &&
             headerGroups.map((headerGroup) => (
@@ -92,8 +184,8 @@ const Table = (props) => {
             ))}
         </thead>
         <tbody className={styles.tBody} {...getTableBodyProps()}>
-          {rows &&
-            rows.map((row) => {
+          {page &&
+            page.map((row) => {
               prepareRow(row);
               return (
                 <tr className={styles.tRow} {...row.getRowProps()}>
@@ -107,6 +199,28 @@ const Table = (props) => {
             })}
         </tbody>
       </table>
+      <div className={styles.bottomBar}>
+        <button
+          className={canPreviousPage ? styles.preBtn : styles.disabledBtn}
+          onClick={() => previousPage()}
+          disabled={!canPreviousPage}
+        >
+          <VscTriangleLeft />
+        </button>
+        <div className={styles.stateBar}>
+          Page{" "}
+          <em>
+            {pageIndex + 1} of {pageOptions.length}
+          </em>
+        </div>
+        <button
+          className={canNextPage ? styles.nextBtn : styles.disabledBtn}
+          onClick={() => nextPage()}
+          disabled={!canNextPage}
+        >
+          <VscTriangleRight />
+        </button>
+      </div>
     </div>
   );
 };

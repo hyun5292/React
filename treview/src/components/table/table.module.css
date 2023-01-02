@@ -1,44 +1,61 @@
-@value t_white, t_black from '../../common/colors.css';
+@value t_white, t_black, t_navy from '../../common/colors.css';
 
 .tCont {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
+  padding-top: 1.5rem;
   width: 100%;
   font-size: 20px;
-  line-height: 2.5;
+  line-height: 3;
 }
 
 .table {
   text-align: center;
+  border-collapse: collapse;
+  border-style: hidden;
   width: calc(100% - 2rem);
-  /* border: 1px solid t_black;
-  border-radius: 1.5rem; */
+  border-bottom: 2px solid rgba(115, 115, 114, 0.05);
 }
 
-.bStateNm {
-  background-color: #00d82c;
-  color: #fff;
-  font-size: 1.2rem;
-  margin: 0 0.5rem;
-  padding: 1rem 2rem;
-  border-radius: 3rem;
+.tHead {
+  color: t_white;
+  background: t_navy;
+  border: none;
 }
 
-thead {
-  /* background: t_black; */
+td {
+  border: 2px solid rgba(115, 115, 114, 0.05);
 }
 
-tbody {
-}
-
-.tRow {
+.bottomBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 1rem;
+  font-weight: 600;
 }
 
-.tHColumn {
+.preBtn,
+.nextBtn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  color: t_white;
+  background: t_navy;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.preBtn:hover,
+.nextBtn:hover {
+  opacity: 0.8;
 }
 
-.tColumn {
+.disabledBtn {
+  display: none;
+}
+
+.stateBar {
+  padding: 0 1rem;
 }
