@@ -1,0 +1,37 @@
+.reviewCont {
+  text-align: left;
+  margin: 0 4rem;
+}
+
+.topMenu {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.revSearch {
+}
+
+.navCont {
+  display: flex;
+  margin: 0 1rem;
+}
+
+.stateBar {
+  padding: 0 1rem;
+}
+
+.rTable {
+  border-collapse: collapse;
+  border-style: hidden;
+  /* margin: 1rem; */
+  width: 100%;
+  font-size: 20px;
+  line-height: 3;
+}
+
+td {
+  padding: 0 10px;
+  min-width: 70px;
+  border: 2px solid rgba(115, 115, 114, 0.05);
+}

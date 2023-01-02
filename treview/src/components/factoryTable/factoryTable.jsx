@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { usePagination, useTable } from "react-table";
-import styles from "./table.module.css";
+import styles from "./factoryTable.module.css";
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import SearchNm from "./searchNm/searchNm";
 import BsnState from "./bsnState/bsnState";
@@ -46,7 +46,7 @@ const Table = (props) => {
         REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
         REFINE_ZIP_CD: "12437",
         BSN_STATE_NM: "폐업 등",
-        REVIEW_NUM: 70,
+        REVIEW_NUM: 700,
       },
       {
         SIGUN_NM: "가평군",
@@ -163,7 +163,7 @@ const Table = (props) => {
 
   return (
     <div className={styles.tCont}>
-      <table border="1" {...getTableProps()} className={styles.table}>
+      <table {...getTableProps()} className={styles.table}>
         <thead className={styles.tHead}>
           {headerGroups &&
             headerGroups.map((headerGroup) => (

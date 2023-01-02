@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import styles from "./searchBar.module.css";
+import styles from "./facSearchBar.module.css";
 import sigun_nm from "../../service/sigun_nm_list.json";
 import { BsSearch } from "react-icons/bs";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
-const SearchBar = ({}) => {
+const FSearchBar = ({}) => {
   const [selectChk, setSelectChk] = useState(false);
   const [sigun, setSigun] = useState("");
   const [fName, setFName] = useState("");
@@ -74,4 +74,4 @@ const SearchBar = ({}) => {
   );
 };
 
-export default SearchBar;
+export default FSearchBar;

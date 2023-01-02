@@ -1,6 +1,6 @@
 import React from "react";
-import SearchBar from "../searchBar/searchBar";
-import Table from "../table/table";
+import SearchBar from "../facSearchBar/facSearchBar";
+import Table from "../factoryTable/factoryTable";
 import styles from "./searchPg.module.css";
 import pgStyle from "../page.module.css";
 

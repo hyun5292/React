@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 4rem;
   padding-top: 1.5rem;
   width: 100%;
   font-size: 20px;
@@ -15,7 +16,7 @@
   text-align: center;
   border-collapse: collapse;
   border-style: hidden;
-  width: calc(100% - 2rem);
+  width: calc(100% - 8rem);
   border-bottom: 2px solid rgba(115, 115, 114, 0.05);
 }
 
@@ -26,6 +27,7 @@
 }
 
 td {
+  min-width: 70px;
   border: 2px solid rgba(115, 115, 114, 0.05);
 }
 
