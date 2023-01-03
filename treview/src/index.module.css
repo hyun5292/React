@@ -1,3 +1,4 @@
+@value t_white from './common/colors.css';
 body {
   margin: 0;
   font-family: "SUIT-Regular";
@@ -22,6 +23,15 @@ li {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+button {
+  padding: 10px;
+  color: t_white;
+  font-family: inherit;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
 }
 
 input {

@@ -1,0 +1,37 @@
+@value t_white, t_navy from '../common/colors.css';
+
+.preBtn,
+.nextBtn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  color: t_white;
+  background: t_navy;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.preBtn:hover,
+.nextBtn:hover {
+  opacity: 0.8;
+}
+
+.disabledBtn {
+  display: none;
+}
+
+.menuBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+.stateBar {
+  padding: 0 1rem;
+}
+
+td {
+  padding: 0 10px;
+  min-width: 70px;
+  border: 2px solid rgba(115, 115, 114, 0.05);
+}

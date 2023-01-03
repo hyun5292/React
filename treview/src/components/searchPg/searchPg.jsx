@@ -2,7 +2,7 @@ import React from "react";
 import SearchBar from "../facSearchBar/facSearchBar";
 import Table from "../factoryTable/factoryTable";
 import styles from "./searchPg.module.css";
-import pgStyle from "../page.module.css";
+import pgStyle from "../../css/page.module.css";
 
 const SearchPg = ({}) => {
   return (

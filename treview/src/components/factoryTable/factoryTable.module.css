@@ -14,6 +14,7 @@
 
 .table {
   text-align: center;
+  margin-bottom: 1rem;
   border-collapse: collapse;
   border-style: hidden;
   width: calc(100% - 8rem);
@@ -29,35 +30,4 @@
 td {
   min-width: 70px;
   border: 2px solid rgba(115, 115, 114, 0.05);
-}
-
-.bottomBar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-  font-weight: 600;
-}
-
-.preBtn,
-.nextBtn {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: none;
-  color: t_white;
-  background: t_navy;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.preBtn:hover,
-.nextBtn:hover {
-  opacity: 0.8;
-}
-
-.disabledBtn {
-  display: none;
-}
-
-.stateBar {
-  padding: 0 1rem;
 }

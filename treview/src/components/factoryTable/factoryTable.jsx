@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { usePagination, useTable } from "react-table";
 import styles from "./factoryTable.module.css";
+import tStyle from "../../css/table.module.css";
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import SearchNm from "./searchNm/searchNm";
 import BsnState from "./bsnState/bsnState";
@@ -190,31 +191,29 @@ const Table = (props) => {
               return (
                 <tr className={styles.tRow} {...row.getRowProps()}>
                   {row.cells.map((cell) => (
-                    <td className={styles.tColumn} {...cell.getCellProps()}>
-                      {cell.render("Cell")}
-                    </td>
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   ))}
                 </tr>
               );
             })}
         </tbody>
       </table>
-      <div className={styles.bottomBar}>
+      <div className={tStyle.menuBar}>
         <button
-          className={canPreviousPage ? styles.preBtn : styles.disabledBtn}
+          className={canPreviousPage ? tStyle.preBtn : tStyle.disabledBtn}
           onClick={() => previousPage()}
           disabled={!canPreviousPage}
         >
           <VscTriangleLeft />
         </button>
-        <div className={styles.stateBar}>
+        <div className={tStyle.stateBar}>
           Page{" "}
           <em>
             {pageIndex + 1} of {pageOptions.length}
           </em>
         </div>
         <button
-          className={canNextPage ? styles.nextBtn : styles.disabledBtn}
+          className={canNextPage ? tStyle.nextBtn : tStyle.disabledBtn}
           onClick={() => nextPage()}
           disabled={!canNextPage}
         >

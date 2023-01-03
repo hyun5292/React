@@ -1,0 +1,46 @@
+@value t_white, t_green, t_blue_light, t_blue, t_blue_dark from '../../common/colors.css';
+
+.reviewPg {
+  margin: 3rem 4rem 1rem;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.rTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.rSigun {
+  color: t_green;
+  margin-right: 10px;
+}
+
+.rBizplc {
+  color: t_blue_light;
+  margin-right: 10px;
+}
+
+.newRBtn,
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newRBtn {
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  background: t_blue;
+}
+.newRBtn:hover {
+  background: t_blue_dark;
+}
+
+.icon {
+  margin-right: 10px;
+}
