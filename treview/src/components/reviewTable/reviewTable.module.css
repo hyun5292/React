@@ -34,12 +34,9 @@
 }
 
 .rTable {
-  border-collapse: collapse;
-  border-style: hidden;
   margin: 1rem auto;
   width: 100%;
   font-size: 20px;
-  line-height: 3;
 }
 
 .sortTxt {

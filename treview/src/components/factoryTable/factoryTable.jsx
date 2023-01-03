@@ -29,18 +29,18 @@ const Table = (props) => {
       {
         accessor: "REFINE_ZIP_CD",
         Header: "우편번호",
-        width: "10%",
+        width: "12%",
       },
       {
         accessor: "BSN_STATE_NM",
         Header: "영업상태",
-        width: "10%",
+        width: "12%",
         Cell: ({ cell: { value } }) => <BsnState value={value} />,
       },
       {
         accessor: "REVIEW_NUM",
         Header: "리뷰",
-        width: "10%",
+        width: "6%",
       },
     ],
     []
@@ -172,6 +172,7 @@ const Table = (props) => {
 
   return (
     <div className={styles.tCont}>
+      <div className={styles.sortTxt}>(정렬하려면 제목을 클릭해주세요)</div>
       <table {...getTableProps()} className={styles.table}>
         <thead className={styles.tHead}>
           {headerGroups &&

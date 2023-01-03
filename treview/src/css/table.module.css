@@ -1,5 +1,28 @@
 @value t_white, t_navy from '../common/colors.css';
 
+table {
+  background: white;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  border-style: hidden;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 4px 0px t_grey;
+}
+
+th:first-child,
+th:last-child {
+  border-collapse: collapse;
+  border-style: hidden;
+}
+
+th:first-child {
+  border-radius: 1rem 0 0 0;
+}
+
+th:last-child {
+  border-radius: 0 1rem 0 0;
+}
+
 .preBtn,
 .nextBtn {
   width: 2.5rem;
