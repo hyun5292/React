@@ -1,8 +1,9 @@
 import React, { useMemo } from "react";
-import { usePagination, useTable } from "react-table";
+import { useTable, useSortBy, usePagination } from "react-table";
 import styles from "./factoryTable.module.css";
 import tStyle from "../../css/table.module.css";
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
+import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import SearchNm from "./searchNm/searchNm";
 import BsnState from "./bsnState/bsnState";
 
@@ -12,28 +13,34 @@ const Table = (props) => {
       {
         accessor: "SIGUN_NM",
         Header: "시군명",
+        width: "10%",
       },
       {
         accessor: "BIZPLC_NM",
         Header: "사업장명",
+        width: "20%",
         Cell: ({ cell: { value } }) => <SearchNm value={value} />,
       },
       {
         accessor: "REFINE_ROADNM_ADDR",
         Header: "도로명주소",
+        width: "40%",
       },
       {
         accessor: "REFINE_ZIP_CD",
         Header: "우편번호",
+        width: "10%",
       },
       {
         accessor: "BSN_STATE_NM",
         Header: "영업상태",
+        width: "10%",
         Cell: ({ cell: { value } }) => <BsnState value={value} />,
       },
       {
         accessor: "REVIEW_NUM",
         Header: "리뷰",
+        width: "10%",
       },
     ],
     []
@@ -159,6 +166,7 @@ const Table = (props) => {
       data,
       initialState: { pageSize: 10 },
     },
+    useSortBy,
     usePagination
   );
 
@@ -176,9 +184,32 @@ const Table = (props) => {
                   headerGroup.headers.map((column) => (
                     <th
                       className={styles.tHColumn}
-                      {...column.getHeaderProps()}
+                      {...column.getHeaderProps(
+                        column.getSortByToggleProps({
+                          style: { width: column.width },
+                        })
+                      )}
                     >
                       {column.render("Header")}
+                      <span>
+                        {column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <AiFillCaretDown
+                              style={{
+                                marginLeft: "5px",
+                              }}
+                            />
+                          ) : (
+                            <AiFillCaretUp
+                              style={{
+                                marginLeft: "5px",
+                              }}
+                            />
+                          )
+                        ) : (
+                          ""
+                        )}
+                      </span>
                     </th>
                   ))}
               </tr>

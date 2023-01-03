@@ -1,3 +1,4 @@
+@valut t_grey from '../../common/colors.css';
 .reviewCont {
   text-align: left;
   margin: 2rem 0;
@@ -11,6 +12,12 @@
 
 .pageBar {
   margin-left: 10px;
+}
+
+.sortTxt {
+  margin-left: 10px;
+  color: t_grey;
+  opacity: 0.8;
 }
 
 .revSearch {
@@ -33,4 +40,8 @@
   width: 100%;
   font-size: 20px;
   line-height: 3;
+}
+
+.sortTxt {
+  color: t_grey;
 }
