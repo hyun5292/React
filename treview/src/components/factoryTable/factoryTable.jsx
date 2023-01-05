@@ -57,7 +57,7 @@ const Table = (props) => {
         REVIEW_NUM: 700,
       },
       {
-        SIGUN_NM: "가평군",
+        SIGUN_NM: "고양시",
         BIZPLC_NM: "(주)태영지엘에스",
         REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
         REFINE_ZIP_CD: "12437",
@@ -170,6 +170,10 @@ const Table = (props) => {
     usePagination
   );
 
+  const toReviewList = (sigun) => {
+    console.log("sigun = ", sigun);
+  };
+
   return (
     <div className={styles.tCont}>
       <div className={styles.sortTxt}>(정렬하려면 제목을 클릭해주세요)</div>
@@ -221,7 +225,11 @@ const Table = (props) => {
             page.map((row) => {
               prepareRow(row);
               return (
-                <tr className={styles.tRow} {...row.getRowProps()}>
+                <tr
+                  className={styles.tRow}
+                  {...row.getRowProps()}
+                  onClick={() => toReviewList(row.values.SIGUN_NM)}
+                >
                   {row.cells.map((cell) => (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   ))}

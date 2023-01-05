@@ -1,12 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
 import styles from "./app.module.css";
 import Header from "./components/header/header.jsx";
 import Main from "./components/mainPg/mainPg.jsx";
 import IntroPg from "./components/introPg/introPg";
 import SearchPg from "./components/searchPg/searchPg";
 import ReviewPg from "./components/reviewPg/reviewPg";
-import { useCallback } from "react";
+import WriteReview from "./components/writeReviewPg/writeReviewPg";
 
 function App({ factoryDB }) {
   return (
@@ -21,6 +20,7 @@ function App({ factoryDB }) {
             <Route path="/intro" element={<IntroPg />}></Route>
             <Route path="/search" element={<SearchPg />}></Route>
             <Route path="/review" element={<ReviewPg />}></Route>
+            <Route path="/writeReview" element={<WriteReview />}></Route>
           </Routes>
         </BrowserRouter>
       </div>

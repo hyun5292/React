@@ -34,7 +34,9 @@ button {
   cursor: pointer;
 }
 
+textarea,
 input {
+  font-family: inherit;
   outline: none;
   border: none;
 }

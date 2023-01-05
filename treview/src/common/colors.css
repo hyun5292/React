@@ -10,6 +10,12 @@
 
 @value t_green: #0DD965;
 
+@value t_green_dark: #238C2A;
+
 @value t_black: #070707;
 
 @value t_grey: rgba(115, 115, 114, 0.7);
+
+@value t_border_grey: rgba(115, 115, 114, 0.05);
+
+@value t_shadow_grey: rgba(115, 115, 114, 0.1);

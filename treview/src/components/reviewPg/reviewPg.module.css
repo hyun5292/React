@@ -1,13 +1,9 @@
 @value t_white, t_green, t_blue_light, t_blue, t_blue_dark from '../../common/colors.css';
 
-.reviewPg {
-  margin: 3rem 4rem 1rem;
-}
-
 .topBar {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 1rem;
+  padding: 1rem 0;
 }
 
 .rTitle {
@@ -33,9 +29,11 @@
 }
 
 .newRBtn {
-  font-size: 1.2rem;
   padding: 0 1rem;
+  font-size: 1.2rem;
+  color: t_white;
   background: t_blue;
+  border-radius: 2rem;
 }
 .newRBtn:hover {
   background: t_blue_dark;

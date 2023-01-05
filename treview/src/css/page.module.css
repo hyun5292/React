@@ -2,5 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 0;
+}
+
+.pgMargin {
+  margin: 1rem 4rem;
 }

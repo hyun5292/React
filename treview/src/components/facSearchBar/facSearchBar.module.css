@@ -1,17 +1,25 @@
-@value t_blue, t_grey from '../../common/colors.css';
+@value t_blue, t_grey, t_shadow_grey from '../../common/colors.css';
 
 /**/
 .search {
   display: flex;
-  margin: 1rem 1rem 2rem;
+  margin: 1rem;
   width: 60%;
   gap: 10px;
 }
 
+.sigunSel,
 .searchBar {
   display: flex;
-  flex: 8 1;
   height: 4rem;
+}
+
+.sigunSel {
+  flex: 2 1;
+}
+
+.searchBar {
+  flex: 8 1;
   box-shadow: 3px 3px 4px 0px t_grey;
   border-radius: 2rem;
 }

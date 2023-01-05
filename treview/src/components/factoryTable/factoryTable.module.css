@@ -1,7 +1,6 @@
-@value t_grey, t_white, t_black, t_navy from '../../common/colors.css';
+@value t_grey, t_border_grey, t_white, t_black, t_navy from '../../common/colors.css';
 
 .tCont {
-  margin: 2rem 0;
   width: 100%;
   font-size: 20px;
 }
@@ -14,7 +13,6 @@
 .table {
   text-align: center;
   width: 100%;
-  border-bottom: 2px solid rgba(115, 115, 114, 0.05);
 }
 
 .tHead {

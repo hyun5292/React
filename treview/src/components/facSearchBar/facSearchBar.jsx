@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./facSearchBar.module.css";
-// import sigun_nm from "../../service/sigun_nm_list.json";
 import { BsSearch } from "react-icons/bs";
 import SigunSel from "../sigunSelector/sigunSel";
 
@@ -29,7 +28,9 @@ const FSearchBar = ({}) => {
 
   return (
     <div className={styles.search}>
-      <SigunSel handleClick={onSigunClick} />
+      <div className={styles.sigunSel}>
+        <SigunSel handleClick={onSigunClick} />
+      </div>
       <div className={styles.searchBar}>
         <input
           id="inputFName"
