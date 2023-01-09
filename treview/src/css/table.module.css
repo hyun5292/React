@@ -1,4 +1,4 @@
-@value t_white, t_blue_light, t_navy, t_shadow_grey, t_border_grey from '../common/colors.css';
+@value t_white, t_navy, t_shadow_grey, t_border_grey from '../common/colors.css';
 
 table {
   background: white;
@@ -54,22 +54,9 @@ th:last-child {
   padding: 0 1rem;
 }
 
-tr:hover {
-  color: t_white;
-  background: t_blue_light;
-  cursor: pointer;
-}
-tr:last-child td:first-child {
-  border-collapse: collapse;
-  border-radius: 0 0 0 1rem;
-}
-tr:last-child td:last-child {
-  border-collapse: collapse;
-  border-radius: 0 0 1rem 0;
-}
-
 thead > tr:hover {
-  background: t_navy;
+  color: inherit;
+  background: inherit;
 }
 
 th,

@@ -4,7 +4,6 @@ import styles from "./factoryTable.module.css";
 import tStyle from "../../css/table.module.css";
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
-import SearchNm from "./searchNm/searchNm";
 import BsnState from "./bsnState/bsnState";
 
 const Table = (props) => {
@@ -19,7 +18,6 @@ const Table = (props) => {
         accessor: "BIZPLC_NM",
         Header: "사업장명",
         width: "20%",
-        Cell: ({ cell: { value } }) => <SearchNm value={value} />,
       },
       {
         accessor: "REFINE_ROADNM_ADDR",

@@ -1,9 +1,0 @@
-@value t_blue_dark, t_black from '../../../common/colors.css';
-
-.bizplcLink {
-  border-bottom: 1px solid t_black;
-}
-.bizplcLink:hover {
-  color: t_blue_dark;
-  font-weight: 800;
-}

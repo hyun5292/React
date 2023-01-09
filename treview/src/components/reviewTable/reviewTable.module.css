@@ -42,3 +42,8 @@
 .sortTxt {
   color: t_grey;
 }
+
+tr:hover {
+  color: inherit;
+  background: inherit;
+}
