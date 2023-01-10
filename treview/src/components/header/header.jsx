@@ -1,6 +1,12 @@
 import React from "react";
 import styles from "./header.module.css";
-import { BsInfoCircle, BsSearch, BsPen, BsPerson } from "react-icons/bs";
+import {
+  BsInfoCircle,
+  BsSearch,
+  BsPen,
+  BsPerson,
+  BsPersonPlus,
+} from "react-icons/bs";
 
 const Header = (props) => {
   return (
@@ -37,6 +43,13 @@ const Header = (props) => {
           <a href="/login" className={styles.navCont}>
             <BsPerson className={styles.icon} />
             로그인
+            <span className={`${styles.navCircle} ${styles.loginBar}`} />
+          </a>
+        </li>
+        <li className={styles.navItem}>
+          <a href="/join" className={styles.navCont}>
+            <BsPersonPlus className={styles.icon} />
+            회원가입
             <span className={`${styles.navCircle} ${styles.loginBar}`} />
           </a>
         </li>

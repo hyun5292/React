@@ -23,19 +23,21 @@
   margin-right: 10px;
 }
 
-.navItem {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
 .navItem:hover {
   transform: translate(0, -5px);
   transition: transform 0.5s;
 }
 
+.navItem:last-child .navCont {
+  padding: 0 1rem;
+}
+
 .navCont {
   position: relative;
-  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 1.5rem;
 }
 
 .navCircle {
@@ -93,7 +95,7 @@
   transition: transform 1s;
 }
 
-@media (width < 768px) {
+@media (width < 900px) {
   .nav {
     display: none;
   }
