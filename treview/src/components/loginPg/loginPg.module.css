@@ -1,0 +1,84 @@
+@value t_shadow_grey, t_border_grey, t_grey, t_white, t_blue, t_navy from '../../common/colors.css';
+
+.loginPg {
+  position: absolute;
+  display: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: t_grey;
+}
+
+.loginCont {
+  position: absolute;
+  display: flex;
+  padding: 5px;
+  top: 50%;
+  left: 50%;
+  width: 550px;
+  height: 350px;
+  border-radius: 1rem;
+  background: t_blue;
+  box-shadow: 5px 5px 10px 1px t_grey;
+  transform: translate(-50%, -50%);
+}
+
+.formCont {
+  flex: 1 1 50%;
+  padding: 10px;
+  border-radius: 0.8rem;
+  background: t_white;
+}
+
+form {
+}
+
+.backBtn {
+  background: none;
+}
+.backBtn:hover .icon {
+  color: t_blue;
+}
+
+.icon {
+  color: t_navy;
+  font-size: 1.5rem;
+}
+
+form {
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.inputNm,
+input {
+  margin: 10px 0;
+}
+
+.inputNm {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+input {
+  padding: 10px 0;
+  font-size: 1.4rem !important;
+  border: 1px solid t_border_grey;
+  border-radius: 1rem;
+}
+
+.doLoginBtn {
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background: t_blue;
+}
+.doLoginBtn:hover {
+  background: t_navy;
+}
+
+.logo {
+  flex: 1 1 35%;
+  padding: 0 10px;
+}
