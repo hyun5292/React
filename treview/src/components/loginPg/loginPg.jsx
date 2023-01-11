@@ -18,7 +18,13 @@ const LoginPg = (props) => {
             <button className={styles.doLoginBtn}>로그인</button>
           </form>
         </div>
-        <span className={styles.logo}>Truck + Review</span>
+        <span className={styles.logo}>
+          트럭
+          <br />+<br />
+          리뷰
+          <br />=<br />
+          트리뷰
+        </span>
       </div>
     </div>
   );

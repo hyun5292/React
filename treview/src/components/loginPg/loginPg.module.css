@@ -80,5 +80,11 @@ input {
 
 .logo {
   flex: 1 1 35%;
+  margin: auto 0;
   padding: 0 10px;
+  color: t_white;
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
 }
