@@ -25,7 +25,7 @@
 }
 
 .formCont {
-  flex: 1 1 50%;
+  flex: 1 1 45%;
   padding: 10px;
   border-radius: 0.8rem;
   background: t_white;
@@ -78,13 +78,15 @@ input {
   background: t_navy;
 }
 
-.logo {
+.logoCont {
+  display: flex;
   flex: 1 1 35%;
-  margin: auto 0;
-  padding: 0 10px;
-  color: t_white;
-  font-size: 3rem;
-  font-weight: 600;
-  text-align: center;
-  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 70%;
+  height: auto;
+  margin-bottom: 2rem;
 }

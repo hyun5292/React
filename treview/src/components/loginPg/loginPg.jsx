@@ -18,13 +18,13 @@ const LoginPg = (props) => {
             <button className={styles.doLoginBtn}>로그인</button>
           </form>
         </div>
-        <span className={styles.logo}>
-          트럭
-          <br />+<br />
-          리뷰
-          <br />=<br />
-          트리뷰
-        </span>
+        <div className={styles.logoCont}>
+          <img
+            className={styles.logo}
+            src="./assets/truck_white.png"
+            alt="하얀색 로고"
+          />
+        </div>
       </div>
     </div>
   );
