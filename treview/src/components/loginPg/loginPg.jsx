@@ -1,13 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./loginPg.module.css";
 import { FaArrowLeft } from "react-icons/fa";
 
 const LoginPg = (props) => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.loginPg}>
       <div className={styles.loginCont}>
         <div className={styles.formCont}>
-          <button className={styles.backBtn}>
+          <button className={styles.backBtn} onClick={() => navigate("/")}>
             <FaArrowLeft className={styles.icon} />
           </button>
           <form action="#">

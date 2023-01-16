@@ -21,7 +21,6 @@ function App({ factoryDB }) {
             <Route path="/" element={<Main />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/join" element={<JoinPg />}></Route>
-            <Route path="/intro" element={<IntroPg />}></Route>
             <Route path="/search" element={<SearchPg />}></Route>
             <Route path="/review" element={<ReviewPg />}></Route>
             <Route path="/writeReview" element={<WriteReview />}></Route>
