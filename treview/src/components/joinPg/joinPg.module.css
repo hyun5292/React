@@ -1,0 +1,70 @@
+@value t_navy, t_blue, t_blue_background, t_black, t_border_grey, t_grey from '../../common/colors.css';
+
+.joinPg input {
+  margin: 10px 0 15px;
+  padding: 10px;
+  color: t_black;
+  font-size: 1.4rem !important;
+  border: 1px solid t_border_grey;
+  border-radius: 1rem;
+  background: t_blue_background;
+}
+
+.joinPg label {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.joinPg {
+  padding-bottom: 2rem;
+}
+
+.title {
+  padding: 1rem 0 2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.uploadCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: t_grey;
+}
+
+.btnUpload {
+  padding: 1.5rem;
+  border: 5px solid t_border_grey;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.uploadImg {
+}
+
+.formCont {
+}
+
+.formItem {
+}
+
+.formItem:last-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chkBad {
+  /* margin-right: 10px !important;
+  width: 20px;
+  border: 1px solid red; */
+}
+
+.joinBtn {
+  width: 100%;
+  font-size: 1.5rem;
+  background: t_blue;
+}
+.joinBtn:hover {
+  background: t_navy;
+}

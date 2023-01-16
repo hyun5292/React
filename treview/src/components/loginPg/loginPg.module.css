@@ -1,5 +1,17 @@
 @value t_shadow_grey, t_border_grey, t_grey, t_white, t_blue, t_navy from '../../common/colors.css';
 
+.loginPg form {
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.loginPg input {
+  padding: 10px 0;
+  font-size: 1.4rem !important;
+  border: 1px solid t_border_grey;
+  border-radius: 1rem;
+}
+
 .loginPg {
   position: absolute;
   display: fixed;
@@ -31,9 +43,6 @@
   background: t_white;
 }
 
-form {
-}
-
 .backBtn {
   background: none;
 }
@@ -46,26 +55,14 @@ form {
   font-size: 1.5rem;
 }
 
-form {
-  margin-top: 10px;
-  padding: 0 10px;
-}
-
 .inputNm,
-input {
+.loginPg input {
   margin: 10px 0;
 }
 
 .inputNm {
   font-weight: 600;
   font-size: 1.2rem;
-}
-
-input {
-  padding: 10px 0;
-  font-size: 1.4rem !important;
-  border: 1px solid t_border_grey;
-  border-radius: 1rem;
 }
 
 .doLoginBtn {
