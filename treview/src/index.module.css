@@ -17,6 +17,13 @@ h6 {
   margin: 0;
 }
 
+/* input 태그 number 오른쪽 화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 a {
   text-decoration: none;
   color: inherit;

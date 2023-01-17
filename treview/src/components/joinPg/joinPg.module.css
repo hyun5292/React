@@ -25,12 +25,20 @@
   font-weight: 600;
 }
 
+.phoneNum {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .uploadCont {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: t_grey;
+  border: 5px solid t_border_grey;
+  border-radius: 1rem;
 }
 
 .btnUpload {
@@ -38,6 +46,11 @@
   border: 5px solid t_border_grey;
   border-radius: 50%;
   cursor: pointer;
+}
+.btnUpload:hover {
+  padding: 2rem;
+  border: 5px solid t_blue;
+  transition: all 1s;
 }
 
 .uploadImg {
@@ -47,11 +60,7 @@
 }
 
 .formItem {
-}
-
-.formItem:last-child {
-  display: flex;
-  justify-content: space-between;
+  padding-right: 20px !important;
 }
 
 .chkBad {
