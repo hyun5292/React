@@ -45,12 +45,19 @@ const JoinPg = (props) => {
             </label>
             <label>프로필 사진 추가</label>
           </Grid>
-          <Grid item xs={12}>
-            <label>악의적인 리뷰를 달지 않겠다는 동의</label>
-            <label className={styles.chkBadCont}>
-              <input type="checkbox" name="chkBad" className={styles.chkBad} />
-              동의합니다
+          <Grid item xs={12} className={styles.chkBadCont}>
+            <label>
+              악의적인 리뷰를 남길 경우 자체적으로 리뷰가 삭제되거나 탈퇴 될 수
+              있습니다
             </label>
+            <div className={styles.chkBad}>
+              <input
+                type="checkbox"
+                name="chkBad"
+                className={styles.chkAgree}
+              />
+              <label for="chkBad">동의합니다</label>
+            </div>
           </Grid>
           <Grid item xs={12}>
             <button className={styles.joinBtn}>가입하기</button>

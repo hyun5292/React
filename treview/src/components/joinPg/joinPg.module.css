@@ -63,10 +63,27 @@
   padding-right: 20px !important;
 }
 
+.chkBadCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0 1rem;
+}
+
 .chkBad {
-  /* margin-right: 10px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  vertical-align: middle;
+}
+.chkAgree {
   width: 20px;
-  border: 1px solid red; */
+  height: 20px;
+}
+.chkBad > label {
+  margin-left: 10px;
 }
 
 .joinBtn {
