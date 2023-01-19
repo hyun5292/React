@@ -8,13 +8,6 @@ const JoinPg = (props) => {
     <div className={`${styles.joinPg} ${pStyle.pgMargin}`}>
       <div className={styles.title}>회원가입</div>
       <form action="#" className={styles.formCont}>
-        {/*
-        xs (extra-small) : 0px ~ 600px
-        sm (small) : 600px ~ 960px
-        md (medium): 960px ~ 1280px
-        lg (large) : 1280px ~ 1920px
-        xl (extra-large) : 1920px ~
-        */}
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} className={styles.formItem}>
             *<label>아이디</label>
@@ -38,19 +31,19 @@ const JoinPg = (props) => {
             <label for="uploadImg" className={styles.btnUpload}>
               <img
                 className={styles.uploadImg}
-                src="./assets/uploadImg.png"
+                src="./images/uploadImg.png"
                 alt="이미지 추가"
                 style={{ width: "6rem", height: "auto" }}
               />
             </label>
             <label>프로필 사진 추가</label>
           </Grid>
-          <Grid item xs={12} className={styles.chkBadCont}>
+          <Grid item xs={12} className={styles.chkAgreeCont}>
             <label>
               악의적인 리뷰를 남길 경우 자체적으로 리뷰가 삭제되거나 탈퇴 될 수
               있습니다
             </label>
-            <div className={styles.chkBad}>
+            <div className={styles.chkAgreeItem}>
               <input
                 type="checkbox"
                 name="chkBad"

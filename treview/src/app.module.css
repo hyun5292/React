@@ -1,5 +1,5 @@
 @value t_blue, t_black, t_white from './common/colors.css';
-@value t_minWidth from './common/sizes.css';
+@value t_minWidth, t_header from './common/sizes.css';
 
 html,
 body {
@@ -29,7 +29,7 @@ body {
 .header {
   width: 100%;
   min-width: t_minWidth;
-  height: 87px;
+  height: t_header;
 }
 
 .container {
@@ -39,7 +39,7 @@ body {
 
 @media (width < 768px) {
   .header {
-    height: 74px;
+    height: calc(t_header - 13px);
   }
   .container {
     top: 74px;

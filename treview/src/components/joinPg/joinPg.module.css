@@ -63,7 +63,7 @@
   padding-right: 20px !important;
 }
 
-.chkBadCont {
+.chkAgreeCont {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -71,7 +71,7 @@
   margin: 2rem 0 1rem;
 }
 
-.chkBad {
+.chkAgreeItem {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -24,7 +24,7 @@ const LoginPg = (props) => {
         <div className={styles.logoCont}>
           <img
             className={styles.logo}
-            src="./assets/truck_white.png"
+            src="./images/truck_white.png"
             alt="하얀색 로고"
           />
         </div>

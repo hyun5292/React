@@ -13,7 +13,7 @@ const Header = (props) => {
     <div className={styles.header}>
       <img
         className={styles.logo}
-        src="./assets/truck_long.png"
+        src="./images/truck_long.png"
         alt="사이트 세로버전 로고"
       />
       <ul className={styles.nav}>
