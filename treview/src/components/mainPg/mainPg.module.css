@@ -3,6 +3,7 @@
 
 .mainPg {
   background-color: orange;
+  height: calc(100vh - t_header);
 }
 
 .search {
