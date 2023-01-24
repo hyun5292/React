@@ -9,6 +9,10 @@
   background: t_white;
 }
 
+.header * {
+  z-index: 3;
+}
+
 .logo {
   width: 180px;
   height: 60px;

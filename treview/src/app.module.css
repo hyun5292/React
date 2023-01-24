@@ -39,9 +39,9 @@ body {
 
 @media (width < 768px) {
   .header {
-    height: calc(t_header - 13px);
+    height: calc(t_header - 20px);
   }
   .container {
-    top: 74px;
+    top: 72px;
   }
 }

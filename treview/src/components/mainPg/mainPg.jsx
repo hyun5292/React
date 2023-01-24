@@ -6,6 +6,7 @@ import pgStyle from "../../css/page.module.css";
 const MainPg = ({}) => {
   return (
     <div className={`${styles.mainPg} ${pgStyle.pg} ${pgStyle.pgPadding}`}>
+      <span className={styles.backImg}></span>
       <div className={styles.search}>
         <Search />
       </div>

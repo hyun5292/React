@@ -8,6 +8,10 @@
   gap: 10px;
 }
 
+.search * {
+  z-index: 2;
+}
+
 .sigunSel,
 .searchBar {
   display: flex;
