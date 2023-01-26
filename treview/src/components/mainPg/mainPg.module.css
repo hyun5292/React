@@ -1,4 +1,4 @@
-@value t_navy, t_white from '../../common/colors.css';
+@value t_navy, t_white, t_green from '../../common/colors.css';
 @value t_header from '../../common/sizes.css';
 
 .mainPg {
@@ -21,38 +21,63 @@
 }
 
 .introCont {
-  margin: 1rem 0;
-  padding: 0 2rem;
-  height: 100vh;
+  margin-top: 2rem;
+}
+
+.introItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 0;
+  padding: 1rem 2rem;
+  width: 70vw;
+  min-height: 60vh;
   color: t_white;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
   backdrop-filter: blur(50px);
 }
 
+.introItem:first-child {
+  margin-top: 0;
+}
+
+.introItem:last-child {
+  margin-bottom: 0;
+}
+
+.introItem p {
+  margin: 1.5rem 0;
+}
+
+.introTitle {
+  color: t_green;
+  font-size: 2.4rem;
+}
+/* .introCont {
+  margin: 2rem 0;
+  padding: 1rem 2rem 1rem;
+}
+
+.introItem {
+  height: 100vh;
+  color: t_white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(50px);
+}
+.introItem p {
+  margin: 1.5rem 0;
+}
+
+.introTitle {
+  color: t_green;
+  font-size: 2.4rem;
+} */
+
 .intro1 {
 }
 
 .intro2 {
 }
-
-/* .introCont {
-  margin: 2rem 0;
-  width: 100%;
-  z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  backdrop-filter: blur(50px);
-} */
-
-/* .backImg {
-  position: fixed;
-  top: 60%;
-  left: -50%;
-  width: 200vw;
-  height: 70vh;
-  z-index: 0;
-  background: t_white;
-  opacity: 0.7;
-  transform: rotate(-5deg);
-} */
