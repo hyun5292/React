@@ -5,7 +5,35 @@ class FactoryList {
     this.fList = httpClient;
   }
 
-  async getSigunList(query) {
+  async getAllList() {
+    try {
+      const response = await this.fList.get("", {
+        params: {
+          pSize: 100,
+        },
+      });
+
+      const result = response.data.GeneralCourierService[1].row;
+      const factoryList = [];
+      result.map((list) => {
+        factoryList.push({
+          SIGUN_NM: list.SIGUN_NM,
+          BIZPLC_NM: list.BIZPLC_NM,
+          REFINE_ROADNM_ADDR: list.REFINE_ROADNM_ADDR,
+          REFINE_ZIP_CD: list.REFINE_ZIP_CD,
+          BSN_STATE_NM: list.BSN_STATE_NM,
+          REVIEW_NUM: 0,
+        });
+      });
+
+      return result;
+    } catch (error) {
+      console.log("데이터를 가져오는데 실패했습니다. ", error);
+      return;
+    }
+  }
+
+  async getSearchedList(query) {
     try {
       const response = await this.fList.get("", {
         params: {
@@ -22,32 +50,6 @@ class FactoryList {
       });
 
       return factoryList;
-    } catch (error) {
-      console.log("데이터를 가져오는데 실패했습니다. ", error);
-      return;
-    }
-  }
-
-  async getAllList() {
-    try {
-      const result = [];
-
-      sigunList &&
-        sigunList.sigun_nm.map(async (sigun) => {
-          const response = await this.fList.get("", {
-            params: {
-              pSize: 1000,
-              SIGUN_NM: sigun,
-            },
-          });
-
-          const sigunList = response.data.GeneralCourierService[1].row;
-          sigunList &&
-            sigunList.map((list) => {
-              result.push(list);
-            });
-        });
-      return result;
     } catch (error) {
       console.log("데이터를 가져오는데 실패했습니다. ", error);
       return;

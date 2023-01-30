@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import styles from "./facSearchBar.module.css";
+import sigun_nm from "../../service/sigun_nm_list.json";
 import { BsSearch } from "react-icons/bs";
-import SigunSel from "../sigunSelector/sigunSel";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
-const FSearchBar = ({}) => {
+const FSearchBar = ({ getSchList }) => {
+  const [selectChk, setSelectChk] = useState(false);
   const [sigun, setSigun] = useState("");
   const [fName, setFName] = useState("");
 
   const onSigunClick = (sg) => {
+    setSelectChk(false);
     setSigun(sg);
   };
 
@@ -20,7 +23,7 @@ const FSearchBar = ({}) => {
       alert("시군명을 선택해주세요");
       return;
     }
-    // onSearchBar({ sigun, fName });
+    getSchList({ sigun, fName });
     setSigun("");
     setFName("");
     document.getElementById("inputFName").value = "";
@@ -28,8 +31,32 @@ const FSearchBar = ({}) => {
 
   return (
     <div className={styles.search}>
-      <div className={styles.sigunSel}>
-        <SigunSel handleClick={onSigunClick} />
+      <div className={styles.schSelect}>
+        <button
+          className={styles.selectBtn}
+          onClick={() => {
+            const newResult = !selectChk;
+            setSelectChk(newResult);
+          }}
+        >
+          {sigun ? sigun : "시군명"}
+          {selectChk ? <AiFillCaretUp /> : <AiFillCaretDown />}
+        </button>
+        <ul className={selectChk ? styles.schOption : styles.gone}>
+          {sigun_nm &&
+            sigun_nm.sigun_nm.map((sigun) => {
+              return (
+                <li
+                  key={sigun_nm.sigun_nm.indexOf(sigun)}
+                  className={styles.schOption_item}
+                  onClick={() => onSigunClick({ sigun }.sigun)}
+                  value={sigun}
+                >
+                  {sigun}
+                </li>
+              );
+            })}
+        </ul>
       </div>
       <div className={styles.searchBar}>
         <input

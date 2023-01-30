@@ -6,7 +6,7 @@ import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import BsnState from "./bsnState/bsnState";
 
-const Table = (props) => {
+const Table = ({ data }) => {
   const columns = useMemo(
     () => [
       {
@@ -44,108 +44,6 @@ const Table = (props) => {
     []
   );
 
-  const data = useMemo(
-    () => [
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "폐업 등",
-        REVIEW_NUM: 700,
-      },
-      {
-        SIGUN_NM: "고양시",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-      {
-        SIGUN_NM: "가평군",
-        BIZPLC_NM: "(주)태영지엘에스",
-        REFINE_ROADNM_ADDR: "경기도 가평군 하면 조종희망로 5, 3층 (태영빌딩)",
-        REFINE_ZIP_CD: "12437",
-        BSN_STATE_NM: "운영중",
-        REVIEW_NUM: 70,
-      },
-    ],
-    []
-  );
-
   const {
     getTableProps,
     getTableBodyProps,
@@ -174,7 +72,10 @@ const Table = (props) => {
 
   return (
     <div className={styles.tCont}>
-      <div className={styles.sortTxt}>(정렬하려면 제목을 클릭해주세요)</div>
+      <div className={styles.sortTxt}>
+        (정렬하려면 제목을 클릭해주세요)&nbsp;(초기 화면은 100개의 공장리스트만
+        보여드립니다)
+      </div>
       <table {...getTableProps()} className={styles.table}>
         <thead className={styles.tHead}>
           {headerGroups &&
