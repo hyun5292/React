@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import Grid from "@mui/material/Grid";
 import styles from "./joinPg.module.css";
 import pStyle from "../../css/page.module.css";
 
