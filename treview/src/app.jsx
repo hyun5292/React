@@ -7,8 +7,13 @@ import SearchPg from "./components/searchPg/searchPg";
 import ReviewPg from "./components/reviewPg/reviewPg";
 import WriteReview from "./components/writeReviewPg/writeReviewPg";
 import JoinPg from "./components/joinPg/joinPg";
+import { useEffect } from "react";
+import { fireStore } from "./service/firebase.js";
 
 function App({ factoryDB }) {
+  useEffect(() => {
+    console.log(fireStore._databaseId.projectId);
+  });
   return (
     <div className={styles.app}>
       <div className={styles.header}>

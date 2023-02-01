@@ -7,6 +7,7 @@ import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import BsnState from "./bsnState/bsnState";
 
 const Table = ({ data }) => {
+  console.log("data = ", data);
   const columns = useMemo(
     () => [
       {

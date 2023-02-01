@@ -46,7 +46,15 @@ class FactoryList {
       const factoryList = [];
 
       sigunList.map((sItem) => {
-        if (sItem.BIZPLC_NM.includes(query.fName)) factoryList.push(sItem);
+        if (sItem.BIZPLC_NM.includes(query.fName))
+          factoryList.push({
+            SIGUN_NM: sItem.SIGUN_NM,
+            BIZPLC_NM: sItem.BIZPLC_NM,
+            REFINE_ROADNM_ADDR: sItem.REFINE_ROADNM_ADDR,
+            REFINE_ZIP_CD: sItem.REFINE_ZIP_CD,
+            BSN_STATE_NM: sItem.BSN_STATE_NM,
+            REVIEW_NUM: 0,
+          });
       });
 
       return factoryList;
