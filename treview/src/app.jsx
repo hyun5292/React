@@ -7,13 +7,8 @@ import SearchPg from "./components/searchPg/searchPg";
 import ReviewPg from "./components/reviewPg/reviewPg";
 import WriteReview from "./components/writeReviewPg/writeReviewPg";
 import JoinPg from "./components/joinPg/joinPg";
-import { useEffect } from "react";
-import { fireStore } from "./service/firebase.js";
 
-function App({ factoryDB }) {
-  useEffect(() => {
-    console.log(fireStore._databaseId.projectId);
-  });
+function App({ factoryDB, authService }) {
   return (
     <div className={styles.app}>
       <div className={styles.header}>
@@ -23,7 +18,10 @@ function App({ factoryDB }) {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/" element={<Main />}></Route>
-            <Route path="/login" element={<Login />}></Route>
+            <Route
+              path="/login"
+              element={<Login authService={authService} />}
+            ></Route>
             <Route path="/join" element={<JoinPg />}></Route>
             <Route
               path="/search"

@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styles from "./loginPg.module.css";
 import { FaArrowLeft } from "react-icons/fa";
 
-const LoginPg = (props) => {
+const LoginPg = ({ authService }) => {
   const navigate = useNavigate();
+
+  const onLogin = (e) => {
+    authService.login(e.target.textContext);
+  };
 
   return (
     <div className={styles.loginPg}>
@@ -14,8 +18,8 @@ const LoginPg = (props) => {
             <FaArrowLeft className={styles.icon} />
           </button>
           <form action="#">
-            <div className={styles.inputNm}>아이디</div>
-            <input type="text" placeholder="아이디" />
+            <div className={styles.inputNm}>이메일</div>
+            <input type="text" placeholder="이메일" />
             <div className={styles.inputNm}>비밀번호</div>
             <input type="password" placeholder="비밀번호" />
             <button className={styles.doLoginBtn}>로그인</button>

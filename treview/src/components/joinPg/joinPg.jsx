@@ -10,16 +10,15 @@ const JoinPg = (props) => {
       <form action="#" className={styles.formCont}>
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} className={styles.formItem}>
-            *<label>아이디</label>
-            <input type="text" placeholer="아이디" />*<label>비밀번호</label>
-            <input type="text" placeholer="비밀번호" />*<label>전화번호</label>
+            *<label>이메일</label>
+            <input type="text" placeholer="이메일" />*<label>비밀번호</label>
+            <input type="text" placeholer="비밀번호" />*<label>이름</label>
+            <input type="text" placeholer="이름" />*<label>전화번호</label>
             <div className={styles.phoneNum}>
               <input type="number" />-
               <input type="number" />-
               <input type="number" />
             </div>
-            <label>이메일</label>
-            <input type="text" placeholer="아이디" />
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
             <input
