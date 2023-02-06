@@ -25,6 +25,11 @@
   font-weight: 600;
 }
 
+.emailCont {
+  display: flex;
+  align-items: center;
+}
+
 .phoneNum {
   display: flex;
   align-items: center;

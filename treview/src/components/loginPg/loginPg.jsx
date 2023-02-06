@@ -19,7 +19,11 @@ const LoginPg = ({ authService }) => {
           </button>
           <form action="#">
             <div className={styles.inputNm}>이메일</div>
-            <input type="text" placeholder="이메일" />
+            <div className={styles.emailCont}>
+              <input type="text" placeholder="이메일" />
+              &nbsp;@&nbsp;
+              <input type="text" placeholder="이메일" />
+            </div>
             <div className={styles.inputNm}>비밀번호</div>
             <input type="password" placeholder="비밀번호" />
             <button className={styles.doLoginBtn}>로그인</button>

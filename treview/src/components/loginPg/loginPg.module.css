@@ -28,7 +28,7 @@
   padding: 5px;
   top: 50%;
   left: 50%;
-  width: 550px;
+  width: 750px;
   height: 350px;
   border-radius: 1rem;
   background: t_blue;
@@ -58,6 +58,11 @@
 .inputNm,
 .loginPg input {
   margin: 10px 0;
+}
+
+.emailCont {
+  display: flex;
+  align-items: center;
 }
 
 .inputNm {

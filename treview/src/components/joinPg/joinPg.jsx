@@ -11,7 +11,12 @@ const JoinPg = (props) => {
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} className={styles.formItem}>
             *<label>이메일</label>
-            <input type="text" placeholer="이메일" />*<label>비밀번호</label>
+            <div className={styles.emailCont}>
+              <input xs={6} type="text" placeholer="이메일" />
+              &nbsp;@&nbsp;
+              <input xs={6} type="text" placeholer="이메일" />
+            </div>
+            *<label>비밀번호</label>
             <input type="text" placeholer="비밀번호" />*<label>이름</label>
             <input type="text" placeholer="이름" />*<label>전화번호</label>
             <div className={styles.phoneNum}>
