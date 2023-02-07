@@ -18,6 +18,8 @@
 
 .select {
   flex: 2 1;
+  border-radius: 2rem;
+  box-shadow: 3px 3px 4px 0px t_grey;
 }
 
 .searchBar {

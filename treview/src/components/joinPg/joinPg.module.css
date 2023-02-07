@@ -30,6 +30,11 @@
   align-items: center;
 }
 
+.emailInput,
+.select {
+  flex: 1 40%;
+}
+
 .phoneNum {
   display: flex;
   align-items: center;

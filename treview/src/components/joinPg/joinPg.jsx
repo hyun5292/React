@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import styles from "./joinPg.module.css";
 import pStyle from "../../css/page.module.css";
+import EmailList from "../../service/emailList.json";
+import Select from "../select/select";
 
 const JoinPg = (props) => {
+  const [email, setEmail] = useState("");
+
   return (
     <div className={`${styles.joinPg} ${pStyle.pgMargin}`}>
       <div className={styles.title}>회원가입</div>
@@ -12,9 +16,16 @@ const JoinPg = (props) => {
           <Grid item xs={12} md={6} className={styles.formItem}>
             *<label>이메일</label>
             <div className={styles.emailCont}>
-              <input xs={6} type="text" placeholer="이메일" />
+              <input className={styles.emailInput} type="text" />
               &nbsp;@&nbsp;
-              <input xs={6} type="text" placeholer="이메일" />
+              <div className={styles.select}>
+                <Select
+                  className={styles.emailInput}
+                  kindText="이메일"
+                  ulList={EmailList.emailList}
+                  setClicked={(email) => setEmail(email)}
+                />
+              </div>
             </div>
             *<label>비밀번호</label>
             <input type="text" placeholer="비밀번호" />*<label>이름</label>

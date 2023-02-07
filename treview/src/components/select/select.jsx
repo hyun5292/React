@@ -4,26 +4,28 @@ import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
 const Select = ({ kindText, ulList, setClicked }) => {
   const [selectChk, setSelectChk] = useState(false);
-  const [sigun, setSigun] = useState("");
+  const [kind, setKind] = useState("");
 
-  const onSigunClick = (sg) => {
+  const onItemClick = (sg) => {
     setSelectChk(false);
-    setSigun(sg);
+    setKind(sg);
     setClicked(sg);
   };
 
   return (
     <div className={styles.select}>
-      <button
+      <div
         className={styles.selectBtn}
         onClick={() => {
           const newResult = !selectChk;
           setSelectChk(newResult);
         }}
       >
-        {sigun ? sigun : kindText}
-        {selectChk ? <AiFillCaretUp /> : <AiFillCaretDown />}
-      </button>
+        {kind ? kind : kindText}
+        <div className={styles.icon}>
+          {selectChk ? <AiFillCaretUp /> : <AiFillCaretDown />}
+        </div>
+      </div>
       <ul className={selectChk ? styles.ulCont : styles.gone}>
         {ulList &&
           ulList.map((liItem) => {
@@ -31,7 +33,7 @@ const Select = ({ kindText, ulList, setClicked }) => {
               <li
                 key={ulList.indexOf(liItem)}
                 className={styles.liItem}
-                onClick={() => onSigunClick(liItem)}
+                onClick={() => onItemClick(liItem)}
                 value={liItem}
               >
                 {liItem}

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./loginPg.module.css";
+import Select from "../select/select.jsx";
+import EmailList from "../../service/emailList.json";
 import { FaArrowLeft } from "react-icons/fa";
 
 const LoginPg = ({ authService }) => {
+  const [email, setEmail] = useState("");
+
   const navigate = useNavigate();
 
   const onLogin = (e) => {
@@ -20,9 +24,20 @@ const LoginPg = ({ authService }) => {
           <form action="#">
             <div className={styles.inputNm}>이메일</div>
             <div className={styles.emailCont}>
-              <input type="text" placeholder="이메일" />
+              <input
+                className={styles.emailInput}
+                type="text"
+                placeholder="이메일 주소"
+              />
               &nbsp;@&nbsp;
-              <input type="text" placeholder="이메일" />
+              <div className={styles.select}>
+                <Select
+                  className={styles.emailInput}
+                  kindText="이메일"
+                  ulList={EmailList.emailList}
+                  setClicked={(email) => setEmail(email)}
+                />
+              </div>
             </div>
             <div className={styles.inputNm}>비밀번호</div>
             <input type="password" placeholder="비밀번호" />
