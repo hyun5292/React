@@ -1,15 +1,4 @@
-@value t_blue, t_grey, t_shadow_grey, t_black from '../../common/colors.css';
-
-@keyframes onSlide {
-  0% {
-    opacity: 0;
-    height: 0;
-  }
-  100% {
-    opacity: 1;
-    height: 200px;
-  }
-}
+@value t_blue, t_grey from '../../common/colors.css';
 
 .search {
   display: flex;
@@ -22,65 +11,13 @@
   z-index: 2;
 }
 
-.schSelect,
 .searchBar {
   display: flex;
   height: 4rem;
 }
 
-.schSelect {
-  font-size: 1.2rem;
+.select {
   flex: 2 1;
-}
-
-.selectBtn {
-  padding: 0 1rem;
-  font-size: inherit;
-}
-
-.selectBtn,
-.schOption {
-  box-shadow: 3px 3px 4px 0px t_grey;
-  border-radius: 2rem;
-}
-
-.schSelect {
-  position: relative;
-  flex: 2 1;
-}
-
-.schOption {
-  position: absolute;
-  top: calc(100% + 5px);
-  left: 0;
-  width: 100%;
-  height: 200px;
-  font-weight: 400;
-  border-radius: 10px;
-  background: #fff;
-  overflow-y: auto;
-  animation: onSlide 1s;
-}
-
-.schOption_item {
-  padding: 10px;
-}
-.schOption_item:hover {
-  color: white;
-  cursor: pointer;
-  opacity: 0.7;
-  background: t_grey;
-}
-
-.selectBtn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  color: t_black;
-  border: none;
-  background: #fff;
 }
 
 .searchBar {
