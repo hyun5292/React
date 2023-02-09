@@ -8,6 +8,21 @@ import Select from "../select/select";
 const JoinPg = (props) => {
   const [email, setEmail] = useState("");
 
+  const loadFile = (inputFile) => {
+    console.log("inputFile = ", inputFile);
+    // const file = refFile.current.value;
+    // const newImage = document.createElement("img");
+    // newImage.setAttribute("class", "img");
+    // newImage.src = URL.createObjectURL(file);
+    // newImage.style.width = "70%";
+    // newImage.style.height = "70%";
+    // newImage.style.objectFit = "contain";
+    // const cont = document.getElementById("profileImg");
+    // cont.appendChild(newImage);
+    // const check = document.getElementById("profileCont");
+    // check.style.visibility = "hidden";
+  };
+
   return (
     <div className={`${styles.joinPg} ${pStyle.pgMargin}`}>
       <div className={styles.title}>회원가입</div>
@@ -37,21 +52,29 @@ const JoinPg = (props) => {
             </div>
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
-            <input
-              type="file"
-              id="uploadImg"
-              style={{ display: "none" }}
-              accept=".jpg, .png"
-            />
-            <label for="uploadImg" className={styles.btnUpload}>
-              <img
-                className={styles.uploadImg}
-                src="./images/uploadImg.png"
-                alt="이미지 추가"
-                style={{ width: "6rem", height: "auto" }}
+            <div className={styles.inputFileCont}>
+              <input
+                ref={refFile}
+                type="file"
+                id="uploadImg"
+                name="uploadImg"
+                style={{ display: "none" }}
+                accept=".jpg, .png"
+                onChange={() => loadFile(this)}
               />
-            </label>
-            <label>프로필 사진 추가</label>
+              <div className={styles.profileCont} id="profileCont">
+                <label htmlFor="uploadImg" className={styles.btnUpload}>
+                  <img
+                    className={styles.uploadImg}
+                    src="./images/uploadImg.png"
+                    alt="이미지 추가"
+                    style={{ width: "6rem", height: "auto" }}
+                  />
+                </label>
+                <label htmlFor="profileText">프로필 사진 추가</label>
+              </div>
+            </div>
+            <div name="profileImg" className={styles.profileImg}></div>
           </Grid>
           <Grid item xs={12} className={styles.chkAgreeCont}>
             <label>
@@ -64,7 +87,7 @@ const JoinPg = (props) => {
                 name="chkBad"
                 className={styles.chkAgree}
               />
-              <label for="chkBad">동의합니다</label>
+              <label htmlFor="chkBad">동의합니다</label>
             </div>
           </Grid>
           <Grid item xs={12}>
