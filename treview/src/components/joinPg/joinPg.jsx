@@ -7,20 +7,30 @@ import Select from "../select/select";
 
 const JoinPg = (props) => {
   const [email, setEmail] = useState("");
+  const [profile, setProfile] = useState("");
 
-  const loadFile = (inputFile) => {
-    console.log("inputFile = ", inputFile);
-    // const file = refFile.current.value;
+  const loadFile = (event) => {
+    console.log("file = ", event.target.files[0]);
+    const file = URL.createObjectURL(event.target.files[0]);
+    setProfile(file);
+
     // const newImage = document.createElement("img");
     // newImage.setAttribute("class", "img");
     // newImage.src = URL.createObjectURL(file);
     // newImage.style.width = "70%";
     // newImage.style.height = "70%";
     // newImage.style.objectFit = "contain";
-    // const cont = document.getElementById("profileImg");
+
+    const cont = document.getElementById("profileImg");
     // cont.appendChild(newImage);
-    // const check = document.getElementById("profileCont");
-    // check.style.visibility = "hidden";
+    cont.style.display = "inline-block";
+
+    const check = document.getElementById("profileCont");
+    check.style.display = "none";
+
+    console.log("before = ", profile);
+    URL.revokeObjectURL(event.target.files[0]);
+    console.log("after = ", profile);
   };
 
   return (
@@ -54,13 +64,12 @@ const JoinPg = (props) => {
           <Grid item xs={12} md={6} className={styles.uploadCont}>
             <div className={styles.inputFileCont}>
               <input
-                ref={refFile}
                 type="file"
                 id="uploadImg"
                 name="uploadImg"
                 style={{ display: "none" }}
                 accept=".jpg, .png"
-                onChange={() => loadFile(this)}
+                onChange={(event) => loadFile(event)}
               />
               <div className={styles.profileCont} id="profileCont">
                 <label htmlFor="uploadImg" className={styles.btnUpload}>
@@ -73,8 +82,13 @@ const JoinPg = (props) => {
                 </label>
                 <label htmlFor="profileText">프로필 사진 추가</label>
               </div>
+              <img
+                src={profile}
+                alt="프로필 이미지"
+                id="profileImg"
+                className={styles.profileImg}
+              ></img>
             </div>
-            <div name="profileImg" className={styles.profileImg}></div>
           </Grid>
           <Grid item xs={12} className={styles.chkAgreeCont}>
             <label>

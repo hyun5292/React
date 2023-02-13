@@ -53,6 +53,7 @@
 }
 
 .profileImg {
+  display: none;
 }
 
 .inputFileCont {

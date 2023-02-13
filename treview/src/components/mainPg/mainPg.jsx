@@ -1,13 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./mainPg.module.css";
 import Search from "../facSearchBar/facSearchBar.jsx";
 import pgStyle from "../../css/page.module.css";
 
 const MainPg = (props) => {
+  const navigate = useNavigate();
+
+  const goSearchPg = (query) => {
+    navigate(`/search`, { state: { query } });
+  };
   return (
     <div className={`${styles.mainPg} ${pgStyle.pg} ${pgStyle.pgPadding}`}>
       <div className={styles.search}>
-        <Search />
+        <Search getSchList={goSearchPg} />
       </div>
       <div className={styles.introCont}>
         <div className={`${styles.introItem} ${styles.intro1}`}>
