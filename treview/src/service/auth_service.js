@@ -8,7 +8,8 @@ class AuthService {
         email,
         password
       );
-      // setAuthInfo({ uid, email, authToken: stsTokenManager });
+      console.log("createdUser = ", createdUser);
+      alert("회원가입이 완료되었습니다! 환영합니다!");
     } catch (err) {
       switch (err.code) {
         case "auth/weak-password":
@@ -21,7 +22,9 @@ class AuthService {
           alert("이미 가입되어 있는 계정입니다!");
           break;
         default:
-          alert("회원가입에 실패하였습니다! 다시 시도해주세요!");
+          alert(
+            "알 수 없는 이유로 회원가입에 실패하였습니다! 죄송합니다!" + err
+          );
           break;
       }
       return;

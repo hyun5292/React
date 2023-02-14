@@ -1,4 +1,4 @@
-@value t_navy, t_blue, t_blue_background, t_black, t_border_grey, t_grey from '../../common/colors.css';
+@value t_navy, t_blue, t_red, t_blue_background, t_black, t_border_grey, t_grey from '../../common/colors.css';
 
 .joinPg input {
   margin: 10px 0 15px;

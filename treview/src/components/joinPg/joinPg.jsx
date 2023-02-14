@@ -13,13 +13,10 @@ const JoinPg = ({ authService }) => {
     const uEmail = document.getElementById("uEmail").value + "@" + email;
     const uPwd = document.getElementById("uPwd").value;
 
-    authService
-      .join(uEmail, uPwd)
-      .then(alert(uEmail, "님 회원가입 되었습니다!"));
+    authService.join(uEmail, uPwd);
   };
 
   const loadFile = (event) => {
-    console.log("file = ", event.target.files[0]);
     const file = URL.createObjectURL(event.target.files[0]);
     setProfile(file);
 
@@ -35,7 +32,7 @@ const JoinPg = ({ authService }) => {
   return (
     <div className={`${styles.joinPg} ${pStyle.pgMargin}`}>
       <div className={styles.title}>회원가입</div>
-      <form action="#" className={styles.formCont}>
+      <div className={styles.formCont}>
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} className={styles.formItem}>
             *<label>이메일</label>
@@ -110,7 +107,7 @@ const JoinPg = ({ authService }) => {
             </button>
           </Grid>
         </Grid>
-      </form>
+      </div>
     </div>
   );
 };
