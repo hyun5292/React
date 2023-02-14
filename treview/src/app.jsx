@@ -7,8 +7,11 @@ import SearchPg from "./components/searchPg/searchPg";
 import ReviewPg from "./components/reviewPg/reviewPg";
 import WriteReview from "./components/writeReviewPg/writeReviewPg";
 import JoinPg from "./components/joinPg/joinPg";
+import { useState } from "react";
 
 function App({ factoryDB, authService }) {
+  const [uid, setUid] = useState();
+
   return (
     <div className={styles.app}>
       <div className={styles.header}>
@@ -22,7 +25,10 @@ function App({ factoryDB, authService }) {
               path="/login"
               element={<Login authService={authService} />}
             ></Route>
-            <Route path="/join" element={<JoinPg />}></Route>
+            <Route
+              path="/join"
+              element={<JoinPg authService={authService} />}
+            ></Route>
             <Route
               path="/search"
               element={<SearchPg factoryDB={factoryDB} />}

@@ -5,32 +5,31 @@ import pStyle from "../../css/page.module.css";
 import EmailList from "../../service/emailList.json";
 import Select from "../select/select";
 
-const JoinPg = (props) => {
+const JoinPg = ({ authService }) => {
   const [email, setEmail] = useState("");
   const [profile, setProfile] = useState("");
+
+  const newJoin = () => {
+    const uEmail = document.getElementById("uEmail").value + "@" + email;
+    const uPwd = document.getElementById("uPwd").value;
+
+    authService
+      .join(uEmail, uPwd)
+      .then(alert(uEmail, "님 회원가입 되었습니다!"));
+  };
 
   const loadFile = (event) => {
     console.log("file = ", event.target.files[0]);
     const file = URL.createObjectURL(event.target.files[0]);
     setProfile(file);
 
-    // const newImage = document.createElement("img");
-    // newImage.setAttribute("class", "img");
-    // newImage.src = URL.createObjectURL(file);
-    // newImage.style.width = "70%";
-    // newImage.style.height = "70%";
-    // newImage.style.objectFit = "contain";
-
     const cont = document.getElementById("profileImg");
-    // cont.appendChild(newImage);
     cont.style.display = "inline-block";
 
     const check = document.getElementById("profileCont");
     check.style.display = "none";
 
-    console.log("before = ", profile);
     URL.revokeObjectURL(event.target.files[0]);
-    console.log("after = ", profile);
   };
 
   return (
@@ -41,7 +40,7 @@ const JoinPg = (props) => {
           <Grid item xs={12} md={6} className={styles.formItem}>
             *<label>이메일</label>
             <div className={styles.emailCont}>
-              <input className={styles.emailInput} type="text" />
+              <input id="uEmail" className={styles.emailInput} type="text" />
               &nbsp;@&nbsp;
               <div className={styles.select}>
                 <Select
@@ -53,7 +52,8 @@ const JoinPg = (props) => {
               </div>
             </div>
             *<label>비밀번호</label>
-            <input type="text" placeholer="비밀번호" />*<label>이름</label>
+            <input id="uPwd" type="password" placeholer="비밀번호" />*
+            <label>이름</label>
             <input type="text" placeholer="이름" />*<label>전화번호</label>
             <div className={styles.phoneNum}>
               <input type="number" />-
@@ -105,7 +105,9 @@ const JoinPg = (props) => {
             </div>
           </Grid>
           <Grid item xs={12}>
-            <button className={styles.joinBtn}>가입하기</button>
+            <button className={styles.joinBtn} onClick={newJoin}>
+              가입하기
+            </button>
           </Grid>
         </Grid>
       </form>
