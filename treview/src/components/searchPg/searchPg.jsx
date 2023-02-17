@@ -6,7 +6,7 @@ import pgStyle from "../../css/page.module.css";
 import { useLocation } from "react-router-dom";
 
 const SearchPg = ({ factoryDB }) => {
-  const location = useLocation();
+  const location = useLocation("");
   const [data, setData] = useState([]);
 
   const getSearchList = (query) => {
@@ -14,12 +14,12 @@ const SearchPg = ({ factoryDB }) => {
   };
 
   useEffect(() => {
-    const mainQ = location.state.query;
-
-    mainQ
-      ? factoryDB.getSearchedList(mainQ).then((list) => setData(list))
+    location.state != null
+      ? factoryDB
+          .getSearchedList(location.state.query)
+          .then((list) => setData(list))
       : factoryDB.getAllList().then((dataList) => setData(dataList));
-  }, [factoryDB, location.state.query]);
+  }, [factoryDB, location.state]);
 
   return (
     <div className={`${styles.searchPg} ${pgStyle.pg} ${pgStyle.pgMargin}`}>
