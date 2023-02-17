@@ -5,8 +5,10 @@ import tStyle from "../../css/table.module.css";
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import BsnState from "./bsnState/bsnState";
+import { useNavigate } from "react-router-dom";
 
 const Table = ({ data }) => {
+  const navigate = useNavigate();
   const columns = useMemo(
     () => [
       {
@@ -66,8 +68,8 @@ const Table = ({ data }) => {
     usePagination
   );
 
-  const toReviewList = (sigun) => {
-    console.log("sigun = ", sigun);
+  const toReviewList = (fData) => {
+    navigate(`/review`, { state: { fData } });
   };
 
   return (
@@ -127,7 +129,7 @@ const Table = ({ data }) => {
                 <tr
                   className={styles.tRow}
                   {...row.getRowProps()}
-                  onClick={() => toReviewList(row.values.SIGUN_NM)}
+                  onClick={() => toReviewList(row.values)}
                 >
                   {row.cells.map((cell) => (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
