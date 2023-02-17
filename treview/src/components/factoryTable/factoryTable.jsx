@@ -73,8 +73,8 @@ const Table = ({ data }) => {
   return (
     <div className={styles.tCont}>
       <div className={styles.sortTxt}>
-        (정렬하려면 제목을 클릭해주세요)&nbsp;(초기 화면은 100개의 공장리스트만
-        보여드립니다)
+        (정렬하려면 표의 각 제목을 클릭해주세요. 초기 화면은 100개의
+        공장리스트만 보여드립니다)
       </div>
       <table {...getTableProps()} className={styles.table}>
         <thead className={styles.tHead}>
