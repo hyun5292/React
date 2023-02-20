@@ -8,8 +8,7 @@ class AuthService {
         email,
         password
       );
-      console.log("createdUser = ", createdUser);
-      alert("회원가입이 완료되었습니다! 환영합니다!");
+      alert(email, "님의 회원가입이 완료되었습니다! 환영합니다!");
     } catch (err) {
       switch (err.code) {
         case "auth/weak-password":
