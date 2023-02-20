@@ -6,12 +6,14 @@ import EmailList from "../../service/emailList.json";
 import { FaArrowLeft } from "react-icons/fa";
 
 const LoginPg = ({ authService }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
-  const navigate = useNavigate();
-
-  const onLogin = (e) => {
-    authService.login(e.target.textContext);
+  const onLogin = () => {
+    const uEmail = document.getElementById("uEmail").value + "@" + email;
+    const uPwd = document.getElementById("uPwd").value;
+    authService.login(uEmail, uPwd);
+    navigate("/");
   };
 
   return (
@@ -21,28 +23,30 @@ const LoginPg = ({ authService }) => {
           <button className={styles.backBtn} onClick={() => navigate("/")}>
             <FaArrowLeft className={styles.icon} />
           </button>
-          <form action="#">
-            <div className={styles.inputNm}>이메일</div>
-            <div className={styles.emailCont}>
-              <input
+          <div id="uEmail" className={styles.inputNm}>
+            이메일
+          </div>
+          <div className={styles.emailCont}>
+            <input
+              className={styles.emailInput}
+              type="text"
+              placeholder="이메일 주소"
+            />
+            &nbsp;@&nbsp;
+            <div className={styles.select}>
+              <Select
                 className={styles.emailInput}
-                type="text"
-                placeholder="이메일 주소"
+                kindText="이메일"
+                ulList={EmailList.emailList}
+                setClicked={(email) => setEmail(email)}
               />
-              &nbsp;@&nbsp;
-              <div className={styles.select}>
-                <Select
-                  className={styles.emailInput}
-                  kindText="이메일"
-                  ulList={EmailList.emailList}
-                  setClicked={(email) => setEmail(email)}
-                />
-              </div>
             </div>
-            <div className={styles.inputNm}>비밀번호</div>
-            <input type="password" placeholder="비밀번호" />
-            <button className={styles.doLoginBtn}>로그인</button>
-          </form>
+          </div>
+          <div className={styles.inputNm}>비밀번호</div>
+          <input id="uPwd" type="password" placeholder="비밀번호" />
+          <button className={styles.doLoginBtn} onClick={onLogin}>
+            로그인
+          </button>
         </div>
         <div className={styles.logoCont}>
           <img

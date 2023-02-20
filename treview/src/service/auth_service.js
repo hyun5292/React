@@ -1,4 +1,8 @@
-import { firebaseAuth, createUserWithEmailAndPassword } from "./firebase";
+import {
+  firebaseAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "./firebase";
 
 class AuthService {
   async join(email, password) {
@@ -8,7 +12,7 @@ class AuthService {
         email,
         password
       );
-      alert(email, "님의 회원가입이 완료되었습니다! 환영합니다!");
+      alert(email + "님의 회원가입이 완료되었습니다! 환영합니다!");
     } catch (err) {
       switch (err.code) {
         case "auth/weak-password":
@@ -29,6 +33,20 @@ class AuthService {
       return;
     }
   }
+
+  // async login(email, password) {
+  //   try {
+  //     const currentUser = await signInWithEmailAndPassword(
+  //       firebaseAuth,
+  //       email,
+  //       password
+  //     );
+
+  //     alert(email, "님의 어서오세요! 환영합니다!");
+  //   } catch (err) {
+  //     alert("알 수 없는 이유로 로그인에 실패하였습니다! 죄송합니다!" + err);
+  //   }
+  // }
 }
 
 export default AuthService;

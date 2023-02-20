@@ -39,12 +39,13 @@
 
 .formCont {
   flex: 1 1 45%;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 0.8rem;
   background: t_white;
 }
 
 .backBtn {
+  padding-left: 0;
   background: none;
 }
 .backBtn:hover .icon {
