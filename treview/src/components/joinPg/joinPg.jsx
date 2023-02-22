@@ -4,6 +4,7 @@ import styles from "./joinPg.module.css";
 import pStyle from "../../css/page.module.css";
 import EmailList from "../../service/emailList.json";
 import Select from "../select/select";
+import { BsChatSquareQuoteFill } from "react-icons/bs";
 
 const JoinPg = ({ authService }) => {
   const [email, setEmail] = useState("");
@@ -31,7 +32,12 @@ const JoinPg = ({ authService }) => {
 
   return (
     <div className={`${styles.joinPg} ${pStyle.pgMargin}`}>
-      <div className={styles.title}>회원가입</div>
+      <div className={styles.title}>
+        <span>회원가입</span>
+        <div className={styles.colonIcon}>
+          <BsChatSquareQuoteFill />
+        </div>
+      </div>
       <div className={styles.formCont}>
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} className={styles.formItem}>

@@ -1,4 +1,4 @@
-@value t_navy, t_blue, t_red, t_blue_background, t_black, t_border_grey, t_grey from '../../common/colors.css';
+@value t_navy, t_blue, t_blue_dark, t_red, t_blue_background, t_black, t_border_grey, t_grey from '../../common/colors.css';
 
 .joinPg input {
   margin: 10px 0 15px;
@@ -20,9 +20,17 @@
 }
 
 .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem 0 2rem;
   font-size: 2.5rem;
   font-weight: 600;
+}
+
+.colonIcon {
+  color: t_blue;
+  font-size: 3rem;
 }
 
 .emailCont {

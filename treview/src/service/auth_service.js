@@ -1,14 +1,9 @@
-import {
-  firebaseAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "./firebase";
+import { firebaseAuth } from "./firebase";
 
 class AuthService {
   async join(email, password) {
     try {
-      const createdUser = await createUserWithEmailAndPassword(
-        firebaseAuth,
+      const createdUser = await firebaseAuth.createUserWithEmailAndPassword(
         email,
         password
       );
