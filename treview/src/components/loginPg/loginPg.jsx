@@ -5,7 +5,7 @@ import Select from "../select/select.jsx";
 import EmailList from "../../service/emailList.json";
 import { FaArrowLeft } from "react-icons/fa";
 
-const LoginPg = ({ authService, setUId }) => {
+const LoginPg = ({ authService }) => {
   const navigate = useNavigate();
   const [emailKind, setEmailKind] = useState("");
 
@@ -14,9 +14,6 @@ const LoginPg = ({ authService, setUId }) => {
     const uEmail = document.getElementById("uEmail").value + "@" + emailKind;
     const uPwd = document.getElementById("uPwd").value;
 
-    console.log("emailAddress = ", emailAddress);
-    console.log("uEmail = ", uEmail);
-    console.log("uPwd = ", uPwd);
     if (emailAddress === "" || emailAddress === undefined) {
       alert("이메일 주소를 입력해주세요!");
     } else if (emailKind === "" || emailKind === null) {
@@ -24,12 +21,9 @@ const LoginPg = ({ authService, setUId }) => {
     } else if (uPwd === "" || uPwd === null) {
       alert("비밀번호를 입력해주세요!");
     } else {
-      authService.login(uEmail, uPwd).then((result) => {
-        if (result === "success") {
-          setUId(emailAddress);
-          navigate("/");
-        }
-      });
+      authService
+        .login(uEmail, uPwd)
+        .then((result) => (result === "success" ? navigate("/") : ""));
     }
   };
 

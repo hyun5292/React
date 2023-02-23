@@ -10,6 +10,7 @@ const MainPg = () => {
   const goSearchPg = (query) => {
     navigate(`/search`, { state: { query } });
   };
+
   return (
     <div className={`${styles.mainPg} ${pgStyle.pg} ${pgStyle.pgPadding}`}>
       <div className={styles.search}>

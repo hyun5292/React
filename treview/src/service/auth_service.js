@@ -1,12 +1,15 @@
 import { firebaseAuth } from "./firebase";
 
 class AuthService {
+  onAuthChange(onUserChanged) {
+    firebaseAuth.onAuthStateChanged((user) => {
+      onUserChanged(user);
+    });
+  }
+
   async join(email, password) {
     try {
-      const createdUser = await firebaseAuth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await firebaseAuth.createUserWithEmailAndPassword(email, password);
       alert(email + "님의 회원가입이 완료되었습니다! 환영합니다!");
       return "success";
     } catch (err) {
@@ -32,10 +35,7 @@ class AuthService {
 
   async login(email, password) {
     try {
-      const currentUser = await firebaseAuth.signInWithEmailAndPassword(
-        email,
-        password
-      );
+      await firebaseAuth.signInWithEmailAndPassword(email, password);
 
       alert(email + "님의 어서오세요! 환영합니다!");
       return "success";
@@ -53,6 +53,11 @@ class AuthService {
       }
     }
     return "Error";
+  }
+
+  async logout() {
+    await firebaseAuth.signOut();
+    return;
   }
 }
 

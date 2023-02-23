@@ -7,9 +7,9 @@ import {
   BsPerson,
   BsPersonPlus,
 } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 
-const Header = ({ uId }) => {
-  const nowId = uId;
+const Header = ({ uEmail, onLogout }) => {
   return (
     <div className={styles.header}>
       <img
@@ -40,10 +40,16 @@ const Header = ({ uId }) => {
           </a>
         </li>
         <span className={styles.bar} />
-        {nowId !== "" ? (
-          <li className={styles.mState}>
-            <span>{nowId}님</span>
-          </li>
+        {uEmail !== "" ? (
+          <>
+            <li className={styles.mState}>
+              <span>{uEmail}님</span>
+              <button className={styles.logoutBtn} onClick={onLogout}>
+                <FiLogOut className={styles.icon} />
+                <div className={styles.gone}>로그아웃</div>
+              </button>
+            </li>
+          </>
         ) : (
           <>
             <li className={styles.navItem}>
