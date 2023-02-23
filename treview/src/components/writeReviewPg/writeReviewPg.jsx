@@ -17,7 +17,7 @@ const WriteReview = (props) => {
     "일";
 
   return (
-    <div className={`${styles.writeReview} ${pgStyle.pgMargin}`}>
+    <div className={`${styles.writeReview} ${pgStyle.pgPadding}`}>
       <div className={styles.subTitle}>
         <div>
           <span className={styles.tSigun}>시군명</span> 리뷰 작성

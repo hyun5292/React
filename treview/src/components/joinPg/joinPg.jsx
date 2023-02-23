@@ -35,7 +35,7 @@ const JoinPg = ({ authService }) => {
   };
 
   return (
-    <div className={`${styles.joinPg} ${pStyle.pgMargin}`}>
+    <div className={`${styles.joinPg} ${pStyle.pgPadding}`}>
       <div className={styles.title}>
         <span>회원가입</span>
         <div className={styles.colonIcon}>

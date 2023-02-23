@@ -1,7 +1,6 @@
 @value t_blue, t_black, t_blue_light, t_navy, t_border_grey, t_grey, t_shadow_grey from '../../common/colors.css';
 
 .writeReview {
-  padding-top: 1rem;
   font-size: 2rem;
 }
 

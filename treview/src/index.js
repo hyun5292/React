@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import styles from "./index.module.css";
+import "./index.module.css";
 import App from "./app";
 import axios from "axios";
 import FactoryList from "./service/factoryList";
 import AuthService from "./service/auth_service";
-import Spinner from "./components/spinner/spinner";
 
 const httpClient = axios.create({
   baseURL: "https://openapi.gg.go.kr/GeneralCourierService",

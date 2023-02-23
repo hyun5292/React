@@ -27,7 +27,7 @@ const SearchPg = ({ factoryDB }) => {
   }, [factoryDB, location.state]);
 
   return (
-    <div className={`${styles.searchPg} ${pgStyle.pg} ${pgStyle.pgMargin}`}>
+    <div className={`${styles.searchPg} ${pgStyle.pg} ${pgStyle.pgPadding}`}>
       <div className={styles.search}>
         <SearchBar getSchList={getSearchList} />
         <div className={styles.resetCont} onClick={getAllList}>

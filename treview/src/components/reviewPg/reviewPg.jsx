@@ -14,7 +14,7 @@ const ReviewPg = (props) => {
   }, [location.state]);
 
   return (
-    <div className={`${styles.reviewPg} ${pgStyle.pgMargin}`}>
+    <div className={`${styles.reviewPg} ${pgStyle.pgPadding}`}>
       <div className={styles.topBar}>
         <span className={styles.rTitle}>
           <span className={styles.rSigun}>
