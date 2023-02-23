@@ -5,15 +5,32 @@ import Select from "../select/select.jsx";
 import EmailList from "../../service/emailList.json";
 import { FaArrowLeft } from "react-icons/fa";
 
-const LoginPg = ({ authService }) => {
+const LoginPg = ({ authService, setUId }) => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [emailKind, setEmailKind] = useState("");
 
   const onLogin = () => {
-    const uEmail = document.getElementById("uEmail").value + "@" + email;
+    const emailAddress = document.getElementById("uEmail").value;
+    const uEmail = document.getElementById("uEmail").value + "@" + emailKind;
     const uPwd = document.getElementById("uPwd").value;
-    authService.login(uEmail, uPwd);
-    navigate("/");
+
+    console.log("emailAddress = ", emailAddress);
+    console.log("uEmail = ", uEmail);
+    console.log("uPwd = ", uPwd);
+    if (emailAddress === "" || emailAddress === undefined) {
+      alert("이메일 주소를 입력해주세요!");
+    } else if (emailKind === "" || emailKind === null) {
+      alert("이메일 종류를 선택해주세요!");
+    } else if (uPwd === "" || uPwd === null) {
+      alert("비밀번호를 입력해주세요!");
+    } else {
+      authService.login(uEmail, uPwd).then((result) => {
+        if (result === "success") {
+          setUId(emailAddress);
+          navigate("/");
+        }
+      });
+    }
   };
 
   return (
@@ -23,11 +40,10 @@ const LoginPg = ({ authService }) => {
           <button className={styles.backBtn} onClick={() => navigate("/")}>
             <FaArrowLeft className={styles.icon} />
           </button>
-          <div id="uEmail" className={styles.inputNm}>
-            이메일
-          </div>
+          <div className={styles.inputNm}>이메일</div>
           <div className={styles.emailCont}>
             <input
+              id="uEmail"
               className={styles.emailInput}
               type="text"
               placeholder="이메일 주소"
@@ -38,7 +54,7 @@ const LoginPg = ({ authService }) => {
                 className={styles.emailInput}
                 kindText="이메일"
                 ulList={EmailList.emailList}
-                setClicked={(email) => setEmail(email)}
+                setClicked={(email) => setEmailKind(email)}
               />
             </div>
           </div>

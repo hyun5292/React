@@ -10,20 +10,20 @@ import JoinPg from "./components/joinPg/joinPg";
 import { useState } from "react";
 
 function App({ factoryDB, authService }) {
-  const [uid, setUid] = useState();
+  const [uId, setUId] = useState("");
 
   return (
     <div className={styles.app}>
       <div className={styles.header}>
-        <Header />
+        <Header uId={uId} />
       </div>
       <div className={styles.container}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route
               path="/login"
-              element={<Login authService={authService} />}
+              element={<Login authService={authService} setUId={setUId} />}
             ></Route>
             <Route
               path="/join"

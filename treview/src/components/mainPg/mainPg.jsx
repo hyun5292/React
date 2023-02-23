@@ -4,7 +4,7 @@ import styles from "./mainPg.module.css";
 import Search from "../facSearchBar/facSearchBar.jsx";
 import pgStyle from "../../css/page.module.css";
 
-const MainPg = (props) => {
+const MainPg = () => {
   const navigate = useNavigate();
 
   const goSearchPg = (query) => {

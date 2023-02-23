@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import styles from "./joinPg.module.css";
 import pStyle from "../../css/page.module.css";
@@ -7,14 +8,17 @@ import Select from "../select/select";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 
 const JoinPg = ({ authService }) => {
-  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const [emailKind, setEmailKind] = useState("");
   const [profile, setProfile] = useState("");
 
   const newJoin = () => {
-    const uEmail = document.getElementById("uEmail").value + "@" + email;
+    const uEmail = document.getElementById("uEmail").value + "@" + emailKind;
     const uPwd = document.getElementById("uPwd").value;
 
-    authService.join(uEmail, uPwd);
+    authService
+      .join(uEmail, uPwd)
+      .then((result) => (result === "success" ? navigate("/login") : ""));
   };
 
   const loadFile = (event) => {
@@ -50,7 +54,7 @@ const JoinPg = ({ authService }) => {
                   className={styles.emailInput}
                   kindText="이메일"
                   ulList={EmailList.emailList}
-                  setClicked={(email) => setEmail(email)}
+                  setClicked={(email) => setEmailKind(email)}
                 />
               </div>
             </div>

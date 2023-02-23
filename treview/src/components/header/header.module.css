@@ -1,4 +1,4 @@
-@value t_white, t_grey, t_green, t_blue, t_black from '../../common/colors.css';
+@value t_white, t_grey, t_green, t_navy, t_blue, t_black from '../../common/colors.css';
 
 .header {
   display: flex;
@@ -36,12 +36,22 @@
   padding: 0 1rem;
 }
 
-.navCont {
+.navCont,
+.mState {
   position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
   padding: 0 1.5rem;
+}
+
+.mState {
+  color: t_navy;
+  font-weight: 600;
+}
+.navItem:hover .mState {
+  transform: none !important;
+  color: t_navy;
 }
 
 .navCircle {

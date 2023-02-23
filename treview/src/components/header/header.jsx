@@ -8,7 +8,8 @@ import {
   BsPersonPlus,
 } from "react-icons/bs";
 
-const Header = (props) => {
+const Header = ({ uId }) => {
+  const nowId = uId;
   return (
     <div className={styles.header}>
       <img
@@ -39,20 +40,28 @@ const Header = (props) => {
           </a>
         </li>
         <span className={styles.bar} />
-        <li className={styles.navItem}>
-          <a href="/login" className={styles.navCont}>
-            <BsPerson className={styles.icon} />
-            로그인
-            <span className={`${styles.navCircle} ${styles.loginBar}`} />
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a href="/join" className={styles.navCont}>
-            <BsPersonPlus className={styles.icon} />
-            회원가입
-            <span className={`${styles.navCircle} ${styles.loginBar}`} />
-          </a>
-        </li>
+        {nowId !== "" ? (
+          <li className={styles.mState}>
+            <span>{nowId}님</span>
+          </li>
+        ) : (
+          <>
+            <li className={styles.navItem}>
+              <a href="/login" className={styles.navCont}>
+                <BsPerson className={styles.icon} />
+                로그인
+                <span className={`${styles.navCircle} ${styles.loginBar}`} />
+              </a>
+            </li>
+            <li className={styles.navItem}>
+              <a href="/join" className={styles.navCont}>
+                <BsPersonPlus className={styles.icon} />
+                회원가입
+                <span className={`${styles.navCircle} ${styles.loginBar}`} />
+              </a>
+            </li>
+          </>
+        )}
       </ul>
       <ul className={styles.hamburger}>
         <li className={styles.hamBar}></li>
