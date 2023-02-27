@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./header.module.css";
 import {
   BsInfoCircle,
@@ -10,8 +10,21 @@ import {
 import { FiLogOut } from "react-icons/fi";
 
 const Header = ({ uEmail, onLogout }) => {
+  // const handleScroll = () => {
+  //   console.log("scroll");
+  //   const contHeader = document.getElementById("header");
+  //   contHeader.style.background = "#F9FAFC";
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+
   return (
-    <div className={styles.header}>
+    <div id="header" className={styles.header}>
       <img
         className={styles.logo}
         src="./images/truck_long.png"
