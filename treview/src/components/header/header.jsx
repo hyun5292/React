@@ -10,21 +10,8 @@ import {
 import { FiLogOut } from "react-icons/fi";
 
 const Header = ({ uEmail, onLogout }) => {
-  // const handleScroll = () => {
-  //   console.log("scroll");
-  //   const contHeader = document.getElementById("header");
-  //   contHeader.style.background = "#F9FAFC";
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-
   return (
-    <div id="header" className={styles.header}>
+    <div className={styles.header}>
       <img
         className={styles.logo}
         src="./images/truck_long.png"

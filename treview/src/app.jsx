@@ -41,7 +41,7 @@ const App = ({ factoryDB, authService }) => {
     <Spinner />
   ) : (
     <div className={styles.app}>
-      <div id="contHead" className={styles.header}>
+      <div className={styles.header}>
         <Header uEmail={uEmail} onLogout={onLogout} />
       </div>
       <div className={styles.container}>
