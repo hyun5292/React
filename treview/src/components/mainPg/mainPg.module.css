@@ -1,8 +1,8 @@
 @value t_navy, t_white, t_green from '../../common/colors.css';
-@value t_header from '../../common/sizes.css';
+@value t_minHeight from '../../common/sizes.css';
 
 .mainPg {
-  height: 100vh;
+  height: t_minHeight;
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.5;

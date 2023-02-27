@@ -37,6 +37,9 @@ li {
 }
 
 button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   color: t_white;
   font-family: inherit;

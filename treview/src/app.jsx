@@ -48,7 +48,14 @@ const App = ({ factoryDB, authService }) => {
       <div className={styles.container}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Main />}></Route>
+            <Route
+              path="/"
+              element={
+                <div className={styles.mainPg}>
+                  <Main />
+                </div>
+              }
+            ></Route>
             <Route
               path="/login"
               element={<Login authService={authService} />}

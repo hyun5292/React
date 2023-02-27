@@ -1,4 +1,4 @@
-@value t_navy, t_blue, t_blue_dark, t_red, t_blue_background, t_black, t_border_grey, t_grey from '../../common/colors.css';
+@value t_navy, t_blue, t_white, t_blue_dark, t_red, t_blue_background, t_black, t_border_grey, t_grey from '../../common/colors.css';
 
 .joinPg input {
   margin: 10px 0 15px;
@@ -60,8 +60,13 @@
   color: t_grey;
 }
 
+.uploadCont {
+  flex-direction: row !important;
+}
+
 .profileImg {
   display: none;
+  object-fit: cover;
 }
 
 .inputFileCont {
@@ -84,7 +89,19 @@
   transition: all 1s;
 }
 
-.uploadImg {
+.resetImg {
+  display: none;
+  margin-left: 10px;
+  width: 10%;
+  height: 100%;
+  color: t_white;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  background: t_blue;
+  cursor: pointer;
+}
+.resetImg:hover {
+  background: t_navy;
 }
 
 .formCont {

@@ -6,6 +6,7 @@ import pStyle from "../../css/page.module.css";
 import EmailList from "../../service/emailList.json";
 import Select from "../select/select";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
+import { BsArrowClockwise } from "react-icons/bs";
 
 const JoinPg = ({ authService }) => {
   const navigate = useNavigate();
@@ -13,12 +14,37 @@ const JoinPg = ({ authService }) => {
   const [profile, setProfile] = useState("");
 
   const newJoin = () => {
-    const uEmail = document.getElementById("uEmail").value + "@" + emailKind;
+    const uAddress = document.getElementById("uAddress").value;
+    const uEmail = uAddress + "@" + emailKind;
     const uPwd = document.getElementById("uPwd").value;
+    const uName = document.getElementById("uName").value;
+    const uTel =
+      document.getElementById("uTel1").value +
+      document.getElementById("uTel2").value +
+      document.getElementById("uTel3").value;
+    const chkAgree = document.getElementById("chkAgree").checked;
 
-    authService
-      .join(uEmail, uPwd)
-      .then((result) => (result === "success" ? navigate("/login") : ""));
+    if (uAddress === "" || uAddress === undefined || uAddress === null) {
+      alert("이메일 주소를 입력해주세요!");
+    } else if (
+      emailKind === "" ||
+      emailKind === undefined ||
+      emailKind === null
+    ) {
+      alert("이메일 종류를 선택해주세요!");
+    } else if (uPwd === "" || uPwd === undefined || uPwd === null) {
+      alert("비밀번호를 입력해주세요!");
+    } else if (uName === "" || uName === undefined || uName === null) {
+      alert("이름을 입력해주세요!");
+    } else if (uTel === "" || uTel === undefined || uTel === null) {
+      alert("전화번호를 입력해주세요!");
+    } else if (!chkAgree) {
+      alert('"동의합니다"를 체크해주세요!');
+    } else {
+      authService
+        .join(uEmail, uPwd)
+        .then((result) => (result === "success" ? navigate("/login") : ""));
+    }
   };
 
   const loadFile = (event) => {
@@ -28,10 +54,26 @@ const JoinPg = ({ authService }) => {
     const cont = document.getElementById("profileImg");
     cont.style.display = "inline-block";
 
+    const resetBtn = document.getElementById("resetImg");
+    resetBtn.style.display = "flex";
+
     const check = document.getElementById("profileCont");
     check.style.display = "none";
 
     URL.revokeObjectURL(event.target.files[0]);
+  };
+
+  const resetProfile = () => {
+    setProfile("");
+
+    const cont = document.getElementById("profileImg");
+    cont.style.display = "none";
+
+    const resetBtn = document.getElementById("resetImg");
+    resetBtn.style.display = "none";
+
+    const check = document.getElementById("profileCont");
+    check.style.display = "flex";
   };
 
   return (
@@ -47,7 +89,7 @@ const JoinPg = ({ authService }) => {
           <Grid item xs={12} md={6} className={styles.formItem}>
             *<label>이메일</label>
             <div className={styles.emailCont}>
-              <input id="uEmail" className={styles.emailInput} type="text" />
+              <input id="uAddress" className={styles.emailInput} type="text" />
               &nbsp;@&nbsp;
               <div className={styles.select}>
                 <Select
@@ -61,11 +103,12 @@ const JoinPg = ({ authService }) => {
             *<label>비밀번호</label>
             <input id="uPwd" type="password" placeholer="비밀번호" />*
             <label>이름</label>
-            <input type="text" placeholer="이름" />*<label>전화번호</label>
+            <input id="uName" type="text" placeholer="이름" />*
+            <label>전화번호</label>
             <div className={styles.phoneNum}>
-              <input type="number" />-
-              <input type="number" />-
-              <input type="number" />
+              <input id="uTel1" type="number" />-
+              <input id="uTel2" type="number" />-
+              <input id="uTel3" type="number" />
             </div>
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
@@ -93,9 +136,18 @@ const JoinPg = ({ authService }) => {
                 src={profile}
                 alt="프로필 이미지"
                 id="profileImg"
+                width="400px"
+                height="400px"
                 className={styles.profileImg}
               ></img>
             </div>
+            <button
+              id="resetImg"
+              className={styles.resetImg}
+              onClick={resetProfile}
+            >
+              <BsArrowClockwise />
+            </button>
           </Grid>
           <Grid item xs={12} className={styles.chkAgreeCont}>
             <label>
@@ -104,8 +156,10 @@ const JoinPg = ({ authService }) => {
             </label>
             <div className={styles.chkAgreeItem}>
               <input
+                id="chkAgree"
                 type="checkbox"
                 name="chkBad"
+                value="checked"
                 className={styles.chkAgree}
               />
               <label htmlFor="chkBad">동의합니다</label>
