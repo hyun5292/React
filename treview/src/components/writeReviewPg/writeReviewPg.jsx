@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./writeReviewPg.module.css";
 import pgStyle from "../../css/page.module.css";
 import { TbBuildingFactory2 } from "react-icons/tb";
 import { RiText } from "react-icons/ri";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 import { MdOutlinePermIdentity, MdOutlineDateRange } from "react-icons/md";
+import { useLocation } from "react-router-dom";
 
 const WriteReview = (props) => {
+  const location = useLocation("");
+  const [fData, setFData] = useState(null);
   const date = new Date();
   const today =
     date.getFullYear() +
@@ -16,18 +19,28 @@ const WriteReview = (props) => {
     date.getDate() +
     "일";
 
+  useEffect(() => {
+    if (location.state) {
+      setFData(location.state.fData);
+    } else {
+      alert("비정상적인 접근입니다!");
+      window.history.go(-1);
+    }
+  }, [location.state]);
+
   return (
     <div className={`${styles.writeReview} ${pgStyle.pgPadding}`}>
       <div className={styles.subTitle}>
         <div>
-          <span className={styles.tSigun}>시군명</span> 리뷰 작성
+          <span className={styles.tSigun}>{fData && fData.SIGUN_NM}</span> 리뷰
+          작성
         </div>
         <BsChatSquareQuoteFill className={styles.subIcon} />
       </div>
       <form action="#" className={styles.writeForm}>
         <div className={styles.fName}>
           <TbBuildingFactory2 />
-          (주)태영지엘에스
+          {fData && fData.BIZPLC_NM}
         </div>
         <div className={styles.formLine}>
           <RiText className={styles.icon} />

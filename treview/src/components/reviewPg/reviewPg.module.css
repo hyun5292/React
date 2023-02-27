@@ -34,6 +34,7 @@
   color: t_white;
   background: t_blue;
   border-radius: 2rem;
+  cursor: pointer;
 }
 .newRBtn:hover {
   background: t_blue_dark;

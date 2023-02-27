@@ -9,6 +9,7 @@ import WriteReview from "./components/writeReviewPg/writeReviewPg";
 import JoinPg from "./components/joinPg/joinPg";
 import { useCallback, useEffect, useState } from "react";
 import Spinner from "./components/spinner/spinner";
+import Footer from "./components/footer/footer";
 
 const App = ({ factoryDB, authService }) => {
   const [uId, setUId] = useState("");
@@ -64,6 +65,9 @@ const App = ({ factoryDB, authService }) => {
             <Route path="/writeReview" element={<WriteReview />}></Route>
           </Routes>
         </BrowserRouter>
+      </div>
+      <div className={styles.footer}>
+        <Footer />
       </div>
     </div>
   );

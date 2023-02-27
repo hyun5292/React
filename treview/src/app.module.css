@@ -1,5 +1,5 @@
 @value t_blue, t_black, t_white from './common/colors.css';
-@value t_minWidth from './common/sizes.css';
+@value t_minWidth, t_minHeight from './common/sizes.css';
 
 html,
 body {
@@ -27,6 +27,7 @@ body {
 
 .container {
   overflow-x: hidden;
+  min-height: t_minHeight;
   z-index: 0;
 }
 

@@ -1,4 +1,4 @@
-@value t_white, t_grey, t_green, t_navy, t_blue, t_black, t_grey from '../../common/colors.css';
+@value t_white, t_grey, t_green, t_navy, t_blue, t_black from '../../common/colors.css';
 
 .header {
   display: flex;
@@ -96,6 +96,18 @@
   transition: width 0.5s;
 }
 
+.gone {
+  display: none;
+}
+
+.notSearched {
+  color: t_grey;
+  cursor: default;
+}
+.notSearched:hover {
+  transform: none !important;
+}
+
 .bar {
   display: inline-block;
   margin: -1rem 0 0;
@@ -128,10 +140,6 @@
 .hamburger:hover .hamBar:last-child {
   transform: rotate(-45deg) translateY(-7px);
   transition: transform 1s;
-}
-
-.gone {
-  display: none;
 }
 
 @media (width < 900px) {

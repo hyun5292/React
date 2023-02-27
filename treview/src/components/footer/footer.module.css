@@ -1,0 +1,12 @@
+@value t_white, t_navy_dark from "../../common/colors.css";
+
+.footer {
+  display: grid;
+  padding: 10px;
+  place-items: center;
+  color: t_white;
+  background: t_navy_dark;
+}
+
+.fText {
+}

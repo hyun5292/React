@@ -37,7 +37,6 @@ class AuthService {
     try {
       await firebaseAuth.signInWithEmailAndPassword(email, password);
 
-      alert(email + "님의 어서오세요! 환영합니다!");
       return "success";
     } catch (err) {
       switch (err.code) {

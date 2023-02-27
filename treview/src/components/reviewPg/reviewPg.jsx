@@ -3,9 +3,10 @@ import ReviewTable from "../reviewTable/reviewTable";
 import styles from "./reviewPg.module.css";
 import pgStyle from "../../css/page.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ReviewPg = (props) => {
+  const navigate = useNavigate();
   const location = useLocation("");
   const [fData, setFData] = useState(null);
 
@@ -17,20 +18,25 @@ const ReviewPg = (props) => {
     <div className={`${styles.reviewPg} ${pgStyle.pgPadding}`}>
       <div className={styles.topBar}>
         <span className={styles.rTitle}>
-          <span className={styles.rSigun}>
-            {fData !== null ? fData.SIGUN_NM : "시군명"}
-          </span>
-          <span className={styles.rBizplc}>
-            {fData !== null ? fData.BIZPLC_NM : "사업장명"}
-          </span>
+          <span className={styles.rSigun}>{fData && fData.SIGUN_NM}</span>
+          <span className={styles.rBizplc}>{fData && fData.BIZPLC_NM}</span>
           리뷰 목록
         </span>
-        <a href="/writeReview" className={styles.newRBtn}>
-          <div className={styles.icon}>
-            <AiOutlinePlus />
+        {fData ? (
+          <div
+            className={styles.newRBtn}
+            onClick={() => navigate(`/writeReview`, { state: { fData } })}
+          >
+            <div className={styles.icon}>
+              <AiOutlinePlus />
+            </div>
+            리뷰 작성하기
           </div>
-          리뷰 작성하기
-        </a>
+        ) : (
+          <a href="/search" className={styles.newRBtn}>
+            리뷰 작성할 공장을 선택해주세요
+          </a>
+        )}
       </div>
       <ReviewTable />
     </div>
