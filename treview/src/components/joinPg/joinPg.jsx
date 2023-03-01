@@ -15,13 +15,15 @@ const JoinPg = ({ authService }) => {
 
   const newJoin = () => {
     const uAddress = document.getElementById("uAddress").value;
+    const uEmail = document.getElementById("uAddress").value + "@" + emailKind;
     const chkAgree = document.getElementById("chkAgree").checked;
     const uTel1 = document.getElementById("uTel1").value;
     const uTel2 = document.getElementById("uTel2").value;
     const uTel3 = document.getElementById("uTel3").value;
 
     const userData = {
-      uEmail: uAddress + "@" + emailKind,
+      uId: uEmail.replace(/[@-^$*+?.()|[\]{}]/g, ""),
+      uEmail: uEmail,
       uPwd: document.getElementById("uPwd").value,
       uName: document.getElementById("uName").value,
       uTel: uTel1 + uTel2 + uTel3,

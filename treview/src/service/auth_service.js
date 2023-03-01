@@ -1,6 +1,6 @@
-import { firebaseAuth, database } from "./firebase";
 import firebase from "firebase/compat/app";
-// import "firebase/database";
+import "firebase/compat/database";
+import { firebaseAuth } from "./firebase";
 
 class AuthService {
   onAuthChange(onUserChanged) {
@@ -16,7 +16,7 @@ class AuthService {
         .then(
           firebase
             .database()
-            .ref("users/" + userData.uEmail)
+            .ref("users/" + userData.uId)
             .set(userData)
         );
 
