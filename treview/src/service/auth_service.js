@@ -1,4 +1,6 @@
-import { firebaseAuth } from "./firebase";
+import { firebaseAuth, database } from "./firebase";
+import firebase from "firebase/compat/app";
+// import "firebase/database";
 
 class AuthService {
   onAuthChange(onUserChanged) {
@@ -7,10 +9,18 @@ class AuthService {
     });
   }
 
-  async join(email, password) {
+  async join(userData) {
     try {
-      await firebaseAuth.createUserWithEmailAndPassword(email, password);
-      alert(email + "님의 회원가입이 완료되었습니다! 환영합니다!");
+      await firebaseAuth
+        .createUserWithEmailAndPassword(userData.uEmail, userData.uPwd)
+        .then(
+          firebase
+            .database()
+            .ref("users/" + userData.uEmail)
+            .set(userData)
+        );
+
+      alert(userData.uEmail + "님의 회원가입이 완료되었습니다! 환영합니다!");
       return "success";
     } catch (err) {
       switch (err.code) {

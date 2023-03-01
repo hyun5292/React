@@ -15,14 +15,18 @@ const JoinPg = ({ authService }) => {
 
   const newJoin = () => {
     const uAddress = document.getElementById("uAddress").value;
-    const uEmail = uAddress + "@" + emailKind;
-    const uPwd = document.getElementById("uPwd").value;
-    const uName = document.getElementById("uName").value;
-    const uTel =
-      document.getElementById("uTel1").value +
-      document.getElementById("uTel2").value +
-      document.getElementById("uTel3").value;
     const chkAgree = document.getElementById("chkAgree").checked;
+    const uTel1 = document.getElementById("uTel1").value;
+    const uTel2 = document.getElementById("uTel2").value;
+    const uTel3 = document.getElementById("uTel3").value;
+
+    const userData = {
+      uEmail: uAddress + "@" + emailKind,
+      uPwd: document.getElementById("uPwd").value,
+      uName: document.getElementById("uName").value,
+      uTel: uTel1 + uTel2 + uTel3,
+      uProfile: profile,
+    };
 
     if (uAddress === "" || uAddress === undefined || uAddress === null) {
       alert("이메일 주소를 입력해주세요!");
@@ -32,17 +36,29 @@ const JoinPg = ({ authService }) => {
       emailKind === null
     ) {
       alert("이메일 종류를 선택해주세요!");
-    } else if (uPwd === "" || uPwd === undefined || uPwd === null) {
+    } else if (
+      userData.uPwd === "" ||
+      userData.uPwd === undefined ||
+      userData.uPwd === null
+    ) {
       alert("비밀번호를 입력해주세요!");
-    } else if (uName === "" || uName === undefined || uName === null) {
+    } else if (
+      userData.uName === "" ||
+      userData.uName === undefined ||
+      userData.uName === null
+    ) {
       alert("이름을 입력해주세요!");
-    } else if (uTel === "" || uTel === undefined || uTel === null) {
+    } else if (uTel1 === "" || uTel1 === undefined || uTel1 === null) {
+      alert("전화번호를 입력해주세요!");
+    } else if (uTel2 === "" || uTel2 === undefined || uTel2 === null) {
+      alert("전화번호를 입력해주세요!");
+    } else if (uTel3 === "" || uTel3 === undefined || uTel3 === null) {
       alert("전화번호를 입력해주세요!");
     } else if (!chkAgree) {
       alert('"동의합니다"를 체크해주세요!');
     } else {
       authService
-        .join(uEmail, uPwd)
+        .join(userData)
         .then((result) => (result === "success" ? navigate("/login") : ""));
     }
   };
