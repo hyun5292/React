@@ -17,7 +17,12 @@ class AuthService {
           firebase
             .database()
             .ref("users/" + userData.uId)
-            .set(userData)
+            .set({
+              uEmail: userData.uEmail,
+              uName: userData.uName,
+              uTel: userData.uTel,
+              uProfile: userData.uProfile,
+            })
         );
 
       alert(userData.uEmail + "님의 회원가입이 완료되었습니다! 환영합니다!");

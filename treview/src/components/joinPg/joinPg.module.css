@@ -39,12 +39,16 @@
 }
 
 .emailInput,
+.selectTel,
+.uTel,
 .select {
   flex: 1 40%;
+  font-size: 1.4rem;
 }
 
 .phoneNum {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
   gap: 10px;
 }

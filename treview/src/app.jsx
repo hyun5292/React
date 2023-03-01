@@ -29,9 +29,8 @@ const App = ({ factoryDB, authService }) => {
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
-        const address = user.email.split("@")[0];
         setUId(user.uid);
-        setUEmail(address);
+        setUEmail(user.email);
       } else {
         authService.logout();
       }
@@ -43,7 +42,7 @@ const App = ({ factoryDB, authService }) => {
   ) : (
     <div className={styles.app}>
       <div className={styles.header}>
-        <Header uEmail={uEmail} onLogout={onLogout} />
+        <Header uEmail={uEmail.split("@")[0]} onLogout={onLogout} />
       </div>
       <div className={styles.container}>
         <BrowserRouter>

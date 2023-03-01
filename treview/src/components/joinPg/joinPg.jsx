@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import styles from "./joinPg.module.css";
 import pStyle from "../../css/page.module.css";
 import EmailList from "../../service/emailList.json";
+import phoneList from "../../service/phone_num_list.json";
 import Select from "../select/select";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 import { BsArrowClockwise } from "react-icons/bs";
@@ -11,24 +12,16 @@ import { BsArrowClockwise } from "react-icons/bs";
 const JoinPg = ({ authService }) => {
   const navigate = useNavigate();
   const [emailKind, setEmailKind] = useState("");
+  const [uTel1, setUTel1] = useState("010");
   const [profile, setProfile] = useState("");
 
-  const newJoin = () => {
+  const checkEmpty = () => {
     const uAddress = document.getElementById("uAddress").value;
-    const uEmail = document.getElementById("uAddress").value + "@" + emailKind;
-    const chkAgree = document.getElementById("chkAgree").checked;
-    const uTel1 = document.getElementById("uTel1").value;
+    const uPwd = document.getElementById("uPwd").value;
+    const uName = document.getElementById("uName").value;
     const uTel2 = document.getElementById("uTel2").value;
     const uTel3 = document.getElementById("uTel3").value;
-
-    const userData = {
-      uId: uEmail.replace(/[@-^$*+?.()|[\]{}]/g, ""),
-      uEmail: uEmail,
-      uPwd: document.getElementById("uPwd").value,
-      uName: document.getElementById("uName").value,
-      uTel: uTel1 + uTel2 + uTel3,
-      uProfile: profile,
-    };
+    const chkAgree = document.getElementById("chkAgree").checked;
 
     if (uAddress === "" || uAddress === undefined || uAddress === null) {
       alert("이메일 주소를 입력해주세요!");
@@ -38,30 +31,50 @@ const JoinPg = ({ authService }) => {
       emailKind === null
     ) {
       alert("이메일 종류를 선택해주세요!");
-    } else if (
-      userData.uPwd === "" ||
-      userData.uPwd === undefined ||
-      userData.uPwd === null
-    ) {
+    } else if (uPwd === "" || uPwd === undefined || uPwd === null) {
       alert("비밀번호를 입력해주세요!");
-    } else if (
-      userData.uName === "" ||
-      userData.uName === undefined ||
-      userData.uName === null
-    ) {
+    } else if (uName === "" || uName === undefined || uName === null) {
       alert("이름을 입력해주세요!");
-    } else if (uTel1 === "" || uTel1 === undefined || uTel1 === null) {
-      alert("전화번호를 입력해주세요!");
     } else if (uTel2 === "" || uTel2 === undefined || uTel2 === null) {
       alert("전화번호를 입력해주세요!");
     } else if (uTel3 === "" || uTel3 === undefined || uTel3 === null) {
       alert("전화번호를 입력해주세요!");
     } else if (!chkAgree) {
       alert('"동의합니다"를 체크해주세요!');
+    } else if (uTel2.length < 3 || uTel2.length > 4) {
+      alert("잘못된 전화번호입니다!");
+      return false;
+    } else if (uTel3.length < 3 || uTel3.length > 4) {
+      alert("잘못된 전화번호입니다!");
+      return false;
     } else {
+      return true;
+    }
+    return false;
+  };
+
+  const newJoin = () => {
+    const uEmail = document.getElementById("uAddress").value + "@" + emailKind;
+    const uTel2 = document.getElementById("uTel2").value;
+    const uTel3 = document.getElementById("uTel3").value;
+
+    const userData = {
+      uId: uEmail.replace(/[@-^$*+?.()|[\]{}]/g, ""),
+      uEmail: uEmail,
+      uPwd: document.getElementById("uPwd").value,
+      uName: document.getElementById("uName").value,
+      uTel: uTel1 + "-" + uTel2 + "-" + uTel3,
+      uProfile: profile,
+    };
+
+    if (checkEmpty()) {
       authService
         .join(userData)
         .then((result) => (result === "success" ? navigate("/login") : ""));
+    } else {
+      alert(
+        "알 수 없는 이유로 회원가입에 실패하였습니다! 죄송합니다!; checkEmpty 오류"
+      );
     }
   };
 
@@ -124,9 +137,18 @@ const JoinPg = ({ authService }) => {
             <input id="uName" type="text" placeholer="이름" />*
             <label>전화번호</label>
             <div className={styles.phoneNum}>
-              <input id="uTel1" type="number" />-
-              <input id="uTel2" type="number" />-
-              <input id="uTel3" type="number" />
+              <div className={styles.uTel}>
+                <Select
+                  className={styles.selectTel}
+                  kindText="010"
+                  ulList={phoneList.phoneList}
+                  setClicked={(phoneNum) => setUTel1(phoneNum)}
+                />
+              </div>
+              -
+              <input className={styles.uTel} id="uTel2" type="number" />
+              -
+              <input className={styles.uTel} id="uTel3" type="number" />
             </div>
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
