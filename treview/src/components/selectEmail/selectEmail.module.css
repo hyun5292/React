@@ -1,0 +1,20 @@
+@value t_blue from "../../common/colors.css";
+
+.selectEmail {
+  position: relative;
+}
+
+.emailKindInput {
+  position: absolute;
+  margin: 0 !important;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  z-index: 3;
+  background: #fff !important;
+}
+
+.icon {
+  color: t_blue;
+}

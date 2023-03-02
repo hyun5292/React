@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./writeReviewPg.module.css";
+import styles from "./reviewWritePg.module.css";
 import pgStyle from "../../css/page.module.css";
 import { TbBuildingFactory2 } from "react-icons/tb";
 import { RiText } from "react-icons/ri";
@@ -7,7 +7,7 @@ import { BsChatSquareQuoteFill } from "react-icons/bs";
 import { MdOutlinePermIdentity, MdOutlineDateRange } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 
-const WriteReview = (props) => {
+const ReviewWrite = (props) => {
   const location = useLocation("");
   const [fData, setFData] = useState(null);
   const date = new Date();
@@ -82,4 +82,4 @@ const WriteReview = (props) => {
   );
 };
 
-export default WriteReview;
+export default ReviewWrite;

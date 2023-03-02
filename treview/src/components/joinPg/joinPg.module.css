@@ -39,11 +39,19 @@
 }
 
 .emailInput,
-.selectTel,
-.uTel,
-.select {
+.uTel {
   flex: 1 40%;
   font-size: 1.4rem;
+}
+
+.uTel:first-child {
+  margin-bottom: 5px;
+}
+
+.select {
+  padding: 1px 0;
+  border: 5px solid t_blue_background;
+  border-radius: 1rem;
 }
 
 .phoneNum {
@@ -106,9 +114,6 @@
 }
 .resetImg:hover {
   background: t_navy;
-}
-
-.formCont {
 }
 
 .formItem {

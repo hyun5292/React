@@ -1,4 +1,4 @@
-@value t_blue, t_grey from '../../common/colors.css';
+@value t_blue, t_grey, t_white from '../../common/colors.css';
 
 .search {
   display: flex;
@@ -16,10 +16,20 @@
   height: 4rem;
 }
 
-.select {
+.selectForm {
+  display: flex;
   flex: 2 1;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
   border-radius: 2rem;
   box-shadow: 3px 3px 4px 0px t_grey;
+  background: t_white;
+}
+
+.select {
+  width: 100%;
+  font-size: 1.2rem;
 }
 
 .searchBar {

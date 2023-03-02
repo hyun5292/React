@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import styles from "./joinPg.module.css";
 import pStyle from "../../css/page.module.css";
-import EmailList from "../../service/emailList.json";
 import phoneList from "../../service/phone_num_list.json";
+import SelectEmail from "../selectEmail/selectEmail";
 import Select from "../select/select";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 import { BsArrowClockwise } from "react-icons/bs";
@@ -66,16 +66,17 @@ const JoinPg = ({ authService }) => {
       uTel: uTel1 + "-" + uTel2 + "-" + uTel3,
       uProfile: profile,
     };
+    console.log("emailKind = ", emailKind);
 
-    if (checkEmpty()) {
-      authService
-        .join(userData)
-        .then((result) => (result === "success" ? navigate("/login") : ""));
-    } else {
-      alert(
-        "알 수 없는 이유로 회원가입에 실패하였습니다! 죄송합니다!; checkEmpty 오류"
-      );
-    }
+    // if (checkEmpty()) {
+    //   authService
+    //     .join(userData)
+    //     .then((result) => (result === "success" ? navigate("/login") : ""));
+    // } else {
+    //   alert(
+    //     "알 수 없는 이유로 회원가입에 실패하였습니다! 죄송합니다!; checkEmpty 오류"
+    //   );
+    // }
   };
 
   const loadFile = (event) => {
@@ -122,13 +123,8 @@ const JoinPg = ({ authService }) => {
             <div className={styles.emailCont}>
               <input id="uAddress" className={styles.emailInput} type="text" />
               &nbsp;@&nbsp;
-              <div className={styles.select}>
-                <Select
-                  className={styles.emailInput}
-                  kindText="이메일"
-                  ulList={EmailList.emailList}
-                  setClicked={(email) => setEmailKind(email)}
-                />
+              <div className={`${styles.emailInput} ${styles.select}`}>
+                <SelectEmail setEKind={setEmailKind} />
               </div>
             </div>
             *<label>비밀번호</label>
@@ -137,7 +133,7 @@ const JoinPg = ({ authService }) => {
             <input id="uName" type="text" placeholer="이름" />*
             <label>전화번호</label>
             <div className={styles.phoneNum}>
-              <div className={styles.uTel}>
+              <div className={`${styles.uTel} ${styles.select}`}>
                 <Select
                   className={styles.selectTel}
                   kindText="010"

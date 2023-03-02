@@ -29,12 +29,14 @@ const FSearchBar = ({ getSchList }) => {
 
   return (
     <div className={styles.search}>
-      <div className={styles.select}>
-        <Select
-          kindText="시군명"
-          ulList={sigun_nm.sigun_nm}
-          setClicked={onSigunClick}
-        />
+      <div className={styles.selectForm}>
+        <div className={styles.select}>
+          <Select
+            kindText="시군명"
+            ulList={sigun_nm.sigun_nm}
+            setClicked={onSigunClick}
+          />
+        </div>
       </div>
       <div className={styles.searchBar}>
         <input

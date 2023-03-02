@@ -5,7 +5,7 @@ import Main from "./components/mainPg/mainPg";
 import Login from "./components/loginPg/loginPg";
 import SearchPg from "./components/searchPg/searchPg";
 import ReviewPg from "./components/reviewPg/reviewPg";
-import WriteReview from "./components/writeReviewPg/writeReviewPg";
+import ReviewWritePg from "./components/reviewWritePg/reviewWritePg";
 import JoinPg from "./components/joinPg/joinPg";
 import { useCallback, useEffect, useState } from "react";
 import Spinner from "./components/spinner/spinner";
@@ -68,7 +68,7 @@ const App = ({ factoryDB, authService }) => {
               element={<SearchPg factoryDB={factoryDB} />}
             ></Route>
             <Route path="/review" element={<ReviewPg />}></Route>
-            <Route path="/writeReview" element={<WriteReview />}></Route>
+            <Route path="/writeReview" element={<ReviewWritePg />}></Route>
           </Routes>
         </BrowserRouter>
       </div>
