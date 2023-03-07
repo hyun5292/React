@@ -7,9 +7,8 @@ import phoneList from "../../service/phone_num_list.json";
 import SelectEmail from "../selectEmail/selectEmail";
 import Select from "../select/select";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
-import { BsArrowClockwise } from "react-icons/bs";
 
-const JoinPg = ({ authService }) => {
+const JoinPg = ({ FileInput, authService }) => {
   const navigate = useNavigate();
   const addressRef = useRef();
   const pwdRef = useRef();
@@ -17,12 +16,9 @@ const JoinPg = ({ authService }) => {
   const tel2Ref = useRef();
   const tel3Ref = useRef();
   const chkAgreeRef = useRef();
-  const profileImgRef = useRef();
-  const resetImgRef = useRef();
-  const profileContRef = useRef();
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("010");
-  const [profile, setProfile] = useState("");
+  const [profile, setProfile] = useState({ fileName: null, fileURL: null });
 
   const checkEmpty = () => {
     const uAddress = addressRef.current.value || "";
@@ -61,7 +57,8 @@ const JoinPg = ({ authService }) => {
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
       uTel: uTel1 + "-" + tel2Ref.current.value + "-" + tel3Ref.current.value,
-      uProfile: profile,
+      uProfileName: profile.fileName,
+      uProfileURL: profile.fileURL,
     };
 
     if (checkEmpty()) {
@@ -72,23 +69,11 @@ const JoinPg = ({ authService }) => {
     }
   };
 
-  const loadFile = (event) => {
-    const file = URL.createObjectURL(event.target.files[0]);
-    setProfile(file);
-
-    profileImgRef.current.style = "display: inline-block;";
-    resetImgRef.current.style = "display: flex;";
-    profileContRef.current.style = "display: none;";
-
-    URL.revokeObjectURL(event.target.files[0]);
-  };
-
-  const resetProfile = () => {
-    setProfile("");
-
-    profileImgRef.current.style = "display: none;";
-    resetImgRef.current.style = "display: none;";
-    profileContRef.current.style = "display: flex;";
+  const onFileChange = (file) => {
+    setProfile({
+      fileName: file.name,
+      fileURL: file.url,
+    });
   };
 
   return (
@@ -135,42 +120,7 @@ const JoinPg = ({ authService }) => {
             </div>
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
-            <div className={styles.inputFileCont}>
-              <input
-                type="file"
-                id="uploadImg"
-                name="uploadImg"
-                style={{ display: "none" }}
-                accept=".jpg, .png"
-                onChange={(event) => loadFile(event)}
-              />
-              <div ref={profileContRef} className={styles.profileCont}>
-                <label htmlFor="uploadImg" className={styles.btnUpload}>
-                  <img
-                    className={styles.uploadImg}
-                    src="./images/uploadImg.png"
-                    alt="이미지 추가"
-                    style={{ width: "6rem", height: "auto" }}
-                  />
-                </label>
-                <label htmlFor="profileText">프로필 사진 추가</label>
-              </div>
-              <img
-                src={profile}
-                alt="프로필 이미지"
-                ref={profileImgRef}
-                width="400px"
-                height="400px"
-                className={styles.profileImg}
-              ></img>
-            </div>
-            <button
-              ref={resetImgRef}
-              className={styles.resetImg}
-              onClick={resetProfile}
-            >
-              <BsArrowClockwise />
-            </button>
+            <FileInput onFileChange={onFileChange} />
           </Grid>
           <Grid item xs={12} className={styles.chkAgreeCont}>
             <label>

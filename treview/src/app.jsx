@@ -11,7 +11,7 @@ import { useCallback, useEffect, useState } from "react";
 import Spinner from "./components/spinner/spinner";
 import Footer from "./components/footer/footer";
 
-const App = ({ factoryDB, authService }) => {
+const App = ({ FileInput, factoryDB, authService }) => {
   const [uId, setUId] = useState("");
   const [uEmail, setUEmail] = useState("");
   const [loading, setLoading] = useState(true);
@@ -61,7 +61,9 @@ const App = ({ factoryDB, authService }) => {
             ></Route>
             <Route
               path="/join"
-              element={<JoinPg authService={authService} />}
+              element={
+                <JoinPg FileInput={FileInput} authService={authService} />
+              }
             ></Route>
             <Route
               path="/search"
