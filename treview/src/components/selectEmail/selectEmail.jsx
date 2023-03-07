@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Select from "../select/select";
 import EmailList from "../../service/emailList.json";
 import styles from "./selectEmail.module.css";
 import { BsArrowRightShort, BsArrowCounterclockwise } from "react-icons/bs";
 
 const SelectEmail = ({ setEKind }) => {
+  const kindRef = useRef();
   const [emailKind, setEmailKind] = useState("");
   const [emailChk, setEmailChk] = useState(false);
 
   const setWriteKind = () => {
-    const eKind = document.getElementById("emailKindInput").value;
+    const eKind = kindRef.current.value;
     setEKind(eKind);
     setEmailChk(true);
     alert("입력되었습니다!");
@@ -25,11 +26,7 @@ const SelectEmail = ({ setEKind }) => {
     <div className={styles.selectEmail}>
       {emailKind === "직접입력" ? (
         <div className={styles.emailKindCont}>
-          <input
-            id="emailKindInput"
-            className={styles.emailKindInput}
-            type="text"
-          />
+          <input ref={kindRef} className={styles.emailKindInput} type="text" />
           <button
             className={emailChk ? styles.emailKindChked : styles.emailKindBtn}
             onClick={setWriteKind}

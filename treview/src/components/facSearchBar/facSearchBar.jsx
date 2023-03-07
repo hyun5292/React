@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./facSearchBar.module.css";
 import sigun_nm from "../../service/sigun_nm_list.json";
 import Select from "../select/select";
 import { BsSearch } from "react-icons/bs";
 
 const FSearchBar = ({ getSchList }) => {
+  const fNameRef = useRef();
   const [sigun, setSigun] = useState("");
   const [fName, setFName] = useState("");
 
@@ -22,9 +23,6 @@ const FSearchBar = ({ getSchList }) => {
       return;
     }
     getSchList({ sigun, fName });
-    setSigun("");
-    setFName("");
-    document.getElementById("inputFName").value = "";
   };
 
   return (
@@ -40,7 +38,7 @@ const FSearchBar = ({ getSchList }) => {
       </div>
       <div className={styles.searchBar}>
         <input
-          id="inputFName"
+          ref={fNameRef}
           type="text"
           className={styles.schInput}
           onChange={onInputChange}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./loginPg.module.css";
 import { FaArrowLeft } from "react-icons/fa";
@@ -6,31 +6,22 @@ import SelectEmail from "../selectEmail/selectEmail";
 
 const LoginPg = ({ authService }) => {
   const navigate = useNavigate();
+  const addressRef = useRef();
+  const pwdRef = useRef();
   const [emailKind, setEmailKind] = useState("");
 
   const onLogin = () => {
-    const emailAddress = document.getElementById("uEmail").value;
+    const emailAddress = addressRef.current.value || "";
     const uEmail = emailAddress + "@" + emailKind;
-    const uPwd = document.getElementById("uPwd").value;
-    console.log(emailKind);
+    const uPwd = pwdRef.current.value || "";
 
-    if (
-      emailAddress === "" ||
-      emailAddress === null ||
-      emailAddress === undefined
-    ) {
-      alert("이메일 주소를 입력해주세요!");
-    } else if (
-      emailKind === "" ||
-      emailKind === null ||
-      emailKind === undefined
-    ) {
+    if (emailAddress === "") alert("이메일 주소를 입력해주세요!");
+    else if (emailKind === "")
       alert(
         "이메일 종류를 선택해주세요!\n직접 입력한 경우 화살표 버튼을 클릭해주세요!"
       );
-    } else if (uPwd === "" || uPwd === null || uPwd === undefined) {
-      alert("비밀번호를 입력해주세요!");
-    } else {
+    else if (uPwd === "") alert("비밀번호를 입력해주세요!");
+    else {
       authService
         .login(uEmail, uPwd)
         .then((result) => (result === "success" ? navigate("/") : ""));
@@ -47,7 +38,7 @@ const LoginPg = ({ authService }) => {
           <div className={styles.inputNm}>이메일</div>
           <div className={styles.emailCont}>
             <input
-              id="uEmail"
+              ref={addressRef}
               className={styles.emailInput}
               type="text"
               placeholder="이메일 주소"
@@ -58,7 +49,7 @@ const LoginPg = ({ authService }) => {
             </div>
           </div>
           <div className={styles.inputNm}>비밀번호</div>
-          <input id="uPwd" type="password" placeholder="비밀번호" />
+          <input ref={pwdRef} type="password" placeholder="비밀번호" />
           <button className={styles.doLoginBtn} onClick={onLogin}>
             로그인
           </button>
