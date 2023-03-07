@@ -30,7 +30,9 @@ const JoinPg = ({ authService }) => {
       emailKind === undefined ||
       emailKind === null
     ) {
-      alert("이메일 종류를 선택해주세요!");
+      alert(
+        "이메일 종류를 선택해주세요!\n직접 입력한 경우 화살표 버튼을 클릭해주세요!"
+      );
     } else if (uPwd === "" || uPwd === undefined || uPwd === null) {
       alert("비밀번호를 입력해주세요!");
     } else if (uName === "" || uName === undefined || uName === null) {
@@ -68,15 +70,12 @@ const JoinPg = ({ authService }) => {
     };
     console.log("emailKind = ", emailKind);
 
-    // if (checkEmpty()) {
-    //   authService
-    //     .join(userData)
-    //     .then((result) => (result === "success" ? navigate("/login") : ""));
-    // } else {
-    //   alert(
-    //     "알 수 없는 이유로 회원가입에 실패하였습니다! 죄송합니다!; checkEmpty 오류"
-    //   );
-    // }
+    if (checkEmpty()) {
+      authService
+        .join(userData)
+        .then(authService.join_data(userData))
+        .then((result) => (result === "success" ? navigate("/login") : ""));
+    }
   };
 
   const loadFile = (event) => {
@@ -124,7 +123,7 @@ const JoinPg = ({ authService }) => {
               <input id="uAddress" className={styles.emailInput} type="text" />
               &nbsp;@&nbsp;
               <div className={`${styles.emailInput} ${styles.select}`}>
-                <SelectEmail setEKind={setEmailKind} />
+                <SelectEmail setEKind={(email) => setEmailKind(email)} />
               </div>
             </div>
             *<label>비밀번호</label>

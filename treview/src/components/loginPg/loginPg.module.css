@@ -67,12 +67,12 @@
   align-items: center;
 }
 
-.emailInput,
-.select {
-  flex: 1 40%;
+.emailInput {
+  flex: 4;
 }
 
 .select {
+  flex: 6;
   font-size: 1.3rem;
 }
 
