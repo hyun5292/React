@@ -18,7 +18,7 @@ const JoinPg = ({ FileInput, authService }) => {
   const chkAgreeRef = useRef();
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("010");
-  const [profile, setProfile] = useState({ fileName: null, fileURL: null });
+  const [profile, setProfile] = useState(null);
 
   const checkEmpty = () => {
     const uAddress = addressRef.current.value || "";
@@ -57,8 +57,7 @@ const JoinPg = ({ FileInput, authService }) => {
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
       uTel: uTel1 + "-" + tel2Ref.current.value + "-" + tel3Ref.current.value,
-      uProfileName: profile.fileName,
-      uProfileURL: profile.fileURL,
+      uProfile: profile,
     };
 
     if (checkEmpty()) {
@@ -67,13 +66,6 @@ const JoinPg = ({ FileInput, authService }) => {
         .then(authService.join_data(userData))
         .then((result) => (result === "success" ? navigate("/login") : ""));
     }
-  };
-
-  const onFileChange = (file) => {
-    setProfile({
-      fileName: file.name,
-      fileURL: file.url,
-    });
   };
 
   return (
@@ -120,7 +112,7 @@ const JoinPg = ({ FileInput, authService }) => {
             </div>
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
-            <FileInput onFileChange={onFileChange} />
+            <FileInput onFileChange={(file) => setProfile(file)} />
           </Grid>
           <Grid item xs={12} className={styles.chkAgreeCont}>
             <label>

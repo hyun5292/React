@@ -1,33 +1,38 @@
-import React, { memo, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import styles from "./image_file_input.module.css";
 import { BsArrowClockwise } from "react-icons/bs";
 
-const ImageFileInput = memo(({ imageUploader, name, onFileChange }) => {
+const ImageFileInput = memo(({ imageUploader, onFileChange }) => {
   const profileImgRef = useRef();
   const resetImgRef = useRef();
   const profileContRef = useRef();
-  const [profile, setProfile] = useState("");
+  const [profile, setProfile] = useState(null);
 
   const loadFile = async (event) => {
-    const uploaded = await imageUploader.upImage(event.target.files[0]);
-    setProfile(uploaded.url);
-    onFileChange({
-      fileName: uploaded.original_filename,
-      fileURL: uploaded.url,
-    });
+    const file = URL.createObjectURL(event.target.files[0]);
+    setProfile(file);
 
     profileImgRef.current.style = "display: inline-block;";
     resetImgRef.current.style = "display: flex;";
     profileContRef.current.style = "display: none;";
+
+    URL.revokeObjectURL(event.target.files[0]);
   };
 
   const resetProfile = () => {
+    setProfile(null);
     onFileChange(null);
 
     profileImgRef.current.style = "display: none;";
     resetImgRef.current.style = "display: none;";
     profileContRef.current.style = "display: flex;";
   };
+
+  useEffect(() => {
+    imageUploader.upImage(profile).then((result) => {
+      console.log("result = ", result);
+    });
+  }, [imageUploader, profile]);
 
   return (
     <div className={styles.inputFileCont}>
