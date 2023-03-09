@@ -17,7 +17,7 @@ class AuthService {
       );
 
       alert(userData.uEmail + "님의 회원가입이 완료되었습니다! 환영합니다!");
-      return "success";
+      return true;
     } catch (err) {
       switch (err.code) {
         case "auth/weak-password":
@@ -37,11 +37,12 @@ class AuthService {
           );
           break;
       }
-      return "Error";
+      return false;
     }
   }
 
   async join_data(userData) {
+    console.log("auth_service userData = ", userData);
     try {
       await firebase
         .database()

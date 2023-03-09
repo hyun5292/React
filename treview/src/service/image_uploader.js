@@ -1,25 +1,28 @@
 import { firebaseStorage } from "./firebase";
-import "firebase/storage";
+import "firebase/compat/storage";
 
 class ImageUploader {
   async upload(profile) {
-    // const profileRef = firebaseStorage
-    //   .ref()
-    //   .child("profiles/" + profile.fileName);
+    const profileRef = firebaseStorage
+      .ref()
+      .child("profiles/" + profile.fileName);
 
-    // try {
-    //   await profileRef.put(profile).then((snapshot) => {
-    //     console.log("Uploaded a blob!; ", snapshot);
-    //   });
-    //   return true;
-    // } catch (err) {
-    //   console.log(
-    //     "이미지 업로드에 문제가 생겼습니다! 정보수정에서 다시 시도해주세요!; ",
-    //     err
-    //   );
-    //   return false;
-    // }
-    console.log("imageUploader profile = ", profile);
+    try {
+      const putProfile = (await profileRef.put(profile)) || false;
+      if (putProfile) {
+        const getImgUrl =
+          profileRef.getDownloadURL().then((url) => {
+            return url;
+          }) || false;
+        return getImgUrl;
+      } else return false;
+    } catch (err) {
+      console.log(
+        "이미지 업로드에 문제가 생겼습니다! 정보수정에서 다시 시도해주세요!; ",
+        err
+      );
+      return false;
+    }
   }
 }
 

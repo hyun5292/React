@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import styles from "./joinPg.module.css";
@@ -7,8 +7,9 @@ import phoneList from "../../dataFile/phone_num_list.json";
 import SelectEmail from "../selectEmail/selectEmail";
 import Select from "../select/select";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
+import ImageFileInput from "../imageFileInput/image_file_input";
 
-const JoinPg = ({ FileInput, authService }) => {
+const JoinPg = memo(({ imageUp, authService }) => {
   const navigate = useNavigate();
   const addressRef = useRef();
   const pwdRef = useRef();
@@ -57,14 +58,19 @@ const JoinPg = ({ FileInput, authService }) => {
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
       uTel: uTel1 + "-" + tel2Ref.current.value + "-" + tel3Ref.current.value,
-      uProfile: profile,
+      uProfile: null,
     };
 
     if (checkEmpty()) {
       authService
-        .join(userData)
-        .then(authService.join_data(userData))
-        .then((result) => (result === "success" ? navigate("/login") : ""));
+        .join(userData) //이메일, 비밀번호로 가입
+        .then(
+          imageUp.upload(profile).then((imgUrl) => {
+            imgUrl ? (userData.uProfile = imgUrl) : (userData.uProfile = null);
+          })
+        ) //프로필 이미지 저장 및 링크 가져오기
+        .then(authService.join_data(userData)) //기타 회원 데이터 등록
+        .then((result) => (result ? navigate("/login") : ""));
     }
   };
 
@@ -112,7 +118,10 @@ const JoinPg = ({ FileInput, authService }) => {
             </div>
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
-            <FileInput onFileChange={(file) => setProfile(file)} />
+            <ImageFileInput
+              imageUp={imageUp}
+              onFileChange={(file) => setProfile(file)}
+            />
           </Grid>
           <Grid item xs={12} className={styles.chkAgreeCont}>
             <label>
@@ -139,6 +148,6 @@ const JoinPg = ({ FileInput, authService }) => {
       </div>
     </div>
   );
-};
+});
 
 export default JoinPg;
