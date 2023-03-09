@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import styles from "./joinPg.module.css";
 import pStyle from "../../css/page.module.css";
-import phoneList from "../../service/phone_num_list.json";
+import phoneList from "../../dataFile/phone_num_list.json";
 import SelectEmail from "../selectEmail/selectEmail";
 import Select from "../select/select";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
@@ -18,7 +18,7 @@ const JoinPg = ({ FileInput, authService }) => {
   const chkAgreeRef = useRef();
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("010");
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState({ fileName: null, fileUrl: null });
 
   const checkEmpty = () => {
     const uAddress = addressRef.current.value || "";

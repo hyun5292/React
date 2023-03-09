@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Select from "../select/select";
-import EmailList from "../../service/emailList.json";
+import EmailList from "../../dataFile/emailList.json";
 import styles from "./selectEmail.module.css";
 import { BsArrowRightShort, BsArrowCounterclockwise } from "react-icons/bs";
 

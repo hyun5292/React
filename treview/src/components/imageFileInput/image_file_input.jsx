@@ -2,15 +2,16 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import styles from "./image_file_input.module.css";
 import { BsArrowClockwise } from "react-icons/bs";
 
-const ImageFileInput = memo(({ imageUploader, onFileChange }) => {
+const ImageFileInput = memo(({ onFileChange, imageUploader }) => {
   const profileImgRef = useRef();
   const resetImgRef = useRef();
   const profileContRef = useRef();
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState({ fileName: null, fileUrl: null });
 
   const loadFile = async (event) => {
-    const file = URL.createObjectURL(event.target.files[0]);
-    setProfile(file);
+    const fName = event.target.files[0].name;
+    const fURL = URL.createObjectURL(event.target.files[0]);
+    setProfile({ fileName: fName, fileUrl: fURL });
 
     profileImgRef.current.style = "display: inline-block;";
     resetImgRef.current.style = "display: flex;";
@@ -20,8 +21,8 @@ const ImageFileInput = memo(({ imageUploader, onFileChange }) => {
   };
 
   const resetProfile = () => {
-    setProfile(null);
-    onFileChange(null);
+    setProfile({ fileName: null, fileUrl: null });
+    onFileChange({ fileName: null, fileUrl: null });
 
     profileImgRef.current.style = "display: none;";
     resetImgRef.current.style = "display: none;";
@@ -29,9 +30,7 @@ const ImageFileInput = memo(({ imageUploader, onFileChange }) => {
   };
 
   useEffect(() => {
-    imageUploader.upImage(profile).then((result) => {
-      console.log("result = ", result);
-    });
+    imageUploader.upload(profile);
   }, [imageUploader, profile]);
 
   return (
@@ -57,7 +56,7 @@ const ImageFileInput = memo(({ imageUploader, onFileChange }) => {
           <label htmlFor="profileText">프로필 사진 추가</label>
         </div>
         <img
-          src={profile}
+          src={profile.fileUrl}
           alt="프로필 이미지"
           ref={profileImgRef}
           width="400px"

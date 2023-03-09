@@ -6,8 +6,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
   text-align: center;
   color: t_grey;
+}
+
+.inputFileCont {
+  flex-direction: row;
 }
 
 .profileImg {
@@ -15,7 +21,7 @@
   object-fit: cover;
 }
 
-.inputFileCont {
+.imgCont {
   width: 100%;
   height: 100%;
   border: 5px solid t_border_grey;

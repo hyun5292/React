@@ -1,4 +1,4 @@
-import sigunList from "./sigun_nm_list.json";
+import sigunList from "../dataFile/sigun_nm_list.json";
 
 class FactoryList {
   constructor(httpClient) {

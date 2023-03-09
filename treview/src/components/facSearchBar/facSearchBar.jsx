@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "./facSearchBar.module.css";
-import sigun_nm from "../../service/sigun_nm_list.json";
+import sigun_nm from "../../dataFile/sigun_nm_list.json";
 import Select from "../select/select";
 import { BsSearch } from "react-icons/bs";
 
