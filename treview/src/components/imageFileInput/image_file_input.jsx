@@ -23,7 +23,7 @@ const ImageFileInput = ({ onFileChange }) => {
 
   const resetProfile = () => {
     setProfile(null);
-    onFileChange({ fileName: null, fileUrl: null });
+    onFileChange({ fileName: "", fileUrl: "" });
 
     profileImgRef.current.style = "display: none;";
     resetImgRef.current.style = "display: none;";

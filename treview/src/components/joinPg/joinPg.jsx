@@ -19,7 +19,7 @@ const JoinPg = memo(({ imageUp, authService }) => {
   const chkAgreeRef = useRef();
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("010");
-  const [profile, setProfile] = useState({ fileName: null, fileUrl: null });
+  const [profile, setProfile] = useState({ fileName: "", fileUrl: "" });
 
   const checkEmpty = () => {
     const uAddress = addressRef.current.value || "";
@@ -58,7 +58,8 @@ const JoinPg = memo(({ imageUp, authService }) => {
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
       uTel: uTel1 + "-" + tel2Ref.current.value + "-" + tel3Ref.current.value,
-      uProfile: null,
+      uProfileName: profile.fileName,
+      uProfileUrl: "",
     };
 
     if (checkEmpty()) {
@@ -66,11 +67,17 @@ const JoinPg = memo(({ imageUp, authService }) => {
         .join(userData) //이메일, 비밀번호로 가입
         .then(
           imageUp.upload(profile).then((imgUrl) => {
-            imgUrl ? (userData.uProfile = imgUrl) : (userData.uProfile = null);
+            imgUrl
+              ? (userData.uProfileUrl = imgUrl)
+              : (userData.uProfileUrl = "");
           })
         ) //프로필 이미지 저장 및 링크 가져오기
         .then(authService.join_data(userData)) //기타 회원 데이터 등록
-        .then((result) => (result ? navigate("/login") : ""));
+        .then((result) => {
+          if (result) {
+            navigate("/");
+          }
+        });
     }
   };
 

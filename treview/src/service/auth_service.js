@@ -17,6 +17,7 @@ class AuthService {
       );
 
       alert(userData.uEmail + "님의 회원가입이 완료되었습니다! 환영합니다!");
+      await firebaseAuth.signOut();
       return true;
     } catch (err) {
       switch (err.code) {
@@ -42,7 +43,6 @@ class AuthService {
   }
 
   async join_data(userData) {
-    console.log("auth_service userData = ", userData);
     try {
       await firebase
         .database()
@@ -51,7 +51,8 @@ class AuthService {
           uEmail: userData.uEmail,
           uName: userData.uName,
           uTel: userData.uTel,
-          uProfile: userData.uProfile,
+          uProfileName: userData.uProfileName,
+          uProfileUrl: userData.uProfileUrl,
         });
     } catch (err) {
       alert(
