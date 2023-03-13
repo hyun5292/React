@@ -9,10 +9,9 @@ const ImageFileInput = ({ onFileChange }) => {
   const [profile, setProfile] = useState(null);
 
   const loadFile = async (event) => {
-    const fName = event.target.files[0].name;
     const fURL = URL.createObjectURL(event.target.files[0]);
     setProfile(fURL);
-    onFileChange({ fileName: fName, fileUrl: fURL });
+    onFileChange(fURL);
 
     profileImgRef.current.style = "display: inline-block;";
     resetImgRef.current.style = "display: flex;";
@@ -23,7 +22,7 @@ const ImageFileInput = ({ onFileChange }) => {
 
   const resetProfile = () => {
     setProfile(null);
-    onFileChange({ fileName: "", fileUrl: "" });
+    onFileChange(null);
 
     profileImgRef.current.style = "display: none;";
     resetImgRef.current.style = "display: none;";

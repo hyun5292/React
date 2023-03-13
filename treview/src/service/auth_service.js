@@ -11,13 +11,29 @@ class AuthService {
 
   async join(userData) {
     try {
-      await firebaseAuth.createUserWithEmailAndPassword(
-        userData.uEmail,
-        userData.uPwd
-      );
-
-      alert(userData.uEmail + "님의 회원가입이 완료되었습니다! 환영합니다!");
-      await firebaseAuth.signOut();
+      await firebaseAuth.signInWithPhoneNumber(userData.uTel).then((result) => {
+        alert(userData.uEmail + "님의 회원가입이 완료되었습니다! 환영합니다!");
+      });
+      // await firebaseAuth
+      //   .createUserWithEmailAndPassword(userData.uEmail, userData.uPwd)
+      //   .then((result) => {
+      //     result.user
+      //       .updateProfile({
+      //         displayName: userData.uName,
+      //         phoneNumber: userData.uTel,
+      //       })
+      //       .catch((err) => {
+      //         alert(
+      //           "죄송합니다! 오류로 인해 회원정보가 등록되지 않았습니다! 회원정보 수정에서 다시 입력해주세요!;",
+      //           err
+      //         );
+      //       });
+      //   })
+      //   .then((result) => {
+      //     alert(
+      //       userData.uEmail + "님의 회원가입이 완료되었습니다! 환영합니다!"
+      //     );
+      //   });
       return true;
     } catch (err) {
       switch (err.code) {
@@ -42,25 +58,25 @@ class AuthService {
     }
   }
 
-  async join_data(userData) {
-    try {
-      await firebase
-        .database()
-        .ref("users/" + userData.uId)
-        .set({
-          uEmail: userData.uEmail,
-          uName: userData.uName,
-          uTel: userData.uTel,
-          uProfileName: userData.uProfileName,
-          //uProfileUrl: userData.uProfileUrl,
-        });
-    } catch (err) {
-      alert(
-        "알 수 없는 이유로 회원 데이터 등록에 실패하였습니다! 죄송합니다!\n회원정보 수정에서 다시 입력해주세요!" +
-          err
-      );
-    }
-  }
+  // async join_data(userData) {
+  //   try {
+  //     await firebase
+  //       .database()
+  //       .ref("users/" + userData.uId)
+  //       .set({
+  //         uEmail: userData.uEmail,
+  //         uName: userData.uName,
+  //         uTel: userData.uTel,
+  //         uProfileName: userData.uProfileName,
+  //         //uProfileUrl: userData.uProfileUrl,
+  //       });
+  //   } catch (err) {
+  //     alert(
+  //       "알 수 없는 이유로 회원 데이터 등록에 실패하였습니다! 죄송합니다!\n회원정보 수정에서 다시 입력해주세요!" +
+  //         err
+  //     );
+  //   }
+  // }
 
   async login(email, password) {
     try {
@@ -83,23 +99,6 @@ class AuthService {
       }
     }
     return "Error";
-  }
-
-  async getImageName(userId) {
-    try {
-      await firebase
-        .database()
-        .ref("users/" + userId)
-        .get()
-        .then((snapshot) => {
-          const pName = Promise.resolve(snapshot.val().uProfileName);
-          return pName;
-        });
-      return;
-    } catch (err) {
-      alert("사용자의 이미지를 찾을 수 없습니다! 죄송합니다!" + err);
-    }
-    return;
   }
 
   async logout() {

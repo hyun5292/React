@@ -48,6 +48,15 @@
   margin-bottom: 5px;
 }
 
+.checkTel {
+  height: 100%;
+  font-size: inherit;
+  background: t_blue;
+}
+.checkTel:hover {
+  background: t_navy;
+}
+
 .select {
   padding: 1px 0;
   border: 5px solid t_blue_background;

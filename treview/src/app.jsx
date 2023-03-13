@@ -11,14 +11,10 @@ import { useCallback, useEffect, useState } from "react";
 import Spinner from "./components/spinner/spinner";
 import Footer from "./components/footer/footer";
 
-const App = ({ firebaseImg, factoryDB, authService }) => {
-  const [uData, setUData] = useState({
-    uId: null,
-    uEmail: null,
-    uProfile: null,
-  });
+const App = ({ imageUploader, factoryDB, authService }) => {
+  const [uData, setUData] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log("uData = ", uData);
+  //user.email.replace(/[@-^$*+?.()|[\]{}]/g, "");
 
   const onLogout = useCallback(() => {
     authService.logout().then(window.location.reload());
@@ -32,14 +28,12 @@ const App = ({ firebaseImg, factoryDB, authService }) => {
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      const userId = user.email.replace(/[@-^$*+?.()|[\]{}]/g, "");
-      const uProfile = authService.getImageName(userId);
-      console.log("uProfile = ", uProfile);
+      console.log("user = ", user);
       if (user) {
         setUData({
-          uId: userId,
+          uId: user.email.replace(/[@-^$*+?.()|[\]{}]/g, ""),
           uEmail: user.email,
-          uProfile: uProfile,
+          uProfile: user.photoURL,
         });
       } else {
         authService.logout();
@@ -53,8 +47,8 @@ const App = ({ firebaseImg, factoryDB, authService }) => {
     <div className={styles.app}>
       <div className={styles.header}>
         <Header
-          firebaseImg={firebaseImg}
-          uEmail={uData.uEmail}
+          imageUploader={imageUploader}
+          uData={uData}
           onLogout={onLogout}
         />
       </div>
@@ -76,7 +70,10 @@ const App = ({ firebaseImg, factoryDB, authService }) => {
             <Route
               path="/join"
               element={
-                <JoinPg firebaseImg={firebaseImg} authService={authService} />
+                <JoinPg
+                  imageUploader={imageUploader}
+                  authService={authService}
+                />
               }
             ></Route>
             <Route
