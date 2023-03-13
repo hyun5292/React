@@ -52,7 +52,7 @@ class AuthService {
           uName: userData.uName,
           uTel: userData.uTel,
           uProfileName: userData.uProfileName,
-          uProfileUrl: userData.uProfileUrl,
+          //uProfileUrl: userData.uProfileUrl,
         });
     } catch (err) {
       alert(
@@ -83,6 +83,23 @@ class AuthService {
       }
     }
     return "Error";
+  }
+
+  async getImageName(userId) {
+    try {
+      await firebase
+        .database()
+        .ref("users/" + userId)
+        .get()
+        .then((snapshot) => {
+          const pName = Promise.resolve(snapshot.val().uProfileName);
+          return pName;
+        });
+      return;
+    } catch (err) {
+      alert("사용자의 이미지를 찾을 수 없습니다! 죄송합니다!" + err);
+    }
+    return;
   }
 
   async logout() {

@@ -9,7 +9,7 @@ import Select from "../select/select";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 import ImageFileInput from "../imageFileInput/image_file_input";
 
-const JoinPg = memo(({ imageUp, authService }) => {
+const JoinPg = memo(({ firebaseImg, authService }) => {
   const navigate = useNavigate();
   const addressRef = useRef();
   const pwdRef = useRef();
@@ -66,7 +66,7 @@ const JoinPg = memo(({ imageUp, authService }) => {
       authService
         .join(userData) //이메일, 비밀번호로 가입
         .then(
-          imageUp.upload(profile).then((imgUrl) => {
+          firebaseImg.upload(profile).then((imgUrl) => {
             imgUrl
               ? (userData.uProfileUrl = imgUrl)
               : (userData.uProfileUrl = "");
@@ -125,10 +125,7 @@ const JoinPg = memo(({ imageUp, authService }) => {
             </div>
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
-            <ImageFileInput
-              imageUp={imageUp}
-              onFileChange={(file) => setProfile(file)}
-            />
+            <ImageFileInput onFileChange={(file) => setProfile(file)} />
           </Grid>
           <Grid item xs={12} className={styles.chkAgreeCont}>
             <label>

@@ -5,7 +5,7 @@ import App from "./app";
 import axios from "axios";
 import FactoryList from "./service/factoryList";
 import AuthService from "./service/auth_service";
-import ImageUploader from "./service/image_uploader";
+import FirebaseImg from "./service/firebase_image";
 
 const httpClient = axios.create({
   baseURL: "https://openapi.gg.go.kr/GeneralCourierService",
@@ -13,11 +13,15 @@ const httpClient = axios.create({
 });
 const factoryDB = new FactoryList(httpClient);
 const authService = new AuthService();
-const imageUp = new ImageUploader();
+const firebaseImg = new FirebaseImg();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App imageUp={imageUp} factoryDB={factoryDB} authService={authService} />
+    <App
+      firebaseImg={firebaseImg}
+      factoryDB={factoryDB}
+      authService={authService}
+    />
   </React.StrictMode>
 );

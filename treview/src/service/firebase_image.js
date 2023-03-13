@@ -1,7 +1,7 @@
 import { firebaseStorage } from "./firebase";
 import "firebase/compat/storage";
 
-class ImageUploader {
+class FirebaseImg {
   async upload(profile) {
     const profileRef = firebaseStorage
       .ref()
@@ -26,4 +26,4 @@ class ImageUploader {
   }
 }
 
-export default ImageUploader;
+export default FirebaseImg;

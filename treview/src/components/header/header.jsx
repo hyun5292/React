@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./header.module.css";
 import {
   BsInfoCircle,
@@ -9,7 +9,11 @@ import {
 } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 
-const Header = ({ uEmail, onLogout }) => {
+const Header = ({ firebaseImg, uEmail, onLogout }) => {
+  useEffect(() => {
+    // firebaseImg.getIm
+  }, []);
+
   return (
     <div className={styles.header}>
       <img
@@ -43,6 +47,7 @@ const Header = ({ uEmail, onLogout }) => {
         {uEmail !== "" ? (
           <>
             <li className={styles.mState}>
+              <img src="" alt="프로필 사진" />
               <span>{uEmail}님</span>
               <button className={styles.logoutBtn} onClick={onLogout}>
                 <FiLogOut className={styles.icon} />

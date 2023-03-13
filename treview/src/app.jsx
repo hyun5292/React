@@ -11,10 +11,14 @@ import { useCallback, useEffect, useState } from "react";
 import Spinner from "./components/spinner/spinner";
 import Footer from "./components/footer/footer";
 
-const App = ({ imageUp, factoryDB, authService }) => {
-  const [uId, setUId] = useState("");
-  const [uEmail, setUEmail] = useState("");
+const App = ({ firebaseImg, factoryDB, authService }) => {
+  const [uData, setUData] = useState({
+    uId: null,
+    uEmail: null,
+    uProfile: null,
+  });
   const [loading, setLoading] = useState(true);
+  console.log("uData = ", uData);
 
   const onLogout = useCallback(() => {
     authService.logout().then(window.location.reload());
@@ -28,21 +32,31 @@ const App = ({ imageUp, factoryDB, authService }) => {
 
   useEffect(() => {
     authService.onAuthChange((user) => {
+      const userId = user.email.replace(/[@-^$*+?.()|[\]{}]/g, "");
+      const uProfile = authService.getImageName(userId);
+      console.log("uProfile = ", uProfile);
       if (user) {
-        setUId(user.uid);
-        setUEmail(user.email);
+        setUData({
+          uId: userId,
+          uEmail: user.email,
+          uProfile: uProfile,
+        });
       } else {
         authService.logout();
       }
     });
-  }, [uId, authService, onLogout]);
+  }, [authService, onLogout]);
 
   return loading ? (
     <Spinner />
   ) : (
     <div className={styles.app}>
       <div className={styles.header}>
-        <Header uEmail={uEmail.split("@")[0]} onLogout={onLogout} />
+        <Header
+          firebaseImg={firebaseImg}
+          uEmail={uData.uEmail}
+          onLogout={onLogout}
+        />
       </div>
       <div className={styles.container}>
         <BrowserRouter>
@@ -61,7 +75,9 @@ const App = ({ imageUp, factoryDB, authService }) => {
             ></Route>
             <Route
               path="/join"
-              element={<JoinPg imageUp={imageUp} authService={authService} />}
+              element={
+                <JoinPg firebaseImg={firebaseImg} authService={authService} />
+              }
             ></Route>
             <Route
               path="/search"
