@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.module.css";
 import App from "./app";

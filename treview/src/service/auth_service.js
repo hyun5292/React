@@ -42,7 +42,7 @@ class AuthService {
     }
   }
 
-  async join_data(userData) {
+  async join_data(userData, imgLink) {
     try {
       await firebase
         .database()
@@ -51,7 +51,7 @@ class AuthService {
           uEmail: userData.uEmail,
           uName: userData.uName,
           uTel: userData.uTel,
-          // uProfile: userData.uProfile
+          uProfile: imgLink,
         });
     } catch (err) {
       alert(

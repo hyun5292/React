@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 
-const Header = ({ imageUploader, uData, onLogout }) => {
+const Header = ({ uData, onLogout }) => {
   useEffect(() => {
     // firebaseImg.getIm
   }, []);
@@ -47,7 +47,6 @@ const Header = ({ imageUploader, uData, onLogout }) => {
         {uData !== null ? (
           <>
             <li className={styles.mState}>
-              <img src="" alt="프로필 사진" />
               <span>{uData.uEmail.split("@")[0]}님</span>
               <button className={styles.logoutBtn} onClick={onLogout}>
                 <FiLogOut className={styles.icon} />

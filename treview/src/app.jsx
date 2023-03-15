@@ -28,12 +28,10 @@ const App = ({ imageUploader, factoryDB, authService }) => {
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      console.log("user = ", user);
       if (user) {
         setUData({
           uId: user.email.replace(/[@-^$*+?.()|[\]{}]/g, ""),
           uEmail: user.email,
-          uProfile: user.photoURL,
         });
       } else {
         authService.logout();

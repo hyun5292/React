@@ -20,7 +20,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const chkAgreeRef = useRef();
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("010");
-  const [profile, setProfile] = useState("");
+  const [profile, setProfile] = useState(null);
 
   const checkEmpty = () => {
     const uAddress = addressRef.current.value.replace(" ", "") || "";
@@ -57,25 +57,22 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
       uTel: uTel1 + tel2Ref.current.value + tel3Ref.current.value,
-      uProfileUrl: profile || "",
+      uProfile: "",
     };
 
     if (checkEmpty()) {
-      authService
-        .join(userData) //이메일, 비밀번호로 가입
-        // .then(
-        //   firebaseImg.upload(profile).then((imgUrl) => {
-        //     imgUrl
-        //       ? (userData.uProfileUrl = imgUrl)
-        //       : (userData.uProfileUrl = "");
-        //   })
-        // ) //프로필 이미지 저장 및 링크 가져오기
-        .then(authService.join_data(userData)) //기타 회원 데이터 등록
-        .then((result) => {
-          if (result) {
-            navigate("/");
+      authService.join(userData).then((result) => {
+        if (result) {
+          if (profile !== null) {
+            imageUploader.uploadImg(profile).then((imgUrl) => {
+              authService.join_data(userData, imgUrl);
+            });
+          } else {
+            authService.join_data(userData, "");
           }
-        });
+          navigate("/");
+        }
+      });
     }
   };
 
@@ -103,24 +100,6 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       <div className={styles.formCont}>
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} className={styles.formItem}>
-            *<label>전화번호</label>
-            <div className={styles.phoneNum}>
-              <div className={`${styles.uTel} ${styles.select}`}>
-                <Select
-                  className={styles.selectTel}
-                  kindText="010"
-                  ulList={phoneList.phoneList}
-                  setClicked={(phoneNum) => setUTel1(phoneNum)}
-                />
-              </div>
-              -
-              <input ref={tel2Ref} className={styles.uTel} type="number" />
-              -
-              <input ref={tel3Ref} className={styles.uTel} type="number" />
-              <button className={styles.checkTel} onClick={newJoin}>
-                인증
-              </button>
-            </div>
             *<label>이메일</label>
             <div className={styles.emailCont}>
               <input
@@ -136,7 +115,22 @@ const JoinPg = memo(({ imageUploader, authService }) => {
             *<label>비밀번호</label>
             <input ref={pwdRef} type="password" placeholer="비밀번호" />*
             <label>이름</label>
-            <input ref={nameRef} type="text" placeholer="이름" />
+            <input ref={nameRef} type="text" placeholer="이름" />*
+            <label>전화번호</label>
+            <div className={styles.phoneNum}>
+              <div className={`${styles.uTel} ${styles.select}`}>
+                <Select
+                  className={styles.selectTel}
+                  kindText="010"
+                  ulList={phoneList.phoneList}
+                  setClicked={(phoneNum) => setUTel1(phoneNum)}
+                />
+              </div>
+              -
+              <input ref={tel2Ref} className={styles.uTel} type="number" />
+              -
+              <input ref={tel3Ref} className={styles.uTel} type="number" />
+            </div>
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
             <ImageFileInput onFileChange={(file) => setProfile(file)} />
