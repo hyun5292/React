@@ -6,7 +6,7 @@ const ImageFileInput = ({ onFileChange }) => {
   const profileImgRef = useRef();
   const resetImgRef = useRef();
   const profileContRef = useRef();
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState("");
 
   const loadFile = async (event) => {
     const fURL = URL.createObjectURL(event.target.files[0]);
@@ -21,8 +21,8 @@ const ImageFileInput = ({ onFileChange }) => {
   };
 
   const resetProfile = () => {
-    setProfile(null);
-    onFileChange(null);
+    setProfile("");
+    onFileChange("");
 
     profileImgRef.current.style = "display: none;";
     resetImgRef.current.style = "display: none;";

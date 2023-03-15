@@ -20,7 +20,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const chkAgreeRef = useRef();
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("010");
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState("");
 
   const checkEmpty = () => {
     const uAddress = addressRef.current.value.replace(" ", "") || "";
@@ -39,9 +39,9 @@ const JoinPg = memo(({ imageUploader, authService }) => {
     else if (uName === "") alert("이름을 입력해주세요!");
     else if (uTel2 === "") alert("전화번호를 입력해주세요!");
     else if (uTel3 === "") alert("전화번호를 입력해주세요!");
-    else if (!chkAgree) alert('"동의합니다"를 체크해주세요!');
     else if (uTel2.length !== 4 || uTel3.length !== 4)
       alert("잘못된 전화번호입니다!");
+    else if (!chkAgree) alert('"동의합니다"를 체크해주세요!');
     else {
       return true;
     }
@@ -57,7 +57,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
       uTel: uTel1 + tel2Ref.current.value + tel3Ref.current.value,
-      uProfileUrl: profile || null,
+      uProfileUrl: profile || "",
     };
 
     if (checkEmpty()) {
@@ -70,7 +70,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
         //       : (userData.uProfileUrl = "");
         //   })
         // ) //프로필 이미지 저장 및 링크 가져오기
-        // .then(authService.join_data(userData)) //기타 회원 데이터 등록
+        .then(authService.join_data(userData)) //기타 회원 데이터 등록
         .then((result) => {
           if (result) {
             navigate("/");
