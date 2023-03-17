@@ -80,7 +80,6 @@ const JoinPg = memo(({ imageUploader, authService }) => {
     if (isMounted.current) {
       authService.onAuthChange((user) => {
         if (user) {
-          alert("비정상적인 접근입니다! 메인화면으로 이동합니다!");
           navigate("/");
         }
       });
