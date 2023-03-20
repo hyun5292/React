@@ -75,6 +75,15 @@ const App = ({ imageUploader, factoryDB, authService }) => {
               }
             ></Route>
             <Route
+              path="/modify"
+              element={
+                <JoinPg
+                  imageUploader={imageUploader}
+                  authService={authService}
+                />
+              }
+            ></Route>
+            <Route
               path="/search"
               element={<SearchPg factoryDB={factoryDB} />}
             ></Route>

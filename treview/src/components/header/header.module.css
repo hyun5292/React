@@ -1,4 +1,4 @@
-@value t_white, t_grey, t_green, t_navy, t_blue, t_black from '../../common/colors.css';
+@value t_white, t_grey, t_green, t_red, t_navy, t_blue, t_black from '../../common/colors.css';
 
 .header {
   display: flex;
@@ -53,12 +53,14 @@
 .mState span {
   transform: translate(0, -3px);
 }
-.mState button {
+.mState .editUData {
+}
+.mState .logoutBtn {
   padding: 0;
-  margin-left: 10px;
   background: none;
 }
-.mState button:hover .icon {
+.mState .logoutBtn:hover .icon,
+.mState .editUData:hover .icon {
   color: t_grey;
   scale: 1.2;
   transition: all 0.3s;

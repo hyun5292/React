@@ -8,6 +8,7 @@ import {
   BsPersonPlus,
 } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
+import { FaUserEdit } from "react-icons/fa";
 
 const Header = ({ uData, onLogout }) => {
   useEffect(() => {
@@ -48,6 +49,10 @@ const Header = ({ uData, onLogout }) => {
           <>
             <li className={styles.mState}>
               <span>{uData.uEmail.split("@")[0]}님</span>
+              <a href="/modify" className={styles.editUData}>
+                <FaUserEdit className={styles.icon} />
+                <div className={styles.gone}>정보수정</div>
+              </a>
               <button className={styles.logoutBtn} onClick={onLogout}>
                 <FiLogOut className={styles.icon} />
                 <div className={styles.gone}>로그아웃</div>
