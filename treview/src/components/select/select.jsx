@@ -3,6 +3,7 @@ import styles from "./select.module.css";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
 const Select = ({ kindText, ulList, setClicked }) => {
+  console.log("kindText Select = ", kindText);
   const [selectChk, setSelectChk] = useState(false);
   const [kind, setKind] = useState("");
 

@@ -11,6 +11,7 @@ import ImageFileInput from "../imageFileInput/image_file_input";
 
 const JoinPg = memo(({ imageUploader, authService }) => {
   const navigate = useNavigate();
+  const isMounted = useRef(false);
   const addressRef = useRef();
   const pwdRef = useRef();
   const nameRef = useRef();
@@ -21,6 +22,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("");
   const [profile, setProfile] = useState(null);
+  console.log("emailKind = ", emailKind);
 
   const checkEmpty = () => {
     const uAddress = addressRef.current.value.replace(" ", "") || "";
@@ -78,22 +80,26 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   };
 
   useEffect(() => {
-    authService.onAuthChange((user) => {
-      if (user) {
-        setIsLogined(true);
-        authService.get_UserData(user.displayName).then((uData) => {
-          addressRef.current.value = uData.uEmail.split("@")[0];
-          setEmailKind(uData.uEmail.split("@")[1]);
-          nameRef.current.value = uData.uName;
-          setUTel1(uData.uTel.substr(0, 3));
-          tel2Ref.current.value = uData.uTel.substr(3, 4);
-          tel3Ref.current.value = uData.uTel.substr(7, 4);
-          setProfile(uData.uProfile);
-        });
-      } else {
-        setIsLogined(false);
-      }
-    });
+    if (isMounted.current) {
+      authService.onAuthChange((user) => {
+        if (user) {
+          setIsLogined(true);
+          authService.get_UserData(user.displayName).then((uData) => {
+            addressRef.current.value = uData.uEmail.split("@")[0];
+            setEmailKind(uData.uEmail.split("@")[1]);
+            nameRef.current.value = uData.uName;
+            setUTel1(uData.uTel.substr(0, 3));
+            tel2Ref.current.value = uData.uTel.substr(3, 4);
+            tel3Ref.current.value = uData.uTel.substr(7, 4);
+            setProfile(uData.uProfile);
+          });
+        } else {
+          setIsLogined(false);
+        }
+      });
+    } else {
+      isMounted.current = true;
+    }
   }, [authService]);
 
   return (
@@ -117,7 +123,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
               &nbsp;@&nbsp;
               <div className={`${styles.emailInput} ${styles.select}`}>
                 <SelectEmail
-                  kindText={emailKind}
+                  loggedEmail={emailKind}
                   setEKind={(email) => setEmailKind(email)}
                 />
               </div>
@@ -137,7 +143,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
               <div className={`${styles.uTel} ${styles.select}`}>
                 <Select
                   className={styles.selectTel}
-                  kindText={uTel1 === "" ? "010" : uTel1}
+                  kindText={uTel1}
                   ulList={phoneList.phoneList}
                   setClicked={(phoneNum) => setUTel1(phoneNum)}
                 />
