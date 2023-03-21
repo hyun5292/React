@@ -2,7 +2,8 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./loginPg.module.css";
 import { FaArrowLeft } from "react-icons/fa";
-import SelectEmail from "../selectEmail/selectEmail";
+import Select from "../select/select";
+import EmailList from "../../dataFile/emailList.json";
 
 const LoginPg = ({ authService }) => {
   const navigate = useNavigate();
@@ -45,7 +46,11 @@ const LoginPg = ({ authService }) => {
             />
             &nbsp;@&nbsp;
             <div className={styles.select}>
-              <SelectEmail setEKind={(email) => setEmailKind(email)} />
+              <Select
+                kindText="이메일"
+                ulList={EmailList.emailList}
+                setClicked={(email) => setEmailKind(email)}
+              />
             </div>
           </div>
           <div className={styles.inputNm}>비밀번호</div>

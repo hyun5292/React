@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./select.module.css";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import { BsArrowRightShort, BsArrowCounterclockwise } from "react-icons/bs";
 
 const Select = ({ kindText, ulList, setClicked }) => {
-  console.log("kindText Select = ", kindText);
-  const [selectChk, setSelectChk] = useState(false);
+  const kindRef = useRef();
   const [kind, setKind] = useState("");
+  const [selectChk, setSelectChk] = useState(false);
+  const [writeChk, setWriteChk] = useState(false);
 
   const onItemClick = (sg) => {
     setSelectChk(false);
@@ -13,8 +15,34 @@ const Select = ({ kindText, ulList, setClicked }) => {
     setClicked(sg);
   };
 
+  const onWriteKind = () => {
+    const eKind = kindRef.current.value;
+    setKind(eKind);
+    setWriteChk(true);
+    alert("입력되었습니다!");
+  };
+
+  useEffect(() => {
+    if (kind !== "직접입력") {
+      setKind(kind);
+    }
+  }, [kind]);
+
   return (
     <div className={styles.select}>
+      {kind === "직접입력" ? (
+        <div className={styles.inputCont}>
+          <input ref={kindRef} className={styles.inputKind} type="text" />
+          <button
+            className={writeChk ? styles.KindChked : styles.KindNotChked}
+            onClick={onWriteKind}
+          >
+            {writeChk ? <BsArrowCounterclockwise /> : <BsArrowRightShort />}
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
       <div
         className={styles.selectBtn}
         onClick={() => {
