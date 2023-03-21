@@ -4,7 +4,8 @@ import EmailList from "../../dataFile/emailList.json";
 import styles from "./selectEmail.module.css";
 import { BsArrowRightShort, BsArrowCounterclockwise } from "react-icons/bs";
 
-const SelectEmail = ({ setEKind }) => {
+const SelectEmail = ({ kindText, setEKind }) => {
+  console.log("kindText selectEmail = ", kindText);
   const kindRef = useRef();
   const [emailKind, setEmailKind] = useState("");
   const [emailChk, setEmailChk] = useState(false);
@@ -38,7 +39,7 @@ const SelectEmail = ({ setEKind }) => {
         ""
       )}
       <Select
-        kindText="이메일"
+        kindText={kindText ? kindText : "이메일"}
         ulList={EmailList.emailList}
         setClicked={setEmailKind}
       />

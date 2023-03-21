@@ -11,15 +11,15 @@ import ImageFileInput from "../imageFileInput/image_file_input";
 
 const JoinPg = memo(({ imageUploader, authService }) => {
   const navigate = useNavigate();
-  const isMounted = useRef(false);
   const addressRef = useRef();
   const pwdRef = useRef();
   const nameRef = useRef();
   const tel2Ref = useRef();
   const tel3Ref = useRef();
   const chkAgreeRef = useRef();
+  const [islogined, setIsLogined] = useState(false);
   const [emailKind, setEmailKind] = useState("");
-  const [uTel1, setUTel1] = useState("010");
+  const [uTel1, setUTel1] = useState("");
   const [profile, setProfile] = useState(null);
 
   const checkEmpty = () => {
@@ -37,6 +37,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       );
     else if (uPwd === "") alert("비밀번호를 입력해주세요!");
     else if (uName === "") alert("이름을 입력해주세요!");
+    else if (uTel1 === "") setUTel1("010");
     else if (uTel2 === "") alert("전화번호를 입력해주세요!");
     else if (uTel3 === "") alert("전화번호를 입력해주세요!");
     else if (uTel2.length !== 4 || uTel3.length !== 4)
@@ -77,16 +78,23 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   };
 
   useEffect(() => {
-    if (isMounted.current) {
-      authService.onAuthChange((user) => {
-        if (user) {
-          navigate("/");
-        }
-      });
-    } else {
-      isMounted.current = true;
-    }
-  }, [authService, navigate]);
+    authService.onAuthChange((user) => {
+      if (user) {
+        setIsLogined(true);
+        authService.get_UserData(user.displayName).then((uData) => {
+          addressRef.current.value = uData.uEmail.split("@")[0];
+          setEmailKind(uData.uEmail.split("@")[1]);
+          nameRef.current.value = uData.uName;
+          setUTel1(uData.uTel.substr(0, 3));
+          tel2Ref.current.value = uData.uTel.substr(3, 4);
+          tel3Ref.current.value = uData.uTel.substr(7, 4);
+          setProfile(uData.uProfile);
+        });
+      } else {
+        setIsLogined(false);
+      }
+    });
+  }, [authService]);
 
   return (
     <div className={`${styles.joinPg} ${pStyle.pgPadding}`}>
@@ -108,19 +116,28 @@ const JoinPg = memo(({ imageUploader, authService }) => {
               />
               &nbsp;@&nbsp;
               <div className={`${styles.emailInput} ${styles.select}`}>
-                <SelectEmail setEKind={(email) => setEmailKind(email)} />
+                <SelectEmail
+                  kindText={emailKind}
+                  setEKind={(email) => setEmailKind(email)}
+                />
               </div>
             </div>
-            *<label>비밀번호</label>
-            <input ref={pwdRef} type="password" placeholer="비밀번호" />*
-            <label>이름</label>
+            {islogined ? (
+              ""
+            ) : (
+              <>
+                *<label>비밀번호</label>
+                <input ref={pwdRef} type="password" placeholer="비밀번호" />
+              </>
+            )}
+            *<label>이름</label>
             <input ref={nameRef} type="text" placeholer="이름" />*
             <label>전화번호</label>
             <div className={styles.phoneNum}>
               <div className={`${styles.uTel} ${styles.select}`}>
                 <Select
                   className={styles.selectTel}
-                  kindText="010"
+                  kindText={uTel1 === "" ? "010" : uTel1}
                   ulList={phoneList.phoneList}
                   setClicked={(phoneNum) => setUTel1(phoneNum)}
                 />
@@ -130,29 +147,45 @@ const JoinPg = memo(({ imageUploader, authService }) => {
               -
               <input ref={tel3Ref} className={styles.uTel} type="number" />
             </div>
+            {islogined ? (
+              <label className={styles.loginedAgree}>
+                악의적인 리뷰를 남길 경우 통보없이 자체적으로 리뷰가 삭제되거나
+                <br />
+                탈퇴 될 수 있습니다
+              </label>
+            ) : (
+              ""
+            )}
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
-            <ImageFileInput onFileChange={(file) => setProfile(file)} />
+            <ImageFileInput
+              uProfile={profile}
+              onFileChange={(file) => setProfile(file)}
+            />
           </Grid>
-          <Grid item xs={12} className={styles.chkAgreeCont}>
-            <label>
-              악의적인 리뷰를 남길 경우 자체적으로 리뷰가 삭제되거나 탈퇴 될 수
-              있습니다
-            </label>
-            <div className={styles.chkAgreeItem}>
-              <input
-                ref={chkAgreeRef}
-                type="checkbox"
-                name="chkBad"
-                value="checked"
-                className={styles.chkAgree}
-              />
-              <label htmlFor="chkBad">동의합니다</label>
-            </div>
-          </Grid>
+          {islogined ? (
+            ""
+          ) : (
+            <Grid item xs={12} className={styles.chkAgreeCont}>
+              <label>
+                악의적인 리뷰를 남길 경우 통보없이 자체적으로 리뷰가 삭제되거나
+                탈퇴 될 수 있습니다
+              </label>
+              <div className={styles.chkAgreeItem}>
+                <input
+                  ref={chkAgreeRef}
+                  type="checkbox"
+                  name="chkBad"
+                  value="checked"
+                  className={styles.chkAgree}
+                />
+                <label htmlFor="chkBad">동의합니다</label>
+              </div>
+            </Grid>
+          )}
           <Grid item xs={12}>
             <button className={styles.joinBtn} onClick={newJoin}>
-              가입하기
+              {islogined ? <span>수정하기</span> : <span>가입하기</span>}
             </button>
           </Grid>
         </Grid>

@@ -14,6 +14,18 @@ class AuthService {
       await firebaseAuth
         .createUserWithEmailAndPassword(userData.uEmail, userData.uPwd)
         .then((result) => {
+          result.user
+            .updateProfile({
+              displayName: userData.uId,
+            })
+            .catch((err) => {
+              alert(
+                "죄송합니다! 오류로 인해 회원정보가 등록되지 않았습니다! 회원정보 수정에서 다시 입력해주세요!;",
+                err
+              );
+            });
+        })
+        .then((result) => {
           alert(
             userData.uEmail + "님의 회원가입이 완료되었습니다! 환영합니다!"
           );
@@ -87,6 +99,28 @@ class AuthService {
   async logout() {
     await firebaseAuth.signOut();
     return;
+  }
+
+  async get_UserData(uId) {
+    try {
+      const result = await firebase
+        .database()
+        .ref("users/" + uId)
+        .get()
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            return snapshot.val();
+          } else {
+            return false;
+          }
+        });
+      return result;
+    } catch (err) {
+      alert(
+        "알 수 없는 이유로 데이터를 가져오는데에 실패하였습니다! 죄송합니다!;" +
+          err
+      );
+    }
   }
 }
 

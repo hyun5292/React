@@ -49,10 +49,12 @@ const Header = ({ uData, onLogout }) => {
           <>
             <li className={styles.mState}>
               <span>{uData.uEmail.split("@")[0]}님</span>
-              <a href="/modify" className={styles.editUData}>
-                <FaUserEdit className={styles.icon} />
+              <button className={styles.editUData}>
+                <a href="/modify">
+                  <FaUserEdit className={styles.icon} />
+                </a>
                 <div className={styles.gone}>정보수정</div>
-              </a>
+              </button>
               <button className={styles.logoutBtn} onClick={onLogout}>
                 <FiLogOut className={styles.icon} />
                 <div className={styles.gone}>로그아웃</div>

@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./image_file_input.module.css";
 import { BsArrowClockwise } from "react-icons/bs";
 
-const ImageFileInput = ({ onFileChange }) => {
+const ImageFileInput = ({ uProfile, onFileChange }) => {
   const profileImgRef = useRef();
   const resetImgRef = useRef();
   const profileContRef = useRef();
@@ -29,6 +29,15 @@ const ImageFileInput = ({ onFileChange }) => {
     profileContRef.current.style = "display: flex;";
   };
 
+  useEffect(() => {
+    if (uProfile) {
+      setProfile(uProfile);
+      profileImgRef.current.style = "display: inline-block;";
+      resetImgRef.current.style = "display: flex;";
+      profileContRef.current.style = "display: none;";
+    }
+  }, [uProfile]);
+
   return (
     <div className={styles.inputFileCont}>
       <div className={styles.imgCont}>
@@ -52,7 +61,7 @@ const ImageFileInput = ({ onFileChange }) => {
           <label htmlFor="profileText">프로필 사진 추가</label>
         </div>
         <img
-          src={profile}
+          src={uProfile ? uProfile : profile}
           alt="프로필 이미지"
           ref={profileImgRef}
           width="400px"

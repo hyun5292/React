@@ -1,4 +1,4 @@
-@value t_white, t_grey, t_green, t_red, t_navy, t_blue, t_black from '../../common/colors.css';
+@value t_white, t_grey, t_green, t_navy, t_blue, t_black from '../../common/colors.css';
 
 .header {
   display: flex;
@@ -51,11 +51,11 @@
   color: t_navy;
 }
 .mState span {
+  margin-right: 10px;
   transform: translate(0, -3px);
 }
-.mState .editUData {
-}
-.mState .logoutBtn {
+.logoutBtn,
+.editUData {
   padding: 0;
   background: none;
 }
@@ -116,7 +116,7 @@
   width: 1px;
   height: 15px;
   background: t_grey;
-  transform: translate(0, 19px);
+  transform: translate(0, 22px);
 }
 
 .hamburger {

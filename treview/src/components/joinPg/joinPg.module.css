@@ -74,6 +74,12 @@
   padding-right: 20px !important;
 }
 
+.loginedAgree {
+  display: block;
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
 .chkAgreeCont {
   display: flex;
   flex-direction: column !important;
@@ -98,6 +104,7 @@
 }
 
 .joinBtn {
+  margin-top: 1rem;
   width: 100%;
   font-size: 1.5rem;
   background: t_blue;
