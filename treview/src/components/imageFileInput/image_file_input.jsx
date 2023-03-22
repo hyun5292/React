@@ -11,7 +11,7 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
   const loadFile = async (event) => {
     const imgFile = URL.createObjectURL(event.target.files[0]);
     setProfile(imgFile);
-    onFileChange(event.target.files[0]);
+    onFileChange({ public_id: null, url: event.target.files[0] });
 
     profileImgRef.current.style = "display: inline-block;";
     resetImgRef.current.style = "display: flex;";
@@ -21,8 +21,7 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
   };
 
   const resetProfile = () => {
-    setProfile("");
-    onFileChange(null);
+    onFileChange({ public_id: null, url: null });
 
     profileImgRef.current.style = "display: none;";
     resetImgRef.current.style = "display: none;";
@@ -30,8 +29,7 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
   };
 
   useEffect(() => {
-    if (uProfile) {
-      setProfile(uProfile);
+    if (uProfile !== null) {
       profileImgRef.current.style = "display: inline-block;";
       resetImgRef.current.style = "display: flex;";
       profileContRef.current.style = "display: none;";
@@ -61,8 +59,8 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
           <label htmlFor="profileText">프로필 사진 추가</label>
         </div>
         <img
-          src={uProfile ? uProfile : profile}
           alt="프로필 이미지"
+          src={uProfile ? uProfile : profile}
           ref={profileImgRef}
           width="400px"
           height="400px"

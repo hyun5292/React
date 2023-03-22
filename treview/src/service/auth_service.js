@@ -54,7 +54,7 @@ class AuthService {
     }
   }
 
-  async join_data(userData, imgLink) {
+  async join_data(userData, imgData) {
     try {
       await firebase
         .database()
@@ -63,7 +63,8 @@ class AuthService {
           uEmail: userData.uEmail,
           uName: userData.uName,
           uTel: userData.uTel,
-          uProfile: imgLink,
+          uProfileURL: imgData.url,
+          uProfileID: imgData.public_id,
         });
     } catch (err) {
       alert(
@@ -120,6 +121,25 @@ class AuthService {
         "알 수 없는 이유로 데이터를 가져오는데에 실패하였습니다! 죄송합니다!;" +
           err
       );
+    }
+  }
+
+  async update_uData(userData, newProfile) {
+    try {
+      await firebase
+        .database()
+        .ref("users/" + userData.uId)
+        .update({
+          uEmail: userData.uEmail,
+          uName: userData.uName,
+          uTel: userData.uTel,
+          uProfile: newProfile,
+        })
+        .then(() => {
+          alert("정보수정 완료되었습니다!");
+        });
+    } catch (err) {
+      alert("알 수 없는 이유로 정보수정에 실패하였습니다! 죄송합니다!;" + err);
     }
   }
 }

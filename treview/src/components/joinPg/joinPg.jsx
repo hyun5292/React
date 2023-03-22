@@ -20,7 +20,8 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const [islogined, setIsLogined] = useState(false);
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("");
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState({ public_id: null, url: null });
+  const [newProfile, setNewProfile] = useState({ public_id: null, url: null });
 
   const checkEmpty = () => {
     const uTel2 = tel2Ref.current.value.replace(" ", "") || "";
@@ -63,8 +64,8 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       authService.join(userData).then((result) => {
         if (result) {
           if (profile !== null) {
-            imageUploader.uploadImg(profile).then((imgUrl) => {
-              authService.join_data(userData, imgUrl);
+            imageUploader.uploadImg(newProfile.url).then((imgData) => {
+              authService.join_data(userData, imgData);
             });
           } else {
             authService.join_data(userData, "");
@@ -78,7 +79,8 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const modifyData = (user) => {
     const userData = checkEmpty();
     if (userData) {
-      // 기존 사진 삭제, 새 사진 추가
+      // 기존 사진 삭제
+      // 새 사진 추가
       const newProfile = imageUploader.uploadImg(profile).then((imgUrl) => {
         return imgUrl;
       });
@@ -89,7 +91,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      if (user) {
+      if (user !== null) {
         setIsLogined(true);
         authService.get_UserData(user.displayName).then((uData) => {
           addressRef.current.value = uData.uEmail.split("@")[0];
@@ -98,7 +100,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
           setUTel1(uData.uTel.substr(0, 3));
           tel2Ref.current.value = uData.uTel.substr(3, 4);
           tel3Ref.current.value = uData.uTel.substr(7, 4);
-          setProfile(uData.uProfile);
+          setProfile({ public_id: uData.uProfileID, url: uData.uProfileURL });
         });
       } else {
         setIsLogined(false);
@@ -173,8 +175,8 @@ const JoinPg = memo(({ imageUploader, authService }) => {
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
             <ImageFileInput
-              uProfile={profile}
-              onFileChange={(file) => setProfile(file)}
+              uProfile={profile.url || null}
+              onFileChange={(file) => setNewProfile(file)}
             />
           </Grid>
           {islogined ? (
