@@ -23,33 +23,9 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const [profile, setProfile] = useState(null);
 
   const checkEmpty = () => {
-    const uAddress = addressRef.current.value.replace(" ", "") || "";
-    const uPwd = pwdRef.current.value.replace(" ", "") || "";
-    const uName = nameRef.current.value.replace(" ", "") || "";
     const uTel2 = tel2Ref.current.value.replace(" ", "") || "";
     const uTel3 = tel3Ref.current.value.replace(" ", "") || "";
     const chkAgree = chkAgreeRef.current.checked || false;
-
-    if (uAddress === "") alert("이메일 주소를 입력해주세요!");
-    else if (emailKind === "")
-      alert(
-        "이메일 종류를 선택해주세요!\n직접 입력한 경우 화살표 버튼을 클릭해주세요!"
-      );
-    else if (uPwd === "") alert("비밀번호를 입력해주세요!");
-    else if (uName === "") alert("이름을 입력해주세요!");
-    else if (uTel1 === "") setUTel1("010");
-    else if (uTel2 === "") alert("전화번호를 입력해주세요!");
-    else if (uTel3 === "") alert("전화번호를 입력해주세요!");
-    else if (uTel2.length !== 4 || uTel3.length !== 4)
-      alert("잘못된 전화번호입니다!");
-    else if (!chkAgree) alert('"동의합니다"를 체크해주세요!');
-    else {
-      return true;
-    }
-    return false;
-  };
-
-  const newJoin = () => {
     const uEmail = addressRef.current.value + "@" + emailKind;
 
     const userData = {
@@ -57,11 +33,33 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       uEmail: uEmail,
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
-      uTel: uTel1 + tel2Ref.current.value + tel3Ref.current.value,
+      uTel: uTel1 + uTel2 + uTel3,
       uProfile: "",
     };
 
-    if (checkEmpty()) {
+    if (userData.uId === "") alert("이메일 주소를 입력해주세요!");
+    else if (emailKind === "")
+      alert(
+        "이메일 종류를 선택해주세요!\n직접 입력한 경우 화살표 버튼을 클릭해주세요!"
+      );
+    else if (userData.uPwd === "") alert("비밀번호를 입력해주세요!");
+    else if (userData.uName === "") alert("이름을 입력해주세요!");
+    else if (uTel1 === "") setUTel1("010");
+    else if (uTel2 === "") alert("전화번호를 입력해주세요!");
+    else if (uTel3 === "") alert("전화번호를 입력해주세요!");
+    else if (uTel2.length !== 3 && uTel2.length !== 4)
+      alert("잘못된 전화번호입니다!");
+    else if (uTel3.length !== 4) alert("잘못된 전화번호입니다!");
+    else if (!chkAgree) alert('"동의합니다"를 체크해주세요!');
+    else {
+      return userData;
+    }
+    return false;
+  };
+
+  const newJoin = () => {
+    const userData = checkEmpty();
+    if (userData) {
       authService.join(userData).then((result) => {
         if (result) {
           if (profile !== null) {
@@ -77,7 +75,17 @@ const JoinPg = memo(({ imageUploader, authService }) => {
     }
   };
 
-  const modifyData = (user) => {};
+  const modifyData = (user) => {
+    const userData = checkEmpty();
+    if (userData) {
+      // 기존 사진 삭제, 새 사진 추가
+      const newProfile = imageUploader.uploadImg(profile).then((imgUrl) => {
+        return imgUrl;
+      });
+      // 개인정보 업데이트
+      authService.update_uData(userData, newProfile).then(navigate("/"));
+    }
+  };
 
   useEffect(() => {
     authService.onAuthChange((user) => {
@@ -119,7 +127,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
               &nbsp;@&nbsp;
               <div className={`${styles.emailInput} ${styles.select}`}>
                 <Select
-                  kindText={emailKind}
+                  kindText={emailKind ? emailKind : "이메일"}
                   ulList={EmailList.emailList}
                   setClicked={(email) => setEmailKind(email)}
                 />
@@ -139,7 +147,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
             <div className={styles.phoneNum}>
               <div className={`${styles.uTel} ${styles.select}`}>
                 <Select
-                  kindText={uTel1}
+                  kindText={uTel1 ? uTel1 : "010"}
                   ulList={phoneList.phoneList}
                   setClicked={(phoneNum) => setUTel1(phoneNum)}
                 />
@@ -150,11 +158,15 @@ const JoinPg = memo(({ imageUploader, authService }) => {
               <input ref={tel3Ref} className={styles.uTel} type="number" />
             </div>
             {islogined ? (
-              <label className={styles.loginedAgree}>
-                악의적인 리뷰를 남길 경우 통보없이 자체적으로 리뷰가 삭제되거나
-                <br />
-                탈퇴 될 수 있습니다
-              </label>
+              <>
+                <label className={styles.loginedAgree}>
+                  악의적인 리뷰를 남길 경우 통보없이 자체적으로 리뷰가
+                  삭제되거나
+                  <br />
+                  탈퇴 될 수 있습니다
+                </label>
+                <button className={styles.withDrawBtn}>탈퇴하기</button>
+              </>
             ) : (
               ""
             )}
@@ -187,7 +199,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
           )}
           <Grid item xs={12}>
             <button className={styles.joinBtn} onClick={newJoin}>
-              {islogined ? <span>수정하기</span> : <span>가입하기</span>}
+              <span>가입하기</span>
             </button>
           </Grid>
         </Grid>

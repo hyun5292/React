@@ -80,6 +80,15 @@
   line-height: 1.5;
 }
 
+.withDrawBtn {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  background: t_grey;
+}
+.withDrawBtn:hover {
+  background: t_red;
+}
+
 .chkAgreeCont {
   display: flex;
   flex-direction: column !important;
@@ -105,9 +114,11 @@
 
 .joinBtn {
   margin-top: 1rem;
-  width: 100%;
   font-size: 1.5rem;
   background: t_blue;
+}
+.joinBtn {
+  width: 100%;
 }
 .joinBtn:hover {
   background: t_navy;

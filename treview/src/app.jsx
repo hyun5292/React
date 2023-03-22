@@ -7,7 +7,7 @@ import SearchPg from "./components/searchPg/searchPg";
 import ReviewPg from "./components/reviewPg/reviewPg";
 import ReviewWritePg from "./components/reviewWritePg/reviewWritePg";
 import JoinPg from "./components/joinPg/joinPg";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Spinner from "./components/spinner/spinner";
 import Footer from "./components/footer/footer";
 
@@ -37,18 +37,14 @@ const App = ({ imageUploader, factoryDB, authService }) => {
         authService.logout();
       }
     });
-  }, [authService, onLogout]);
+  }, [authService]);
 
   return loading ? (
     <Spinner />
   ) : (
     <div className={styles.app}>
       <div className={styles.header}>
-        <Header
-          imageUploader={imageUploader}
-          uData={uData}
-          onLogout={onLogout}
-        />
+        <Header uData={uData} onLogout={onLogout} />
       </div>
       <div className={styles.container}>
         <BrowserRouter>

@@ -11,10 +11,6 @@ import { FiLogOut } from "react-icons/fi";
 import { FaUserEdit } from "react-icons/fa";
 
 const Header = ({ uData, onLogout }) => {
-  useEffect(() => {
-    // firebaseImg.getIm
-  }, []);
-
   return (
     <div className={styles.header}>
       <img
