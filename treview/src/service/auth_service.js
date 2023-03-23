@@ -55,7 +55,6 @@ class AuthService {
   }
 
   async join_data(userData, imgData) {
-    console.log(imgData);
     try {
       await firebase
         .database()

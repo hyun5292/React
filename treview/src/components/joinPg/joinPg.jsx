@@ -63,7 +63,6 @@ const JoinPg = memo(({ imageUploader, authService }) => {
     if (userData) {
       authService.join(userData).then((result) => {
         if (result) {
-          if (profile !== null) {
             imageUploader.uploadImg(newProfile).then((imgData) => {
               authService.join_data(userData, imgData);
             });
@@ -77,36 +76,38 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   };
 
   const modifyData = (user) => {
-    // const userData = checkEmpty();
-    // if (userData) {
-    // 기존 사진 삭제
-    // 새 사진 추가
-    // const newProfile = imageUploader.uploadImg(profile).then((imgUrl) => {
-    //   return imgUrl;
-    // });
-    // 개인정보 업데이트
-    //authService.update_uData(userData, newProfile).then(navigate("/"));
-    // }
-    imageUploader.deleteImg(profile).then((result) => {
-      if (result) {
-        setProfile({});
-        console.log("modifyData result = ", result);
-      }
-    });
+    const userData = checkEmpty();
+    if (userData) {
+      // 기존 사진 삭제
+      // 새 사진 추가
+      const newProfileData = imageUploader
+        .uploadImg(newProfile)
+        .then((imgUrl) => {
+          return imgUrl;
+        });
+      // 개인정보 업데이트
+      authService.update_uData(userData, newProfileData).then(navigate("/"));
+    }
   };
 
   useEffect(() => {
     authService.onAuthChange((user) => {
+      console.log("user = ", user);
       if (user !== null) {
         setIsLogined(true);
-        authService.get_UserData(user.displayName).then((uData) => {
-          addressRef.current.value = uData.uEmail.split("@")[0];
-          setEmailKind(uData.uEmail.split("@")[1]);
-          nameRef.current.value = uData.uName;
-          setUTel1(uData.uTel.substr(0, 3));
-          tel2Ref.current.value = uData.uTel.substr(3, 4);
-          tel3Ref.current.value = uData.uTel.substr(7, 4);
-          setProfile({ public_id: uData.uProfileID, url: uData.uProfileURL });
+        authService.get_UserData(user.displayName).then((userData) => {
+          addressRef.current.value = userData.uEmail;
+          setEmailKind(userData.uEmail.split("@")[1]);
+          nameRef.current.value = userData.uName;
+          setUTel1(userData.uTel.substr(0, 3));
+          tel2Ref.current.value = userData.uTel.substr(3, 4);
+          tel3Ref.current.value = userData.uTel.substr(7, 4);
+          setProfile({
+            signature: userData.uProfileSIG,
+            timestamp: userData.uProfileTIME,
+            public_id: userData.uProfileID,
+            url: userData.uProfileURL,
+          });
         });
       } else {
         setIsLogined(false);
@@ -125,26 +126,36 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       <div className={styles.formCont}>
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} className={styles.formItem}>
-            *<label>이메일</label>
-            <div className={styles.emailCont}>
-              <input
-                ref={addressRef}
-                className={styles.emailInput}
-                type="text"
-              />
-              &nbsp;@&nbsp;
-              <div className={`${styles.emailInput} ${styles.select}`}>
-                <Select
-                  kindText={emailKind ? emailKind : "이메일"}
-                  ulList={EmailList.emailList}
-                  setClicked={(email) => setEmailKind(email)}
-                />
-              </div>
-            </div>
             {islogined ? (
-              ""
+              <>
+                <label>이메일</label>
+                <div className={styles.emailCont}>
+                  <input
+                    disabled
+                    ref={addressRef}
+                    className={styles.emailInput}
+                    type="text"
+                  />
+                </div>
+              </>
             ) : (
               <>
+                *<label>이메일</label>
+                <div className={styles.emailCont}>
+                  <input
+                    ref={addressRef}
+                    className={styles.emailInput}
+                    type="text"
+                  />
+                  &nbsp;@&nbsp;
+                  <div className={`${styles.emailInput} ${styles.select}`}>
+                    <Select
+                      kindText={emailKind ? emailKind : "이메일"}
+                      ulList={EmailList.emailList}
+                      setClicked={(email) => setEmailKind(email)}
+                    />
+                  </div>
+                </div>
                 *<label>비밀번호</label>
                 <input ref={pwdRef} type="password" placeholer="비밀번호" />
               </>

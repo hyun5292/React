@@ -11,10 +11,9 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
   const loadFile = async (event) => {
     const imgFile = URL.createObjectURL(event.target.files[0]);
     setProfile(imgFile);
-    const timestamp = Math.round(new Date().getTime() / 1000);
     onFileChange({
       signature: null,
-      timestamp: timestamp,
+      timestamp: null,
       public_id: event.target.files[0].name,
       url: event.target.files[0],
     });
