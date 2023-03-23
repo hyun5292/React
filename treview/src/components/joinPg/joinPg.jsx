@@ -63,6 +63,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
     if (userData) {
       authService.join(userData).then((result) => {
         if (result) {
+          if (newProfile !== null) {
             imageUploader.uploadImg(newProfile).then((imgData) => {
               authService.join_data(userData, imgData);
             });
