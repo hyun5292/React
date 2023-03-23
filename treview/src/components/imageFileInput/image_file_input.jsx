@@ -11,7 +11,13 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
   const loadFile = async (event) => {
     const imgFile = URL.createObjectURL(event.target.files[0]);
     setProfile(imgFile);
-    onFileChange({ public_id: null, url: event.target.files[0] });
+    const timestamp = Math.round(new Date().getTime() / 1000);
+    onFileChange({
+      signature: null,
+      timestamp: timestamp,
+      public_id: event.target.files[0].name,
+      url: event.target.files[0],
+    });
 
     profileImgRef.current.style = "display: inline-block;";
     resetImgRef.current.style = "display: flex;";
@@ -21,7 +27,7 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
   };
 
   const resetProfile = () => {
-    onFileChange({ public_id: null, url: null });
+    onFileChange({});
 
     profileImgRef.current.style = "display: none;";
     resetImgRef.current.style = "display: none;";

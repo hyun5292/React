@@ -55,6 +55,7 @@ class AuthService {
   }
 
   async join_data(userData, imgData) {
+    console.log(imgData);
     try {
       await firebase
         .database()
@@ -63,8 +64,10 @@ class AuthService {
           uEmail: userData.uEmail,
           uName: userData.uName,
           uTel: userData.uTel,
-          uProfileURL: imgData.url,
+          uProfileTIME: imgData.timestamp,
+          uProfileSIG: imgData.signature,
           uProfileID: imgData.public_id,
+          uProfileURL: imgData.url,
         });
     } catch (err) {
       alert(
@@ -133,7 +136,10 @@ class AuthService {
           uEmail: userData.uEmail,
           uName: userData.uName,
           uTel: userData.uTel,
-          uProfile: newProfile,
+          uProfileTIME: newProfile.timestamp,
+          uProfileSIG: newProfile.signature,
+          uProfileID: newProfile.public_id,
+          uProfileURL: newProfile.url,
         })
         .then(() => {
           alert("정보수정 완료되었습니다!");

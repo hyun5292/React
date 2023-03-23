@@ -20,8 +20,8 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const [islogined, setIsLogined] = useState(false);
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("");
-  const [profile, setProfile] = useState({ public_id: null, url: null });
-  const [newProfile, setNewProfile] = useState({ public_id: null, url: null });
+  const [profile, setProfile] = useState({});
+  const [newProfile, setNewProfile] = useState({});
 
   const checkEmpty = () => {
     const uTel2 = tel2Ref.current.value.replace(" ", "") || "";
@@ -64,7 +64,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       authService.join(userData).then((result) => {
         if (result) {
           if (profile !== null) {
-            imageUploader.uploadImg(newProfile.url).then((imgData) => {
+            imageUploader.uploadImg(newProfile).then((imgData) => {
               authService.join_data(userData, imgData);
             });
           } else {
@@ -77,16 +77,22 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   };
 
   const modifyData = (user) => {
-    const userData = checkEmpty();
-    if (userData) {
-      // 기존 사진 삭제
-      // 새 사진 추가
-      const newProfile = imageUploader.uploadImg(profile).then((imgUrl) => {
-        return imgUrl;
-      });
-      // 개인정보 업데이트
-      authService.update_uData(userData, newProfile).then(navigate("/"));
-    }
+    // const userData = checkEmpty();
+    // if (userData) {
+    // 기존 사진 삭제
+    // 새 사진 추가
+    // const newProfile = imageUploader.uploadImg(profile).then((imgUrl) => {
+    //   return imgUrl;
+    // });
+    // 개인정보 업데이트
+    //authService.update_uData(userData, newProfile).then(navigate("/"));
+    // }
+    imageUploader.deleteImg(profile).then((result) => {
+      if (result) {
+        setProfile({});
+        console.log("modifyData result = ", result);
+      }
+    });
   };
 
   useEffect(() => {
@@ -200,9 +206,15 @@ const JoinPg = memo(({ imageUploader, authService }) => {
             </Grid>
           )}
           <Grid item xs={12}>
-            <button className={styles.joinBtn} onClick={newJoin}>
-              <span>가입하기</span>
-            </button>
+            {islogined ? (
+              <button className={styles.joinBtn} onClick={modifyData}>
+                <span>수정하기</span>
+              </button>
+            ) : (
+              <button className={styles.joinBtn} onClick={newJoin}>
+                <span>가입하기</span>
+              </button>
+            )}
           </Grid>
         </Grid>
       </div>

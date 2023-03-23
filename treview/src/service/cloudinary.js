@@ -1,6 +1,3 @@
-import { fill } from "@cloudinary/url-gen/actions/resize";
-import { CloudinaryImage } from "@cloudinary/url-gen";
-
 // import { v2 as cloudinary } from "cloudinary";
 
 // cloudinary.config({
@@ -10,4 +7,4 @@ import { CloudinaryImage } from "@cloudinary/url-gen";
 //   secure: true,
 // });
 
-// export default cloudinary;
+// export { cloudinary };
