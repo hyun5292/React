@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState, useEffect } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import styles from "./joinPg.module.css";
@@ -17,104 +17,85 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const tel2Ref = useRef();
   const tel3Ref = useRef();
   const chkAgreeRef = useRef();
-  const [islogined, setIsLogined] = useState(false);
   const [emailKind, setEmailKind] = useState("");
-  const [uTel1, setUTel1] = useState("");
-  const [profile, setProfile] = useState({});
-  const [newProfile, setNewProfile] = useState({});
+  const [uTel1, setUTel1] = useState("010");
+  const [newProfile, setNewProfile] = useState(null);
 
   const checkEmpty = () => {
-    const uTel2 = tel2Ref.current.value.replace(" ", "") || "";
-    const uTel3 = tel3Ref.current.value.replace(" ", "") || "";
-    const chkAgree = chkAgreeRef.current.checked || false;
-    const uEmail = addressRef.current.value + "@" + emailKind;
-
-    const userData = {
-      uId: uEmail.replace(/[@-^$*+?.()|[\]{}]/g, ""),
-      uEmail: uEmail,
+    const newData = {
+      uId: (addressRef.current.value + emailKind).replace(
+        /[@-^$*+?.()|[\]{}]/g,
+        ""
+      ),
+      uEmail: addressRef.current.value + "@" + emailKind,
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
-      uTel: uTel1 + uTel2 + uTel3,
-      uProfile: "",
+      uTel: uTel1 + "-" + tel2Ref.current.value + "-" + tel3Ref.current.value,
+      uProfileID: "",
+      uProfileSIG: "",
+      uProfileTIME: "",
+      uProfileURL: "",
     };
 
-    if (userData.uId === "") alert("이메일 주소를 입력해주세요!");
-    else if (emailKind === "")
+    if (addressRef.current.value === "") {
+      alert("이메일 주소를 입력해주세요!");
+      addressRef.current.focus();
+    } else if (emailKind === "") {
       alert(
         "이메일 종류를 선택해주세요!\n직접 입력한 경우 화살표 버튼을 클릭해주세요!"
       );
-    else if (userData.uPwd === "") alert("비밀번호를 입력해주세요!");
-    else if (userData.uName === "") alert("이름을 입력해주세요!");
-    else if (uTel1 === "") setUTel1("010");
-    else if (uTel2 === "") alert("전화번호를 입력해주세요!");
-    else if (uTel3 === "") alert("전화번호를 입력해주세요!");
-    else if (uTel2.length !== 3 && uTel2.length !== 4)
+      addressRef.current.focus();
+    } else if (pwdRef.current.value === "") {
+      alert("비밀번호를 입력해주세요!");
+      pwdRef.current.focus();
+    } else if (nameRef.current.value === "") {
+      alert("이름을 입력해주세요!");
+      nameRef.current.focus();
+    } else if (tel2Ref.current.value === "") {
+      alert("전화번호를 입력해주세요!");
+      tel2Ref.current.focus();
+    } else if (tel3Ref.current.value === "") {
+      alert("전화번호를 입력해주세요!");
+      tel3Ref.current.focus();
+    } else if (
+      tel2Ref.current.value.length !== 3 &&
+      tel2Ref.current.value.length !== 4
+    ) {
       alert("잘못된 전화번호입니다!");
-    else if (uTel3.length !== 4) alert("잘못된 전화번호입니다!");
-    else if (!chkAgree) alert('"동의합니다"를 체크해주세요!');
+      tel2Ref.current.focus();
+    } else if (tel3Ref.current.value.length !== 4) {
+      alert("잘못된 전화번호입니다!");
+      tel3Ref.current.focus();
+    } else if (!chkAgreeRef.current.checked)
+      alert('"동의합니다"를 체크해주세요!');
     else {
-      return userData;
+      return newData;
     }
     return false;
   };
 
   const newJoin = () => {
-    const userData = checkEmpty();
-    if (userData) {
-      authService.join(userData).then((result) => {
+    const uData = checkEmpty();
+
+    if (uData) {
+      authService.join(uData).then((result) => {
         if (result) {
           if (newProfile !== null) {
             imageUploader.uploadImg(newProfile).then((imgData) => {
-              authService.join_data(userData, imgData);
+              authService.join_data(uData, imgData);
             });
-          } else {
-            authService.join_data(userData, "");
-          }
-          navigate("/");
+          } else authService.join_data(uData, "");
         }
+        navigate("/");
       });
-    }
-  };
-
-  const modifyData = (user) => {
-    const userData = checkEmpty();
-    if (userData) {
-      // 기존 사진 삭제
-      // 새 사진 추가
-      const newProfileData = imageUploader
-        .uploadImg(newProfile)
-        .then((imgUrl) => {
-          return imgUrl;
-        });
-      // 개인정보 업데이트
-      authService.update_uData(userData, newProfileData).then(navigate("/"));
     }
   };
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      console.log("user = ", user);
-      if (user !== null) {
-        setIsLogined(true);
-        authService.get_UserData(user.displayName).then((userData) => {
-          addressRef.current.value = userData.uEmail;
-          setEmailKind(userData.uEmail.split("@")[1]);
-          nameRef.current.value = userData.uName;
-          setUTel1(userData.uTel.substr(0, 3));
-          tel2Ref.current.value = userData.uTel.substr(3, 4);
-          tel3Ref.current.value = userData.uTel.substr(7, 4);
-          setProfile({
-            signature: userData.uProfileSIG,
-            timestamp: userData.uProfileTIME,
-            public_id: userData.uProfileID,
-            url: userData.uProfileURL,
-          });
-        });
-      } else {
-        setIsLogined(false);
-      }
+      if (user) navigate("/");
     });
-  }, [authService]);
+  }, [authService, navigate]);
 
   return (
     <div className={`${styles.joinPg} ${pStyle.pgPadding}`}>
@@ -127,47 +108,31 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       <div className={styles.formCont}>
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} className={styles.formItem}>
-            {islogined ? (
-              <>
-                <label>이메일</label>
-                <div className={styles.emailCont}>
-                  <input
-                    disabled
-                    ref={addressRef}
-                    className={styles.emailInput}
-                    type="text"
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                *<label>이메일</label>
-                <div className={styles.emailCont}>
-                  <input
-                    ref={addressRef}
-                    className={styles.emailInput}
-                    type="text"
-                  />
-                  &nbsp;@&nbsp;
-                  <div className={`${styles.emailInput} ${styles.select}`}>
-                    <Select
-                      kindText={emailKind ? emailKind : "이메일"}
-                      ulList={EmailList.emailList}
-                      setClicked={(email) => setEmailKind(email)}
-                    />
-                  </div>
-                </div>
-                *<label>비밀번호</label>
-                <input ref={pwdRef} type="password" placeholer="비밀번호" />
-              </>
-            )}
-            *<label>이름</label>
+            *<label>이메일</label>
+            <div className={styles.emailCont}>
+              <input
+                ref={addressRef}
+                className={styles.emailInput}
+                type="text"
+              />
+              &nbsp;@&nbsp;
+              <div className={`${styles.emailInput} ${styles.select}`}>
+                <Select
+                  kindText={emailKind ? emailKind : "이메일"}
+                  ulList={EmailList.emailList}
+                  setClicked={(email) => setEmailKind(email)}
+                />
+              </div>
+            </div>
+            *<label>비밀번호</label>
+            <input ref={pwdRef} type="password" placeholer="비밀번호" />*
+            <label>이름</label>
             <input ref={nameRef} type="text" placeholer="이름" />*
             <label>전화번호</label>
             <div className={styles.phoneNum}>
               <div className={`${styles.uTel} ${styles.select}`}>
                 <Select
-                  kindText={uTel1 ? uTel1 : "010"}
+                  kindText={uTel1}
                   ulList={phoneList.phoneList}
                   setClicked={(phoneNum) => setUTel1(phoneNum)}
                 />
@@ -177,56 +142,33 @@ const JoinPg = memo(({ imageUploader, authService }) => {
               -
               <input ref={tel3Ref} className={styles.uTel} type="number" />
             </div>
-            {islogined ? (
-              <>
-                <label className={styles.loginedAgree}>
-                  악의적인 리뷰를 남길 경우 통보없이 자체적으로 리뷰가
-                  삭제되거나
-                  <br />
-                  탈퇴 될 수 있습니다
-                </label>
-                <button className={styles.withDrawBtn}>탈퇴하기</button>
-              </>
-            ) : (
-              ""
-            )}
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
             <ImageFileInput
-              uProfile={profile.url || null}
+              uProfile={null}
               onFileChange={(file) => setNewProfile(file)}
             />
           </Grid>
-          {islogined ? (
-            ""
-          ) : (
-            <Grid item xs={12} className={styles.chkAgreeCont}>
-              <label>
-                악의적인 리뷰를 남길 경우 통보없이 자체적으로 리뷰가 삭제되거나
-                탈퇴 될 수 있습니다
-              </label>
-              <div className={styles.chkAgreeItem}>
-                <input
-                  ref={chkAgreeRef}
-                  type="checkbox"
-                  name="chkBad"
-                  value="checked"
-                  className={styles.chkAgree}
-                />
-                <label htmlFor="chkBad">동의합니다</label>
-              </div>
-            </Grid>
-          )}
+          <Grid item xs={12} className={styles.chkAgreeCont}>
+            <label>
+              악의적인 리뷰를 남길 경우 통보없이 자체적으로 리뷰가 삭제되거나
+              탈퇴 될 수 있습니다
+            </label>
+            <div className={styles.chkAgreeItem}>
+              <input
+                ref={chkAgreeRef}
+                type="checkbox"
+                name="chkBad"
+                value="checked"
+                className={styles.chkAgree}
+              />
+              <label htmlFor="chkBad">동의합니다</label>
+            </div>
+          </Grid>
           <Grid item xs={12}>
-            {islogined ? (
-              <button className={styles.joinBtn} onClick={modifyData}>
-                <span>수정하기</span>
-              </button>
-            ) : (
-              <button className={styles.joinBtn} onClick={newJoin}>
-                <span>가입하기</span>
-              </button>
-            )}
+            <button className={styles.joinBtn} onClick={newJoin}>
+              가입하기
+            </button>
           </Grid>
         </Grid>
       </div>

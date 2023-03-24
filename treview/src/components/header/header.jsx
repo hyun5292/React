@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./header.module.css";
 import {
   BsInfoCircle,
@@ -10,7 +10,7 @@ import {
 import { FiLogOut } from "react-icons/fi";
 import { FaUserEdit } from "react-icons/fa";
 
-const Header = ({ uData, onLogout }) => {
+const Header = ({ uId, onLogout }) => {
   return (
     <div className={styles.header}>
       <img
@@ -41,10 +41,10 @@ const Header = ({ uData, onLogout }) => {
           </a>
         </li>
         <span className={styles.bar} />
-        {uData !== null ? (
+        {uId ? (
           <>
             <li className={styles.mState}>
-              <span>{uData.uEmail.split("@")[0]}님</span>
+              <span>{uId}님</span>
               <button className={styles.editUData}>
                 <a href="/modify">
                   <FaUserEdit className={styles.icon} />

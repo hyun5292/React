@@ -25,7 +25,7 @@ class AuthService {
               );
             });
         })
-        .then((result) => {
+        .then(() => {
           alert(
             userData.uEmail + "님의 회원가입이 완료되었습니다! 환영합니다!"
           );
@@ -63,10 +63,10 @@ class AuthService {
           uEmail: userData.uEmail,
           uName: userData.uName,
           uTel: userData.uTel,
-          uProfileTIME: imgData.timestamp,
-          uProfileSIG: imgData.signature,
-          uProfileID: imgData.public_id,
-          uProfileURL: imgData.url,
+          uProfileSIG: imgData.uProfileSIG || "",
+          uProfileTIME: imgData.uProfileTIME || "",
+          uProfileID: imgData.uProfileID || "",
+          uProfileURL: imgData.uProfileURL || "",
         });
     } catch (err) {
       alert(
@@ -126,7 +126,8 @@ class AuthService {
     }
   }
 
-  async update_uData(userData, newProfile) {
+  async update_uData(userData, imgData) {
+    console.log("update_uData = ", imgData);
     try {
       await firebase
         .database()
@@ -135,17 +136,19 @@ class AuthService {
           uEmail: userData.uEmail,
           uName: userData.uName,
           uTel: userData.uTel,
-          uProfileTIME: newProfile.timestamp,
-          uProfileSIG: newProfile.signature,
-          uProfileID: newProfile.public_id,
-          uProfileURL: newProfile.url,
+          uProfileTIME: imgData.uProfileTIME,
+          uProfileSIG: imgData.uProfileSIG,
+          uProfileID: imgData.uProfileID,
+          uProfileURL: imgData.uProfileURL,
         })
         .then(() => {
           alert("정보수정 완료되었습니다!");
         });
+      return true;
     } catch (err) {
       alert("알 수 없는 이유로 정보수정에 실패하였습니다! 죄송합니다!;" + err);
     }
+    return false;
   }
 }
 

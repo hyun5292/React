@@ -1,21 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./image_file_input.module.css";
 import { BsArrowClockwise } from "react-icons/bs";
+import Spinner from "../spinner/spinner";
 
 const ImageFileInput = ({ uProfile, onFileChange }) => {
   const profileImgRef = useRef();
   const resetImgRef = useRef();
   const profileContRef = useRef();
   const [profile, setProfile] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const loadFile = async (event) => {
     const imgFile = URL.createObjectURL(event.target.files[0]);
     setProfile(imgFile);
-    onFileChange({
-      signature: null,
-      timestamp: null,
-      public_id: event.target.files[0].name,
-      url: event.target.files[0],
+    onFileChange((before) => {
+      return {
+        ...before,
+        uProfileURL: event.target.files[0],
+        uProfileLink: imgFile,
+      };
     });
 
     profileImgRef.current.style = "display: inline-block;";
@@ -26,7 +29,14 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
   };
 
   const resetProfile = () => {
-    onFileChange({});
+    setProfile("");
+    onFileChange({
+      uProfileID: "",
+      uProfileSIG: "",
+      uProfileTIME: "",
+      uProfileURL: "",
+      uProfileLink: "",
+    });
 
     profileImgRef.current.style = "display: none;";
     resetImgRef.current.style = "display: none;";
@@ -34,14 +44,26 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
   };
 
   useEffect(() => {
-    if (uProfile !== null) {
-      profileImgRef.current.style = "display: inline-block;";
-      resetImgRef.current.style = "display: flex;";
-      profileContRef.current.style = "display: none;";
-    }
-  }, [uProfile]);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
 
-  return (
+  useEffect(() => {
+    if (uProfile !== "" && uProfile !== null) {
+      setProfile(uProfile);
+      setTimeout(() => {
+        profileImgRef.current.style = "display: inline-block;";
+        resetImgRef.current.style = "display: flex;";
+        profileContRef.current.style = "display: none;";
+      }, 600);
+    }
+  }, [loading, uProfile]);
+
+  return loading ? (
+    <Spinner />
+  ) : (
     <div className={styles.inputFileCont}>
       <div className={styles.imgCont}>
         <input

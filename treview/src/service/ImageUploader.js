@@ -9,7 +9,7 @@ class ImageUploader {
       data.append("api_secret", process.env.REACT_APP_CLOUDINARY_API_SECRET);
       data.append("upload_preset", "treview");
       data.append("timestamp", timestamp);
-      data.append("file", imgFile.url);
+      data.append("file", imgFile.uProfileURL);
 
       const config = {
         header: { "Content-Type": "multipart/form-data" },
@@ -23,12 +23,12 @@ class ImageUploader {
         )
         .then((result) => {
           const imgData = {
-            signature: result.data.signature,
-            timestamp: timestamp,
-            public_id: result.data.public_id,
-            url: result.data.url,
+            uProfileSIG: result.data.signature,
+            uProfileTIME: timestamp,
+            uProfileID: result.data.public_id,
+            uProfileURL: result.data.url,
           };
-          console.log("result = ", result);
+
           return imgData;
         });
       return result;

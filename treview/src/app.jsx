@@ -7,32 +7,30 @@ import SearchPg from "./components/searchPg/searchPg";
 import ReviewPg from "./components/reviewPg/reviewPg";
 import ReviewWritePg from "./components/reviewWritePg/reviewWritePg";
 import JoinPg from "./components/joinPg/joinPg";
-import { useCallback, useEffect, useRef, useState } from "react";
+import ModifyPg from "./components/modifyPg/modifyPg";
+import { useCallback, useEffect, useState } from "react";
 import Spinner from "./components/spinner/spinner";
 import Footer from "./components/footer/footer";
 
 const App = ({ imageUploader, factoryDB, authService }) => {
-  const [uData, setUData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  //user.email.replace(/[@-^$*+?.()|[\]{}]/g, "");
+  const [uId, setUId] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onLogout = useCallback(() => {
     authService.logout().then(window.location.reload());
   }, [authService]);
 
   useEffect(() => {
+    setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 1000);
   }, []);
 
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
-        setUData({
-          uId: user.email.replace(/[@-^$*+?.()|[\]{}]/g, ""),
-          uEmail: user.email,
-        });
+        setUId(user.email.split("@")[0]);
       } else {
         authService.logout();
       }
@@ -44,7 +42,7 @@ const App = ({ imageUploader, factoryDB, authService }) => {
   ) : (
     <div className={styles.app}>
       <div className={styles.header}>
-        <Header uData={uData} onLogout={onLogout} />
+        <Header uId={uId || null} onLogout={onLogout} />
       </div>
       <div className={styles.container}>
         <BrowserRouter>
@@ -73,7 +71,7 @@ const App = ({ imageUploader, factoryDB, authService }) => {
             <Route
               path="/modify"
               element={
-                <JoinPg
+                <ModifyPg
                   imageUploader={imageUploader}
                   authService={authService}
                 />
