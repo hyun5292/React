@@ -17,7 +17,11 @@ class FactoryList {
       const factoryList = [];
       result.map((list) => {
         factoryList.push({
-          F_ID: list.BIZPLC_NM + "-" + list.REFINE_ROADNM_ADDR,
+          F_ID: (list.SIGUN_CD + list.REFINE_ROADNM_ADDR).replace(
+            /\s[@-^$*+?.()|[\]{}]/g,
+            ""
+          ),
+          SIGUN_CD: list.SIGUN_CD,
           SIGUN_NM: list.SIGUN_NM,
           BIZPLC_NM: list.BIZPLC_NM,
           REFINE_ROADNM_ADDR: list.REFINE_ROADNM_ADDR,
@@ -49,7 +53,11 @@ class FactoryList {
       sigunList.map((sItem) => {
         if (sItem.BIZPLC_NM.includes(query.fName))
           factoryList.push({
-            F_ID: sItem.BIZPLC_NM + "-" + sItem.REFINE_ROADNM_ADDR,
+            F_ID: (sItem.SIGUN_CD + sItem.REFINE_ROADNM_ADDR).replace(
+              /[\s@-^$*+?.,()|[\]{}]/g,
+              ""
+            ),
+            SIGUN_CD: sItem.SIGUN_CD,
             SIGUN_NM: sItem.SIGUN_NM,
             BIZPLC_NM: sItem.BIZPLC_NM,
             REFINE_ROADNM_ADDR: sItem.REFINE_ROADNM_ADDR,

@@ -12,8 +12,11 @@ import { useCallback, useEffect, useState } from "react";
 import Spinner from "./components/spinner/spinner";
 import Footer from "./components/footer/footer";
 
-const App = ({ imageUploader, factoryDB, authService }) => {
-  const [uId, setUId] = useState("");
+const App = ({ imageUploader, factoryDB, authService, revService }) => {
+  const [uData, setUData] = useState({
+    uId: "",
+    uDisplayName: "",
+  });
   const [loading, setLoading] = useState(false);
 
   const onLogout = useCallback(() => {
@@ -30,7 +33,10 @@ const App = ({ imageUploader, factoryDB, authService }) => {
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
-        setUId(user.email.split("@")[0]);
+        setUData({
+          uId: user.email.split("@")[0],
+          uDisplayName: user.displayName,
+        });
       } else {
         authService.logout();
       }
@@ -42,7 +48,7 @@ const App = ({ imageUploader, factoryDB, authService }) => {
   ) : (
     <div className={styles.app}>
       <div className={styles.header}>
-        <Header uId={uId || null} onLogout={onLogout} />
+        <Header uId={uData.uId || null} onLogout={onLogout} />
       </div>
       <div className={styles.container}>
         <BrowserRouter>
@@ -82,7 +88,16 @@ const App = ({ imageUploader, factoryDB, authService }) => {
               element={<SearchPg factoryDB={factoryDB} />}
             ></Route>
             <Route path="/review" element={<ReviewPg />}></Route>
-            <Route path="/writeReview" element={<ReviewWritePg />}></Route>
+            <Route
+              path="/writeReview"
+              element={
+                <ReviewWritePg
+                  uId={uData.uDisplayName}
+                  factoryDB={factoryDB}
+                  revService={revService}
+                />
+              }
+            ></Route>
           </Routes>
         </BrowserRouter>
       </div>

@@ -10,6 +10,8 @@ const ReviewPg = (props) => {
   const location = useLocation("");
   const [fData, setFData] = useState(null);
 
+  useEffect(() => {});
+
   useEffect(() => {
     location.state ? setFData(location.state.fData) : setFData(null);
   }, [location.state]);
@@ -25,7 +27,9 @@ const ReviewPg = (props) => {
         {fData ? (
           <div
             className={styles.newRBtn}
-            onClick={() => navigate(`/writeReview`, { state: { fData } })}
+            onClick={() =>
+              navigate(`/writeReview`, { state: { fData: fData } })
+            }
           >
             <div className={styles.icon}>
               <AiOutlinePlus />

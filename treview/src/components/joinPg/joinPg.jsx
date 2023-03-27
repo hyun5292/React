@@ -17,6 +17,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const tel2Ref = useRef();
   const tel3Ref = useRef();
   const chkAgreeRef = useRef();
+  const [loading, setLoading] = useState(false);
   const [emailKind, setEmailKind] = useState("");
   const [uTel1, setUTel1] = useState("010");
   const [newProfile, setNewProfile] = useState(null);
@@ -75,6 +76,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   };
 
   const newJoin = () => {
+    setLoading(true);
     const uData = checkEmpty();
 
     if (uData) {
@@ -89,6 +91,9 @@ const JoinPg = memo(({ imageUploader, authService }) => {
         navigate("/");
       });
     }
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -167,7 +172,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
           </Grid>
           <Grid item xs={12}>
             <button className={styles.joinBtn} onClick={newJoin}>
-              가입하기
+              {loading ? <span>loading...</span> : <span>가입하기</span>}
             </button>
           </Grid>
         </Grid>

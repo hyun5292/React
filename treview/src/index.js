@@ -5,6 +5,7 @@ import App from "./app";
 import axios from "axios";
 import FactoryList from "./service/factoryList";
 import AuthService from "./service/auth_service";
+import ReviewService from "./service/review_service";
 import ImageUploader from "./service/ImageUploader";
 
 const httpClient = axios.create({
@@ -13,6 +14,7 @@ const httpClient = axios.create({
 });
 const factoryDB = new FactoryList(httpClient);
 const authService = new AuthService();
+const revService = new ReviewService();
 const imageUploader = new ImageUploader();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -22,6 +24,7 @@ root.render(
       imageUploader={imageUploader}
       factoryDB={factoryDB}
       authService={authService}
+      revService={revService}
     />
   </React.StrictMode>
 );
