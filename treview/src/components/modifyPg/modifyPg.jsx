@@ -5,16 +5,17 @@ import styles from "./modifyPg.module.css";
 import pStyle from "../../css/page.module.css";
 import Select from "../select/select";
 import phoneList from "../../dataFile/phone_num_list.json";
-import { BsChatSquareQuoteFill } from "react-icons/bs";
+import { BsChatSquareQuoteFill, BsArrowClockwise } from "react-icons/bs";
 import ImageFileInput from "../imageFileInput/image_file_input";
 
 const ModifyPg = memo(({ imageUploader, authService }) => {
   const navigate = useNavigate();
   const tel2Ref = useRef();
   const tel3Ref = useRef();
+  const [loading, setLoading] = useState(false);
   const [uData, setUData] = useState({});
   const [uTel1, setUTel1] = useState("");
-  const [Profile, setProfile] = useState({
+  const [profile, setProfile] = useState({
     uProfileID: "",
     uProfileSIG: "",
     uProfileTIME: "",
@@ -56,19 +57,20 @@ const ModifyPg = memo(({ imageUploader, authService }) => {
   };
 
   const modifyData = () => {
+    setLoading(true);
     const newData = checkEmpty();
-
     if (newData) {
-      if (newProfile.uProfileID === "" && newProfile.uProfileURL === "") {
-        doUpdate(newData, newProfile);
-      } else if (Profile.uProfileURL !== newProfile.uProfileURL) {
+      if (newProfile.uProfileURL !== "") {
         imageUploader.uploadImg(newProfile).then((imgData) => {
           doUpdate(newData, imgData);
         });
       } else {
-        doUpdate(newData, Profile);
+        doUpdate(newData, profile);
       }
     }
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   };
 
   const doUpdate = (data, img) => {
@@ -116,14 +118,14 @@ const ModifyPg = memo(({ imageUploader, authService }) => {
               disabled
               className={styles.emailInput}
               type="text"
-              value={uData && uData.uEmail}
+              value={(uData && uData.uEmail) || ""}
             />
             <label>이름</label>
             <input
               disabled
               type="text"
               placeholer="이름"
-              value={uData && uData.uName}
+              value={(uData && uData.uName) || ""}
             />
             *<label>전화번호</label>
             <div className={styles.phoneNum}>
@@ -139,14 +141,14 @@ const ModifyPg = memo(({ imageUploader, authService }) => {
                 ref={tel2Ref}
                 className={styles.uTel}
                 type="number"
-                defaultValue={(uData.uTel || "").split("-")[1]}
+                defaultValue={(uData.uTel || "").split("-")[1] || ""}
               />
               -
               <input
                 ref={tel3Ref}
                 className={styles.uTel}
                 type="number"
-                defaultValue={(uData.uTel || "").split("-")[2]}
+                defaultValue={(uData.uTel || "").split("-")[2] || ""}
               />
             </div>
             <label className={styles.loginedAgree}>
@@ -161,14 +163,15 @@ const ModifyPg = memo(({ imageUploader, authService }) => {
               uProfile={
                 newProfile.uProfileLink
                   ? newProfile.uProfileLink
-                  : Profile.uProfileURL
+                  : profile.uProfileURL
               }
-              onFileChange={(file) => setNewProfile(file)}
+              onFileChange={setNewProfile}
+              onFileReset={setProfile}
             />
           </Grid>
           <Grid item xs={12}>
             <button className={styles.modifyBtn} onClick={modifyData}>
-              수정하기
+              {loading ? <span>loading...</span> : <span>수정하기</span>}
             </button>
           </Grid>
         </Grid>

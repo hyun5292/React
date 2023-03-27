@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./image_file_input.module.css";
 import { BsArrowClockwise } from "react-icons/bs";
-import Spinner from "../spinner/spinner";
 
-const ImageFileInput = ({ uProfile, onFileChange }) => {
+const ImageFileInput = ({ uProfile, onFileChange, onFileReset }) => {
   const profileImgRef = useRef();
   const resetImgRef = useRef();
   const profileContRef = useRef();
   const [profile, setProfile] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const loadFile = async (event) => {
     const imgFile = URL.createObjectURL(event.target.files[0]);
@@ -37,6 +35,13 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
       uProfileURL: "",
       uProfileLink: "",
     });
+    onFileReset({
+      uProfileID: "",
+      uProfileSIG: "",
+      uProfileTIME: "",
+      uProfileURL: "",
+      uProfileLink: "",
+    });
 
     profileImgRef.current.style = "display: none;";
     resetImgRef.current.style = "display: none;";
@@ -44,26 +49,15 @@ const ImageFileInput = ({ uProfile, onFileChange }) => {
   };
 
   useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
-  }, []);
-
-  useEffect(() => {
     if (uProfile !== "" && uProfile !== null) {
       setProfile(uProfile);
-      setTimeout(() => {
-        profileImgRef.current.style = "display: inline-block;";
-        resetImgRef.current.style = "display: flex;";
-        profileContRef.current.style = "display: none;";
-      }, 600);
+      profileImgRef.current.style = "display: inline-block;";
+      resetImgRef.current.style = "display: flex;";
+      profileContRef.current.style = "display: none;";
     }
-  }, [loading, uProfile]);
+  }, [uProfile]);
 
-  return loading ? (
-    <Spinner />
-  ) : (
+  return (
     <div className={styles.inputFileCont}>
       <div className={styles.imgCont}>
         <input
