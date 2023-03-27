@@ -92,7 +92,10 @@ class AuthService {
           alert("비밀번호가 틀렸습니다!");
           break;
         default:
-          alert("알 수 없는 이유로 로그인에 실패하였습니다! 죄송합니다!" + err);
+          alert(
+            "알 수 없는 이유로 로그인에 실패하였습니다! 죄송합니다! 다시 시도해주세요!" +
+              err
+          );
           break;
       }
     }
@@ -120,14 +123,13 @@ class AuthService {
       return result;
     } catch (err) {
       alert(
-        "알 수 없는 이유로 데이터를 가져오는데에 실패하였습니다! 죄송합니다!;" +
+        "알 수 없는 이유로 데이터를 가져오는데에 실패하였습니다! 죄송합니다! 다시 시도해주세요!;" +
           err
       );
     }
   }
 
   async update_uData(userData, imgData) {
-    console.log("update_uData = ", imgData);
     try {
       await firebase
         .database()
@@ -146,7 +148,44 @@ class AuthService {
         });
       return true;
     } catch (err) {
-      alert("알 수 없는 이유로 정보수정에 실패하였습니다! 죄송합니다!;" + err);
+      alert(
+        "알 수 없는 이유로 정보수정에 실패하였습니다! 죄송합니다! 다시 시도해주세요!;" +
+          err
+      );
+    }
+    return false;
+  }
+
+  async remove_uData(uId) {
+    try {
+      await firebase
+        .database()
+        .ref("users/" + uId)
+        .remove()
+        .then(() => {
+          alert("회원정보가 삭제되었습니다!");
+        });
+      return true;
+    } catch (err) {
+      alert(
+        "알 수 없는 이유로 회원정보 삭제에 실패하였습니다! 죄송합니다! 다시 시도해주세요!;" +
+          err
+      );
+    }
+    return false;
+  }
+
+  async withdraw_user() {
+    try {
+      await firebaseAuth.currentUser.delete().then(() => {
+        alert("회원탈퇴 완료되었습니다! 이용해주셔서 감사합니다!");
+      });
+      return true;
+    } catch (err) {
+      alert(
+        "알 수 없는 이유로 정보수정에 실패하였습니다! 죄송합니다! 다시 시도해주세요!;" +
+          err
+      );
     }
     return false;
   }

@@ -64,15 +64,6 @@
   line-height: 1.5;
 }
 
-.withDrawBtn {
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  background: t_grey;
-}
-.withDrawBtn:hover {
-  background: t_red;
-}
-
 .modifyBtn {
   margin-top: 1rem;
   width: 100%;
@@ -81,8 +72,4 @@
 }
 .modifyBtn:hover {
   background: t_navy;
-}
-
-.loading {
-  font-size: 1.75rem;
 }

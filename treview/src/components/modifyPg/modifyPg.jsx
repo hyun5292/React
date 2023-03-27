@@ -5,8 +5,9 @@ import styles from "./modifyPg.module.css";
 import pStyle from "../../css/page.module.css";
 import Select from "../select/select";
 import phoneList from "../../dataFile/phone_num_list.json";
-import { BsChatSquareQuoteFill, BsArrowClockwise } from "react-icons/bs";
+import { BsChatSquareQuoteFill } from "react-icons/bs";
 import ImageFileInput from "../imageFileInput/image_file_input";
+import WithdrawBtn from "../withdrawBtn/withdrawBtn";
 
 const ModifyPg = memo(({ imageUploader, authService }) => {
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ const ModifyPg = memo(({ imageUploader, authService }) => {
     const newData = checkEmpty();
     if (newData) {
       if (newProfile.uProfileURL !== "") {
+        //cloudinary 사진 삭제 추가 필요
         imageUploader.uploadImg(newProfile).then((imgData) => {
           doUpdate(newData, imgData);
         });
@@ -156,7 +158,7 @@ const ModifyPg = memo(({ imageUploader, authService }) => {
               <br />
               탈퇴 될 수 있습니다
             </label>
-            <button className={styles.withDrawBtn}>탈퇴하기</button>
+            <WithdrawBtn uId={uData.uId} authService={authService} />
           </Grid>
           <Grid item xs={12} md={6} className={styles.uploadCont}>
             <ImageFileInput
