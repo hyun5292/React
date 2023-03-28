@@ -5,10 +5,11 @@ import pgStyle from "../../css/page.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const ReviewPg = (props) => {
+const ReviewPg = ({ uId }) => {
   const navigate = useNavigate();
   const location = useLocation("");
   const [fData, setFData] = useState(null);
+  console.log("fData = ", fData);
 
   useEffect(() => {});
 
@@ -24,22 +25,26 @@ const ReviewPg = (props) => {
           <span className={styles.rBizplc}>{fData && fData.BIZPLC_NM}</span>
           리뷰 목록
         </span>
-        {fData ? (
-          <div
-            className={styles.newRBtn}
-            onClick={() =>
-              navigate(`/writeReview`, { state: { fData: fData } })
-            }
-          >
-            <div className={styles.icon}>
-              <AiOutlinePlus />
+        {uId !== "" ? (
+          fData ? (
+            <div
+              className={styles.newRBtn}
+              onClick={() =>
+                navigate(`/writeReview`, { state: { fData: fData } })
+              }
+            >
+              <div className={styles.icon}>
+                <AiOutlinePlus />
+              </div>
+              리뷰 작성하기
             </div>
-            리뷰 작성하기
-          </div>
+          ) : (
+            <a href="/search" className={styles.newRBtn}>
+              리뷰 작성할 공장을 선택해주세요
+            </a>
+          )
         ) : (
-          <a href="/search" className={styles.newRBtn}>
-            리뷰 작성할 공장을 선택해주세요
-          </a>
+          ""
         )}
       </div>
       <ReviewTable />

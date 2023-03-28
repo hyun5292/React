@@ -67,6 +67,12 @@ class AuthService {
           uProfileTIME: imgData.uProfileTIME || "",
           uProfileID: imgData.uProfileID || "",
           uProfileURL: imgData.uProfileURL || "",
+        })
+        .catch((err) => {
+          alert(
+            "알 수 없는 이유로 회원 데이터 등록에 실패하였습니다! 죄송합니다!\n회원정보 수정에서 다시 입력해주세요!" +
+              err
+          );
         });
     } catch (err) {
       alert(

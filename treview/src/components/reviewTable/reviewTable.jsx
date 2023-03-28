@@ -7,13 +7,21 @@ import tStyle from "../../css/table.module.css";
 import RevSearchBar from "../revSearchBar/revSearchBar";
 
 const ReviewTable = (props) => {
+  const defaultImg =
+    "https://res.cloudinary.com/sudol5292/image/upload/v1680022296/truck_okhdd4.png";
   const columns = useMemo(
     () => [
       {
-        accessor: "R_IMAGE",
-        Header: "",
+        accessor: "R_IMG",
         width: "5%",
-        Cell: ({ cell: value }) => <tableUserImg values={value} />,
+        Cell: ({ cell: profile }) => (
+          <img
+            alt="프로필"
+            src={profile.value ? profile.value : defaultImg}
+            width="45px"
+            height="auto"
+          ></img>
+        ),
       },
       {
         accessor: "R_ID",
@@ -21,14 +29,19 @@ const ReviewTable = (props) => {
         width: "20%",
       },
       {
-        accessor: "R_CONT",
+        accessor: "R_CONTENT",
         Header: "내용",
-        width: "60%",
+        width: "55%",
       },
       {
         accessor: "R_DATE",
         Header: "작성날짜",
         width: "15%",
+      },
+      {
+        accessor: "R_COUNT",
+        Header: "리뷰수",
+        width: "5%",
       },
     ],
     []
@@ -36,96 +49,98 @@ const ReviewTable = (props) => {
   const data = useMemo(
     () => [
       {
-        R_IMAGE: "img",
+        R_IMG:
+          "http://res.cloudinary.com/sudol5292/image/upload/v1679920675/treview-profiles/c4i4lwqziw4gockig4ky.png",
         R_ID: "tytyjacob3",
-        R_CONT:
-          "가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요",
+        R_CONTENT:
+          "가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2020-12-22",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob4",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2020-12-23",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob7",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2023-01-01",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob23",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2022-12-21",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob34",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2021-12-21",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob5",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2021-12-21",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob4",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2022-12-21",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob3",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2020-12-21",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2020-12-21",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2020-12-21",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2020-12-21",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2020-12-21",
+        R_COUNT: 10,
       },
       {
-        R_IMAGE: "img",
         R_ID: "tytyjacob",
-        R_CONT: "가는 길이 조금 좁아요",
+        R_CONTENT: "가는 길이 조금 좁아요",
         R_BIZPLC_NM: "(주)태영지엘에스",
         R_DATE: "2020-12-21",
+        R_COUNT: 10,
       },
     ],
     []

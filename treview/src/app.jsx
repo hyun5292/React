@@ -87,7 +87,7 @@ const App = ({ imageUploader, factoryDB, authService, revService }) => {
               path="/search"
               element={<SearchPg factoryDB={factoryDB} />}
             ></Route>
-            <Route path="/review" element={<ReviewPg />}></Route>
+            <Route path="/review" element={<ReviewPg uId={uData.uId} />}></Route>
             <Route
               path="/writeReview"
               element={

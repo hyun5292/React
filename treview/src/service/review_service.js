@@ -8,7 +8,7 @@ class ReviewService {
         .database()
         .ref(
           "reviews/" +
-            fData.SIGUN_NM +
+            fData.SIGUN_CD +
             "/" +
             fData.BIZPLC_NM +
             "/" +

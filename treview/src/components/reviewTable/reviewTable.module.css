@@ -39,6 +39,10 @@
   font-size: 20px;
 }
 
+.tHead {
+  text-align: center;
+}
+
 .sortTxt {
   color: t_grey;
 }
@@ -46,4 +50,8 @@
 tr:hover {
   color: inherit;
   background: inherit;
+}
+
+td {
+  padding: 15px;
 }
