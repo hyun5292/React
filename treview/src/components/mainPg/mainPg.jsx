@@ -19,6 +19,11 @@ const MainPg = (props) => {
       <div className={styles.introCont}>
         <div className={`${styles.introItem} ${styles.intro1}`}>
           <p className={styles.introTitle}>{">"} 트리뷰(Treview)란?</p>
+          <p className={styles.notReal}>
+            ※ 해당 사이트는 실제 운영 중인 사이트가 아닙니다.
+            <br />
+            작성되어 있는 리뷰들은 임의로 작성된 리뷰들이며 사실이 아닙니다! ※
+          </p>
           <p>
             {">>"} 트럭(Truck) + 리뷰(Review)의 줄임말로
             <br />
