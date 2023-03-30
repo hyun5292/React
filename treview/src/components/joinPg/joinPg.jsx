@@ -23,12 +23,13 @@ const JoinPg = memo(({ imageUploader, authService }) => {
   const [newProfile, setNewProfile] = useState(null);
 
   const checkEmpty = () => {
+    const address = addressRef.current.value.replace(
+      /[\s@-^$*+?.()|[\]{}]/g,
+      ""
+    );
     const newData = {
-      uId: (addressRef.current.value + emailKind).replace(
-        /[@-^$*+?.()|[\]{}]/g,
-        ""
-      ),
-      uEmail: addressRef.current.value + "@" + emailKind,
+      uId: address,
+      uEmail: address + "@" + emailKind,
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
       uTel: uTel1 + "-" + tel2Ref.current.value + "-" + tel3Ref.current.value,
