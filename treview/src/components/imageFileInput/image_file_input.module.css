@@ -20,12 +20,16 @@
   display: none;
   object-fit: cover;
 }
+.imgCont,
+.loading {
+  border-radius: 1rem;
+}
 
 .imgCont {
+  position: relative;
   width: 100%;
   height: 100%;
   border: 5px solid t_border_grey;
-  border-radius: 1rem;
 }
 
 .btnUpload {
@@ -41,6 +45,22 @@
   transition: all 1s;
 }
 
+.loading {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  color: t_white;
+  font-size: 1.7rem;
+  font-weight: 600;
+  background: t_navy;
+}
+
 .resetImg {
   display: none;
   margin-left: 10px;
@@ -54,4 +74,8 @@
 }
 .resetImg:hover {
   background: t_navy;
+}
+
+.gone {
+  display: none;
 }

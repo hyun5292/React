@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const ReviewPg = ({ uId, revService }) => {
   const navigate = useNavigate();
+
   const location = useLocation("");
   const [fData, setFData] = useState([]);
   const [rData, setRData] = useState([]);

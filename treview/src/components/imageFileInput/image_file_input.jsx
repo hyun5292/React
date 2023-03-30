@@ -7,6 +7,7 @@ const ImageFileInput = ({ uProfile, onFileChange, onFileReset }) => {
   const resetImgRef = useRef();
   const profileContRef = useRef();
   const [profile, setProfile] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const loadFile = async (event) => {
     const imgFile = URL.createObjectURL(event.target.files[0]);
@@ -49,12 +50,16 @@ const ImageFileInput = ({ uProfile, onFileChange, onFileReset }) => {
   };
 
   useEffect(() => {
+    setLoading(true);
     if (uProfile !== "" && uProfile !== null) {
       setProfile(uProfile);
       profileImgRef.current.style = "display: inline-block;";
       resetImgRef.current.style = "display: flex;";
       profileContRef.current.style = "display: none;";
     }
+    setInterval(() => {
+      setLoading(false);
+    }, 1000);
   }, [uProfile]);
 
   return (
@@ -78,6 +83,12 @@ const ImageFileInput = ({ uProfile, onFileChange, onFileReset }) => {
             />
           </label>
           <label htmlFor="profileText">프로필 사진 추가</label>
+        </div>
+        <div className={loading ? styles.loading : styles.gone}>
+          <span>Loading</span>
+          <span className={styles.dot}>.</span>
+          <span className={styles.dot}>.</span>
+          <span className={styles.dot}>.</span>
         </div>
         <img
           alt="프로필 이미지"
