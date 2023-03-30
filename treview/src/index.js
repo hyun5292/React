@@ -19,12 +19,10 @@ const imageUploader = new ImageUploader();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App
-      imageUploader={imageUploader}
-      factoryDB={factoryDB}
-      authService={authService}
-      revService={revService}
-    />
-  </React.StrictMode>
+  <App
+    imageUploader={imageUploader}
+    factoryDB={factoryDB}
+    authService={authService}
+    revService={revService}
+  />
 );

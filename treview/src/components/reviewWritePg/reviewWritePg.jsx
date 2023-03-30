@@ -7,7 +7,7 @@ import { RiText } from "react-icons/ri";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 import { MdOutlinePermIdentity, MdOutlineDateRange } from "react-icons/md";
 
-const ReviewWrite = ({ uId, factoryDB, revService }) => {
+const ReviewWrite = ({ uData, factoryDB, revService }) => {
   const navigate = useNavigate();
   const location = useLocation("");
   const titleRef = useRef();
@@ -26,9 +26,9 @@ const ReviewWrite = ({ uId, factoryDB, revService }) => {
 
   const onChkEmpty = () => {
     const rData = {
-      uId: uId,
+      uId: uData.uId,
       fId: fData.F_ID,
-      rId: (fData.BIZPLC_NM + uId + dateForId).replace(
+      rId: (fData.BIZPLC_NM + uData.uId + dateForId).replace(
         /[@-^$*+?.()|[\]{}]/g,
         ""
       ),
@@ -104,7 +104,7 @@ const ReviewWrite = ({ uId, factoryDB, revService }) => {
         <div className={styles.formLine}>
           <MdOutlinePermIdentity className={styles.icon} />
           :&nbsp;
-          <div className={styles.mId}>아이디</div>
+          <div className={styles.mId}>{uData != null && uData.uEmail}</div>
         </div>
         <div className={styles.formLine}>
           <MdOutlineDateRange className={styles.icon} />

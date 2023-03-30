@@ -16,6 +16,7 @@ const App = ({ imageUploader, factoryDB, authService, revService }) => {
   const [uData, setUData] = useState({
     uId: "",
     uDisplayName: "",
+    uEmail: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -36,6 +37,7 @@ const App = ({ imageUploader, factoryDB, authService, revService }) => {
         setUData({
           uId: user.email.split("@")[0],
           uDisplayName: user.displayName,
+          uEmail: user.email,
         });
       } else {
         authService.logout();
@@ -87,12 +89,15 @@ const App = ({ imageUploader, factoryDB, authService, revService }) => {
               path="/search"
               element={<SearchPg factoryDB={factoryDB} />}
             ></Route>
-            <Route path="/review" element={<ReviewPg uId={uData.uId} />}></Route>
+            <Route
+              path="/review"
+              element={<ReviewPg uId={uData.uId} revService={revService} />}
+            ></Route>
             <Route
               path="/writeReview"
               element={
                 <ReviewWritePg
-                  uId={uData.uDisplayName}
+                  uData={uData}
                   factoryDB={factoryDB}
                   revService={revService}
                 />

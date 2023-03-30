@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import { useTable, useSortBy, usePagination } from "react-table";
 import styles from "./factoryTable.module.css";
 import tStyle from "../../css/table.module.css";
@@ -7,7 +7,7 @@ import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import BsnState from "./bsnState/bsnState";
 import { useNavigate } from "react-router-dom";
 
-const Table = ({ data }) => {
+const Table = memo(({ data }) => {
   const navigate = useNavigate();
   const columns = useMemo(
     () => [
@@ -69,7 +69,9 @@ const Table = ({ data }) => {
   );
 
   const toReviewList = (fData) => {
-    navigate(`/review`, { state: { fData } });
+    navigate(`/review`, {
+      state: { fData: fData },
+    });
   };
 
   return (
@@ -163,6 +165,6 @@ const Table = ({ data }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Table;

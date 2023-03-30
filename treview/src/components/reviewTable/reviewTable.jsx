@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTable, useSortBy, usePagination } from "react-table";
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
@@ -6,7 +7,8 @@ import styles from "./reviewTable.module.css";
 import tStyle from "../../css/table.module.css";
 import RevSearchBar from "../revSearchBar/revSearchBar";
 
-const ReviewTable = (props) => {
+const ReviewTable = memo(({ data }) => {
+  const navigate = useNavigate();
   const defaultImg =
     "https://res.cloudinary.com/sudol5292/image/upload/v1680022296/truck_okhdd4.png";
   const columns = useMemo(
@@ -16,6 +18,7 @@ const ReviewTable = (props) => {
         width: "5%",
         Cell: ({ cell: profile }) => (
           <img
+            className={styles.profile}
             alt="프로필"
             src={profile.value ? profile.value : defaultImg}
             width="45px"
@@ -24,127 +27,25 @@ const ReviewTable = (props) => {
         ),
       },
       {
-        accessor: "R_ID",
+        accessor: "U_ID",
         Header: "작성자",
         width: "20%",
       },
       {
-        accessor: "R_CONTENT",
-        Header: "내용",
-        width: "55%",
+        accessor: "R_TITLE",
+        Header: "제목",
+        width: "60%",
+        Cell: ({ cell: value }) => <div>{value.value}&nbsp;...</div>,
       },
       {
         accessor: "R_DATE",
         Header: "작성날짜",
         width: "15%",
       },
-      {
-        accessor: "R_COUNT",
-        Header: "리뷰수",
-        width: "5%",
-      },
     ],
     []
   );
-  const data = useMemo(
-    () => [
-      {
-        R_IMG:
-          "http://res.cloudinary.com/sudol5292/image/upload/v1679920675/treview-profiles/c4i4lwqziw4gockig4ky.png",
-        R_ID: "tytyjacob3",
-        R_CONTENT:
-          "가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2020-12-22",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob4",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2020-12-23",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob7",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2023-01-01",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob23",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2022-12-21",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob34",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2021-12-21",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob5",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2021-12-21",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob4",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2022-12-21",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob3",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2020-12-21",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2020-12-21",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2020-12-21",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2020-12-21",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2020-12-21",
-        R_COUNT: 10,
-      },
-      {
-        R_ID: "tytyjacob",
-        R_CONTENT: "가는 길이 조금 좁아요",
-        R_BIZPLC_NM: "(주)태영지엘에스",
-        R_DATE: "2020-12-21",
-        R_COUNT: 10,
-      },
-    ],
-    []
-  );
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -166,6 +67,12 @@ const ReviewTable = (props) => {
     useSortBy,
     usePagination
   );
+
+  const toWriteReview = (fData) => {
+    // navigate(`/writeReview`, {
+    //   state: { sigun: fData.SIGUN_NM, fName: fData.BIZPLC_NM },
+    // });
+  };
 
   return (
     <div className={styles.reviewCont}>
@@ -245,7 +152,11 @@ const ReviewTable = (props) => {
             page.map((row) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
+                <tr
+                  className={styles.tRow}
+                  {...row.getRowProps()}
+                  onClick={() => toWriteReview(row.values)}
+                >
                   {row.cells.map((cell) => (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   ))}
@@ -256,6 +167,6 @@ const ReviewTable = (props) => {
       </table>
     </div>
   );
-};
+});
 
 export default ReviewTable;

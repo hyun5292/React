@@ -5,17 +5,23 @@ import pgStyle from "../../css/page.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const ReviewPg = ({ uId }) => {
+const ReviewPg = ({ uId, revService }) => {
   const navigate = useNavigate();
   const location = useLocation("");
-  const [fData, setFData] = useState(null);
-  console.log("fData = ", fData);
-
-  useEffect(() => {});
+  const [fData, setFData] = useState([]);
+  const [rData, setRData] = useState([]);
 
   useEffect(() => {
-    location.state ? setFData(location.state.fData) : setFData(null);
-  }, [location.state]);
+    if (location.state) {
+      setFData(location.state.fData);
+      revService.getReview(fData).then((result) => {
+        result && setRData(result);
+      });
+    } else {
+      alert("먼저 공장을 선택해주세요!");
+      navigate("/search");
+    }
+  }, [fData, location.state, navigate, revService]);
 
   return (
     <div className={`${styles.reviewPg} ${pgStyle.pgPadding}`}>
@@ -25,29 +31,23 @@ const ReviewPg = ({ uId }) => {
           <span className={styles.rBizplc}>{fData && fData.BIZPLC_NM}</span>
           리뷰 목록
         </span>
-        {uId !== "" ? (
-          fData ? (
-            <div
-              className={styles.newRBtn}
-              onClick={() =>
-                navigate(`/writeReview`, { state: { fData: fData } })
-              }
-            >
-              <div className={styles.icon}>
-                <AiOutlinePlus />
-              </div>
-              리뷰 작성하기
+        {uId ? (
+          <button
+            className={styles.newRBtn}
+            onClick={() =>
+              navigate(`/writeReview`, { state: { fData: fData } })
+            }
+          >
+            <div className={styles.icon}>
+              <AiOutlinePlus />
             </div>
-          ) : (
-            <a href="/search" className={styles.newRBtn}>
-              리뷰 작성할 공장을 선택해주세요
-            </a>
-          )
+            리뷰 작성하기
+          </button>
         ) : (
           ""
         )}
       </div>
-      <ReviewTable />
+      <ReviewTable data={rData} />
     </div>
   );
 };

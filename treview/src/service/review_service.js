@@ -8,19 +8,19 @@ class ReviewService {
         .database()
         .ref(
           "reviews/" +
-            fData.SIGUN_CD +
+            fData.SIGUN_NM +
             "/" +
             fData.BIZPLC_NM +
             "/" +
             revData.rId
         )
         .set({
-          uId: revData.uId,
-          fId: revData.fId,
-          rId: revData.rId,
-          rDate: revData.rDate,
-          rTitle: revData.rTitle,
-          rContent: revData.rContent,
+          U_ID: revData.U_ID,
+          F_ID: revData.F_ID,
+          R_ID: revData.R_ID,
+          R_DATE: revData.R_DATE,
+          R_TITLE: revData.R_TITLE,
+          R_CONT: revData.R_CONT,
         })
         .then(() => {
           alert("리뷰를 등록했습니다!");
@@ -29,6 +29,36 @@ class ReviewService {
     } catch (err) {
       alert(
         "알 수 없는 이유로 리뷰 등록에 실패했습니다! 다시 시도해주세요! ;",
+        err
+      );
+    }
+    return false;
+  }
+
+  async getReview(fData) {
+    try {
+      const result = await firebase
+        .database()
+        .ref("reviews/" + fData.SIGUN_NM + "/" + fData.BIZPLC_NM)
+        .get()
+        .then((snapshot) => {
+          const reviewList = [];
+          if (snapshot.exists()) {
+            const rData_obj = snapshot.val();
+
+            Object.entries(rData_obj).map((list) => {
+              reviewList.push(list[1]);
+            });
+
+            return reviewList;
+          } else {
+            return false;
+          }
+        });
+      return result;
+    } catch (err) {
+      alert(
+        "알 수 없는 이유로 리뷰를 가져오는데에 실패했습니다! 다시 시도해주세요! ;",
         err
       );
     }

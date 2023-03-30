@@ -55,3 +55,7 @@ tr:hover {
 td {
   padding: 15px;
 }
+
+.profile {
+  max-height: 70px;
+}
