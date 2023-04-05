@@ -1,0 +1,78 @@
+@value knitBlack, knitRed, knitGray_light, knitGray, knitBlue_light, knitWhite, knitGray_shadow from '../../common/colors.css';
+
+.menu {
+  background: knitGray_light;
+}
+
+.info {
+  align-items: center;
+  box-shadow: 3px 3px 5px 0px knitGray_shadow;
+  display: flex;
+  font-size: 0.8rem;
+  height: 150px;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.infoItem {
+  padding: 4px 0;
+}
+
+.warnning {
+  color: knitRed;
+}
+
+.menuCont {
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
+.menuList {
+  margin: 15px;
+  border-left: 1px solid knitGray_shadow;
+  border-right: 1px solid knitGray_shadow;
+}
+
+.menuTitle,
+.menuItem {
+  padding: 15px;
+}
+
+.menuTitle {
+  background: knitBlack;
+  border-radius: 10px 10px 0 0;
+}
+
+.menuItem {
+  background: knitGray_light;
+  border-bottom: 1px solid knitBlack;
+  cursor: pointer;
+  text-align: left;
+}
+.menuItem:hover {
+  background: knitGray;
+}
+.menuItem:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+.gone {
+  display: gone;
+}
+
+@media (max-width: 1024px) {
+  .menu {
+    height: 50vh;
+  }
+
+  .info {
+    height: 35%;
+  }
+
+  .menuCont {
+    height: 65%;
+  }
+}

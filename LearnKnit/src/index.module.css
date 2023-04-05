@@ -1,4 +1,4 @@
-@value knitBlue_dark, knitBlue, knitWhite from './common/colors.css';
+@value knitBlue, knitBlue_dark, knitWhite from './common/colors.css';
 
 body {
   margin: 0;
@@ -11,12 +11,6 @@ body {
   box-sizing: border-box;
 }
 
-ul,
-li {
-  list-style: none;
-  -webkit-padding-start: 0px;
-}
-
 a {
   color: knitWhite;
 }
@@ -24,27 +18,36 @@ a:hover {
   color: knitBlue;
 }
 
+ul,
+li {
+  list-style: none;
+  -webkit-padding-start: 0px;
+}
+
 button {
-  display: inline-flex;
   align-items: center;
-  margin: 0 10px;
-  padding: 5px 10px;
+  border: none;
+  background: knitBlue;
+  border-radius: 20px;
   color: knitWhite;
+  cursor: pointer;
+  display: flex;
   font-family: "HallymGothic-Regular";
   font-weight: 600;
-  border: none;
-  border-radius: 20px;
-  background: knitBlue;
-  cursor: pointer;
+  justify-content: center;
+  padding: 5px 15px;
 }
 button:hover {
   background: knitBlue_dark;
 }
+button span {
+  padding: 0px 5px;
+}
 
 @font-face {
   font-family: "HallymGothic-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2")
-    format("woff2");
   font-weight: 400;
   font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2")
+    format("woff2");
 }

@@ -58,6 +58,7 @@
   text-decoration: underline;
   z-index: 3;
   background: knitWhite;
+  padding: 1rem;
 }
 
 .backBox1 {
@@ -70,4 +71,11 @@
   background: knitBlue_dark;
   z-index: 1;
   animation: turnBackBox2 3s infinite;
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: 70%;
+    height: 40%;
+  }
 }

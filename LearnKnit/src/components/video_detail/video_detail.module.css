@@ -1,0 +1,28 @@
+@value knitBlack from '../../common/colors.css';
+
+.videoDetail {
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.title {
+  display: none;
+  font-weight: 600;
+  padding-bottom: 1rem;
+}
+
+.infoCont,
+pre {
+  font-family: inherit;
+  word-break: keep-all;
+}
+
+@media (max-width: 768px) {
+  .videoDetail {
+    font-size: 1rem;
+  }
+
+  .title {
+    display: block;
+  }
+}

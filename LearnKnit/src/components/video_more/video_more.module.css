@@ -1,0 +1,53 @@
+@value knitGray_light, knitGray_shadow from '../../common/colors.css';
+
+.videoMore {
+  align-items: center;
+  border-top: 1px solid knitGray_light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.videoMore button {
+  font-size: 0.7rem;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.videoList {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.videoItem {
+  background: knitGray_light;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 0px knitGray_shadow;
+  padding: 10px;
+}
+
+.videoTitle {
+  margin-top: 20px;
+}
+
+.gone {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media (max-width: 1024px) {
+  .videoList {
+    gap: 40px;
+    grid-template-columns: 1fr;
+  }
+
+  .videoItem {
+    padding: 20px;
+  }
+}

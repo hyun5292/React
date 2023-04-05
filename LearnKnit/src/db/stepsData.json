@@ -1,5 +1,5 @@
 {
-  "crochet": [
+  "코바늘": [
     {
       "stepId": "1-1",
       "stepTitle": "링 만드는 법",
@@ -109,7 +109,7 @@
       "stepCont": "제가 생각했을때\n대바늘보다 도안이 읽기 쉽습니다!"
     }
   ],
-  "knit": [
+  "대바늘": [
     {
       "stepId": "2-1",
       "stepTitle": "코 잡는 법",
@@ -120,109 +120,109 @@
       "stepId": "2-2",
       "stepTitle": "겉뜨기",
       "stepVideoId": "tmTFQU-Pl6I",
-      "stepCont": ""
+      "stepCont": "겉뜨기와 안뜨기는 가장 기초 단계입니다!\n겉뜨기는 안쪽으로 V자가 생기고, 바깥쪽으로 ㅡ가 생깁니다!"
     },
     {
       "stepId": "2-3",
       "stepTitle": "안뜨기",
       "stepVideoId": "D-Z_s0AiHrg",
-      "stepCont": ""
+      "stepCont": "겉뜨기와 안뜨기는 가장 기초 단계입니다!\n안뜨기는 안쪽으로 ㅡ자가 생기고, 바깥쪽으로 V가 생깁니다!"
     },
     {
       "stepId": "2-4",
       "stepTitle": "가터뜨기",
       "stepVideoId": "VoGVs8DuPg8",
-      "stepCont": ""
+      "stepCont": "가터뜨기는 계속 겉뜨기만 반복하면 되는데\n무늬가 ㅡ자만 계속 나오는 모양입니다!"
     },
     {
       "stepId": "2-5",
       "stepTitle": "메리야스뜨기",
       "stepVideoId": "UWabsY0k7BA",
-      "stepCont": ""
+      "stepCont": "메리야스뜨기는 한쪽 면에는 V자만,\n다른 면에는 ㅡ만 생기는 방법입니다!\n겉뜨기 안뜨기가 헷갈리면\nV자인지 ㅡ인지만 확인해주시면 됩니다^^"
     },
     {
       "stepId": "2-6",
       "stepTitle": "한코 고무뜨기",
       "stepVideoId": "zNNZBiyS_jM",
-      "stepCont": ""
+      "stepCont": "목도리나 옷을 뜨는데 많이 쓰이는 방법입니다!\n겉뜨기 안뜨기를 계속 반복해주시면 되는데\n다음 첫 코가 겉뜨기인지 안뜨기인지 주의해주세요!"
     },
     {
       "stepId": "2-7",
       "stepTitle": "두코 고무뜨기",
       "stepVideoId": "pbtg7gPQVWk",
-      "stepCont": ""
+      "stepCont": "목도리에 많이 쓰이는 방법입니다!\n겉뜨기 안뜨기를 2코씩 해주시면 됩니다!\n코 수가 2 또는 4의 배수가 나오겠죠?"
     },
     {
       "stepId": "2-8",
       "stepTitle": "변형 고무뜨기",
       "stepVideoId": "l7K8Y8sObhU",
-      "stepCont": ""
+      "stepCont": "특이하게 3의 배수로 코를 시작합니다!\n안뜨기 겉뜨기를 반복하는데\n겉뜨기할 때 실을 앞쪽에 두고\n2코를 한 번에 떠주시는게 특징입니다!"
     },
     {
       "stepId": "2-9",
       "stepTitle": "꽈배기 뜨기",
       "stepVideoId": "A8tTBB5vQ0Q",
-      "stepCont": ""
+      "stepCont": "꽈배기 바늘이나 여분의 실이 필요합니다!\n꽈배기가 될 코들을 빼두고 뜨는데\n이 때 실이 빡빡해서 뜨기 어려울 수도 있으니\n조심하세요!"
     },
     {
       "stepId": "2-10",
       "stepTitle": "코 늘리기 - kfb",
       "stepVideoId": "K_WCz03NoYI",
-      "stepCont": ""
+      "stepCont": "겉뜨기를 응용한 코 늘리는 방법입니다!\n옷 종류를 뜰 때 위에서 아래로 뜨는 경우\n어깨를 늘려줄 때 사용합니다^^"
     },
     {
       "stepId": "2-11",
       "stepTitle": "코 늘리기 - pfb",
       "stepVideoId": "-zMIBJm581M",
-      "stepCont": ""
+      "stepCont": "안뜨기를 응용한 코 늘리는 방법입니다!\n옷 종류를 뜰 때 위에서 아래로 뜨는 경우\n어깨를 늘려줄 때 사용합니다^^"
     },
     {
       "stepId": "2-12",
       "stepTitle": "코 늘리기 - M1L",
       "stepVideoId": "kbeKckO4XOs",
-      "stepCont": ""
+      "stepCont": "바늘을 안쪽에서 바깥쪽으로 넣은 후\n바늘 바깥쪽에서 실을 걸어줍니다!"
     },
     {
       "stepId": "2-13",
       "stepTitle": "코 늘리기 - M1R",
       "stepVideoId": "8ham5v0FrHo",
-      "stepCont": ""
+      "stepCont": "바늘을 바깥에서 안쪽으로 넣은 후\n바늘 안쪽에서 실을 걸어줍니다!"
     },
     {
       "stepId": "2-14",
       "stepTitle": "코 줄이기 - ssk",
       "stepVideoId": "4hADmZkp8Ig",
-      "stepCont": ""
+      "stepCont": "겉뜨기로 한 번, 안뜨기로 한 번\n실제로 뜨지는 않고 코만 옮겨준 후\n다시 원래 바늘로 2개를 한 번에 잡아서 떠주면 됩니다!\n어려울 수 있으니 주의해주세요!"
     },
     {
       "stepId": "2-15",
       "stepTitle": "코 줄이기 - skpo",
       "stepVideoId": "xGYUM83UNqc",
-      "stepCont": ""
+      "stepCont": "한 코 뜨지않고 넘겨주고 다음 코를 뜬 후\n안 뜨고 넘긴 코를 뜬 코와 겹쳐주면 됩니다!"
     },
     {
       "stepId": "2-16",
       "stepTitle": "코 줄이기 - k2tog, k2tog-L",
       "stepVideoId": "YIpimxi06p8",
-      "stepCont": ""
+      "stepCont": "K2tog는 그냥 2코를 한 번에 겉뜨기 하는 방법입니다\n 반대로, K2tog-L은 2코를 한 번에 바늘 바깥으로 겉뜨기 하는 방법입니다!"
     },
     {
       "stepId": "2-17",
       "stepTitle": "실 정리하기",
       "stepVideoId": "-eemvFY8SMU",
-      "stepCont": ""
+      "stepCont": "티 안나게 바늘로 실을 꾸불꾸불 엮어주면 되는데\n불안하면 순간접착제로 붙이셔도 됩니다!\n저는 대바늘은 불안해서 종종 순간접착제를 사용합니다ㅎㅎ"
     },
     {
       "stepId": "2-18",
       "stepTitle": "실 바꾸기",
       "stepVideoId": "F8usKXA-LoQ",
-      "stepCont": ""
+      "stepCont": "코바늘에 비해 대바늘은 실 바꾸기가 어려워요ㅠ"
     },
     {
       "stepId": "2-19",
       "stepTitle": "도안읽는 법 - 겉뜨기, 안뜨기",
       "stepVideoId": "0FlhpUjEo1c",
-      "stepCont": ""
+      "stepCont": "저도 코바늘 도안은 읽어도\n대바늘 도안은 못 읽어요ㅎㅎ\n도안은 못 읽어도 괜찮습니다!"
     }
   ]
 }
