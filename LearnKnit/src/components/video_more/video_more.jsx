@@ -8,7 +8,7 @@ const VideoMore = ({ videoWidth, videos }) => {
   const moreVideoWidth =
     window.innerWidth > 1024 ? videoWidth / 2 - 35 : videoWidth - 40;
 
-  const handleMore = (event) => {
+  const clickMore = (event) => {
     event.preventDefault();
     setMore(!more);
   };
@@ -19,7 +19,7 @@ const VideoMore = ({ videoWidth, videos }) => {
 
   return (
     <div className={styles.videoMore}>
-      <button className={styles.moreBtn} onClick={handleMore}>
+      <button className={styles.moreBtn} onClick={clickMore}>
         {more ? (
           <>
             <span>관련영상닫기</span>

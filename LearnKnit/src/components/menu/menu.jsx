@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./menu.module.css";
 
-const Menu = ({ stepsData, handleStep }) => {
+const Menu = ({ stepsData, changeStep }) => {
   const handleClick = (event, kind, step) => {
     event.preventDefault();
     const steps = step.split("-");
-    handleStep(kind, steps);
+    changeStep(kind, steps);
   };
 
   return (

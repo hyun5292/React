@@ -7,22 +7,22 @@ import {
   AiFillRightCircle,
 } from "react-icons/ai";
 
-const Header = ({ prev, next, menu, step, handleMenu, handleStep }) => {
+const Header = ({ prev, next, menu, step, handleClickMenu, changeStep }) => {
   const onChangeMenu = (event) => {
     event.preventDefault();
-    handleMenu();
+    handleClickMenu();
   };
 
   const onPrevStep = (event) => {
     event.preventDefault();
     const steps = step.stepId.split("-");
-    handleStep(step.stepKind, [steps[0], parseInt(steps[1]) - 1]);
+    changeStep(step.stepKind, [steps[0], parseInt(steps[1]) - 1]);
   };
 
   const onNextStep = (event) => {
     event.preventDefault();
     const steps = step.stepId.split("-");
-    handleStep(step.stepKind, [steps[0], parseInt(steps[1]) + 1]);
+    changeStep(step.stepKind, [steps[0], parseInt(steps[1]) + 1]);
   };
 
   return (

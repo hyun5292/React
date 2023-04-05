@@ -21,7 +21,7 @@ function App({ stepsData, youtube }) {
   const lastKind = kinds[kinds.length - 1];
   const lastId = kinds.length + "-" + parseInt(stepsData[lastKind].length);
 
-  const handleMenu = () => {
+  const handleClickMenu = () => {
     const newMenu = !menu;
     const nowWidth = videoWidth;
     setMenu(newMenu);
@@ -46,7 +46,7 @@ function App({ stepsData, youtube }) {
     }
   }, [menu]);
 
-  const handleStep = (kind, id) => {
+  const changeStep = (kind, id) => {
     const now_last_index = stepsData[kind].length;
 
     switch (id[0] + "-" + id[1]) {
@@ -127,12 +127,12 @@ function App({ stepsData, youtube }) {
           next={next}
           menu={menu}
           step={nowStep}
-          handleMenu={handleMenu}
-          handleStep={handleStep}
+          handleClickMenu={handleClickMenu}
+          changeStep={changeStep}
         />
       </div>
       <div className={menu ? styles.menu : styles.gone}>
-        <Menu stepsData={stepsData} handleStep={handleStep} />
+        <Menu stepsData={stepsData} changeStep={changeStep} />
       </div>
       {nowVideo && moreVideos ? (
         <div className={styles.videoCont}>
