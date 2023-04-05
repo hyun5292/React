@@ -43,3 +43,31 @@
 .icon {
   margin-right: 10px;
 }
+
+.revSearch {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.resetCont {
+  display: flex;
+  border-radius: 50%;
+  box-shadow: 3px 3px 4px 0px t_grey;
+}
+
+.resetIcon {
+  padding: 0.6rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  color: t_white;
+  border-radius: 50%;
+  background: t_blue;
+}
+.resetIcon:hover {
+  animation: rotate 5s linear infinite;
+  transform-origin: 50% 50%;
+  cursor: pointer;
+  transform: rotate(90deg);
+}

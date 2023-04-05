@@ -1,4 +1,4 @@
-@value t_white, t_navy_dark from "../../common/colors.css";
+@value t_white, t_navy_dark, t_blue_light from "../../common/colors.css";
 
 .footer {
   display: grid;
@@ -8,5 +8,9 @@
   background: t_navy_dark;
 }
 
-.fText {
+.maker {
+  text-decoration: underline;
+}
+.maker:hover {
+  color: t_blue_light;
 }

@@ -1,5 +1,3 @@
-import sigunList from "../dataFile/sigun_nm_list.json";
-
 class FactoryList {
   constructor(httpClient) {
     this.fList = httpClient;

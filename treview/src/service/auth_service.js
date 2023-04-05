@@ -10,6 +10,7 @@ class AuthService {
   }
 
   async join(userData) {
+    console.log("userData = ", userData);
     try {
       await firebaseAuth
         .createUserWithEmailAndPassword(userData.uEmail, userData.uPwd)
@@ -67,12 +68,6 @@ class AuthService {
           uProfileTIME: imgData.uProfileTIME || "",
           uProfileID: imgData.uProfileID || "",
           uProfileURL: imgData.uProfileURL || "",
-        })
-        .catch((err) => {
-          alert(
-            "알 수 없는 이유로 회원 데이터 등록에 실패하였습니다! 죄송합니다!\n회원정보 수정에서 다시 입력해주세요!" +
-              err
-          );
         });
     } catch (err) {
       alert(
@@ -80,6 +75,21 @@ class AuthService {
           err
       );
     }
+  }
+
+  async update_Img(imgURL) {
+    try {
+      await firebaseAuth.currentUser.updateProfile({
+        photoURL: imgURL || "",
+      });
+      return true;
+    } catch (err) {
+      alert(
+        "죄송합니다!\\n오류로 인해 리뷰 등록 시 프로필 사진이 등록되지 않을 수 있습니다!\\n회원정보 수정에서 다시 등록해주세요!;",
+        err
+      );
+    }
+    return false;
   }
 
   async login(email, password) {

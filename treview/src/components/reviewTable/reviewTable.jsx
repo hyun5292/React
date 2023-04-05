@@ -5,9 +5,8 @@ import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import styles from "./reviewTable.module.css";
 import tStyle from "../../css/table.module.css";
-import RevSearchBar from "../revSearchBar/revSearchBar";
 
-const ReviewTable = memo(({ data }) => {
+const ReviewTable = memo(({ fInfo, data }) => {
   const navigate = useNavigate();
   const defaultImg =
     "https://res.cloudinary.com/sudol5292/image/upload/v1680022296/truck_okhdd4.png";
@@ -29,18 +28,18 @@ const ReviewTable = memo(({ data }) => {
       {
         accessor: "U_ID",
         Header: "작성자",
-        width: "20%",
+        width: "25%",
       },
       {
         accessor: "R_TITLE",
         Header: "제목",
-        width: "60%",
+        width: "48%",
         Cell: ({ cell: value }) => <div>{value.value}&nbsp;...</div>,
       },
       {
         accessor: "R_DATE",
         Header: "작성날짜",
-        width: "15%",
+        width: "22%",
       },
     ],
     []
@@ -68,18 +67,15 @@ const ReviewTable = memo(({ data }) => {
     usePagination
   );
 
-  const toWriteReview = (fData) => {
-    // navigate(`/writeReview`, {
-    //   state: { sigun: fData.SIGUN_NM, fName: fData.BIZPLC_NM },
-    // });
+  const toModifyReview = (fData) => {
+    navigate(`/modifyReview`, {
+      state: { modifyFData: { ...fData, ...fInfo } },
+    });
   };
 
   return (
     <div className={styles.reviewCont}>
       <div className={styles.topMenu}>
-        <div className={styles.revSearch}>
-          <RevSearchBar />
-        </div>
         <div className={`${tStyle.menuBar} ${styles.pageBar}`}>
           <button
             className={canPreviousPage ? tStyle.preBtn : tStyle.disabledBtn}
@@ -155,7 +151,7 @@ const ReviewTable = memo(({ data }) => {
                 <tr
                   className={styles.tRow}
                   {...row.getRowProps()}
-                  onClick={() => toWriteReview(row.values)}
+                  onClick={() => toModifyReview(row.original)}
                 >
                   {row.cells.map((cell) => (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>

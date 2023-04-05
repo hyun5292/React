@@ -28,7 +28,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
       ""
     );
     const newData = {
-      uId: address,
+      uId: (address + emailKind).replace(/[\s@-^$*+?.()|[\]{}]/g, ""),
       uEmail: address + "@" + emailKind,
       uPwd: pwdRef.current.value,
       uName: nameRef.current.value,
@@ -86,6 +86,7 @@ const JoinPg = memo(({ imageUploader, authService }) => {
           if (newProfile !== null) {
             imageUploader.uploadImg(newProfile).then((imgData) => {
               authService.join_data(uData, imgData);
+              authService.update_Img(imgData.uProfileURL);
             });
           } else authService.join_data(uData, "");
         }

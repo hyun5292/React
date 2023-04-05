@@ -1,4 +1,4 @@
-@value t_blue, t_black, t_blue_light, t_navy, t_border_grey, t_grey, t_shadow_grey from '../../common/colors.css';
+@value t_blue, t_black, t_blue_light, t_green, t_navy, t_red, t_border_grey, t_grey, t_shadow_grey from '../../common/colors.css';
 
 .writeReview {
   font-size: 2rem;
@@ -51,7 +51,6 @@ textarea {
   margin: 2rem 0 5rem;
   padding: 1rem 1.5rem;
   background: white;
-  /* border: 1px solid orange; */
   box-shadow: 1px 1px 10px 1px t_shadow_grey;
   border-radius: 2rem;
 }
@@ -61,15 +60,6 @@ textarea {
   color: t_navy;
   font-weight: 800;
   border-bottom: 1px solid t_grey;
-}
-
-.rTitle {
-}
-
-.mId {
-}
-
-.rDate {
 }
 
 .rCont {
@@ -95,6 +85,22 @@ textarea {
   color: t_blue_light;
   transform: translateX(-5px);
   transition: all 1s;
+}
+
+.modifyBtn {
+  color: t_green;
+}
+.modifyBtn:hover {
+  color: t_green;
+  opacity: 0.9;
+}
+
+.deleteBtn {
+  color: t_red;
+}
+.deleteBtn:hover {
+  color: t_red;
+  opacity: 0.9;
 }
 
 .btnNext:nth-child(2) {

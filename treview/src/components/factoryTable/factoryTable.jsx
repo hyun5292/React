@@ -131,7 +131,7 @@ const Table = memo(({ data }) => {
                 <tr
                   className={styles.tRow}
                   {...row.getRowProps()}
-                  onClick={() => toReviewList(row.values)}
+                  onClick={() => toReviewList(row.original)}
                 >
                   {row.cells.map((cell) => (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>

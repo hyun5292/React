@@ -1,21 +1,35 @@
 import React, { useEffect, useState } from "react";
-import ReviewTable from "../reviewTable/reviewTable";
 import styles from "./reviewPg.module.css";
 import pgStyle from "../../css/page.module.css";
+import ReviewTable from "../reviewTable/reviewTable";
+import RevSearchBar from "../revSearchBar/revSearchBar";
 import { AiOutlinePlus } from "react-icons/ai";
+import { BsArrowClockwise } from "react-icons/bs";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const ReviewPg = ({ uId, revService }) => {
   const navigate = useNavigate();
-
   const location = useLocation("");
   const [fData, setFData] = useState([]);
   const [rData, setRData] = useState([]);
 
+  const searchReview = (event, keyword) => {
+    event.preventDefault();
+    revService.searchReview(fData, keyword).then((result) => {
+      result && setRData(result);
+    });
+  };
+
+  const getAllList = () => {
+    revService.getReviewList(fData).then((result) => {
+      result && setRData(result);
+    });
+  };
+
   useEffect(() => {
     if (location.state) {
       setFData(location.state.fData);
-      revService.getReview(fData).then((result) => {
+      revService.getReviewList(fData).then((result) => {
         result && setRData(result);
       });
     } else {
@@ -36,7 +50,11 @@ const ReviewPg = ({ uId, revService }) => {
           <button
             className={styles.newRBtn}
             onClick={() =>
-              navigate(`/writeReview`, { state: { fData: fData } })
+              navigate(`/writeReview`, {
+                state: {
+                  writeFData: fData,
+                },
+              })
             }
           >
             <div className={styles.icon}>
@@ -48,7 +66,16 @@ const ReviewPg = ({ uId, revService }) => {
           ""
         )}
       </div>
-      <ReviewTable data={rData} />
+      <ReviewTable
+        fInfo={{ SIGUN_NM: fData.SIGUN_NM, BIZPLC_NM: fData.BIZPLC_NM }}
+        data={rData}
+      />
+      <div className={styles.revSearch}>
+        <RevSearchBar searchReview={searchReview} />
+        <div className={styles.resetCont} onClick={getAllList}>
+          <BsArrowClockwise className={styles.resetIcon} />
+        </div>
+      </div>
     </div>
   );
 };

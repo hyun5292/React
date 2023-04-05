@@ -1,11 +1,5 @@
 @value t_blue, t_white, t_grey from '../../common/colors.css';
 
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .search {
   display: flex;
   justify-content: center;
@@ -28,7 +22,7 @@
   background: t_blue;
 }
 .resetIcon:hover {
-  animation: rotate 5s linear infinite;
   transform-origin: 50% 50%;
   cursor: pointer;
+  transform: rotate(90deg);
 }
