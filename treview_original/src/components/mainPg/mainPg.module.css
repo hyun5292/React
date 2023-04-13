@@ -1,0 +1,69 @@
+@value t_navy, t_white, t_green, t_red from '../../common/colors.css';
+@value t_minHeight from '../../common/sizes.css';
+
+.mainPg {
+  height: t_minHeight;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow: auto;
+  background: url(../../images/truckImg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.introCont {
+  margin-top: 2rem;
+}
+
+.introItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 0;
+  padding: 1rem 2rem;
+  width: 70vw;
+  min-height: 60vh;
+  color: t_white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(50px);
+}
+
+.introItem:first-child {
+  margin-top: 0;
+}
+
+.introItem:last-child {
+  margin-bottom: 0;
+}
+
+.introItem p {
+  margin: 1rem 0;
+  width: 90%;
+}
+
+.introTitle {
+  text-align: center;
+  color: t_green;
+  font-size: 2.4rem;
+}
+
+.notReal {
+  color: t_red;
+  font-size: 1.4rem;
+}
+
+.apiInfo {
+  color: t_green;
+  font-size: 1.4rem;
+}

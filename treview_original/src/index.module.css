@@ -1,0 +1,64 @@
+@value t_white from './common/colors.css';
+body {
+  margin: 0;
+  font-family: "SUIT-Regular";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+/* input 태그 number 오른쪽 화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  color: t_white;
+  font-family: inherit;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+textarea,
+input {
+  font-family: inherit;
+  outline: none;
+  border: none;
+}
+
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}

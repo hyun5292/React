@@ -1,0 +1,9 @@
+.factoryMain {
+  height: 100vh;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  background: url(../../images/truckImg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}

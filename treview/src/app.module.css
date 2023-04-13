@@ -12,10 +12,6 @@ body {
   word-break: keep-all;
 }
 
-.app {
-  position: relative;
-}
-
 .header {
   position: fixed;
   top: 0;
@@ -26,15 +22,30 @@ body {
 }
 
 .container {
-  overflow-x: hidden;
-  min-height: t_minHeight;
-  z-index: 0;
 }
 
-@media (width < 768px) {
-  .header {
-  }
-  .container {
-    top: 72px;
-  }
+.factory_main,
+.factory_search,
+.user_login,
+.user_join,
+.user_edit,
+.review_list,
+.review_write,
+.review_edit {
+  padding: 7rem 4rem 2rem;
+  height: t_minHeight;
 }
+
+/*
+.factory,
+.factory_main,
+.factory_search,
+.user,
+.user_login,
+.user_join,
+.user_edit,
+.review,
+.review_list,
+.review_write,
+.review_edit 
+*/

@@ -1,0 +1,125 @@
+@value t_grey, t_black, t_white, t_green, t_green_dark, t_blue, t_blue_dark from "../../common/colors.css";
+
+.select * {
+  z-index: 2;
+  width: 100%;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  color: t_black;
+  font-size: inherit;
+}
+
+.inputCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: 0 !important;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  z-index: 3;
+}
+
+.inputKind {
+  padding-left: 10px !important;
+  flex: 9;
+  height: 80%;
+  background: #fff !important;
+}
+
+.KindChked,
+.KindNotChked {
+  flex: 1;
+  padding: 5px;
+  height: 100%;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  z-index: 3;
+}
+
+.KindNotChked {
+  background: t_blue !important;
+}
+.KindNotChked:hover {
+  background: t_blue_dark !important;
+}
+
+.KindChked {
+  background: t_green !important;
+}
+.KindChked:hover {
+  background: t_green_dark !important;
+}
+
+.selectBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+  height: 100%;
+  font-size: inherit;
+  font-weight: 400;
+  border-radius: 2rem;
+  color: t_black;
+  border: none;
+  background: #fff;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  width: 15%;
+  font-size: inherit;
+}
+
+.ulCont {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  height: 200px;
+  font-weight: 400;
+  border-radius: 10px;
+  background: #fff;
+  overflow-y: auto;
+  animation: onSlide 1s;
+}
+
+.liItem {
+  padding: 10px;
+}
+.liItem:hover {
+  color: white;
+  cursor: pointer;
+  opacity: 0.7;
+  background: t_grey;
+}
+
+.gone {
+  display: none;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes onSlide {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: 200px;
+  }
+}

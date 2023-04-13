@@ -1,0 +1,53 @@
+@value t_blue, t_green, t_grey from '../../common/colors.css';
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.menu a {
+  position: relative;
+  padding: 1rem;
+}
+
+.navItem {
+  cursor: pointer;
+}
+.navItem:hover {
+  transform: translate(0, -5px);
+  transition: transform 0.5s;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.bar {
+  display: inline-block;
+  width: 1px;
+  height: 15px;
+  background: t_grey;
+}
+
+.navCircle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  border-radius: 2px;
+  background: t_blue;
+  transform: translate(-50%, 0);
+}
+.navItem:hover .navCircle {
+  width: calc(100% - 2rem);
+  transform: translate(-50%, -0.5rem);
+  transition: width 0.5s;
+}
+
+.userBar {
+  background: t_green !important;
+}

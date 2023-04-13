@@ -1,0 +1,27 @@
+@value t_blue_dark: #3350A6;
+
+@value t_blue: #0554F2;
+
+@value t_blue_light: #1374F2;
+
+@value t_blue_background: rgba(19, 116, 242, 0.2);
+
+@value t_navy: #33396b;
+
+@value t_navy_dark: #232743;
+
+@value t_white: #F9FAFC;
+
+@value t_red: #F23D3D;
+
+@value t_green: #0DD965;
+
+@value t_green_dark: #238C2A;
+
+@value t_black: #070707;
+
+@value t_grey: rgba(115, 115, 114, 0.7);
+
+@value t_border_grey: rgba(115, 115, 114, 0.05);
+
+@value t_shadow_grey: rgba(115, 115, 114, 0.1);
