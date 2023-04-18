@@ -1,3 +1,6 @@
+@value t_minHeight, pg_padding from '../../common/sizes.css';
+
 .factorySearch {
-  border: 1px solid green;
+  padding: pg_padding;
+  height: t_minHeight;
 }

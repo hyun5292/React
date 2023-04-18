@@ -5,13 +5,22 @@ const Factory = ({ factoryDB }) => {
   const navigate = useNavigate();
 
   const goSearch = (query) => {
-    console.log("query = ", query);
     navigate(`/search`, { state: { query } });
+  };
+
+  const getSearchedList = (query) => {
+    const data = factoryDB.getSearchedList(query).then((list) => {
+      return list;
+    });
+    console.log(data);
+    return data;
   };
 
   return (
     <div>
-      <Outlet context={goSearch} />
+      <Outlet
+        context={{ goSearch: goSearch, getSearchedList: getSearchedList }}
+      />
     </div>
   );
 };

@@ -24,18 +24,6 @@ body {
 .container {
 }
 
-.factory_main,
-.factory_search,
-.user_login,
-.user_join,
-.user_edit,
-.review_list,
-.review_write,
-.review_edit {
-  padding: 7rem 4rem 2rem;
-  height: t_minHeight;
-}
-
 /*
 .factory,
 .factory_main,

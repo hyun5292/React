@@ -7,7 +7,7 @@ import { useOutletContext } from "react-router-dom";
 
 const SearchBar = (props) => {
   const fNameRef = useRef();
-  const goSearch = useOutletContext();
+  const { goSearch } = useOutletContext();
   const [sigun, setSigun] = useState("");
   const [fName, setFName] = useState("");
 
