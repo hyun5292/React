@@ -11,7 +11,7 @@ const Factory = ({ factoryDB }) => {
 
   return (
     <div>
-      <Outlet context={{ goSearch }} />
+      <Outlet context={goSearch} />
     </div>
   );
 };

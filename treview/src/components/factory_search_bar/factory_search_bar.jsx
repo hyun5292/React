@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import { useOutletContext } from "react-router-dom";
 import styles from "./factory_search_bar.module.css";
 import Select from "../select/select";
 import sigun_nm from "../../dataFile/sigun_nm_list.json";
 import { BsSearch } from "react-icons/bs";
+import { useOutletContext } from "react-router-dom";
 
 const SearchBar = (props) => {
   const fNameRef = useRef();
