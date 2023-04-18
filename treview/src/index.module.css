@@ -1,3 +1,5 @@
+@value t_white from './common/colors.css';
+
 body {
   margin: 0;
   font-family: "SUIT-Regular";
@@ -19,6 +21,30 @@ h6 {
 p {
   margin: 0;
   padding: 0;
+}
+
+input {
+  margin: 0;
+  border: none;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: t_white;
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+textarea,
+input {
+  font-family: inherit;
+  outline: none;
+  border: none;
 }
 
 /* input 태그 number 오른쪽 화살표 없애기 */

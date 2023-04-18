@@ -1,0 +1,38 @@
+@value t_blue, t_navy, t_grey, t_white from '../../common/colors.css';
+
+.searchBar {
+  display: flex;
+  width: 60%;
+  height: 4rem;
+  gap: 10px;
+}
+
+.select {
+  flex: 2 1;
+}
+
+.inputForm {
+  display: flex;
+  flex: 8 1;
+  box-shadow: 3px 3px 4px 0px t_grey;
+  border-radius: 2rem;
+}
+
+.search_input {
+  padding: 0 1rem;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  border-radius: 2rem 0 0 2rem;
+}
+
+.search_btn {
+  width: 4.5rem;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 0 2rem 2rem 0;
+  background: t_blue;
+}
+.search_btn:hover {
+  background: t_navy;
+}

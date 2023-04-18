@@ -14,7 +14,7 @@ import ReviewWrite from "./components/review_write/review_write";
 import ReviewEdit from "./components/review_edit/review_edit";
 import styles from "./app.module.css";
 
-const App = () => {
+const App = ({ factoryDB }) => {
   return (
     <div className={styles.app}>
       <div className={styles.header}>
@@ -27,7 +27,7 @@ const App = () => {
               path=""
               element={
                 <div className={styles.factory}>
-                  <Factory />
+                  <Factory factoryDB={factoryDB} />
                 </div>
               }
             >

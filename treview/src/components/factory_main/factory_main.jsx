@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./factory_main.module.css";
+import FSearchBar from "../factory_search_bar/factory_search_bar";
 
 const FactoryMain = (props) => {
   return (
     <div className={styles.factoryMain}>
-      <div className={styles.searchBar}></div>
+      <div className={styles.searchBar}>
+        <FSearchBar />
+      </div>
       <div className={styles.container}>
-        <div className={styles.introCont}>
+        <div className={styles.introItem}>
           <p className={styles.introTitle}>{">"} 트리뷰(Treview)란?</p>
           <p className={styles.notReal}>
             ※ 해당 사이트는 실제 운영 중인 사이트가 아닙니다.
@@ -26,7 +29,7 @@ const FactoryMain = (props) => {
             9월 6일자로 중지되었습니다
           </p>
         </div>
-        <div className={styles.introCont}>
+        <div className={styles.introItem}>
           <p className={styles.introTitle}>{">"} 제작 동기는?</p>
           <p>
             {">>"} 화물차 기사이신 아빠가 매일 저녁마다 그 날 갔었던 공장의
