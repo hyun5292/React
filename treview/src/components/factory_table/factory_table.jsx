@@ -5,10 +5,8 @@ import tStyle from "../../css/table.module.css";
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import BsnState from "./bsnState/bsnState";
-import { useNavigate } from "react-router-dom";
 
-const FactoryTable = memo(({ data }) => {
-  const navigate = useNavigate();
+const FactoryTable = memo(({ goReview, data }) => {
   const columns = useMemo(
     () => [
       {
@@ -68,10 +66,8 @@ const FactoryTable = memo(({ data }) => {
     usePagination
   );
 
-  const toReviewList = (fData) => {
-    navigate(`/review`, {
-      state: { fData: fData },
-    });
+  const handleClick = (fData) => {
+    goReview(fData);
   };
 
   return (
@@ -131,7 +127,7 @@ const FactoryTable = memo(({ data }) => {
                 <tr
                   className={styles.tRow}
                   {...row.getRowProps()}
-                  onClick={() => toReviewList(row.original)}
+                  onClick={() => handleClick(row.original)}
                 >
                   {row.cells.map((cell) => (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>

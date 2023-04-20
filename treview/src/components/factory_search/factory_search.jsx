@@ -7,8 +7,13 @@ import { BsArrowClockwise } from "react-icons/bs";
 
 const FactorySearch = (props) => {
   const location = useLocation("");
-  const { getSearchedList, getAllList } = useOutletContext();
+  const { goReview, getSearchedList, getAllList } = useOutletContext();
   const [data, setData] = useState([]);
+
+  const handleReset = (event) => {
+    event.preventDefault();
+    getAllList().then((result) => setData(result));
+  };
 
   useEffect(() => {
     location.state
@@ -23,11 +28,11 @@ const FactorySearch = (props) => {
     <div className={styles.factorySearch}>
       <div className={styles.searchBar}>
         <FSearchBar />
-        <button className={styles.resetCont}>
+        <button className={styles.resetCont} onClick={handleReset}>
           <BsArrowClockwise className={styles.resetIcon} />
         </button>
       </div>
-      <FactoryTable data={data} />
+      <FactoryTable data={data} goReview={goReview} />
     </div>
   );
 };

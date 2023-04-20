@@ -12,16 +12,24 @@ body {
   word-break: keep-all;
 }
 
-.header {
+.header,
+.footer {
   position: fixed;
-  top: 0;
   left: 0;
   width: 100%;
   min-width: t_minWidth;
   z-index: 3;
 }
 
+.header {
+  top: 0;
+}
+
 .container {
+}
+
+.footer {
+  bottom: 0;
 }
 
 /*

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
-const Factory = ({ factoryDB }) => {
+const Factory = memo(({ factoryDB }) => {
   const navigate = useNavigate();
 
   const getSearchedList = (query) => {
@@ -20,25 +20,22 @@ const Factory = ({ factoryDB }) => {
     navigate(`/search`, { state: { query } });
   };
 
-  // const getSearchedList = (query) => {
-  //   const data = factoryDB.getSearchedList(query).then((list) => {
-  //     return list;
-  //   });
-  //   console.log(data);
-  //   return data;
-  // };
+  const goReview = (fData) => {
+    navigate(`/review`, {
+      state: { fData: fData },
+    });
+  };
 
   return (
-    <div>
-      <Outlet
-        context={{
-          goSearch: goSearch,
-          getSearchedList: getSearchedList,
-          getAllList: getAllList,
-        }}
-      />
-    </div>
+    <Outlet
+      context={{
+        goReview: goReview,
+        goSearch: goSearch,
+        getSearchedList: getSearchedList,
+        getAllList: getAllList,
+      }}
+    />
   );
-};
+});
 
 export default Factory;
