@@ -14,7 +14,7 @@ import ReviewWrite from "./components/review_write/review_write";
 import ReviewEdit from "./components/review_edit/review_edit";
 import styles from "./app.module.css";
 
-const App = ({ factoryDB }) => {
+const App = ({ factoryDB, reviewDB }) => {
   return (
     <div className={styles.app}>
       <div className={styles.header}>
@@ -65,12 +65,12 @@ const App = ({ factoryDB }) => {
               path="review"
               element={
                 <div className={styles.review}>
-                  <Review />
+                  <Review reviewDB={reviewDB} />
                 </div>
               }
             >
               <Route
-                path="list"
+                path=""
                 element={<ReviewList className={styles.review_list} />}
               ></Route>
               <Route

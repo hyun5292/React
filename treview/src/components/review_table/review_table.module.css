@@ -1,0 +1,57 @@
+@valut t_grey from '../../common/colors.css';
+.reviewCont {
+  text-align: left;
+  margin: 2rem 0;
+}
+
+.topMenu {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.pageBar {
+  margin-left: 10px;
+}
+
+.sortTxt {
+  margin-left: 10px;
+  color: t_grey;
+  opacity: 0.8;
+}
+
+.navCont {
+  display: flex;
+  margin: 0 1rem;
+}
+
+.stateBar {
+  padding: 0 1rem;
+}
+
+.rTable {
+  margin: 1rem auto;
+  width: 100%;
+  font-size: 20px;
+}
+
+.tHead {
+  text-align: center;
+}
+
+.sortTxt {
+  color: t_grey;
+}
+
+tr:hover {
+  color: inherit;
+  background: inherit;
+}
+
+td {
+  padding: 15px;
+}
+
+.profile {
+  max-height: 70px;
+}
