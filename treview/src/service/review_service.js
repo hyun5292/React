@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
+import "./firebase";
 
 class ReviewService {
   async writeReview(revData, fData) {
@@ -36,33 +37,34 @@ class ReviewService {
   }
 
   async getReviewList(fData) {
-    try {
-      const result = await firebase
-        .database()
-        .ref("reviews/" + fData.SIGUN_NM + "/" + fData.BIZPLC_NM)
-        .get()
-        .then((snapshot) => {
-          const reviewList = [];
-          if (snapshot.exists()) {
-            const rData_obj = snapshot.val();
+    // try {
+    const result = await firebase
+      .database()
+      .ref("reviews/" + fData.SIGUN_NM + "/" + fData.BIZPLC_NM)
+      .get()
+      .then((snapshot) => {
+        const reviewList = [];
+        if (snapshot.exists()) {
+          const rData_obj = snapshot.val();
 
-            Object.entries(rData_obj).map((list) => {
-              reviewList.push(list[1]);
-            });
+          Object.entries(rData_obj).map((list) => {
+            reviewList.push(list[1]);
+          });
 
-            return reviewList;
-          } else {
-            return false;
-          }
-        });
-      return result;
-    } catch (err) {
-      alert(
-        "알 수 없는 이유로 리뷰를 가져오는데에 실패했습니다! 다시 시도해주세요! ;",
-        err
-      );
-    }
-    return false;
+          return reviewList;
+        } else {
+          return false;
+        }
+      })
+      .catch((err) => console.log("err = ", err));
+    return result;
+    // } catch (error) {
+    //   alert(
+    //     "알 수 없는 이유로 리뷰를 가져오는데에 실패했습니다! 다시 시도해주세요! ;",
+    //     error
+    //   );
+    // }
+    // return false;
   }
 
   async searchReview(fData, keyword) {

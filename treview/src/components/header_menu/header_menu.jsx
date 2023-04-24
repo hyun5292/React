@@ -28,7 +28,7 @@ const HeaderMenu = (props) => {
         </a>
       </li>
       <li className={styles.navItem}>
-        <a href="/review/list">
+        <a href="/review">
           <BsPen className={styles.icon} />
           리뷰
           <span className={styles.navCircle} />

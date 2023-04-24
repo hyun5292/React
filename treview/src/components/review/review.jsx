@@ -6,7 +6,7 @@ const Review = memo(({ reviewDB }) => {
 
   const getReviewList = (fData) => {
     return reviewDB.getReviewList(fData).then((result) => {
-      if (result) return result;
+      return result;
     });
   };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useLocation, useOutletContext } from "react-router-dom";
 import FSearchBar from "../factory_search_bar/factory_search_bar";
 import FactoryTable from "../factory_table/factory_table";
-import { useLocation, useOutletContext } from "react-router-dom";
 import styles from "./factory_search.module.css";
 import { BsArrowClockwise } from "react-icons/bs";
 
@@ -20,8 +20,8 @@ const FactorySearch = (props) => {
       ? getSearchedList({
           sigun: location.state.query.sigun,
           fName: location.state.query.fName,
-        }).then((result) => setData(result))
-      : getAllList().then((result) => setData(result));
+        }).then((result) => result && setData(result))
+      : getAllList().then((result) => result && setData(result));
   }, [getAllList, getSearchedList, location.state]);
 
   return (

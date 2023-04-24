@@ -1,3 +1,30 @@
+@value t_green, t_blue_light, t_blue, t_blue_dark from '../../common/colors.css';
+@value t_minHeight, pg_padding from '../../common/sizes.css';
+
 .reviewList {
-  border: 1px solid green;
+  padding: pg_padding;
+  height: t_minHeight;
+  overflow: auto;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0 3rem;
+}
+
+.rTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.rSigun {
+  color: t_green;
+  margin-right: 10px;
+}
+
+.rBizplc {
+  color: t_blue_light;
+  margin-right: 10px;
 }

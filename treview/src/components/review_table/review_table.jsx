@@ -6,6 +6,17 @@ import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import styles from "./review_table.module.css";
 import tStyle from "../../css/table.module.css";
 
+const writeDate = (rDate) => {
+  const yearDate = rDate.split(" ")[0];
+  const results = yearDate.split("-");
+
+  return (
+    <div>
+      {results[0]}년 {results[1]}월 {results[2]}일
+    </div>
+  );
+};
+
 const ReviewTable = memo(({ fInfo, data }) => {
   const navigate = useNavigate();
   const defaultImg =
@@ -40,6 +51,7 @@ const ReviewTable = memo(({ fInfo, data }) => {
         accessor: "R_DATE",
         Header: "작성날짜",
         width: "22%",
+        Cell: ({ cell: value }) => writeDate(value.value),
       },
     ],
     []
