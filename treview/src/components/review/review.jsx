@@ -10,7 +10,20 @@ const Review = memo(({ reviewDB }) => {
     });
   };
 
-  return <Outlet context={{ getReviewList: getReviewList }} />;
+  const getSearchReview = (fData, keyword) => {
+    return reviewDB.searchReview(fData, keyword).then((result) => {
+      return result;
+    });
+  };
+
+  return (
+    <Outlet
+      context={{
+        getReviewList: getReviewList,
+        getSearchReview: getSearchReview,
+      }}
+    />
+  );
 });
 
 export default Review;

@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useOutletContext } from "react-router-dom";
 import FSearchBar from "../factory_search_bar/factory_search_bar";
+import ResetBtn from "../reset_btn/reset_btn";
 import FactoryTable from "../factory_table/factory_table";
 import styles from "./factory_search.module.css";
-import { BsArrowClockwise } from "react-icons/bs";
 
 const FactorySearch = (props) => {
   const location = useLocation("");
   const { goReview, getSearchedList, getAllList } = useOutletContext();
   const [data, setData] = useState([]);
 
-  const handleReset = (event) => {
-    event.preventDefault();
+  const handleReset = () => {
     getAllList().then((result) => setData(result));
   };
 
@@ -28,9 +27,7 @@ const FactorySearch = (props) => {
     <div className={styles.factorySearch}>
       <div className={styles.searchBar}>
         <FSearchBar />
-        <button className={styles.resetCont} onClick={handleReset}>
-          <BsArrowClockwise className={styles.resetIcon} />
-        </button>
+        <ResetBtn onReset={handleReset} />
       </div>
       <FactoryTable data={data} goReview={goReview} />
     </div>

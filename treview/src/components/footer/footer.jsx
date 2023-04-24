@@ -4,7 +4,9 @@ import styles from "./footer.module.css";
 const Footer = (props) => {
   return (
     <div className={styles.footer}>
-      <div className={styles.fText}>@copyright sudol5292</div>
+      <div className={styles.fText}>
+        copyright&copy;2023 sudol5292 All rights reserved
+      </div>
       <div className={styles.fText}>
         <span>제작자: </span>
         <a className={styles.maker} href="https://sudol5292.netlify.app/">

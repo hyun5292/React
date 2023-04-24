@@ -1,6 +1,6 @@
 @value t_blue, t_navy, t_grey, t_white from '../../common/colors.css';
 
-.searchBar {
+.fSearchBar {
   display: flex;
   width: 60%;
   height: 4rem;

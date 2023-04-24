@@ -1,0 +1,28 @@
+@value t_navy, t_grey from '../../common/colors.css';
+
+.rSearchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rSchInput,
+.rSchBtn {
+  height: 4rem;
+  padding: 0 20px;
+  font-size: 1.5rem;
+  box-shadow: 3px 3px 4px 0px t_grey;
+}
+
+.rSchInput {
+  border-radius: 4rem 0 0 4rem;
+}
+
+.rSchBtn {
+  padding: 1rem 1.2rem;
+  border-radius: 0 4rem 4rem 0;
+  background: t_navy;
+}
+.rSchBtn:hover {
+  opacity: 0.8;
+}

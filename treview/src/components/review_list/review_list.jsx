@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import ReviewTable from "../review_table/review_table";
+import RSearchBar from "../review_search_bar/review_search_bar";
+import ResetBtn from "../reset_btn/reset_btn";
 import styles from "./review_list.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const ReviewList = (props) => {
   const navigate = useNavigate();
   const location = useLocation("");
-  const { getReviewList } = useOutletContext();
+  const { getReviewList, getSearchReview } = useOutletContext();
   const [fData, setFData] = useState([]);
   const [rData, setRData] = useState([]);
+
+  const searchReview = (keyword) => {
+    getSearchReview(fData, keyword).then(
+      (result) => result && setRData(result)
+    );
+  };
+
+  const handleReset = () => {
+    getReviewList(fData).then((result) => result && setRData(result));
+  };
 
   useEffect(() => {
     if (location.state) {
@@ -31,7 +43,7 @@ const ReviewList = (props) => {
           <span className={styles.rBizplc}>{fData.BIZPLC_NM}</span>
           리뷰 목록
         </span>
-        <button>
+        <button className={styles.newRBtn}>
           <div className={styles.icon}>
             <AiOutlinePlus />
           </div>
@@ -42,6 +54,10 @@ const ReviewList = (props) => {
         fInfo={{ SIGUN_NM: fData.SIGUN_NM, BIZPLC_NM: fData.BIZPLC_NM }}
         data={rData}
       />
+      <div className={styles.revSearch}>
+        <RSearchBar searchReview={searchReview} />
+        <ResetBtn onReset={handleReset} />
+      </div>
     </div>
   );
 };

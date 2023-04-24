@@ -5,7 +5,7 @@ import sigun_nm from "../../dataFile/sigun_nm_list.json";
 import { BsSearch } from "react-icons/bs";
 import { useOutletContext } from "react-router-dom";
 
-const SearchBar = (props) => {
+const FSearchBar = (props) => {
   const fNameRef = useRef();
   const { goSearch } = useOutletContext();
   const [sigun, setSigun] = useState("");
@@ -21,7 +21,7 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div className={styles.searchBar}>
+    <div className={styles.fSearchBar}>
       <div className={styles.select}>
         <Select
           kind={"시군명"}
@@ -45,4 +45,4 @@ const SearchBar = (props) => {
   );
 };
 
-export default SearchBar;
+export default FSearchBar;

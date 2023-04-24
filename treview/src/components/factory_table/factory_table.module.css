@@ -1,4 +1,4 @@
-@value t_grey, t_border_grey, t_white, t_black, t_navy, t_blue_light from '../../common/colors.css';
+@value t_grey, t_green, t_border_grey, t_white, t_black, t_navy, t_blue_light from '../../common/colors.css';
 
 .tCont {
   width: 100%;
@@ -38,4 +38,19 @@ tr:last-child td:first-child {
 tr:last-child td:last-child {
   border-collapse: collapse;
   border-radius: 0 0 1rem 0;
+}
+
+.onBsnState,
+.offBsnState {
+  color: t_white;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.onBsnState {
+  background: t_green;
+}
+
+.offBsnState {
+  background: t_grey;
 }

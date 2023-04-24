@@ -1,0 +1,19 @@
+@value t_white, t_blue, t_navy, t_grey from '../../common/colors.css';
+
+.resetCont {
+  display: flex;
+  border-radius: 50%;
+}
+
+.resetIcon {
+  padding: 1rem;
+  width: 4rem;
+  height: 4rem;
+  color: t_white;
+  border-radius: 50%;
+  background: t_blue;
+  box-shadow: 3px 3px 4px 0px t_grey;
+}
+.resetIcon:hover {
+  background: t_navy;
+}

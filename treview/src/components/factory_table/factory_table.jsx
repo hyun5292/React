@@ -4,7 +4,16 @@ import styles from "./factory_table.module.css";
 import tStyle from "../../css/table.module.css";
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
-import BsnState from "./bsnState/bsnState";
+
+const BsnState = ({ value }) => {
+  return (
+    <span
+      className={value === "운영중" ? styles.onBsnState : styles.offBsnState}
+    >
+      {value}
+    </span>
+  );
+};
 
 const FactoryTable = memo(({ goReview, data }) => {
   const columns = useMemo(

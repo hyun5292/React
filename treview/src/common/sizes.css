@@ -3,3 +3,5 @@
 @value t_minHeight: calc(100vh - 60px);
 
 @value pg_padding: 6rem 7rem 3rem;
+
+@value rSearchBar_height: 4rem;
