@@ -7,7 +7,7 @@ const Header = (props) => {
     <div className={styles.header}>
       <img
         className={styles.logo}
-        src="./images/truck_long.png"
+        src="../images/truck_long.png"
         alt="사이트 로고"
       />
       <Menu />
