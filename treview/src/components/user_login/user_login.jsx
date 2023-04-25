@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import EmailList from "../../dataFile/emailList.json";
+import Select from "../select/select";
 import styles from "./user_login.module.css";
 import { FaArrowLeft } from "react-icons/fa";
 
 const UserLogin = (props) => {
+  const [email, setEmail] = useState("");
+
   return (
     <div className={styles.login}>
       <div className={styles.loginCont}>
@@ -11,18 +15,23 @@ const UserLogin = (props) => {
             <FaArrowLeft className={styles.icon} />
           </button>
           <form className={styles.formCont}>
-            <span>이메일</span>
-            <br />
+            <div className={styles.input_title}>이메일</div>
             <div className={styles.emailCont}>
               <input
                 className={styles.email_input}
                 type="text"
                 placeholder="이메일 주소"
               />
-              &nbsp;@&nbsp;
+              @
+              <div className={styles.select}>
+                <Select
+                  kind={"이메일"}
+                  list={EmailList.emailList}
+                  setKind={setEmail}
+                />
+              </div>
             </div>
-            <span>비밀번호</span>
-            <br />
+            <div className={styles.input_title}>비밀번호</div>
             <input type="password" placeholder="비밀번호" />
             <button className={styles.login_btn}>로그인</button>
           </form>

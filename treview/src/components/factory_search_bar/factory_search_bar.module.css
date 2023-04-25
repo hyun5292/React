@@ -7,15 +7,21 @@
   gap: 10px;
 }
 
+.select,
+.inputForm {
+  border-radius: 2rem;
+  box-shadow: 3px 3px 4px 0px t_grey;
+}
+
 .select {
   flex: 2 1;
+  font-size: 1.2rem;
+  /* background: #fff; */
 }
 
 .inputForm {
   display: flex;
   flex: 8 1;
-  box-shadow: 3px 3px 4px 0px t_grey;
-  border-radius: 2rem;
 }
 
 .search_input {
