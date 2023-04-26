@@ -13,12 +13,40 @@ import ReviewList from "./components/review_list/review_list";
 import ReviewWrite from "./components/review_write/review_write";
 import ReviewEdit from "./components/review_edit/review_edit";
 import styles from "./app.module.css";
+import { useCallback, useEffect, useState } from "react";
 
-const App = ({ factoryDB, reviewDB }) => {
+const App = ({ factoryDB, authService, reviewDB }) => {
+  const [uData, setUData] = useState({
+    uId: "",
+    uDisplayName: "",
+    uEmail: "",
+    uProfile: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const onLogout = useCallback(() => {
+    authService.logout().then(window.location.reload());
+  }, [authService]);
+
+  useEffect(() => {
+    authService.onAuthChange((user) => {
+      if (user) {
+        setUData({
+          uId: user.email.split("@")[0],
+          uDisplayName: user.displayName,
+          uEmail: user.email,
+          uProfile: user.photoURL,
+        });
+      } else {
+        authService.logout();
+      }
+    });
+  }, [authService]);
+
   return (
     <div className={styles.app}>
       <div className={styles.header}>
-        <Header />
+        <Header uId={uData.uId || null} onLogout={onLogout} />
       </div>
       <div className={styles.container}>
         <BrowserRouter>
@@ -44,7 +72,7 @@ const App = ({ factoryDB, reviewDB }) => {
               path="user"
               element={
                 <div className={styles.user}>
-                  <User />
+                  <User authService={authService} />
                 </div>
               }
             >
@@ -65,7 +93,7 @@ const App = ({ factoryDB, reviewDB }) => {
               path="review"
               element={
                 <div className={styles.review}>
-                  <Review reviewDB={reviewDB} />
+                  <Review uData={uData} reviewDB={reviewDB} />
                 </div>
               }
             >

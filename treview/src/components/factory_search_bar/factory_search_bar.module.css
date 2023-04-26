@@ -16,7 +16,7 @@
 .select {
   flex: 2 1;
   font-size: 1.2rem;
-  /* background: #fff; */
+  font-weight: 400;
 }
 
 .inputForm {

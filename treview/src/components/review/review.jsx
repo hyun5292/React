@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
-const Review = memo(({ reviewDB }) => {
+const Review = memo(({ uData, reviewDB }) => {
   const navigate = useNavigate();
 
   const getReviewList = (fData) => {

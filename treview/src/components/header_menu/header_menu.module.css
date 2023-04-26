@@ -1,4 +1,4 @@
-@value t_blue, t_green, t_grey from '../../common/colors.css';
+@value t_blue, t_green, t_grey, t_navy from '../../common/colors.css';
 
 .menu {
   display: flex;
@@ -50,4 +50,41 @@
 
 .userBar {
   background: t_green !important;
+}
+
+.mState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  color: t_navy;
+  gap: 10px;
+}
+
+.mState a {
+  padding: 0;
+}
+
+.mState button {
+  padding: 0;
+  background: none;
+}
+
+.mState button .icon {
+  margin: 0;
+  font-size: 1.5rem;
+  color: t_green;
+}
+.mState button:hover .icon {
+  color: t_grey;
+  scale: 1.2;
+  transition: all 0.3s;
+}
+
+.mState .user_edit_btn .icon {
+  margin-top: 5px;
+}
+
+.gone {
+  display: none;
 }

@@ -1,4 +1,4 @@
-@value t_black, t_grey from '../../common/colors.css';
+@value t_black, t_grey, t_green, t_green_dark, t_blue, t_blue_dark from '../../common/colors.css';
 
 @keyframes onSlide {
   0% {
@@ -17,11 +17,49 @@
   height: 100%;
   color: t_black !important;
   font-size: inherit;
+  font-weight: inherit;
   z-index: 2;
 }
 
 .select * {
   background: #fff;
+}
+
+.select button {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.self_cont {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 80%;
+  gap: 5px;
+}
+
+.self_input {
+  flex: 9;
+  padding: 0 10px !important;
+  width: 100%;
+  height: 100%;
+}
+
+.self_btn {
+  flex: 1;
+  width: 100%;
+  padding: 5px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.self_btn,
+.self_btn .icon {
+  background: t_blue;
+}
+.self_btn:hover .self_btn:hover .icon {
+  background: t_blue_dark;
 }
 
 .select_btn {

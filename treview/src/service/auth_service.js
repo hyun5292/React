@@ -96,7 +96,7 @@ class AuthService {
     try {
       await firebaseAuth.signInWithEmailAndPassword(email, password);
 
-      return "success";
+      return true;
     } catch (err) {
       switch (err.code) {
         case "auth/user-not-found":
@@ -115,7 +115,7 @@ class AuthService {
           break;
       }
     }
-    return "Error";
+    return false;
   }
 
   async logout() {

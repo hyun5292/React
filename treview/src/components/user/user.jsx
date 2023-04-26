@@ -1,12 +1,23 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { memo } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 
-const User = (props) => {
+const User = memo(({ authService }) => {
+  const navigate = useNavigate();
+
+  const doLogin = (uEmail, uPwd) => {
+    authService
+      .login(uEmail, uPwd)
+      .then((result) => (result ? navigate("/") : ""));
+  };
+
+  const goMain = () => {
+    navigate("/");
+  };
   return (
     <div>
-      <Outlet />
+      <Outlet context={{ goMain: goMain, doLogin: doLogin }} />
     </div>
   );
-};
+});
 
 export default User;
