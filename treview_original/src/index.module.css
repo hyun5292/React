@@ -1,7 +1,8 @@
-@value t_white from './common/colors.css';
+@value t_white, t_black from './common/colors.css';
 body {
   margin: 0;
   font-family: "SUIT-Regular";
+  color: t_black;
 }
 
 * {
@@ -34,6 +35,7 @@ li {
   margin: 0;
   padding: 0;
   list-style: none;
+  color: inherit;
 }
 
 button {
@@ -50,6 +52,7 @@ button {
 
 textarea,
 input {
+  color: inherit;
   font-family: inherit;
   outline: none;
   border: none;

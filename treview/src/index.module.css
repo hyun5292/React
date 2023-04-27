@@ -43,8 +43,10 @@ button {
 textarea,
 input {
   font-family: inherit;
+  font-size: inherit;
   outline: none;
   border: none;
+  resize: none;
 }
 
 /* input 태그 number 오른쪽 화살표 없애기 */

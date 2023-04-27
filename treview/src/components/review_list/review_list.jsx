@@ -6,10 +6,11 @@ import ResetBtn from "../reset_btn/reset_btn";
 import styles from "./review_list.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 
-const ReviewList = (props) => {
+const ReviewList = () => {
   const navigate = useNavigate();
   const location = useLocation("");
-  const { getReviewList, getSearchReview } = useOutletContext();
+  const { uData, getReviewList, getSearchReview, goReviewWrite } =
+    useOutletContext();
   const [fData, setFData] = useState([]);
   const [rData, setRData] = useState([]);
 
@@ -21,6 +22,11 @@ const ReviewList = (props) => {
 
   const handleReset = () => {
     getReviewList(fData).then((result) => result && setRData(result));
+  };
+
+  const goWritePage = (event) => {
+    event.preventDefault();
+    goReviewWrite(uData, fData);
   };
 
   useEffect(() => {
@@ -43,12 +49,16 @@ const ReviewList = (props) => {
           <span className={styles.rBizplc}>{fData.BIZPLC_NM}</span>
           리뷰 목록
         </span>
-        <button className={styles.newRBtn}>
-          <div className={styles.icon}>
-            <AiOutlinePlus />
-          </div>
-          리뷰 작성하기
-        </button>
+        {uData.uId ? (
+          <button className={styles.newRBtn} onClick={goWritePage}>
+            <div className={styles.icon}>
+              <AiOutlinePlus />
+            </div>
+            리뷰 작성하기
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
       <ReviewTable
         fInfo={{ SIGUN_NM: fData.SIGUN_NM, BIZPLC_NM: fData.BIZPLC_NM }}

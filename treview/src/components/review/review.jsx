@@ -16,11 +16,22 @@ const Review = memo(({ uData, reviewDB }) => {
     });
   };
 
+  const goReviewWrite = (uData, fData) => {
+    navigate(`/review/write`, {
+      state: {
+        uData: uData,
+        fData: fData,
+      },
+    });
+  };
+
   return (
     <Outlet
       context={{
+        uData: uData,
         getReviewList: getReviewList,
         getSearchReview: getSearchReview,
+        goReviewWrite: goReviewWrite,
       }}
     />
   );
