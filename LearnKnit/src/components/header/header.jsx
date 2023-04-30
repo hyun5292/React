@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./header.module.css";
 import {
   AiFillCloseCircle,
-  AiFillInfoCircle,
+  AiFillDownCircle,
   AiFillLeftCircle,
   AiFillRightCircle,
 } from "react-icons/ai";
@@ -35,19 +35,17 @@ const Header = ({ prev, next, menu, step, handleClickMenu, changeStep }) => {
           height="auto"
           alt="사이트 로고"
         />
-        <button className={styles.hideMenu} onClick={onChangeMenu}>
-          {menu ? (
-            <>
-              <AiFillCloseCircle className={styles.icon} />
-              <span className={styles.btnText}>메뉴 숨기기</span>
-            </>
-          ) : (
-            <>
-              <AiFillInfoCircle className={styles.icon} />
-              <span className={styles.btnText}>메뉴 펼치기</span>
-            </>
-          )}
-        </button>
+        {menu ? (
+          <button className={styles.hideMenu_hide} onClick={onChangeMenu}>
+            <AiFillCloseCircle className={styles.icon} />
+            <span className={styles.btnText}>메뉴 숨기기</span>
+          </button>
+        ) : (
+          <button className={styles.hideMenu_open} onClick={onChangeMenu}>
+            <AiFillDownCircle className={styles.icon} />
+            <span className={styles.btnText}>메뉴 펼치기</span>
+          </button>
+        )}
       </div>
       <div className={styles.content}>
         <button

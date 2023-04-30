@@ -1,4 +1,4 @@
-@value knitBlack, knitGray_light from '../../common/colors.css';
+@value knitBlack, knitGray_light, knitRed, knitRed_dark, knitGreen, knitGreen_dark from '../../common/colors.css';
 
 .header {
   background: knitBlack;
@@ -22,6 +22,20 @@
 
 .icon {
   font-size: 1.5rem;
+}
+
+.hideMenu_hide {
+  background: knitGreen;
+}
+.hideMenu_hide:hover {
+  background: knitGreen_dark;
+}
+
+.hideMenu_open {
+  background: knitRed;
+}
+.hideMenu_open:hover {
+  background: knitRed_dark;
 }
 
 .noUse {

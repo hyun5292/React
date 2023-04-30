@@ -7,7 +7,7 @@ import VideoMore from "./components/video_more/video_more";
 import Error from "./components/error/error";
 
 function App({ stepsData, youtube }) {
-  const [menu, setMenu] = useState(true);
+  const [menu, setMenu] = useState(false);
   const [nowStep, setNowStep] = useState({
     ...stepsData["코바늘"][0],
     stepKind: "코바늘",
@@ -23,8 +23,8 @@ function App({ stepsData, youtube }) {
 
   const handleClickMenu = () => {
     const newMenu = !menu;
-    const nowWidth = videoWidth;
     setMenu(newMenu);
+    const nowWidth = videoWidth;
     if (window.innerWidth > 1024) {
       newMenu ? setVideoWidth(nowWidth - 320) : setVideoWidth(nowWidth + 320);
     } else if (window.innerWidth <= 768) {
@@ -48,6 +48,7 @@ function App({ stepsData, youtube }) {
 
   const changeStep = (kind, id) => {
     const now_last_index = stepsData[kind].length;
+    setMenu(false);
 
     switch (id[0] + "-" + id[1]) {
       case "1-1":

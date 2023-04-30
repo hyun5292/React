@@ -1,1 +1,1 @@
-@value minWidth: 360px;
+@value minWidth: calc(360px - 60px);

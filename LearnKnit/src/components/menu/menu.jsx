@@ -22,6 +22,11 @@ const Menu = ({ stepsData, changeStep }) => {
           </span>
         </div>
         <div className={styles.infoItem}>
+          <span className={styles.warnning}>
+            ※화면이 작을 경우 메뉴를 닫고 새로고침 해주세요!※
+          </span>
+        </div>
+        <div className={styles.infoItem}>
           <span>- 제작자: </span>
           <a href="https://sudol5292.netlify.app/">박수현</a>
         </div>
