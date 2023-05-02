@@ -1,4 +1,4 @@
-@value t_blue from '../../common/colors.css';
+@value t_blue, t_navy, t_grey, t_shadow_grey from '../../common/colors.css';
 @value t_minHeight, pg_padding from '../../common/sizes.css';
 
 .reviewWrite {

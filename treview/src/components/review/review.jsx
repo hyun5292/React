@@ -16,6 +16,18 @@ const Review = memo(({ uData, reviewDB }) => {
     });
   };
 
+  const doWriteReview = (newData, fData) => {
+    reviewDB.writeReview(newData, fData).then((result) => {
+      if (result) {
+        navigate("/review", {
+          state: {
+            fData: { SIGUN_NM: fData.SIGUN_NM, BIZPLC_NM: fData.BIZPLC_NM },
+          },
+        });
+      }
+    });
+  };
+
   const goReviewWrite = (uData, fData) => {
     navigate(`/review/write`, {
       state: {
@@ -31,6 +43,7 @@ const Review = memo(({ uData, reviewDB }) => {
         uData: uData,
         getReviewList: getReviewList,
         getSearchReview: getSearchReview,
+        doWriteReview: doWriteReview,
         goReviewWrite: goReviewWrite,
       }}
     />

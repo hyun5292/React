@@ -1,4 +1,4 @@
-@value t_grey, t_navy, t_black, t_shadow_grey, t_border_grey from "../../common/colors.css";
+@value t_blue, t_green, t_red, t_black, t_navy, t_grey, t_border_grey, t_shadow_grey from "../../common/colors.css";
 
 .review_form {
   margin: 2rem 0 5rem;
@@ -8,17 +8,15 @@
   border-radius: 2rem;
 }
 
+.input_cont {
+  border-top: 1px solid t_grey;
+  border-bottom: 1px solid t_grey;
+}
+
 .factory_name {
   padding: 20px 0;
   color: t_navy;
   font-weight: 800;
-}
-
-.input_cont {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid t_grey;
-  border-bottom: 1px solid t_grey;
 }
 
 .input_item {
@@ -37,4 +35,43 @@
 
 .review_textarea {
   margin-top: 10px;
+}
+
+.btnForm {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 10px 10px;
+  gap: 10px;
+}
+
+.btnItem {
+  font-size: 2rem;
+  font-weight: 600;
+  background: none;
+  transition: all 0.5s;
+}
+.btnItem:first-child {
+  color: t_blue !important;
+}
+.btnItem:nth-child(2n) {
+  color: t_green;
+}
+.btnItem:nth-child(odd) {
+  color: t_red;
+}
+.btnItem:hover {
+  transform: translateX(-10px);
+}
+
+.btnNext:nth-child(3) {
+  display: none;
+  opacity: 0.7 !important;
+}
+.btnNext:nth-child(4) {
+  display: none;
+  opacity: 0.4 !important;
+}
+
+.btnItem:hover .btnNext {
+  display: inline-block;
 }

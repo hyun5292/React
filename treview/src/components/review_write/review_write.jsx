@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import ReviewForm from "../review_form/review_form";
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutletContext } from "react-router-dom";
 import styles from "./review_write.module.css";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 
 const ReviewWrite = (props) => {
   const location = useLocation("");
+  const [today, setToday] = useState();
   const [uData, setUData] = useState([]);
   const [fData, setFData] = useState([]);
+
+  const onWriteReview = (rData) => {
+    console.log("rData = ", rData);
+  };
 
   useEffect(() => {
     if (location.state) {
@@ -15,6 +20,23 @@ const ReviewWrite = (props) => {
       setFData(location.state.fData);
     }
   }, [location.state]);
+
+  useEffect(() => {
+    const date = new Date();
+    const now =
+      date.getFullYear() +
+      "-" +
+      (date.getMonth() + 1) +
+      "-" +
+      date.getDate() +
+      " " +
+      date.getHours().toString() +
+      ":" +
+      date.getMinutes().toString() +
+      ":" +
+      date.getSeconds().toString();
+    setToday(now);
+  }, []);
 
   return (
     <div className={styles.reviewWrite}>
@@ -24,7 +46,12 @@ const ReviewWrite = (props) => {
         </div>
         <BsChatSquareQuoteFill className={styles.subIcon} />
       </div>
-      <ReviewForm uEmail={uData.uEmail} BIZPLC_NM={fData.BIZPLC_NM} />
+      <ReviewForm
+        BIZPLC_NM={fData.BIZPLC_NM}
+        today={today}
+        uEmail={uData.uEmail}
+        btnList={[{ btnKey: 1, btnTitle: "작성하기", btnClick: onWriteReview }]}
+      />
     </div>
   );
 };

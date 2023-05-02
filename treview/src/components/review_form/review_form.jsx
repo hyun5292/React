@@ -1,37 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 import styles from "./review_form.module.css";
-import { TbBuildingFactory2 } from "react-icons/tb";
-import { RiText } from "react-icons/ri";
 import { MdOutlinePermIdentity, MdOutlineDateRange } from "react-icons/md";
+import { RiText } from "react-icons/ri";
+import { TbBuildingFactory2 } from "react-icons/tb";
 
-const ReviewForm = ({ uEmail, BIZPLC_NM }) => {
-  const [today_show, setToday_show] = useState();
-  const [today, setToday] = useState();
+const ReviewForm = ({ BIZPLC_NM, today, uEmail, btnList }) => {
+  const titleRef = useRef();
+  const contentRef = useRef();
+  const now = new Date(today);
+  const timeToShow =
+    now.getFullYear() +
+    "년 " +
+    (now.getMonth() + 1) +
+    "월 " +
+    now.getDate() +
+    "일";
 
-  useEffect(() => {
-    const date = new Date();
-    const now =
-      date.getFullYear() +
-      "-" +
-      (date.getMonth() + 1) +
-      "-" +
-      date.getDate() +
-      " " +
-      date.getHours().toString() +
-      ":" +
-      date.getMinutes().toString() +
-      ":" +
-      date.getSeconds().toString();
-    const show =
-      date.getFullYear() +
-      "년 " +
-      (date.getMonth() + 1) +
-      "월 " +
-      date.getDate() +
-      "일";
-    setToday(now);
-    setToday_show(show);
-  }, []);
+  const checkEmpty = () => {
+    if (titleRef.current.value === "") {
+      alert("제목을 입력해주세요!");
+      titleRef.current.focus();
+    } else if (contentRef.current.value === "") {
+      alert("내용을 입력해주세요!");
+      contentRef.current.focus();
+    } else return true;
+    return false;
+  };
 
   return (
     <div className={styles.review_form}>
@@ -44,7 +38,9 @@ const ReviewForm = ({ uEmail, BIZPLC_NM }) => {
           <RiText className={styles.icon} />
           :&nbsp;
           <input
+            ref={titleRef}
             className={styles.rTitle}
+            name="rTitle"
             type="text"
             placeholder="제목을 입력해주세요"
           />
@@ -57,15 +53,41 @@ const ReviewForm = ({ uEmail, BIZPLC_NM }) => {
         <div className={styles.input_item}>
           <MdOutlineDateRange className={styles.icon} />
           :&nbsp;
-          <span className={styles.rDate}>{today_show}</span>
+          <span className={styles.rDate}>{timeToShow}</span>
         </div>
         <textarea
+          ref={contentRef}
           className={styles.review_textarea}
+          name="rContent"
           cols="30"
           rows="10"
           maxLength="500"
           placeholder="내용을 입력해주세요"
         ></textarea>
+      </div>
+      <div className={styles.btnForm}>
+        {btnList &&
+          btnList.map((btnItem) => {
+            return (
+              <button
+                key={btnItem.btnKey}
+                className={styles.btnItem}
+                onClick={() => {
+                  if (checkEmpty())
+                    btnItem.btnClick({
+                      rTitle: titleRef.current.value,
+                      rContent: contentRef.current.value,
+                    });
+                }}
+              >
+                <span>{btnItem.btnTitle}</span>
+                &nbsp;
+                <span className={styles.btnNext}>{">"}</span>
+                <span className={styles.btnNext}>{">"}</span>
+                <span className={styles.btnNext}>{">"}</span>
+              </button>
+            );
+          })}
       </div>
     </div>
   );
