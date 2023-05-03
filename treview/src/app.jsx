@@ -59,14 +59,8 @@ const App = ({ factoryDB, authService, reviewDB }) => {
                 </div>
               }
             >
-              <Route
-                path=""
-                element={<FactoryMain className={styles.factory_main} />}
-              ></Route>
-              <Route
-                path="search"
-                element={<FactorySearch className={styles.factory_search} />}
-              ></Route>
+              <Route path="" element={<FactoryMain />}></Route>
+              <Route path="search" element={<FactorySearch />}></Route>
             </Route>
             <Route
               path="user"
@@ -76,18 +70,9 @@ const App = ({ factoryDB, authService, reviewDB }) => {
                 </div>
               }
             >
-              <Route
-                path="login"
-                element={<UserLogin className={styles.user_login} />}
-              ></Route>
-              <Route
-                path="join"
-                element={<UserJoin className={styles.user_join} />}
-              ></Route>
-              <Route
-                path="edit"
-                element={<UserEdit className={styles.user_edit} />}
-              ></Route>
+              <Route path="login" element={<UserLogin />}></Route>
+              <Route path="join" element={<UserJoin />}></Route>
+              <Route path="edit" element={<UserEdit />}></Route>
             </Route>
             <Route
               path="review"
@@ -97,18 +82,9 @@ const App = ({ factoryDB, authService, reviewDB }) => {
                 </div>
               }
             >
-              <Route
-                path=""
-                element={<ReviewList className={styles.review_list} />}
-              ></Route>
-              <Route
-                path="write"
-                element={<ReviewWrite className={styles.review_write} />}
-              ></Route>
-              <Route
-                path="edit"
-                element={<ReviewEdit className={styles.review_edit} />}
-              ></Route>
+              <Route path="" element={<ReviewList />}></Route>
+              <Route path="write" element={<ReviewWrite />}></Route>
+              <Route path="edit" element={<ReviewEdit />}></Route>
             </Route>
           </Routes>
         </BrowserRouter>

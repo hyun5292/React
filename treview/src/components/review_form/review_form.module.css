@@ -1,5 +1,15 @@
 @value t_blue, t_green, t_red, t_black, t_navy, t_grey, t_border_grey, t_shadow_grey from "../../common/colors.css";
 
+.review_form input,
+.review_form textarea {
+  width: 100%;
+}
+
+.review_form input:disabled,
+.review_form textarea:disabled {
+  color: t_black;
+}
+
 .review_form {
   margin: 2rem 0 5rem;
   padding: 1rem 1.5rem;
@@ -14,9 +24,12 @@
 }
 
 .factory_name {
+  display: flex;
+  align-items: center;
   padding: 20px 0;
   color: t_navy;
   font-weight: 800;
+  gap: 5px;
 }
 
 .input_item {
@@ -28,7 +41,7 @@
   border-bottom: 2px solid t_border_grey;
 }
 
-.mId,
+.uId,
 .rDate {
   color: t_black;
 }
@@ -50,14 +63,14 @@
   background: none;
   transition: all 0.5s;
 }
-.btnItem:first-child {
+/* .btnItem:first-child {
   color: t_blue !important;
-}
+} */
 .btnItem:nth-child(2n) {
-  color: t_green;
+  color: t_red;
 }
 .btnItem:nth-child(odd) {
-  color: t_red;
+  color: t_green;
 }
 .btnItem:hover {
   transform: translateX(-10px);

@@ -4,10 +4,10 @@ import { MdOutlinePermIdentity, MdOutlineDateRange } from "react-icons/md";
 import { RiText } from "react-icons/ri";
 import { TbBuildingFactory2 } from "react-icons/tb";
 
-const ReviewForm = ({ BIZPLC_NM, today, uEmail, btnList }) => {
+const ReviewForm = ({ chkUser, rData, btnList }) => {
   const titleRef = useRef();
   const contentRef = useRef();
-  const now = new Date(today);
+  const now = new Date(rData.R_DATE);
   const timeToShow =
     now.getFullYear() +
     "년 " +
@@ -31,24 +31,26 @@ const ReviewForm = ({ BIZPLC_NM, today, uEmail, btnList }) => {
     <div className={styles.review_form}>
       <div className={styles.factory_name}>
         <TbBuildingFactory2 />
-        {BIZPLC_NM}
+        {rData.BIZPLC_NM}
       </div>
       <div className={styles.input_cont}>
         <div className={styles.input_item}>
           <RiText className={styles.icon} />
           :&nbsp;
           <input
+            disabled={chkUser}
             ref={titleRef}
             className={styles.rTitle}
             name="rTitle"
             type="text"
             placeholder="제목을 입력해주세요"
+            defaultValue={rData.R_TITLE ? rData.R_TITLE : ""}
           />
         </div>
         <div className={styles.input_item}>
           <MdOutlinePermIdentity className={styles.icon} />
           :&nbsp;
-          <span className={styles.mId}>{uEmail}</span>
+          <span className={styles.uId}>{rData.U_ID}</span>
         </div>
         <div className={styles.input_item}>
           <MdOutlineDateRange className={styles.icon} />
@@ -56,6 +58,7 @@ const ReviewForm = ({ BIZPLC_NM, today, uEmail, btnList }) => {
           <span className={styles.rDate}>{timeToShow}</span>
         </div>
         <textarea
+          disabled={chkUser}
           ref={contentRef}
           className={styles.review_textarea}
           name="rContent"
@@ -63,6 +66,7 @@ const ReviewForm = ({ BIZPLC_NM, today, uEmail, btnList }) => {
           rows="10"
           maxLength="500"
           placeholder="내용을 입력해주세요"
+          defaultValue={rData.R_CONT ? rData.R_CONT : ""}
         ></textarea>
       </div>
       <div className={styles.btnForm}>
@@ -75,8 +79,8 @@ const ReviewForm = ({ BIZPLC_NM, today, uEmail, btnList }) => {
                 onClick={() => {
                   if (checkEmpty())
                     btnItem.btnClick({
-                      rTitle: titleRef.current.value,
-                      rContent: contentRef.current.value,
+                      R_TITLE: titleRef.current.value,
+                      R_CONT: contentRef.current.value,
                     });
                 }}
               >

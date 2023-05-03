@@ -28,6 +28,32 @@ const Review = memo(({ uData, reviewDB }) => {
     });
   };
 
+  const doEditReview = (newData) => {
+    reviewDB.modifyReview(newData).then((result) => {
+      if (result) {
+        navigate("/review", {
+          state: {
+            fData: { SIGUN_NM: newData.SIGUN_NM, BIZPLC_NM: newData.BIZPLC_NM },
+          },
+        });
+      }
+    });
+  };
+
+  const doDeleteReview = (rData) => {
+    if (window.confirm("삭제하시겠습니까?")) {
+      reviewDB.removeReview(rData).then((result) => {
+        if (result) {
+          navigate("/review", {
+            state: {
+              fData: { SIGUN_NM: rData.SIGUN_NM, BIZPLC_NM: rData.BIZPLC_NM },
+            },
+          });
+        }
+      });
+    }
+  };
+
   const goReviewWrite = (uData, fData) => {
     navigate(`/review/write`, {
       state: {
@@ -44,6 +70,8 @@ const Review = memo(({ uData, reviewDB }) => {
         getReviewList: getReviewList,
         getSearchReview: getSearchReview,
         doWriteReview: doWriteReview,
+        doEditReview: doEditReview,
+        doDeleteReview: doDeleteReview,
         goReviewWrite: goReviewWrite,
       }}
     />

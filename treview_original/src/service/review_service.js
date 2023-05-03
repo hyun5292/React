@@ -107,9 +107,6 @@ class ReviewService {
           "reviews/" + fData.SIGUN_NM + "/" + fData.BIZPLC_NM + "/" + fData.R_ID
         )
         .update({
-          U_ID: fData.U_ID,
-          F_ID: fData.F_ID,
-          R_ID: fData.R_ID,
           R_DATE: fData.R_DATE,
           R_TITLE: fData.R_TITLE,
           R_CONT: fData.R_CONT,

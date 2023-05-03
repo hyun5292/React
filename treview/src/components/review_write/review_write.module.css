@@ -7,20 +7,3 @@
   font-size: 2rem;
   overflow: auto;
 }
-
-.subTitle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-
-.tSigun {
-  color: t_blue;
-}
-
-.subIcon {
-  color: t_blue;
-  font-size: 3rem;
-}

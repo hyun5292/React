@@ -80,7 +80,7 @@ const ReviewTable = memo(({ fInfo, data }) => {
   );
 
   const toModifyReview = (fData) => {
-    navigate(`/modifyReview`, {
+    navigate(`/review/edit`, {
       state: { modifyFData: { ...fData, ...fInfo } },
     });
   };

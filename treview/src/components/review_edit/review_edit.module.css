@@ -1,3 +1,9 @@
+@value t_blue from "../../common/colors.css";
+@value t_minHeight, pg_padding from '../../common/sizes.css';
+
 .reviewEdit {
-  border: 1px solid green;
+  padding: pg_padding;
+  height: t_minHeight;
+  font-size: 2rem;
+  overflow: auto;
 }

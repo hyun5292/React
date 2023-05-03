@@ -37,34 +37,33 @@ class ReviewService {
   }
 
   async getReviewList(fData) {
-    // try {
-    const result = await firebase
-      .database()
-      .ref("reviews/" + fData.SIGUN_NM + "/" + fData.BIZPLC_NM)
-      .get()
-      .then((snapshot) => {
-        const reviewList = [];
-        if (snapshot.exists()) {
-          const rData_obj = snapshot.val();
+    try {
+      const result = await firebase
+        .database()
+        .ref("reviews/" + fData.SIGUN_NM + "/" + fData.BIZPLC_NM)
+        .get()
+        .then((snapshot) => {
+          const reviewList = [];
+          if (snapshot.exists()) {
+            const rData_obj = snapshot.val();
 
-          Object.entries(rData_obj).map((list) => {
-            reviewList.push(list[1]);
-          });
+            Object.entries(rData_obj).map((list) => {
+              reviewList.push(list[1]);
+            });
 
-          return reviewList;
-        } else {
-          return false;
-        }
-      })
-      .catch((err) => console.log("err = ", err));
-    return result;
-    // } catch (error) {
-    //   alert(
-    //     "알 수 없는 이유로 리뷰를 가져오는데에 실패했습니다! 다시 시도해주세요! ;",
-    //     error
-    //   );
-    // }
-    // return false;
+            return reviewList;
+          } else {
+            return false;
+          }
+        });
+      return result;
+    } catch (error) {
+      alert(
+        "알 수 없는 이유로 리뷰를 가져오는데에 실패했습니다! 다시 시도해주세요! ;",
+        error
+      );
+    }
+    return false;
   }
 
   async searchReview(fData, keyword) {
@@ -101,20 +100,17 @@ class ReviewService {
     return false;
   }
 
-  async modifyReview(fData) {
+  async modifyReview(rData) {
     try {
       await firebase
         .database()
         .ref(
-          "reviews/" + fData.SIGUN_NM + "/" + fData.BIZPLC_NM + "/" + fData.R_ID
+          "reviews/" + rData.SIGUN_NM + "/" + rData.BIZPLC_NM + "/" + rData.R_ID
         )
         .update({
-          U_ID: fData.U_ID,
-          F_ID: fData.F_ID,
-          R_ID: fData.R_ID,
-          R_DATE: fData.R_DATE,
-          R_TITLE: fData.R_TITLE,
-          R_CONT: fData.R_CONT,
+          R_DATE: rData.R_DATE,
+          R_TITLE: rData.R_TITLE,
+          R_CONT: rData.R_CONT,
         })
         .then(() => {
           alert("리뷰를 수정했습니다!");
