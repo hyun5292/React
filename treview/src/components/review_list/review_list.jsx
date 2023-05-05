@@ -4,6 +4,7 @@ import ReviewTable from "../review_table/review_table";
 import RSearchBar from "../review_search_bar/review_search_bar";
 import ResetBtn from "../reset_btn/reset_btn";
 import styles from "./review_list.module.css";
+import pStyle from "../../css/page.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const ReviewList = () => {
@@ -42,7 +43,7 @@ const ReviewList = () => {
   }, [getReviewList, location.state, navigate]);
 
   return (
-    <div className={styles.reviewList}>
+    <div className={`${styles.reviewList} ${pStyle.page}`}>
       <div className={styles.topBar}>
         <span className={styles.rTitle}>
           <span className={styles.rSigun}>{fData.SIGUN_NM}</span>

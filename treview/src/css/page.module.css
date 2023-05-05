@@ -1,0 +1,7 @@
+@value t_minHeight, pg_padding from '../common/sizes.css';
+
+.page {
+  padding: pg_padding;
+  height: t_minHeight;
+  overflow: auto;
+}

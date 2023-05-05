@@ -1,13 +1,9 @@
 @value t_white, t_green, t_red from '../../common/colors.css';
-@value t_minHeight, pg_padding from '../../common/sizes.css';
 
 .factoryMain {
-  padding: pg_padding;
-  height: t_minHeight;
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.5;
-  overflow: auto;
   background: url(../../images/truckImg.png);
   background-repeat: no-repeat;
   background-position: center;

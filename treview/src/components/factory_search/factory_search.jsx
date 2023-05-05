@@ -4,6 +4,7 @@ import FSearchBar from "../factory_search_bar/factory_search_bar";
 import ResetBtn from "../reset_btn/reset_btn";
 import FactoryTable from "../factory_table/factory_table";
 import styles from "./factory_search.module.css";
+import pStyle from "../../css/page.module.css";
 
 const FactorySearch = (props) => {
   const location = useLocation("");
@@ -24,7 +25,7 @@ const FactorySearch = (props) => {
   }, [getAllList, getSearchedList, location.state]);
 
   return (
-    <div className={styles.factorySearch}>
+    <div className={`${styles.factorySearch} ${pStyle.page}`}>
       <div className={styles.searchBar}>
         <FSearchBar />
         <ResetBtn onReset={handleReset} />

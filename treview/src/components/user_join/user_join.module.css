@@ -1,10 +1,6 @@
 @value t_black, t_blue from '../../common/colors.css';
-@value t_minHeight, pg_padding from '../../common/sizes.css';
 
 .userJoin {
-  padding: pg_padding;
-  height: t_minHeight;
-  overflow: auto;
   color: t_black;
   font-size: 1.4rem;
 }

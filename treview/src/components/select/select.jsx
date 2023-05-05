@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import styles from "./select.module.css";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
-import { BsArrowRightShort, BsArrowCounterclockwise } from "react-icons/bs";
+import { BsArrowRightShort } from "react-icons/bs";
 
 const Select = ({ kind, list, setKind }) => {
   const kindRef = useRef();
@@ -57,18 +57,19 @@ const Select = ({ kind, list, setKind }) => {
         )}
       </button>
       <ul className={listState ? styles.list_cont : styles.gone}>
-        {list.map((item) => {
-          return (
-            <li
-              key={list.indexOf(item)}
-              className={styles.list_item}
-              onClick={() => handleClick(item)}
-              value={item}
-            >
-              {item}
-            </li>
-          );
-        })}
+        {list &&
+          list.map((item) => {
+            return (
+              <li
+                key={list.indexOf(item)}
+                className={styles.list_item}
+                onClick={() => handleClick(item)}
+                value={item}
+              >
+                {item}
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

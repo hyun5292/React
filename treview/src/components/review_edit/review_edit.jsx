@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useOutletContext } from "react-router-dom";
 import styles from "./review_edit.module.css";
 import rStyle from "../../css/rForm.module.css";
+import pStyle from "../../css/page.module.css";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 import ReviewForm from "../review_form/review_form";
 
@@ -52,7 +53,7 @@ const ReviewEdit = (props) => {
   }, []);
 
   return (
-    <div className={styles.reviewEdit}>
+    <div className={`${styles.reviewEdit} ${pStyle.page}`}>
       <div className={rStyle.subTitle}>
         <div>
           <span className={rStyle.tSigun}>{rData.SIGUN_NM}</span> 리뷰{" "}

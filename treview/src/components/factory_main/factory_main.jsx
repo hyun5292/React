@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./factory_main.module.css";
+import pStyle from "../../css/page.module.css";
 import FSearchBar from "../factory_search_bar/factory_search_bar";
 
 const FactoryMain = (props) => {
   return (
-    <div className={styles.factoryMain}>
+    <div className={`${styles.factoryMain} ${pStyle.page}`}>
       <div className={styles.searchBar}>
         <FSearchBar />
       </div>

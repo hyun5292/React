@@ -3,6 +3,7 @@ import ReviewForm from "../review_form/review_form";
 import { useLocation, useOutletContext } from "react-router-dom";
 import styles from "./review_write.module.css";
 import rStyle from "../../css/rForm.module.css";
+import pStyle from "../../css/page.module.css";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 
 const ReviewWrite = (props) => {
@@ -59,7 +60,7 @@ const ReviewWrite = (props) => {
   }, []);
 
   return (
-    <div className={styles.reviewWrite}>
+    <div className={`${styles.reviewWrite} ${pStyle.page}`}>
       <div className={rStyle.subTitle}>
         <div>
           <span className={rStyle.tSigun}>{fData.SIGUN_NM}</span> 리뷰 작성

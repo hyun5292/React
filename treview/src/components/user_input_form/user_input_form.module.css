@@ -1,0 +1,44 @@
+@value t_navy, t_blue from '../../common/colors.css';
+
+.user_input_form label {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.formCont {
+}
+
+.formItem {
+  margin: 10px 0 !important;
+  padding-left: 0 !important;
+}
+
+.chkAgreeCont {
+  display: grid;
+  text-align: center;
+  gap: 10px;
+}
+
+.chkAgreeItem {
+}
+
+.chkAgreeItem > input {
+  margin: -4px 0 0 0;
+  vertical-align: middle;
+  margin-right: 7px;
+}
+
+.chkAgree {
+  width: 17px;
+  height: 17px;
+}
+
+.join_btn {
+  padding: 10px;
+  width: 100%;
+  font-size: 1.5rem;
+  background: t_blue;
+}
+.joinBtn:hover {
+  background: t_navy;
+}
