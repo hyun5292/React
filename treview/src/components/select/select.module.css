@@ -22,7 +22,7 @@
 }
 
 .select * {
-  background: #fff;
+  background: inherit;
 }
 
 .select button {
@@ -44,6 +44,7 @@
   padding: 0 10px !important;
   width: 100%;
   height: 100%;
+  background: #fff !important;
 }
 
 .self_btn {
@@ -68,20 +69,20 @@
   align-items: center;
   padding: 0 1rem;
   width: 100%;
-  height: 100%;
   color: t_black;
 }
 
 .list_cont {
   position: absolute;
   display: inline-block;
-  top: 100%;
+  top: calc(100% + 10px);
   left: 0;
   width: 100%;
   height: 10rem;
   border-radius: 10px;
   overflow-y: auto;
   animation: onSlide 1s;
+  background: #fff;
 }
 
 .list_item {

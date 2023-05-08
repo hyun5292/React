@@ -1,31 +1,55 @@
-@value t_navy, t_blue from '../../common/colors.css';
+@value t_navy, t_blue, t_border_grey, t_black, t_blue_background from '../../common/colors.css';
 
 .user_input_form label {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
-.formCont {
+.formItem {
+  margin: 1.5rem 0;
 }
 
-.formItem {
-  margin: 10px 0 !important;
-  padding-left: 0 !important;
+.inputForm input,
+.select {
+  padding: 10px;
+  width: 100%;
+  color: t_black;
+  font-size: 1.4rem;
+  border: 1px solid t_border_grey;
+  border-radius: 1rem;
+  background: t_blue_background;
+}
+
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-right: 10px;
+  gap: 10px;
+}
+
+.emailCont,
+.telCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
 }
 
 .chkAgreeCont {
   display: grid;
   text-align: center;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .chkAgreeItem {
-}
-
-.chkAgreeItem > input {
-  margin: -4px 0 0 0;
-  vertical-align: middle;
-  margin-right: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .chkAgree {

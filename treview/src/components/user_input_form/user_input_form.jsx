@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Grid } from "@mui/material";
 import Select from "../select/select";
 import ImgUploader from "../img_uploader/img_uploader";
-import phoneList from "../../dataFile/phone_num_list.json";
+import TelList from "../../dataFile/tel_num_list.json";
 import EmailList from "../../dataFile/emailList.json";
 import styles from "./user_input_form.module.css";
 
@@ -13,8 +13,13 @@ const UserInputForm = (props) => {
   return (
     <div className={styles.user_input_form}>
       <Grid container spacing={1}>
-        <Grid item xs={12} md={6} className={styles.formItem}>
-          *<label>이메일</label>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          className={`${styles.formItem} ${styles.inputForm}`}
+        >
+          <label>* 이메일</label>
           <div className={styles.emailCont}>
             <input className={styles.emailInput} type="text" />
             &nbsp;@&nbsp;
@@ -26,21 +31,19 @@ const UserInputForm = (props) => {
               />
             </div>
           </div>
-          *<label>비밀번호</label>
-          <input type="password" placeholer="비밀번호" />*<label>이름</label>
-          <input type="text" placeholer="이름" />*<label>전화번호</label>
-          <div className={styles.phoneNum}>
-            <div className={`${styles.uTel} ${styles.select}`}>
-              <Select
-                kindText={"010"}
-                ulList={phoneList.phoneList}
-                setClicked={setTel1}
-              />
+          <label>* 비밀번호</label>
+          <input type="password" placeholer="비밀번호" />
+          <label>* 이름</label>
+          <input type="text" placeholer="이름" />
+          <label>* 전화번호</label>
+          <div className={styles.telCont}>
+            <div className={`${styles.telItem} ${styles.select}`}>
+              <Select kind={"010"} list={TelList.telList} setKind={setTel1} />
             </div>
             -
-            <input className={styles.uTel} type="number" />
+            <input className={styles.telItem} type="number" />
             -
-            <input className={styles.uTel} type="number" />
+            <input className={styles.telItem} type="number" />
           </div>
         </Grid>
         <Grid item xs={12} md={6} className={styles.formItem}>
