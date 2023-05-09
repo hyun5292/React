@@ -10,7 +10,6 @@ class AuthService {
   }
 
   async join(userData) {
-    console.log("userData = ", userData);
     try {
       await firebaseAuth
         .createUserWithEmailAndPassword(userData.uEmail, userData.uPwd)

@@ -6,7 +6,7 @@
 }
 
 .formItem {
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 !important;
 }
 
 .inputForm input,
@@ -22,7 +22,7 @@
 
 .inputForm {
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
   justify-content: center;
   align-items: flex-start;
   padding-right: 10px;

@@ -1,10 +1,17 @@
 import React from "react";
+import { useOutletContext } from "react-router-dom";
 import UserInputForm from "../user_input_form/user_input_form";
 import styles from "./user_join.module.css";
 import pStyle from "../../css/page.module.css";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 
 const UserJoin = (props) => {
+  const { doJoin } = useOutletContext();
+
+  const onJoin = (uData, profile) => {
+    doJoin(uData, profile);
+  };
+
   return (
     <div className={`${styles.userJoin} ${pStyle.page}`}>
       <div className={styles.title}>
@@ -13,7 +20,7 @@ const UserJoin = (props) => {
           <BsChatSquareQuoteFill />
         </div>
       </div>
-      <UserInputForm />
+      <UserInputForm onBtnClick={onJoin} />
     </div>
   );
 };

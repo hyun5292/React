@@ -15,7 +15,7 @@ import ReviewEdit from "./components/review_edit/review_edit";
 import styles from "./app.module.css";
 import { useCallback, useEffect, useState } from "react";
 
-const App = ({ factoryDB, authService, reviewDB }) => {
+const App = ({ imgUploader, factoryDB, authService, reviewDB }) => {
   const [uData, setUData] = useState({
     uId: "",
     uDisplayName: "",
@@ -66,7 +66,7 @@ const App = ({ factoryDB, authService, reviewDB }) => {
               path="user"
               element={
                 <div className={styles.user}>
-                  <User authService={authService} />
+                  <User authService={authService} imgUploader={imgUploader} />
                 </div>
               }
             >

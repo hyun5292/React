@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Grid } from "@mui/material";
 import Select from "../select/select";
 import ImgUploader from "../img_uploader/img_uploader";
@@ -6,9 +6,72 @@ import TelList from "../../dataFile/tel_num_list.json";
 import EmailList from "../../dataFile/emailList.json";
 import styles from "./user_input_form.module.css";
 
-const UserInputForm = (props) => {
+const UserInputForm = ({ onBtnClick }) => {
+  const emailRef = useRef();
+  const pwdRef = useRef();
+  const nameRef = useRef();
+  const tel2Ref = useRef();
+  const tel3Ref = useRef();
+  const agreeRef = useRef();
+  const [profile, setProfile] = useState({
+    uProfileID: "",
+    uProfileSIG: "",
+    uProfileTIME: "",
+    uProfileURL: "",
+    uProfileLink: "",
+  });
   const [email, setEmail] = useState("");
-  const [tel1, setTel1] = useState("");
+  const [tel1, setTel1] = useState("010");
+
+  const checkEmpty = () => {
+    if (emailRef.current.value === "") {
+      alert("이메일을 입력해주세요!");
+      emailRef.current.focus();
+    } else if (email === "") {
+      alert("이메일 종류를 선택해주세요!");
+      emailRef.current.focus();
+    } else if (pwdRef.current.value === "") {
+      alert("비밀번호를 입력해주세요!");
+      pwdRef.current.focus();
+    } else if (nameRef.current.value === "") {
+      alert("이름을 입력해주세요!");
+      nameRef.current.focus();
+    } else if (
+      tel2Ref.current.value.length !== 3 &&
+      tel2Ref.current.value.length !== 4
+    ) {
+      alert("잘못된 전화번호입니다!");
+      tel2Ref.current.focus();
+    } else if (tel3Ref.current.value.length !== 4) {
+      alert("잘못된 전화번호입니다!");
+      tel3Ref.current.focus();
+    } else if (tel2Ref.current.value === "") {
+      alert("전화번호를 입력해주세요!");
+      tel2Ref.current.focus();
+    } else if (tel3Ref.current.value === "") {
+      alert("전화번호를 입력해주세요!");
+      tel3Ref.current.focus();
+    } else if (!agreeRef.current.checked) {
+      alert("약관에 동의해주세요!");
+      agreeRef.current.focus();
+    } else return true;
+    return false;
+  };
+
+  const handleClick = () => {
+    const address = emailRef.current.value.replace(/[\s@-^$*+?.()|[\]{}]/g, "");
+    const newData = {
+      uId: (address + email).replace(/[\s@-^$*+?.()|[\]{}]/g, ""),
+      uEmail: address + "@" + email,
+      uPwd: pwdRef.current.value,
+      uName: nameRef.current.value,
+      uTel: tel1 + "-" + tel2Ref.current.value + "-" + tel3Ref.current.value,
+    };
+
+    if (checkEmpty()) {
+      onBtnClick(newData, profile);
+    }
+  };
 
   return (
     <div className={styles.user_input_form}>
@@ -21,7 +84,7 @@ const UserInputForm = (props) => {
         >
           <label>* 이메일</label>
           <div className={styles.emailCont}>
-            <input className={styles.emailInput} type="text" />
+            <input ref={emailRef} className={styles.emailInput} type="text" />
             &nbsp;@&nbsp;
             <div className={`${styles.emailInput} ${styles.select}`}>
               <Select
@@ -32,22 +95,22 @@ const UserInputForm = (props) => {
             </div>
           </div>
           <label>* 비밀번호</label>
-          <input type="password" placeholer="비밀번호" />
+          <input ref={pwdRef} type="password" placeholer="비밀번호" />
           <label>* 이름</label>
-          <input type="text" placeholer="이름" />
+          <input ref={nameRef} type="text" placeholer="이름" />
           <label>* 전화번호</label>
           <div className={styles.telCont}>
             <div className={`${styles.telItem} ${styles.select}`}>
               <Select kind={"010"} list={TelList.telList} setKind={setTel1} />
             </div>
             -
-            <input className={styles.telItem} type="number" />
+            <input ref={tel2Ref} className={styles.telItem} type="number" />
             -
-            <input className={styles.telItem} type="number" />
+            <input ref={tel3Ref} className={styles.telItem} type="number" />
           </div>
         </Grid>
         <Grid item xs={12} md={6} className={styles.formItem}>
-          <ImgUploader />
+          <ImgUploader handleProfile={setProfile} />
         </Grid>
         <Grid
           item
@@ -60,6 +123,7 @@ const UserInputForm = (props) => {
           </label>
           <div className={styles.chkAgreeItem}>
             <input
+              ref={agreeRef}
               type="checkbox"
               name="chkBad"
               value="checked"
@@ -69,7 +133,9 @@ const UserInputForm = (props) => {
           </div>
         </Grid>
         <Grid item xs={12} className={styles.formItem}>
-          <button className={styles.join_btn}>가입하기</button>
+          <button className={styles.join_btn} onClick={handleClick}>
+            가입하기
+          </button>
         </Grid>
       </Grid>
     </div>

@@ -22,6 +22,7 @@ class ReviewService {
           R_DATE: revData.R_DATE,
           R_TITLE: revData.R_TITLE,
           R_CONT: revData.R_CONT,
+          R_IMG: revData.R_IMG,
         })
         .then(() => {
           alert("리뷰를 등록했습니다!");
