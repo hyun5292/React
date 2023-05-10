@@ -20,7 +20,7 @@ const UserJoin = (props) => {
           <BsChatSquareQuoteFill />
         </div>
       </div>
-      <UserInputForm onBtnClick={onJoin} />
+      <UserInputForm btnName="가입하기" onBtnClick={onJoin} />
     </div>
   );
 };

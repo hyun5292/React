@@ -131,8 +131,6 @@ class AuthService {
         .then((snapshot) => {
           if (snapshot.exists()) {
             return snapshot.val();
-          } else {
-            return false;
           }
         });
       return result;
@@ -142,6 +140,7 @@ class AuthService {
           err
       );
     }
+    return false;
   }
 
   async update_uData(userData, imgData) {

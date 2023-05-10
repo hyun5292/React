@@ -4,6 +4,21 @@ import { Outlet, useNavigate } from "react-router-dom";
 const User = memo(({ authService, imgUploader }) => {
   const navigate = useNavigate();
 
+  const getUserData = () => {
+    let result_data = [];
+    authService.onAuthChange((user) => {
+      if (!user) navigate("/");
+      else {
+        authService.get_UserData(user.displayName).then((userData) => {
+          result_data.push(userData);
+        });
+      }
+    });
+
+    console.log("result_data = ", result_data);
+    return result_data;
+  };
+
   const doLogin = (uEmail, uPwd) => {
     authService
       .login(uEmail, uPwd)
@@ -34,6 +49,7 @@ const User = memo(({ authService, imgUploader }) => {
     <div>
       <Outlet
         context={{
+          getUserData: getUserData,
           goMain: goMain,
           doLogin: doLogin,
           doJoin: doJoin,
