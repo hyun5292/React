@@ -8,8 +8,8 @@ import { BsChatSquareQuoteFill } from "react-icons/bs";
 const UserEdit = (props) => {
   const { getUserData } = useOutletContext();
 
-  const onEdit = (newData) => {
-    console.log("user_edit onEdit = ", newData);
+  const onEdit = (newData, imgData) => {
+    console.log("user_edit onEdit = ", newData, imgData);
   };
 
   const onDelete = () => {
@@ -25,7 +25,7 @@ const UserEdit = (props) => {
         </div>
       </div>
       <UserInputForm
-        uData={getUserData()}
+        getUserData={getUserData}
         onDelete={onDelete}
         btnName="수정하기"
         onBtnClick={onEdit}

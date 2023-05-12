@@ -4,14 +4,26 @@ import { Outlet, useNavigate } from "react-router-dom";
 const User = memo(({ authService, imgUploader }) => {
   const navigate = useNavigate();
 
-  const getUserData = () => {
-    let result = [];
+  const getUserData = (setUData, setTel1, setProfile) => {
     authService.onAuthChange((user) => {
-      authService.get_UserData(user.displayName).then((userData) => {
-        result.push(userData.toJSON());
-      });
+      if (user) {
+        authService.get_UserData(user.displayName).then((userData) => {
+          setUData({
+            uId: user.uId,
+            uEmail: userData.uEmail,
+            uName: userData.uName,
+            uTel: userData.uTel,
+          });
+          setTel1((userData.uTel || "").split("-")[0]);
+          setProfile({
+            uProfileID: userData.uProfileID,
+            uProfileSIG: userData.uProfileSIG,
+            uProfileTIME: userData.uProfileTIME,
+            uProfileURL: userData.uProfileURL,
+          });
+        });
+      }
     });
-    return result;
   };
 
   const doLogin = (uEmail, uPwd) => {

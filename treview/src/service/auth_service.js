@@ -122,6 +122,35 @@ class AuthService {
     return;
   }
 
+  // async get_UserData(uId) {
+  //   try {
+  //     const result = await firebase
+  //       .database()
+  //       .ref("users/" + uId)
+  //       .get()
+  //       .then((snapshot) => {
+  //         let result_data = [];
+  //         if (snapshot.exists()) {
+  //           const uData = snapshot.val();
+
+  //           Object.entries(uData).map((list) => {
+  //             result_data.push(list[1]);
+  //           });
+
+  //           return result_data;
+  //         } else {
+  //           return false;
+  //         }
+  //       });
+  //     return result;
+  //   } catch (err) {
+  //     alert(
+  //       "알 수 없는 이유로 정보수정에 실패하였습니다! 죄송합니다! 다시 시도해주세요!;" +
+  //         err
+  //     );
+  //   }
+  //   return false;
+  // }
   async get_UserData(uId) {
     try {
       const result = await firebase
@@ -129,9 +158,12 @@ class AuthService {
         .ref("users/" + uId)
         .get()
         .then((snapshot) => {
-          return snapshot;
+          if (snapshot.exists()) {
+            return snapshot.val();
+          } else {
+            return false;
+          }
         });
-
       return result;
     } catch (err) {
       alert(
@@ -139,7 +171,6 @@ class AuthService {
           err
       );
     }
-    return false;
   }
 
   async update_uData(userData, imgData) {

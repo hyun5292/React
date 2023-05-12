@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Grid } from "@mui/material";
 import Select from "../select/select";
 import ImgUploader from "../img_uploader/img_uploader";
@@ -6,8 +6,7 @@ import TelList from "../../dataFile/tel_num_list.json";
 import EmailList from "../../dataFile/emailList.json";
 import styles from "./user_input_form.module.css";
 
-const UserInputForm = ({ uData, onDelete, btnName, onBtnClick }) => {
-  console.log("UserInputForm = ", uData);
+const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
   const emailRef = useRef();
   const pwdRef = useRef();
   const nameRef = useRef();
@@ -23,6 +22,7 @@ const UserInputForm = ({ uData, onDelete, btnName, onBtnClick }) => {
   });
   const [email, setEmail] = useState("");
   const [tel1, setTel1] = useState("010");
+  const [uData, setUData] = useState([]);
 
   const checkEmpty = () => {
     if (!onDelete && emailRef.current.value === "") {
@@ -76,6 +76,11 @@ const UserInputForm = ({ uData, onDelete, btnName, onBtnClick }) => {
     }
   };
 
+  //계속 User에서 데이터를 가져오는데에 오류가 나서 임시방편으로 해둠
+  useEffect(() => {
+    getUserData(setUData, setTel1, setProfile);
+  }, [getUserData]);
+
   return (
     <div className={styles.user_input_form}>
       <Grid container spacing={1}>
@@ -92,7 +97,7 @@ const UserInputForm = ({ uData, onDelete, btnName, onBtnClick }) => {
               disabled={onDelete ? true : false}
               className={styles.emailInput}
               type="text"
-              defaultValue={uData && uData[0].uEmail}
+              defaultValue={uData.uEmail}
             />
             {onDelete ? (
               ""
@@ -122,30 +127,26 @@ const UserInputForm = ({ uData, onDelete, btnName, onBtnClick }) => {
             ref={nameRef}
             type="text"
             placeholer="이름"
-            defaultValue={uData && uData[0].uName}
+            defaultValue={uData.uName}
           />
           <label>* 전화번호</label>
           <div className={styles.telCont}>
             <div className={`${styles.telItem} ${styles.select}`}>
-              <Select
-                kind={uData ? uData[0].uTel.split("-")[0] : "010"}
-                list={TelList.telList}
-                setKind={setTel1}
-              />
+              <Select kind={tel1} list={TelList.telList} setKind={setTel1} />
             </div>
             -
             <input
               ref={tel2Ref}
               className={styles.telItem}
               type="number"
-              defaultValue={uData && uData[0].uTel.split("-")[1]}
+              defaultValue={(uData.uTel || "").split("-")[1]}
             />
             -
             <input
               ref={tel3Ref}
               className={styles.telItem}
               type="number"
-              defaultValue={uData && uData[0].uTel.split("-")[2]}
+              defaultValue={(uData.uTel || "").split("-")[2]}
             />
           </div>
           {onDelete ? (
@@ -157,10 +158,7 @@ const UserInputForm = ({ uData, onDelete, btnName, onBtnClick }) => {
           )}
         </Grid>
         <Grid item xs={12} md={6} className={styles.formItem}>
-          <ImgUploader
-            profile={uData && uData[0].uProfileURL}
-            handleProfile={setProfile}
-          />
+          <ImgUploader profile={uData.uProfileURL} handleProfile={setProfile} />
         </Grid>
         <Grid
           item
