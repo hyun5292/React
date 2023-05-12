@@ -7,7 +7,7 @@ import EmailList from "../../dataFile/emailList.json";
 import styles from "./user_input_form.module.css";
 
 const UserInputForm = ({ uData, onDelete, btnName, onBtnClick }) => {
-  console.log("UserInputForm uData = ", uData);
+  console.log("UserInputForm = ", uData);
   const emailRef = useRef();
   const pwdRef = useRef();
   const nameRef = useRef();

@@ -129,10 +129,9 @@ class AuthService {
         .ref("users/" + uId)
         .get()
         .then((snapshot) => {
-          if (snapshot.exists()) {
-            return snapshot.val();
-          }
+          return snapshot;
         });
+
       return result;
     } catch (err) {
       alert(

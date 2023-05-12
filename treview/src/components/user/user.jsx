@@ -5,18 +5,13 @@ const User = memo(({ authService, imgUploader }) => {
   const navigate = useNavigate();
 
   const getUserData = () => {
-    let result_data = [];
+    let result = [];
     authService.onAuthChange((user) => {
-      if (!user) navigate("/");
-      else {
-        authService.get_UserData(user.displayName).then((userData) => {
-          result_data.push(userData);
-        });
-      }
+      authService.get_UserData(user.displayName).then((userData) => {
+        result.push(userData.toJSON());
+      });
     });
-
-    console.log("result_data = ", result_data);
-    return result_data;
+    return result;
   };
 
   const doLogin = (uEmail, uPwd) => {
