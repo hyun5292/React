@@ -46,7 +46,7 @@ const App = ({ imgUploader, factoryDB, authService, reviewDB }) => {
   return (
     <div className={styles.app}>
       <div className={styles.header}>
-        <Header uId={uData.uId || null} onLogout={onLogout} />
+        <Header uData={uData} onLogout={onLogout} />
       </div>
       <div className={styles.container}>
         <BrowserRouter>

@@ -50,7 +50,7 @@ const ReviewForm = ({ chkUser, rData, btnList }) => {
         <div className={styles.input_item}>
           <MdOutlinePermIdentity className={styles.icon} />
           :&nbsp;
-          <span className={styles.uId}>{rData.U_ID}</span>
+          <span className={styles.uId}>{(rData.U_ID || "").split("@")[0]}</span>
         </div>
         <div className={styles.input_item}>
           <MdOutlineDateRange className={styles.icon} />

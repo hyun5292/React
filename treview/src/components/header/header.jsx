@@ -2,7 +2,7 @@ import React from "react";
 import Menu from "../header_menu/header_menu";
 import styles from "./header.module.css";
 
-const Header = ({ uId, onLogout }) => {
+const Header = ({ uData, onLogout }) => {
   return (
     <div className={styles.header}>
       <img
@@ -10,7 +10,7 @@ const Header = ({ uId, onLogout }) => {
         src="../images/truck_long.png"
         alt="사이트 로고"
       />
-      <Menu uId={uId} onLogout={onLogout} />
+      <Menu uData={uData} onLogout={onLogout} />
     </div>
   );
 };

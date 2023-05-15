@@ -6,14 +6,14 @@ import pStyle from "../../css/page.module.css";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 
 const UserEdit = (props) => {
-  const { getUserData } = useOutletContext();
+  const { getUserData, doEdit, doDelete } = useOutletContext();
 
   const onEdit = (newData, imgData) => {
-    console.log("user_edit onEdit = ", newData, imgData);
+    doEdit(newData, imgData);
   };
 
-  const onDelete = () => {
-    console.log("user_edit onDelete");
+  const onDelete = (uId) => {
+    doDelete(uId);
   };
 
   return (
@@ -26,7 +26,7 @@ const UserEdit = (props) => {
       </div>
       <UserInputForm
         getUserData={getUserData}
-        onDelete={onDelete}
+        doDelete={onDelete}
         btnName="수정하기"
         onBtnClick={onEdit}
       />

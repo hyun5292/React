@@ -10,7 +10,7 @@ import {
 import { FiLogOut } from "react-icons/fi";
 import { FaUserEdit } from "react-icons/fa";
 
-const HeaderMenu = ({ uId, onLogout }) => {
+const HeaderMenu = ({ uData, onLogout }) => {
   return (
     <ul className={styles.menu}>
       <li className={styles.navItem}>
@@ -35,9 +35,9 @@ const HeaderMenu = ({ uId, onLogout }) => {
         </a>
       </li>
       <span className={styles.bar} />
-      {uId ? (
+      {uData.uId ? (
         <li className={styles.mState}>
-          <span>{uId}님</span>
+          <span>{uData.uId}님</span>
           <button className={styles.user_edit_btn}>
             <a href="/user/edit">
               <FaUserEdit className={styles.icon} />

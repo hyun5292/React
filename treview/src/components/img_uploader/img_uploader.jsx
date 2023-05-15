@@ -51,10 +51,13 @@ const ImgUploader = ({ nowProfile, onFileReset, handleProfile }) => {
   useEffect(() => {
     if (nowProfile) {
       setProfile(nowProfile);
-      console.log(1);
       profileImgRef.current.style = "display: inline-block;";
       resetBtnRef.current.style = "display: flex;";
       addImgRef.current.style = "display: none;";
+    } else {
+      addImgRef.current.style = "display: flex;";
+      profileImgRef.current.style = "display: none;";
+      resetBtnRef.current.style = "display: none;";
     }
   }, [nowProfile]);
 

@@ -24,7 +24,7 @@ const Select = ({ kind, list, setKind }) => {
     event.preventDefault();
     if (kindRef.current.value !== "") {
       setSelected(kindRef.current.value);
-      alert("입력되었습니다!");
+      setKind(kindRef.current.value);
     } else {
       alert("이메일을 입력해주세요");
       kindRef.current.focus();

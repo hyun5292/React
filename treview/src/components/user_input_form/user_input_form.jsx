@@ -6,7 +6,7 @@ import TelList from "../../dataFile/tel_num_list.json";
 import EmailList from "../../dataFile/emailList.json";
 import styles from "./user_input_form.module.css";
 
-const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
+const UserInputForm = ({ getUserData, doDelete, btnName, onBtnClick }) => {
   const emailRef = useRef();
   const pwdRef = useRef();
   const nameRef = useRef();
@@ -30,17 +30,18 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
   const [email, setEmail] = useState("");
   const [tel1, setTel1] = useState("010");
   const [uData, setUData] = useState([]);
-  console.log("profile = ", profile);
-  console.log("newProfile = ", newProfile);
 
   const checkEmpty = () => {
-    if (!onDelete && emailRef.current.value === "") {
+    if (!doDelete && emailRef.current.value === "") {
       alert("이메일을 입력해주세요!");
       emailRef.current.focus();
-    } else if (email === "") {
+    } else if (!doDelete && email === "") {
       alert("이메일 종류를 선택해주세요!");
       emailRef.current.focus();
-    } else if (!onDelete && pwdRef.current.value === "") {
+    } else if (email === "직접입력") {
+      alert("-> 버튼을 클릭해주세요!");
+      emailRef.current.focus();
+    } else if (!doDelete && pwdRef.current.value === "") {
       alert("비밀번호를 입력해주세요!");
       pwdRef.current.focus();
     } else if (nameRef.current.value === "") {
@@ -61,7 +62,7 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
     } else if (tel3Ref.current.value === "") {
       alert("전화번호를 입력해주세요!");
       tel3Ref.current.focus();
-    } else if (!onDelete && !agreeRef.current.checked) {
+    } else if (!doDelete && !agreeRef.current.checked) {
       alert("약관에 동의해주세요!");
       agreeRef.current.focus();
     } else return true;
@@ -71,24 +72,28 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
   const handleClick = () => {
     const address = emailRef.current.value.replace(/[\s@-^$*+?.()|[\]{}]/g, "");
     const newData = {
-      uId: onDelete
-        ? uData[0].uEmail
+      uId: doDelete
+        ? uData.uEmail
         : (address + email).replace(/[\s@-^$*+?.()|[\]{}]/g, ""),
-      uEmail: onDelete ? "" : address + "@" + email,
-      uPwd: onDelete ? "" : pwdRef.current.value,
+      uEmail: doDelete ? "" : address + "@" + email,
+      uPwd: doDelete ? "" : pwdRef.current.value,
       uName: nameRef.current.value,
       uTel: tel1 + "-" + tel2Ref.current.value + "-" + tel3Ref.current.value,
     };
 
     if (checkEmpty()) {
-      onBtnClick(newData, profile);
+      onBtnClick(newData, newProfile.uProfileURL !== "" ? newProfile : profile);
     }
+  };
+
+  const onDelete = () => {
+    const address = emailRef.current.value.replace(/[\s@-^$*+?.()|[\]{}]/g, "");
+    doDelete(address);
   };
 
   //계속 User에서 데이터를 가져오는데에 오류가 나서 임시방편으로 해둠
   useEffect(() => {
     getUserData && getUserData(setUData, setTel1, setProfile);
-    console.log(1);
   }, [getUserData]);
 
   return (
@@ -104,12 +109,12 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
           <div className={styles.emailCont}>
             <input
               ref={emailRef}
-              disabled={onDelete ? true : false}
+              disabled={doDelete ? true : false}
               className={styles.emailInput}
               type="text"
               defaultValue={uData.uEmail}
             />
-            {onDelete ? (
+            {doDelete ? (
               ""
             ) : (
               <>
@@ -124,7 +129,7 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
               </>
             )}
           </div>
-          {onDelete ? (
+          {doDelete ? (
             ""
           ) : (
             <>
@@ -159,7 +164,7 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
               defaultValue={(uData.uTel || "").split("-")[2]}
             />
           </div>
-          {onDelete ? (
+          {doDelete ? (
             <button className={styles.delete_btn} onClick={onDelete}>
               탈퇴하기
             </button>
@@ -169,11 +174,7 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
         </Grid>
         <Grid item xs={12} md={6} className={styles.formItem}>
           <ImgUploader
-            nowProfile={
-              newProfile.uProfileLink
-                ? newProfile.uProfileLink
-                : profile.uProfileURL
-            }
+            nowProfile={profile.uProfileURL}
             onFileReset={setProfile}
             handleProfile={setNewProfile}
           />
@@ -187,7 +188,7 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
             악의적인 리뷰를 남길 경우 통보없이 자체적으로 리뷰가 삭제되거나 탈퇴
             될 수 있습니다
           </label>
-          {onDelete ? (
+          {doDelete ? (
             ""
           ) : (
             <div className={styles.chkAgreeItem}>

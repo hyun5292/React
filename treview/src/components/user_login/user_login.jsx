@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import EmailList from "../../dataFile/emailList.json";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import Select from "../select/select";
 import styles from "./user_login.module.css";
 import { FaArrowLeft } from "react-icons/fa";
