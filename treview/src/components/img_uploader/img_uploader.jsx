@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./img_uploader.module.css";
 import { BsArrowClockwise } from "react-icons/bs";
 
-const ImgUploader = ({ handleProfile }) => {
+const ImgUploader = ({ nowProfile, onFileReset, handleProfile }) => {
   const addImgRef = useRef();
   const profileImgRef = useRef();
   const resetBtnRef = useRef();
@@ -28,6 +28,13 @@ const ImgUploader = ({ handleProfile }) => {
 
   const resetProfile = () => {
     setProfile("");
+    onFileReset({
+      uProfileID: "",
+      uProfileSIG: "",
+      uProfileTIME: "",
+      uProfileURL: "",
+      uProfileLink: "",
+    });
     handleProfile({
       uProfileID: "",
       uProfileSIG: "",
@@ -42,9 +49,14 @@ const ImgUploader = ({ handleProfile }) => {
   };
 
   useEffect(() => {
-    profileImgRef.current.style = "display: none;";
-    resetBtnRef.current.style = "display: none;";
-  }, []);
+    if (nowProfile) {
+      setProfile(nowProfile);
+      console.log(1);
+      profileImgRef.current.style = "display: inline-block;";
+      resetBtnRef.current.style = "display: flex;";
+      addImgRef.current.style = "display: none;";
+    }
+  }, [nowProfile]);
 
   return (
     <div className={styles.imgUploader}>

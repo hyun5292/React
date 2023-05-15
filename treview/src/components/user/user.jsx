@@ -5,24 +5,25 @@ const User = memo(({ authService, imgUploader }) => {
   const navigate = useNavigate();
 
   const getUserData = (setUData, setTel1, setProfile) => {
-    authService.onAuthChange((user) => {
+    return authService.onAuthChange((user) => {
       if (user) {
-        authService.get_UserData(user.displayName).then((userData) => {
-          setUData({
-            uId: user.uId,
-            uEmail: userData.uEmail,
-            uName: userData.uName,
-            uTel: userData.uTel,
-          });
-          setTel1((userData.uTel || "").split("-")[0]);
-          setProfile({
-            uProfileID: userData.uProfileID,
-            uProfileSIG: userData.uProfileSIG,
-            uProfileTIME: userData.uProfileTIME,
-            uProfileURL: userData.uProfileURL,
-          });
+        return authService.get_UserData(user.displayName).then((userData) => {
+          // setUData({
+          //   uId: user.uId,
+          //   uEmail: userData.uEmail,
+          //   uName: userData.uName,
+          //   uTel: userData.uTel,
+          // });
+          // setTel1((userData.uTel || "").split("-")[0]);
+          // setProfile({
+          //   uProfileID: userData.uProfileID,
+          //   uProfileSIG: userData.uProfileSIG,
+          //   uProfileTIME: userData.uProfileTIME,
+          //   uProfileURL: userData.uProfileURL,
+          // });
+          return userData;
         });
-      }
+      } else return false;
     });
   };
 

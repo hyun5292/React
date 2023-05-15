@@ -20,9 +20,18 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
     uProfileURL: "",
     uProfileLink: "",
   });
+  const [newProfile, setNewProfile] = useState({
+    uProfileID: "",
+    uProfileSIG: "",
+    uProfileTIME: "",
+    uProfileURL: "",
+    uProfileLink: "",
+  });
   const [email, setEmail] = useState("");
   const [tel1, setTel1] = useState("010");
   const [uData, setUData] = useState([]);
+  console.log("profile = ", profile);
+  console.log("newProfile = ", newProfile);
 
   const checkEmpty = () => {
     if (!onDelete && emailRef.current.value === "") {
@@ -78,7 +87,8 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
 
   //계속 User에서 데이터를 가져오는데에 오류가 나서 임시방편으로 해둠
   useEffect(() => {
-    getUserData(setUData, setTel1, setProfile);
+    getUserData && getUserData(setUData, setTel1, setProfile);
+    console.log(1);
   }, [getUserData]);
 
   return (
@@ -158,7 +168,15 @@ const UserInputForm = ({ getUserData, onDelete, btnName, onBtnClick }) => {
           )}
         </Grid>
         <Grid item xs={12} md={6} className={styles.formItem}>
-          <ImgUploader profile={uData.uProfileURL} handleProfile={setProfile} />
+          <ImgUploader
+            nowProfile={
+              newProfile.uProfileLink
+                ? newProfile.uProfileLink
+                : profile.uProfileURL
+            }
+            onFileReset={setProfile}
+            handleProfile={setNewProfile}
+          />
         </Grid>
         <Grid
           item
