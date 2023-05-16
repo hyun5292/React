@@ -14,6 +14,7 @@ import ReviewWrite from "./components/review_write/review_write";
 import ReviewEdit from "./components/review_edit/review_edit";
 import styles from "./app.module.css";
 import { useCallback, useEffect, useState } from "react";
+import Loading from "./components/loading/loading";
 
 const App = ({ imgUploader, factoryDB, authService, reviewDB }) => {
   const [uData, setUData] = useState({
@@ -43,7 +44,16 @@ const App = ({ imgUploader, factoryDB, authService, reviewDB }) => {
     });
   }, [authService]);
 
-  return (
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  return loading ? (
+    <Loading />
+  ) : (
     <div className={styles.app}>
       <div className={styles.header}>
         <Header uData={uData} onLogout={onLogout} />
