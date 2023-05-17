@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReviewForm from "../review_form/review_form";
-import { useLocation, useOutletContext } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import styles from "./review_write.module.css";
 import rStyle from "../../css/rForm.module.css";
 import pStyle from "../../css/page.module.css";
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 
 const ReviewWrite = (props) => {
+  const navigate = useNavigate();
   const location = useLocation("");
   const { doWriteReview } = useOutletContext();
   const [today, setToday] = useState();
@@ -39,8 +40,11 @@ const ReviewWrite = (props) => {
     if (location.state) {
       setUData(location.state.uData);
       setFData(location.state.fData);
+    } else {
+      alert("비정상적인 접근입니다!");
+      navigate("/");
     }
-  }, [location.state]);
+  }, [location.state, navigate]);
 
   useEffect(() => {
     const date = new Date();

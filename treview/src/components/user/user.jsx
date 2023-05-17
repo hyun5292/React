@@ -97,6 +97,7 @@ const User = memo(({ authService, imgUploader }) => {
     <div>
       <Outlet
         context={{
+          authService: authService,
           getUserData: getUserData,
           goMain: goMain,
           doLogin: doLogin,
