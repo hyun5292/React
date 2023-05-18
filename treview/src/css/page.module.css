@@ -1,7 +1,20 @@
-@value t_minHeight, pg_padding from '../common/sizes.css';
+@value t_minHeight, t_minHeight_s, pg_padding, pg_padding_m, pg_padding_s from '../common/sizes.css';
 
 .page {
   padding: pg_padding;
   height: t_minHeight;
   overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: pg_padding_s;
+    height: t_minHeight_s;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .page {
+    padding: pg_padding_m;
+  }
 }

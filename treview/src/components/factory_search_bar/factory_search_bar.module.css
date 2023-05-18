@@ -27,7 +27,7 @@
 }
 
 .search_input {
-  padding: 0 1rem;
+  padding: 1rem;
   width: 100%;
   height: 100%;
   font-size: 1.2rem;
@@ -43,4 +43,23 @@
 }
 .search_btn:hover {
   background: t_navy;
+}
+
+@media (max-width: 768px) {
+  .fSearchBar {
+    flex-direction: column;
+    width: calc(100% - 4rem);
+  }
+
+  .select,
+  .search_input {
+    font-size: 0.8rem;
+    padding: 15px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .fSearchBar {
+    width: 80%;
+  }
 }

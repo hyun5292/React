@@ -62,3 +62,9 @@
   color: t_green !important;
   font-size: 1.4rem;
 }
+
+@media (max-width: 768px) {
+  .searchBar {
+    margin: 2rem 0 4rem;
+  }
+}
