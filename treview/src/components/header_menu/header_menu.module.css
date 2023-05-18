@@ -88,3 +88,14 @@
 .gone {
   display: none;
 }
+
+@media (max-width: 1024px) {
+  .menu {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bar {
+    display: none;
+  }
+}
