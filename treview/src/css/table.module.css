@@ -70,3 +70,16 @@ td {
   min-width: 70px;
   border: 2px solid t_border_grey;
 }
+
+@media (max-width: 768px) {
+  th,
+  td {
+    padding: 15px 10px !important;
+  }
+
+  .prevBtn,
+  .nextBtn {
+    width: 2rem;
+    height: 2rem;
+  }
+}

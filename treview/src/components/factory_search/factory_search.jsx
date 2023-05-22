@@ -28,7 +28,9 @@ const FactorySearch = (props) => {
     <div className={`${styles.factorySearch} ${pStyle.page}`}>
       <div className={styles.searchBar}>
         <FSearchBar />
-        <ResetBtn onReset={handleReset} />
+        <div className={styles.reset_btn}>
+          <ResetBtn onReset={handleReset} />
+        </div>
       </div>
       <FactoryTable data={data} goReview={goReview} />
     </div>

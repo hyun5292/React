@@ -3,7 +3,6 @@
 .fSearchBar {
   display: flex;
   width: 60%;
-  height: 4rem;
   gap: 10px;
 }
 
@@ -49,6 +48,11 @@
   .fSearchBar {
     flex-direction: column;
     width: calc(100% - 4rem);
+  }
+
+  .search_btn {
+    width: 3.5rem;
+    font-size: 1.2rem;
   }
 
   .select,

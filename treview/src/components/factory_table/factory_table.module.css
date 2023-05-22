@@ -1,7 +1,7 @@
 @value t_grey, t_green, t_border_grey, t_white, t_black, t_navy, t_blue_light from '../../common/colors.css';
 
 .tCont {
-  width: 100%;
+  margin: 0 20px;
   font-size: 20px;
 }
 
@@ -53,4 +53,16 @@ tr:last-child td:last-child {
 
 .offBsnState {
   background: t_grey;
+}
+
+@media (max-width: 1024px) {
+  .tCont {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tCont {
+    font-size: 15px;
+  }
 }
