@@ -82,27 +82,3 @@
     font-size: 1.2rem;
   }
 }
-
-@media (max-width: 360px) {
-  .factoryMain {
-    font-size: 1.2rem;
-  }
-
-  .searchBar {
-    margin: 2rem 0;
-  }
-
-  .introItem {
-    margin: 2rem 0;
-    padding: 0.5rem 2rem;
-  }
-
-  .introTitle {
-    font-size: 1.7rem;
-  }
-
-  .notReal,
-  .apiInfo {
-    font-size: 1rem;
-  }
-}

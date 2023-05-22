@@ -11,9 +11,3 @@
     display: none;
   }
 }
-
-@media (max-width: 360px) {
-  .searchBar {
-    margin: 2rem 0;
-  }
-}
