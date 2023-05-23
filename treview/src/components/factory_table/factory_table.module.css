@@ -1,7 +1,6 @@
 @value t_grey, t_green, t_border_grey, t_white, t_black, t_navy, t_blue_light from '../../common/colors.css';
 
 .tCont {
-  margin: 0 20px;
   font-size: 20px;
 }
 

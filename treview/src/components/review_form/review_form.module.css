@@ -1,5 +1,9 @@
 @value t_blue, t_green, t_red, t_black, t_navy, t_grey, t_border_grey, t_shadow_grey from "../../common/colors.css";
 
+.review_form {
+  font-size: 2rem;
+}
+
 .review_form input,
 .review_form textarea {
   width: 100%;
@@ -11,7 +15,6 @@
 }
 
 .review_form {
-  margin: 2rem 0 5rem;
   padding: 1rem 1.5rem;
   background: #fff;
   box-shadow: 1px 1px 10px 1px t_shadow_grey;
@@ -63,9 +66,6 @@
   background: none;
   transition: all 0.5s;
 }
-/* .btnItem:first-child {
-  color: t_blue !important;
-} */
 .btnItem:nth-child(2n) {
   color: t_red;
 }
@@ -87,4 +87,26 @@
 
 .btnItem:hover .btnNext {
   display: inline-block;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .review_form,
+  .btnItem {
+    font-size: 1.8rem;
+  }
+
+  .factory_name {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .review_form {
+    font-size: 1.5rem;
+  }
+
+  .factory_name,
+  .btnItem {
+    font-size: 1.8rem;
+  }
 }

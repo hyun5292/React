@@ -1,5 +1,5 @@
 @value t_grey, t_blue, t_navy, t_white, t_border_grey from '../../common/colors.css';
-@value t_minHeight from '../../common/sizes.css';
+@value t_minWidth from '../../common/sizes.css';
 
 .select,
 .login input {
@@ -14,7 +14,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: t_minHeight;
+  min-width: t_minWidth;
+  height: 100%;
   background: t_grey;
   z-index: 5;
 }
@@ -103,4 +104,45 @@
 .logo {
   width: 70%;
   height: auto;
+}
+
+@media (max-width: 1024px) {
+  .select,
+  .login input {
+    font-size: 1.2rem !important;
+  }
+
+  .loginCont {
+    width: 700px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .loginCont {
+    flex-direction: column;
+    width: 400px;
+    height: 500px;
+  }
+
+  .leftCont {
+    flex: 1 1 65%;
+  }
+
+  .back_btn {
+    margin-bottom: 10px;
+  }
+
+  .login_btn {
+    font-size: 1.2rem;
+  }
+
+  .logoCont {
+    flex: 1 1 35%;
+  }
+
+  .logo {
+    width: 40%;
+    height: auto;
+  }
 }
