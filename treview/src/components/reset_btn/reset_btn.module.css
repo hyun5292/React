@@ -2,7 +2,6 @@
 
 .resetCont {
   display: flex;
-  border-radius: 50%;
 }
 
 .resetIcon {
@@ -16,4 +15,12 @@
 }
 .resetIcon:hover {
   background: t_navy;
+}
+
+@media (max-width: 768px) {
+  .resetIcon {
+    padding: 0.7rem;
+    width: 3rem;
+    height: 3rem;
+  }
 }

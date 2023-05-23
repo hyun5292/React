@@ -60,9 +60,3 @@ tr:last-child td:last-child {
     font-size: 18px;
   }
 }
-
-@media (max-width: 768px) {
-  .tCont {
-    font-size: 15px;
-  }
-}

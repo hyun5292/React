@@ -2,6 +2,7 @@
 .reviewCont {
   text-align: left;
   margin: 2rem 0;
+  font-size: 20px;
 }
 
 .topMenu {
@@ -32,7 +33,6 @@
 .rTable {
   margin: 1rem auto;
   width: 100%;
-  font-size: 20px;
 }
 
 .tHead {
@@ -54,4 +54,10 @@ td {
 
 .profile {
   max-height: 70px;
+}
+
+@media (max-width: 1024px) {
+  .reviewCont {
+    font-size: 18px;
+  }
 }

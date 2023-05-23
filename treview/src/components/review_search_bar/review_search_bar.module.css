@@ -26,3 +26,15 @@
 .rSchBtn:hover {
   opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+  .rSchInput,
+  .rSchBtn {
+    height: 3rem;
+    font-size: 1rem;
+  }
+
+  .rSchBtn {
+    padding: 1rem;
+  }
+}

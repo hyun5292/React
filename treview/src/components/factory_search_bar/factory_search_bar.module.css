@@ -1,4 +1,5 @@
 @value t_blue, t_navy, t_grey, t_white from '../../common/colors.css';
+@value t_minWidth from '../../common/sizes.css';
 
 .fSearchBar {
   display: flex;
@@ -44,10 +45,10 @@
   background: t_navy;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .fSearchBar {
     flex-direction: column;
-    width: calc(100% - 4rem);
+    width: 80%;
   }
 
   .search_btn {
@@ -57,13 +58,7 @@
 
   .select,
   .search_input {
-    font-size: 0.8rem;
+    font-size: 1rem;
     padding: 15px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .fSearchBar {
-    width: 80%;
   }
 }

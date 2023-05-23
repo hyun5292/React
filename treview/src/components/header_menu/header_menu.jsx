@@ -37,17 +37,19 @@ const HeaderMenu = ({ uData, onLogout }) => {
       <span className={styles.bar} />
       {uData.uId ? (
         <li className={styles.mState}>
-          <span>{uData.uId}님</span>
-          <button className={styles.user_edit_btn}>
-            <a href="/user/edit">
-              <FaUserEdit className={styles.icon} />
-            </a>
-            <div className={styles.gone}>정보수정</div>
-          </button>
-          <button className={styles.logout_btn} onClick={onLogout}>
-            <FiLogOut className={styles.icon} />
-            <div className={styles.gone}>로그아웃</div>
-          </button>
+          <span style={{ paddingTop: "0.5px" }}>{uData.uId}님</span>
+          <div className={styles.mState_btn}>
+            <button className={styles.user_edit_btn}>
+              <a href="/user/edit">
+                <FaUserEdit className={styles.icon} />
+              </a>
+              <div className={styles.gone}>정보수정</div>
+            </button>
+            <button className={styles.logout_btn} onClick={onLogout}>
+              <FiLogOut className={styles.icon} />
+              <div className={styles.gone}>로그아웃</div>
+            </button>
+          </div>
         </li>
       ) : (
         <>

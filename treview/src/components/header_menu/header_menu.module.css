@@ -61,6 +61,11 @@
   gap: 10px;
 }
 
+.mState_btn {
+  display: flex;
+  gap: 10px;
+}
+
 .mState a {
   padding: 0;
 }
@@ -96,6 +101,19 @@
   }
 
   .bar {
-    display: none;
+    width: 80%;
+    height: 1px;
+  }
+
+  .mState {
+    flex-direction: column;
+  }
+
+  .mState_btn {
+    gap: 1.2rem;
+  }
+
+  .mState button .icon {
+    color: t_navy;
   }
 }
