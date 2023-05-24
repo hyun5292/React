@@ -2,14 +2,14 @@
 
 .page {
   padding: pg_padding;
-  height: t_minHeight;
+  min-height: t_minHeight;
   overflow: auto;
 }
 
 @media (max-width: 1024px) {
   .page {
     padding: pg_padding_m;
-    height: t_minHeight_s;
+    min-height: t_minHeight_s;
   }
 }
 

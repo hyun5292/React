@@ -38,10 +38,6 @@
   margin-top: 0;
 }
 
-.introItem:last-child {
-  margin-bottom: 0;
-}
-
 .introItem p {
   margin: 1rem 0;
   color: t_white;

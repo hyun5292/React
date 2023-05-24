@@ -83,7 +83,7 @@ const ImgUploader = ({ nowProfile, onFileReset, handleProfile }) => {
               className={styles.upload_Img}
               src="../images/uploadImg.png"
               alt="이미지 추가"
-              style={{ width: "6rem", height: "auto" }}
+              style={{ width: "4rem", height: "auto" }}
             />
           </label>
           <label htmlFor="profileText">프로필 사진 추가</label>

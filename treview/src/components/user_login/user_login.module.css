@@ -1,5 +1,5 @@
 @value t_grey, t_blue, t_navy, t_white, t_border_grey from '../../common/colors.css';
-@value t_minWidth from '../../common/sizes.css';
+@value t_minWidth, t_minHeight from '../../common/sizes.css';
 
 .select,
 .login input {

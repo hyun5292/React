@@ -52,7 +52,9 @@ const App = ({ imgUploader, factoryDB, authService, reviewDB }) => {
   }, []);
 
   return loading ? (
-    <Loading />
+    <div className={styles.loading}>
+      <Loading />
+    </div>
   ) : (
     <div className={styles.app}>
       <div className={styles.header}>
@@ -98,9 +100,9 @@ const App = ({ imgUploader, factoryDB, authService, reviewDB }) => {
             </Route>
           </Routes>
         </BrowserRouter>
-        <div className={styles.footer}>
-          <Footer />
-        </div>
+      </div>
+      <div className={styles.footer}>
+        <Footer />
       </div>
     </div>
   );

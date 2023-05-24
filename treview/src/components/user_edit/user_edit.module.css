@@ -1,6 +1,6 @@
 @value t_black, t_blue from '../../common/colors.css';
 
-.userJoin {
+.userEdit {
   color: t_black;
   font-size: 1.4rem;
 }
@@ -15,4 +15,11 @@
 .colonIcon {
   color: t_blue;
   font-size: 3rem;
+}
+
+@media (max-width: 768px) {
+  .userEdit {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
 }

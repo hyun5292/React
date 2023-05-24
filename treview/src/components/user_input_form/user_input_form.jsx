@@ -173,11 +173,13 @@ const UserInputForm = ({ getUserData, doDelete, btnName, onBtnClick }) => {
           )}
         </Grid>
         <Grid item xs={12} md={6} className={styles.formItem}>
-          <ImgUploader
-            nowProfile={profile.uProfileURL}
-            onFileReset={setProfile}
-            handleProfile={setNewProfile}
-          />
+          <div className={styles.imgCont}>
+            <ImgUploader
+              nowProfile={profile.uProfileURL}
+              onFileReset={setProfile}
+              handleProfile={setNewProfile}
+            />
+          </div>
         </Grid>
         <Grid
           item
