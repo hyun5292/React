@@ -30,7 +30,6 @@ const ReviewEdit = (props) => {
     if (location.state) {
       setRData(location.state.modifyFData);
     } else {
-      alert("비정상적인 접근입니다!");
       window.history.go(-1);
     }
   }, [location.state]);

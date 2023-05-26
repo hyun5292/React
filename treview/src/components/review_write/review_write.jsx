@@ -41,7 +41,6 @@ const ReviewWrite = (props) => {
       setUData(location.state.uData);
       setFData(location.state.fData);
     } else {
-      alert("비정상적인 접근입니다!");
       navigate("/");
     }
   }, [location.state, navigate]);

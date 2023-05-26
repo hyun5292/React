@@ -20,7 +20,6 @@ const UserEdit = (props) => {
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (!user) {
-        alert("비정상적인 접근입니다!");
         navigate("/");
       }
     });
