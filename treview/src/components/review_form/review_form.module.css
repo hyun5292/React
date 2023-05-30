@@ -1,6 +1,7 @@
 @value t_blue, t_green, t_red, t_black, t_navy, t_grey, t_border_grey, t_shadow_grey from "../../common/colors.css";
 
 .review_form {
+  margin-bottom: 3rem;
   font-size: 2rem;
 }
 

@@ -20,7 +20,7 @@ const writeDate = (rDate) => {
 const ReviewTable = memo(({ fInfo, data }) => {
   const navigate = useNavigate();
   const defaultImg =
-    "https://res.cloudinary.com/sudol5292/image/upload/v1680022296/truck_okhdd4.png";
+    "https://res.cloudinary.com/sudol5292/image/upload/v1685458111/truck_sggqlj.png";
   const columns = useMemo(
     () => [
       {

@@ -31,6 +31,10 @@ body {
   top: 0;
 }
 
+.container {
+  padding-bottom: 3rem;
+}
+
 .footer {
   bottom: 0;
 }
