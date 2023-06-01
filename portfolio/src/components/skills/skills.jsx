@@ -35,35 +35,12 @@ const Skills = (props) => (
           </div>
           <div className={styles.icon_item}>
             <FaCss3Alt className={`${styles.icon} ${styles.css}`} />
-            <div className={styles.icon_info}>
-              <span className={styles.info_title}>css</span>
-              <p className={styles.info_cont}>
-                주어진 디자인 레이아웃에 따라 페이지를 디자인할 수 있도록
-                position, flex, box 등을 조화롭게 사용하는 법을 공부하고
-                있습니다.
-              </p>
-            </div>
           </div>
           <div className={styles.icon_item}>
             <DiJavascript className={`${styles.icon} ${styles.js}`} />
-            <div className={styles.icon_info}>
-              <span className={styles.info_title}>javascript</span>
-              <p className={styles.info_cont}>
-                간단한 이벤트 처리나 데이터를 주고받을 때의 처리를 할 줄 압니다.
-                가장 기억에 남는 것은 처음 배웠을 때 공이 사이트 안을 무작위로
-                튀어다녔던 것을 만들고 좋아했던 것입니다.
-              </p>
-            </div>
           </div>
           <div className={styles.icon_item}>
             <DiJqueryLogo className={`${styles.icon} ${styles.jquery}`} />
-            <div className={styles.icon_info}>
-              <span className={styles.info_title}>jquery</span>
-              <p className={styles.info_cont}>
-                CRUD 작업을 하면서 input 폼을 다룰 대 검색을 많이하며 고생한
-                기억이 있지만 그만큼 재밌다고 생각합니다.
-              </p>
-            </div>
           </div>
           <div className={styles.icon_item}>
             <FaReact className={`${styles.icon} ${styles.react}`} />
@@ -77,22 +54,9 @@ const Skills = (props) => (
           </div>
           <div className={styles.icon_item}>
             <SiPostcss className={`${styles.icon} ${styles.postcss}`} />
-            <div className={styles.icon_info}>
-              <span className={styles.info_title}>postcss</span>
-              <p className={styles.info_cont}>
-                CSS를 모듈화할 수 있다는 점이 좋다고 생각합니다.
-              </p>
-            </div>
           </div>
           <div className={styles.icon_item}>
             <FaSass className={`${styles.icon} ${styles.sass}`} />
-            <div className={styles.icon_info}>
-              <span className={styles.info_title}>sass</span>
-              <p className={styles.info_cont}>
-                중첩 괄호 사용으로 구조적으로 생각하며 처리할 수 있다는 것과
-                mixin과 같은 여러 문법이 제공 된다는 것이 좋다고 생각합니다.
-              </p>
-            </div>
           </div>
         </div>
       </div>

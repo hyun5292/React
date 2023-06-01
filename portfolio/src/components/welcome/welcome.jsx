@@ -21,7 +21,12 @@ const Welcome = (props) => (
       />
       <div className={styles.card_border}>
         <div className={styles.cont}>
-          <img className={styles.selfie} src="/images/selfie.png" alt="사진" />
+          <img
+            className={styles.selfie}
+            src="/images/selfie.png"
+            alt="사진"
+            loading="lazy"
+          />
           <div className={styles.line}></div>
           <div className={styles.explain}>
             <div className={styles.intro}>

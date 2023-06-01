@@ -1,4 +1,4 @@
-@value sudolOrange, sudolWhite, skillsGrey from '../../common/colors.css';
+@value sudolBlue, sudolOrange, sudolWhite, skillsGrey from '../../common/colors.css';
 
 @keyframes Slide {
   from {
@@ -81,7 +81,8 @@
 
 .info_title {
   font-size: 1.2rem;
-  color: rgba(13, 107, 165, 0.8);
+  font-weight: 800;
+  color: sudolBlue;
   text-transform: uppercase;
 }
 
