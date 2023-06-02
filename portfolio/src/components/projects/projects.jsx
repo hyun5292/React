@@ -7,45 +7,13 @@ import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { FaCircle, FaRegCircle } from "react-icons/fa";
 import { useEffect } from "react";
 
-const Projects = (props) => {
+const Projects = ({ files }) => {
   const pageRef = useRef();
   const [pageCnt, setPageCnt] = useState(1);
   const [winSize, setWinSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
-  const files = [
-    {
-      fileNum: 1,
-      fileName: "포트폴리오",
-      fileImg: "/images/example1.png",
-      fileLan: "react",
-      fileTool: "visual studio",
-      fileLink: "https://sudol5292.netlify.app/",
-      fileInfo:
-        "프로젝트 설명이 길어야하니까 어쩔 수 없이 이렇게 길게 설명을 한 번 써보기는 하는데 얼마나 길게 써질지는 모르겠네",
-    },
-    {
-      fileNum: 2,
-      fileName: "포트폴리오",
-      fileImg: "/images/example2.png",
-      fileLan: "react",
-      fileTool: "visual studio",
-      fileLink: "https://sudol5292.netlify.app/",
-      fileInfo:
-        "프로젝트 설명이 길어야하니까 어쩔 수 없이 이렇게 길게 설명을 한 번 써보기는 하는데 얼마나 길게 써질지는 모르겠네",
-    },
-    {
-      fileNum: 3,
-      fileName: "포트폴리오",
-      fileImg: "/images/example3.png",
-      fileLan: "react",
-      fileTool: "visual studio",
-      fileLink: "https://sudol5292.netlify.app/",
-      fileInfo:
-        "프로젝트 설명이 길어야하니까 어쩔 수 없이 이렇게 길게 설명을 한 번 써보기는 하는데 얼마나 길게 써질지는 모르겠네",
-    },
-  ];
 
   const handleResize = () => {
     setPageCnt(1);
@@ -125,7 +93,7 @@ const Projects = (props) => {
       </div>
       {files &&
         files.map((file) =>
-          pageCnt == file.fileNum ? (
+          pageCnt === file.fileNum ? (
             <FaCircle key={file.fileNum} className={styles.circles} />
           ) : (
             <FaRegCircle key={file.fileNum} className={styles.circles} />

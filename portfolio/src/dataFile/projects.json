@@ -1,0 +1,26 @@
+{
+	"projects": [
+		{
+      "fileNum": 1,
+      "fileName": "공장 리뷰 페이지(Treview)",
+      "fileImg": "/images/treview_main.png",
+      "fileLan": "React",
+      "fileTool": "VSCode, Firebase, Cloudinary, 경기도데이터드림 Open API",
+      "fileLink": "https://treview.netlify.app/",
+      "fileDate": "2022.12.15 ~ 2023.04.06",
+      "fileInfo":
+        "트럭(Truck) + 리뷰(Review)의 줄임말로, 경기도 내 일반화물업체의 운송을 주선하는 업체의 정보를 검색할 수 있고 공장별 리뷰를 남길 수 있는 사이트입니다."
+    },
+    {
+      "fileNum": 2,
+      "fileName": "뜨개질 학습 페이지(Learnknit)",
+      "fileImg": "/images/learnknit_more.png",
+      "fileLan": "React",
+      "fileTool": "VSCode, Youtube API",
+      "fileLink": "https://learnknit.netlify.app/",
+      "fileDate": "2022.11.15 ~ 2022.12.24",
+      "fileInfo":
+        "뜨개질을 단계별로 수강할 수 있도록 만든 온라인 강의 사이트입니다. 사촌동생이 뜨개질에 관심을 가지게 되면서 제작하게 되었습니다."
+    }
+	]
+}

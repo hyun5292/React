@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./project.module.css";
 
 const Project = ({ file, winWidth }) => {
-  const { fileName, fileImg, fileLan, fileTool, fileLink, fileInfo } = file;
+  const { fileName, fileImg, fileLan, fileTool, fileLink, fileDate, fileInfo } =
+    file;
 
   return (
     <div className={styles.project}>
@@ -19,13 +20,18 @@ const Project = ({ file, winWidth }) => {
           style={{ width: chkImgWidth(winWidth) }}
           src={fileImg}
           alt="프로젝트 이미지"
+          loading="lazy"
         ></img>
         <div className={styles.projectTxt}>
           <p className={styles.lan}>
             <b>사용언어:</b> {fileLan}
           </p>
           <p className={styles.tool}>
-            <b>개발환경:</b> {fileTool}
+            <b>개발환경:</b>
+            <br /> {fileTool}
+          </p>
+          <p className={styles.tool}>
+            <b>개발기간:</b> {fileDate}
           </p>
           <p className={styles.info}>
             <b>프로젝트 설명:</b>
