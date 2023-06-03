@@ -2,72 +2,8 @@
 
 .project {
   padding: 1rem 3rem 2rem;
+  min-width: calc(100vw - 12rem);
   border-radius: 10px;
   background-color: sudolWhite;
   box-shadow: 2px 3px 4px 2px rgba(38, 38, 38, 0.3);
-}
-
-.title {
-  margin: 1rem 0 2rem;
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-
-.link_wrap {
-  padding-bottom: 10px;
-  font-size: 1.3rem;
-  text-align: left;
-  border-bottom: 1px solid borderGrey;
-}
-
-.link {
-  margin-left: 10px;
-}
-
-.img {
-  min-width: 288px;
-}
-
-.cont {
-  display: flex;
-}
-
-.projectTxt {
-  margin-left: 2rem;
-  font-size: 1.5rem;
-  text-align: left;
-}
-
-.link {
-  color: sudolDarkGrey;
-}
-.link:hover {
-  color: sudolOrange;
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .cont {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-@media (max-width: 767px) {
-  .project {
-    padding: 1rem 2rem 2rem;
-  }
-
-  .cont {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .link_wrap {
-    font-size: 1.1rem;
-  }
 }

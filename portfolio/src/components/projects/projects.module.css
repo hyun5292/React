@@ -15,72 +15,45 @@
   overflow-x: hidden;
 }
 
-.arrow {
-  font-size: 5rem;
-  color: sudolWhite;
+.move_btn {
+  padding: 0;
+  border: none;
+  background: none;
   cursor: pointer;
+  z-index: 3;
+}
+
+.move_btn:first-child {
+  position: fixed;
+  top: 40%;
+  left: 10px;
+}
+.move_btn:last-child {
+  position: fixed;
+  top: 40%;
+  right: 10px;
+}
+
+.arrow {
+  color: sudolWhite;
+  font-size: 5rem;
 }
 .arrow:hover {
   color: borderGrey;
 }
 
-.prev,
-.next {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-100%);
-}
-.prev {
-  left: 1rem;
-}
-.next {
-  right: 1rem;
-}
-
-.proList {
-  display: flex;
-  align-items: center;
-}
-
-.project {
-  padding: 0 7rem 0 6rem;
-  scroll-snap-type: x mandatory;
-}
-
-.hoverArrow {
+.arrow_disabled {
   color: borderGrey;
   cursor: default;
 }
 
-.circles {
-  margin: 5px;
-  color: sudolWhite;
+.projectList {
+  display: flex;
+  transition: transform 0.5s;
 }
 
-@media (max-width: 767px) {
-  .project {
-    padding: 0 2.5rem 0 1rem;
-  }
-
-  .arrow {
-    color: sudolBlue;
-  }
-
-  .hoverArrow {
-    color: borderGrey;
-    cursor: default;
-  }
-}
-
-@media (max-width: 500px) {
-  .project {
-    padding: 0;
-  }
-
-  .prev {
-    left: -1rem;
-  }
-  .next {
-    right: -1rem;
-  }
+.project {
+  width: 100vw;
+  padding: 1rem 6rem;
+  transform: translateX(-8px);
 }

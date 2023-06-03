@@ -8,50 +8,29 @@ import { FaCircle, FaRegCircle } from "react-icons/fa";
 import { useEffect } from "react";
 
 const Projects = ({ files }) => {
-  const pageRef = useRef();
-  const [pageCnt, setPageCnt] = useState(1);
-  const [winSize, setWinSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const projectRef = useRef();
+  const [projNum, setProjNum] = useState(0);
 
-  const handleResize = () => {
-    setPageCnt(1);
-    pageRef.current.style.transform = "translateX(0)";
-    pageRef.current.style.transition = "transform 0.5s ease";
-    setWinSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  };
-
-  const handleNextPg = () => {
-    const nowPg = pageCnt;
-    if (nowPg < files.length) {
-      setPageCnt(nowPg + 1);
-      pageRef.current.style.transform = `translateX(-${
-        winSize.width * nowPg
-      }px)`;
-      pageRef.current.style.transition = "transform 0.5s ease";
+  const moveBefore = (event) => {
+    event.preventDefault();
+    const beforeProj = projNum - 1;
+    if (beforeProj < 0) setProjNum(0);
+    else {
+      setProjNum(beforeProj);
+      projectRef.current.style =
+        "transform: translateX(-" + beforeProj * 100 + "vw)";
     }
   };
-  const handlePrevPg = () => {
-    const nowPg = pageCnt;
-    if (nowPg > 1) {
-      setPageCnt(nowPg - 1);
-      pageRef.current.style.transform = `translateX(${
-        winSize.width * (files.length - 1 - nowPg)
-      }px)`;
-      pageRef.current.style.transition = "transform 0.5s ease";
+  const moveAfter = (event) => {
+    event.preventDefault();
+    const nextProj = projNum + 1;
+    if (nextProj >= files.length) setProjNum(files.length - 1);
+    else {
+      setProjNum(nextProj);
+      projectRef.current.style =
+        "transform: translateX(-" + nextProj * 100 + "vw)";
     }
   };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <div className={`${styles.projects} ${sectStyle.projects}`}>
@@ -61,56 +40,45 @@ const Projects = ({ files }) => {
         txtColor="projects"
       />
       <div className={styles.cont}>
-        <div
-          ref={pageRef}
-          className={styles.proList}
-          style={{ width: window.innerWidth * files.length }}
+        <button
+          disabled={projNum === 0 ? true : false}
+          className={styles.move_btn}
+          onClick={moveBefore}
         >
+          <MdNavigateBefore
+            className={
+              projNum === 0
+                ? `${styles.arrow} ${styles.arrow_disabled}`
+                : `${styles.arrow}`
+            }
+          />
+        </button>
+        <div ref={projectRef} className={styles.projectList}>
           {files &&
             files.map((file) => {
               return (
                 <div key={file.fileNum} className={styles.project}>
-                  <Project file={file} winWidth={winSize.width} />
+                  <Project file={file} />
                 </div>
               );
             })}
         </div>
-        <MdNavigateBefore
-          onClick={handlePrevPg}
-          className={`${styles.arrow} ${styles.prev} ${changeArrow(
-            "prev",
-            pageCnt
-          )}`}
-        />
-        <MdNavigateNext
-          onClick={handleNextPg}
-          className={`${styles.arrow} ${styles.next} ${changeArrow(
-            "next",
-            pageCnt,
-            files.length
-          )}`}
-        />
+        <button
+          disabled={projNum === files.length - 1 ? true : false}
+          className={styles.move_btn}
+          onClick={moveAfter}
+        >
+          <MdNavigateNext
+            className={
+              projNum === files.length - 1
+                ? `${styles.arrow} ${styles.arrow_disabled}`
+                : `${styles.arrow}`
+            }
+          />
+        </button>
       </div>
-      {files &&
-        files.map((file) =>
-          pageCnt === file.fileNum ? (
-            <FaCircle key={file.fileNum} className={styles.circles} />
-          ) : (
-            <FaRegCircle key={file.fileNum} className={styles.circles} />
-          )
-        )}
     </div>
   );
 };
-
-function changeArrow(kind, pgCnt, final) {
-  if (kind === "prev" && pgCnt === 1) {
-    return styles.hoverArrow;
-  } else if (kind === "next" && pgCnt === final) {
-    return styles.hoverArrow;
-  } else {
-    return;
-  }
-}
 
 export default Projects;
