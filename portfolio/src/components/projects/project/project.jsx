@@ -3,12 +3,15 @@ import styles from "./project.module.css";
 import { HiChevronDoubleDown } from "react-icons/hi";
 
 const Project = ({ file }) => {
+  const imgContRef = useRef();
   const explainRef = useRef();
   const { fileName, fileImg, fileLan, fileTool, fileLink, fileDate, fileInfo } =
     file;
 
   const offExplain = () => {
     explainRef.current.style = "display: none";
+    // imgContRef.current.style = "scroll-snap-type: y mandatory";
+    imgContRef.current.style = "overflow-y: scroll";
   };
 
   return (
@@ -20,7 +23,7 @@ const Project = ({ file }) => {
           <a href={fileLink}>{fileLink}</a>
         </p>
       </div>
-      <div className={styles.imgCont} onClick={offExplain}>
+      <div ref={imgContRef} className={styles.imgCont} onClick={offExplain}>
         <div ref={explainRef} className={styles.explain}>
           <p>이미지를 클릭 후 스크롤 해주세요</p>
           <HiChevronDoubleDown className={styles.explain_icon} />

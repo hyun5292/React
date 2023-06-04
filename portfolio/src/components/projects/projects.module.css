@@ -1,4 +1,4 @@
-@value sudolWhite, sudolBlue, borderGrey from '../../common/colors.css';
+@value sudolOrange, sudolWhite, sudolBlue, borderGrey from '../../common/colors.css';
 
 .projects {
   background-color: sudolBlue;
@@ -12,7 +12,6 @@
 
 .cont {
   padding: 1rem 0;
-  overflow-x: hidden;
 }
 
 .move_btn {
@@ -26,12 +25,12 @@
 .move_btn:first-child {
   position: fixed;
   top: 40%;
-  left: 10px;
+  left: 0;
 }
 .move_btn:last-child {
   position: fixed;
   top: 40%;
-  right: 10px;
+  right: 0;
 }
 
 .arrow {
@@ -69,4 +68,35 @@
   cursor: pointer;
   color: sudolWhite;
   font-size: 1.2rem;
+}
+
+@media (max-width: 1024px) {
+  .project {
+    padding: 1rem 4rem;
+  }
+
+  .move_btn:first-child {
+    position: fixed;
+    top: 40%;
+    left: -7px;
+  }
+  .move_btn:last-child {
+    position: fixed;
+    top: 40%;
+    right: -7px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project {
+    padding: 2rem !important;
+  }
+
+  .arrow {
+    color: sudolOrange;
+  }
+
+  .arrow_disabled {
+    color: borderGrey;
+  }
 }

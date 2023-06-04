@@ -4,3 +4,9 @@
   min-width: 360px;
   min-height: calc(100vh - 11.5rem);
 }
+
+.welcome::-webkit-scrollbar,
+.skills::-webkit-scrollbar,
+.projects::-webkit-scrollbar {
+  display: none;
+}
