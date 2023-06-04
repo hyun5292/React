@@ -3,7 +3,7 @@
 		{
       "fileNum": 1,
       "fileName": "공장 리뷰 페이지(Treview)",
-      "fileImg": "/images/treview_main.png",
+      "fileImg": ["/images/treview/treview_main.png", "/images/treview/treview_search.png", "/images/treview/treview_user_join.png", "/images/treview/treview_user_edit.png", "/images/treview/treview_login.png"],
       "fileLan": "React",
       "fileTool": "VSCode, Firebase, Cloudinary, 경기도데이터드림 Open API",
       "fileLink": "https://treview.netlify.app/",
@@ -14,7 +14,7 @@
     {
       "fileNum": 2,
       "fileName": "뜨개질 학습 페이지(Learnknit)",
-      "fileImg": "/images/learnknit_more.png",
+      "fileImg": ["/images/learnknit/learnknit_more.png", "/images/learnknit/learnknit_menu.png"],
       "fileLan": "React",
       "fileTool": "VSCode, Youtube API",
       "fileLink": "https://learnknit.netlify.app/",
@@ -25,13 +25,13 @@
     {
       "fileNum": 3,
       "fileName": "스마트한 추적 놀이(Smart-Tracking-Game)",
-      "fileImg": "",
+      "fileImg": ["/images/continue.png"],
       "fileLan": "React",
       "fileTool": "VSCode",
       "fileLink": "https://learnknit.netlify.app/",
-      "fileDate": "2022.06 ~",
+      "fileDate": "To be continue...",
       "fileInfo":
-        "To be continue..."
+        "수련원에서 아르바이트를 하면서 진행되는 프로그램의 시스템을 보고 비효율적이라는 생각에 만들게 된 사이트입니다. 학생들이 수련원 이곳저곳을 둘러보고 힌트를 얻으면 해당하는 사진을 찍어 문자로 전송하게 됩니다. 그 사진을 보고 선생님들이 성공/실패를 알려주고 끝까지 다 성공한 팀이 이기는 방식입니다."
     }
 	]
 }

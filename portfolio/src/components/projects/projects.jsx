@@ -5,7 +5,6 @@ import sectStyle from ".././sect.module.css";
 import Project from "./project/project";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { FaCircle, FaRegCircle } from "react-icons/fa";
-import { useEffect } from "react";
 
 const Projects = ({ files }) => {
   const projectRef = useRef();
@@ -30,6 +29,13 @@ const Projects = ({ files }) => {
       projectRef.current.style =
         "transform: translateX(-" + nextProj * 100 + "vw)";
     }
+  };
+
+  const onMoveProject = (event, projectNum) => {
+    event.preventDefault();
+    setProjNum(projectNum);
+    projectRef.current.style =
+      "transform: translateX(-" + projectNum * 100 + "vw)";
   };
 
   return (
@@ -61,6 +67,29 @@ const Projects = ({ files }) => {
                   <Project file={file} />
                 </div>
               );
+            })}
+        </div>
+        <div className={styles.dotCont}>
+          {files &&
+            files.map((file) => {
+              if (projNum + 1 === file.fileNum) {
+                return (
+                  <FaCircle
+                    key={file.fileNum}
+                    className={`${styles.dot_btn} ${styles.dot}`}
+                  />
+                );
+              } else {
+                return (
+                  <button
+                    key={file.fileNum}
+                    className={styles.dot_btn}
+                    onClick={(event) => onMoveProject(event, file.fileNum - 1)}
+                  >
+                    <FaRegCircle className={styles.dot} />
+                  </button>
+                );
+              }
             })}
         </div>
         <button

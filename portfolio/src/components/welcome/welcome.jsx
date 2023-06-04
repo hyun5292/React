@@ -24,7 +24,7 @@ const Welcome = (props) => (
           <img
             className={styles.selfie}
             src="/images/selfie.png"
-            alt="사진"
+            alt="셀프사진"
             loading="lazy"
           />
           <div className={styles.line}></div>
