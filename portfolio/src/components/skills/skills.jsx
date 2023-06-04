@@ -3,7 +3,7 @@ import Title from "../title/title";
 import styles from "./skills.module.css";
 import sectStyle from ".././sect.module.css";
 import { AiFillHtml5 } from "react-icons/ai";
-import { FaCss3Alt, FaReact, FaSass } from "react-icons/fa";
+import { FaCss3Alt, FaReact } from "react-icons/fa";
 import { DiJavascript, DiJqueryLogo } from "react-icons/di";
 import {
   SiPostcss,
@@ -56,7 +56,17 @@ const Skills = (props) => (
             <SiPostcss className={`${styles.icon} ${styles.postcss}`} />
           </div>
           <div className={styles.icon_item}>
-            <FaSass className={`${styles.icon} ${styles.sass}`} />
+            <div className={`${styles.icon} ${styles.scss}`}>
+              <b>SCSS</b>
+            </div>
+            <div className={styles.icon_info}>
+              <span className={styles.info_title}>scss</span>
+              <p className={styles.info_cont}>
+                개인적으로 일반 CSS보다는 SCSS 구조가 더 마음에 들었습니다. 파일
+                정리를 해도 구조적으로 잡는데 SCSS는 HTML 구조대로 정리할 수
+                있어서 직관적으로 이해하기 더 쉽다고 생각합니다.
+              </p>
+            </div>
           </div>
         </div>
       </div>
