@@ -10,7 +10,6 @@ const Project = ({ file }) => {
 
   const offExplain = () => {
     explainRef.current.style = "display: none";
-    // imgContRef.current.style = "scroll-snap-type: y mandatory";
     imgContRef.current.style = "overflow-y: scroll";
   };
 
@@ -41,14 +40,6 @@ const Project = ({ file }) => {
               </div>
             );
           })}
-        {/* <div className={styles.imgItem}>
-          <img
-            width="100%"
-            src={fileImg[0]}
-            alt="Treview 사이트"
-            loading="lazy"
-          />
-        </div> */}
       </div>
       <div className={styles.infoCont}>
         <p className={styles.infoItem}>

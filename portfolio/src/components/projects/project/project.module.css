@@ -63,6 +63,7 @@
   position: relative;
   scroll-snap-type: y mandatory;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 .imgCont::-webkit-scrollbar {
   display: none;

@@ -3,6 +3,7 @@
 .projects {
   background-color: sudolBlue;
   padding-bottom: 1rem;
+  overflow-x: hidden;
 }
 
 .title .sub {
