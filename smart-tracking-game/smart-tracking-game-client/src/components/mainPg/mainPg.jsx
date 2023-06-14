@@ -18,7 +18,7 @@ const MainPg = (props) => {
           </select>
           <span className={styles.jo_text}>조</span>
         </div>
-        <div className={styles.teamMember}>
+        <div className={styles.teamName}>
           <span>팀원</span>
           <input type="text" placeholder="팀원1, 팀원2, 팀원3..." />
         </div>

@@ -2,16 +2,16 @@
   display: grid;
   gap: 20px;
   padding: 20px 10px;
-  text-align: center;
 }
 
 .teamInfo {
   display: grid;
   grid-template-areas:
     "teamNum		upBtn"
-    "teamMember	upBtn";
+    "teamName	upBtn";
   grid-template-columns: 1fr 30px;
   gap: 10px;
+  text-align: center;
 }
 
 .teamNum {
@@ -22,11 +22,14 @@
   margin: 0 5px;
 }
 
-.teamMember {
-  grid-area: teamMember;
+.teamName {
+  display: flex;
+  grid-area: teamName;
+  justify-content: center;
+  align-items: center;
 }
 
-.teamMember span {
+.teamName span {
   margin-right: 5px;
 }
 
