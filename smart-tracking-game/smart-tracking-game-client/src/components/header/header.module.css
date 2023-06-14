@@ -1,0 +1,14 @@
+.header {
+  padding: 10px;
+  font-weight: 700;
+  text-align: center;
+  background: grey;
+}
+
+.text_top {
+  font-size: 0.8rem;
+}
+
+.text_bottom {
+  font-size: 1.3rem;
+}
