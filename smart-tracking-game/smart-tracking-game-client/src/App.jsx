@@ -1,13 +1,14 @@
 import styles from "./App.module.css";
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
+import MainPg from "./components/mainPg/mainPg";
 
 const App = () => {
   return (
     <div className="App">
       <Header />
       <div className={styles.content}>
-        <h1>스마트한 추적 놀이 - 클라이언트</h1>
+        <MainPg />
       </div>
       <Footer />
     </div>

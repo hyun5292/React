@@ -1,8 +1,21 @@
 .header {
+  position: relative;
   padding: 10px;
   font-weight: 700;
   text-align: center;
   background: grey;
+}
+
+.header button {
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+}
+
+.home_btn {
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
 
 .text_top {
@@ -11,4 +24,10 @@
 
 .text_bottom {
   font-size: 1.3rem;
+}
+
+.map_btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
