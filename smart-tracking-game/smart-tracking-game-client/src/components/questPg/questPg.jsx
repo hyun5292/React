@@ -36,7 +36,7 @@ const QuestPg = (props) => {
             className={styles.photoExample}
             src="./images/example.jpg"
             alt="예시 사진"
-            width="260px"
+            width="100%"
             height="auto"
           />
           <img className={styles.photoAnswer} src="" alt="촬영된 사진" />

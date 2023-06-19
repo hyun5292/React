@@ -1,6 +1,4 @@
 .mapPg {
-  display: grid;
-  gap: 10px;
   text-align: center;
 }
 
@@ -12,6 +10,6 @@
 
 .map_image {
   padding: 5px;
-  margin: 0 auto;
+  margin: 10px auto;
   border: 1px solid grey;
 }

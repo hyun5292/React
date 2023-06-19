@@ -8,13 +8,13 @@ import QuestPg from "./components/questPg/questPg";
 const App = () => {
   return (
     <div className="App">
-      <Header />
+      <Header className={styles.header} />
       <div className={styles.content}>
-        {/* <MainPg /> */}
+        <MainPg />
         {/* <QuestPg /> */}
-        <MapPg />
+        {/* <MapPg /> */}
       </div>
-      <Footer />
+      <Footer className={styles.footer} />
     </div>
   );
 };
