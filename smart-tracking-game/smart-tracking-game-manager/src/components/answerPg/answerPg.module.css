@@ -1,0 +1,38 @@
+.answerPg {
+}
+
+.answerCont {
+  display: grid;
+  gap: 10px;
+}
+
+.answerItem {
+  display: flex;
+  gap: 5px;
+}
+
+.answerItem span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 80px;
+  border: 1px solid grey;
+}
+
+.answerItem input {
+  flex: 9;
+  height: 80px;
+  font-size: 1.2rem;
+}
+
+.answer_btns {
+  display: flex;
+  justify-content: right;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.answer_btns button {
+  padding: 5px 10px;
+}

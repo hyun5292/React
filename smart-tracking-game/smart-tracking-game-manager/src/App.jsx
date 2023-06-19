@@ -1,18 +1,18 @@
 import styles from "./App.module.css";
+import AnswerPg from "./components/answerPg/answerPg";
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
-import MainPg from "./components/mainPg/mainPg";
+import StartPg from "./components/startPg/startPg";
 import MapPg from "./components/mapPg/mapPg";
-import QuestPg from "./components/questPg/questPg";
 
 const App = () => {
   return (
     <div className={styles.app}>
       <Header className={styles.header} />
       <div className={styles.content}>
-        {/* <MainPg /> */}
-        <QuestPg />
-        {/* <MapPg /> */}
+        {/* <StartPg /> */}
+        {/* <AnswerPg /> */}
+        <MapPg />
       </div>
       <Footer className={styles.footer} />
     </div>

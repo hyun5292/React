@@ -1,0 +1,13 @@
+.footer {
+  padding: 5px 0;
+  font-size: 0.6rem;
+  text-align: center;
+  background: grey;
+}
+
+.maker {
+}
+
+.maker_link {
+  margin-left: 5px;
+}
