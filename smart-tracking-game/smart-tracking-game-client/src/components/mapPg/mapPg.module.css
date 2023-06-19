@@ -1,0 +1,17 @@
+.mapPg {
+  display: grid;
+  gap: 10px;
+  text-align: center;
+}
+
+.back_btn {
+}
+
+.title {
+}
+
+.map_image {
+  padding: 5px;
+  margin: 0 auto;
+  border: 1px solid grey;
+}

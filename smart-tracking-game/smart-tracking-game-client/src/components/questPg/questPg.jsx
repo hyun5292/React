@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./questPg.module.css";
+import pStyle from "../../css/page.module.css";
 import { MdAddPhotoAlternate, MdSubdirectoryArrowRight } from "react-icons/md";
 import { BsFillClipboardCheckFill } from "react-icons/bs";
 
@@ -7,7 +8,7 @@ const QuestPg = (props) => {
   const teamName = ["팀원1", "팀원2", "팀원3", "팀원4", "팀원5", "팀원6"];
 
   return (
-    <div className={styles.questPg}>
+    <div className={`${styles.questPg} ${pStyle.default}`}>
       <div className={styles.teamInfo}>
         <span className={styles.teamJo}>00초등학교 - 16 조</span>
         <span className={styles.teamName}>

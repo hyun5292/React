@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./mainPg.module.css";
+import pStyle from "../../css/page.module.css";
 
 const MainPg = (props) => {
   const Questions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   return (
-    <div className={styles.mainPg}>
+    <div className={`${styles.mainPg} ${pStyle.default}`}>
       <div className={styles.teamInfo}>
         <div className={styles.teamNum}>
           <span className={styles.school_name}>00초등학교</span>
