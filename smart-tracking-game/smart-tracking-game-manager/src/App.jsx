@@ -1,9 +1,12 @@
 import styles from "./App.module.css";
-import AnswerPg from "./components/answerPg/answerPg";
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
-import StartPg from "./components/startPg/startPg";
-import MapPg from "./components/mapPg/mapPg";
+import AnswerPg from "./components/start/answerPg/answerPg";
+import MapPg from "./components/start/mapPg/mapPg";
+import StartPg from "./components/start/startPg/startPg";
+import MainPg from "./components/mainPg/mainPg";
+import QuestListPg from "./components/question/questListPg/questListPg";
+import QuestPg from "./components/question/quest/questPg";
 
 const App = () => {
   return (
@@ -12,7 +15,10 @@ const App = () => {
       <div className={styles.content}>
         {/* <StartPg /> */}
         {/* <AnswerPg /> */}
-        <MapPg />
+        {/* <MapPg /> */}
+        {/* <MainPg /> */}
+        {/* <QuestListPg /> */}
+        <QuestPg />
       </div>
       <Footer className={styles.footer} />
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./startPg.module.css";
-import pStyle from "../../css/page.module.css";
+import pStyle from "../../../css/page.module.css";
 import { FaClipboardCheck, FaMapMarkedAlt } from "react-icons/fa";
 
 const StartPg = (props) => {

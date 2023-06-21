@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./answerPg.module.css";
-import pStyle from "../../css/page.module.css";
+import pStyle from "../../../css/page.module.css";
 
 const AnswerPg = (props) => {
   const AnswerList = [

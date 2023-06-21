@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./mapPg.module.css";
-import pStyle from "../../css/page.module.css";
+import pStyle from "../../../css/page.module.css";
 
 const MapPg = (props) => {
   return (

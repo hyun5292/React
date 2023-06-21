@@ -1,0 +1,10 @@
+.questListPg {
+}
+
+.teamName {
+  max-height: 80px;
+  font-size: 1.1rem;
+  text-align: left;
+  border: 1px solid grey;
+  overflow: auto;
+}
