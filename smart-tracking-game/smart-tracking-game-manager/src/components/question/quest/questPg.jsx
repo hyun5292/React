@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./questPg.module.css";
 import pStyle from "../../../css/page.module.css";
-import { MdAddPhotoAlternate, MdSubdirectoryArrowRight } from "react-icons/md";
-import { BsFillClipboardCheckFill } from "react-icons/bs";
+import { MdSubdirectoryArrowRight } from "react-icons/md";
+import { FaCheckCircle, FaQuestion } from "react-icons/fa";
 
 const QuestPg = (props) => {
   const teamNameList = [
@@ -36,6 +36,7 @@ const QuestPg = (props) => {
       <div className={styles.answerCont}>
         <span className={styles.questNum}>1번</span>
         <textarea
+          disabled
           className={styles.questAnswer}
           type="text"
           placeholder="해석한 내용입니다."
@@ -55,10 +56,17 @@ const QuestPg = (props) => {
         </div>
         <textarea
           className={styles.comment}
-          disabled
           type="text"
           placeholder="Comment..."
         />
+        <div className={styles.bottom_btn}>
+          <button className={styles.circle_btn}>
+            <FaCheckCircle />
+          </button>
+          <button className={styles.wrong_btn}>
+            <FaQuestion />
+          </button>
+        </div>
       </div>
     </div>
   );

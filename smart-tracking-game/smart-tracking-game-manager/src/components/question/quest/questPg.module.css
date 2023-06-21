@@ -22,7 +22,8 @@
     "questNum			questAnswer"
     "questNum			questAnswer"
     "questNum			photoCont"
-    "commentIcon	comment";
+    "commentIcon	comment"
+    "bottomBtn		bottomBtn";
   grid-template-columns: 30px 1fr;
   gap: 10px;
 }
@@ -63,4 +64,22 @@
 .comment {
   height: 50px;
   grid-area: comment;
+}
+
+.bottom_btn {
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: bottomBtn;
+  gap: 10px;
+}
+
+.bottom_btn button {
+  padding: 5px 0;
+  flex: 1;
+}
+
+.circle_btn {
+}
+
+.wrong_btn {
 }
