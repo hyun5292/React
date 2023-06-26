@@ -10,7 +10,7 @@ const MapPg = (props) => {
         className={styles.map_image}
         src="./images/example2.png"
         alt="지도 이미지"
-        width="90%"
+        width="100%"
         height="auto"
       />
     </div>
