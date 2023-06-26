@@ -34,6 +34,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   resize: none;
+  overflow: auto;
 }
 
 ul,
@@ -47,6 +48,7 @@ input {
   padding: 0;
   font-family: inherit;
   font-size: inherit;
+  overflow: auto;
 }
 
 img {

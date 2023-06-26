@@ -1,6 +1,13 @@
 .questPg {
+  position: relative;
   display: grid;
   gap: 20px;
+}
+
+.back_btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .teamInfo {
@@ -11,6 +18,7 @@
 
 .teamName {
   max-height: 80px;
+  font-size: 1.1rem;
   text-align: left;
   border: 1px solid grey;
   overflow: auto;
@@ -19,7 +27,6 @@
 .answerCont {
   display: grid;
   grid-template-areas:
-    "questNum			questAnswer"
     "questNum			questAnswer"
     "questNum			photoCont"
     "commentIcon	comment"

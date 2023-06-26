@@ -7,10 +7,10 @@ const StartPg = (props) => {
   return (
     <div className={`${styles.startPg} ${pStyle.default}`}>
       <div className={styles.top_btns}>
-        <button className={styles.answer_btn}>
+        <button className={`${styles.answer_btn} ${pStyle.square_btn}`}>
           <FaClipboardCheck />
         </button>
-        <button className={styles.map_btn}>
+        <button className={`${styles.map_btn} ${pStyle.square_btn}`}>
           <FaMapMarkedAlt />
         </button>
       </div>

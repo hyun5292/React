@@ -11,10 +11,10 @@ const MainPg = (props) => {
   return (
     <div className={`${styles.mainPg} ${pStyle.default}`}>
       <div className={styles.top_btns}>
-        <button className={styles.answer_btn}>
+        <button className={`${styles.answer_btn} ${pStyle.square_btn}`}>
           <FaClipboardCheck />
         </button>
-        <button className={styles.reset_btn}>
+        <button className={`${styles.reset_btn} ${pStyle.square_btn}`}>
           <FaPowerOff />
         </button>
       </div>

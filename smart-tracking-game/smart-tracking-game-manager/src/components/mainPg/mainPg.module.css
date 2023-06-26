@@ -2,12 +2,6 @@
   position: relative;
 }
 
-.top_btns button {
-  width: 30px;
-  height: 30px;
-  font-size: 1rem;
-}
-
 .answer_btn {
   position: absolute;
   top: 10px;

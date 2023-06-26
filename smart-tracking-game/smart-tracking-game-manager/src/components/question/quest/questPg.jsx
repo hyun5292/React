@@ -3,6 +3,7 @@ import styles from "./questPg.module.css";
 import pStyle from "../../../css/page.module.css";
 import { MdSubdirectoryArrowRight } from "react-icons/md";
 import { FaCheckCircle, FaQuestion } from "react-icons/fa";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 const QuestPg = (props) => {
   const teamNameList = [
@@ -25,7 +26,10 @@ const QuestPg = (props) => {
   ];
   return (
     <div className={`${styles.questPg} ${pStyle.default}`}>
-      <div className={styles.teamInfo}>
+      <button className={`${styles.back_btn} ${pStyle.square_btn}`}>
+        <RiArrowGoBackLine />
+      </button>
+      <div className={pStyle.title}>
         <span className={styles.teamJo}>00초등학교 - 16 조</span>
         <div className={styles.teamName}>
           {teamNameList.map((team) => {

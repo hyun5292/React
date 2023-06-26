@@ -4,6 +4,8 @@
 }
 
 .title {
+  display: grid;
+  gap: 10px;
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
@@ -27,4 +29,10 @@
 }
 .btnItem:hover {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.24), 0 5px 5px rgba(0, 0, 0, 0.24);
+}
+
+.square_btn {
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
 }
