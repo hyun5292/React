@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./questPg.module.css";
-import pStyle from "../../css/page.module.css";
+import styles from "./questPg.module.scss";
+import pStyle from "../../css/page.module.scss";
 import { MdAddPhotoAlternate, MdSubdirectoryArrowRight } from "react-icons/md";
 import { BsFillClipboardCheckFill } from "react-icons/bs";
 
