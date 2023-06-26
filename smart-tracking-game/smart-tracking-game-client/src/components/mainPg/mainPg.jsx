@@ -3,15 +3,27 @@ import { useRef } from "react";
 import styles from "./mainPg.module.scss";
 import pStyle from "../../css/page.module.scss";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const MainPg = ({ teamNum, member, setTeamInfo }) => {
   const tNumRef = useRef();
   const mberRef = useRef();
+  const navigate = useNavigate();
   const Questions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   const handleTInfo = (event) => {
     event.preventDefault();
     setTeamInfo(tNumRef.current.value, mberRef.current.value);
+  };
+
+  const goQuestPg = (event, qNum) => {
+    event.preventDefault();
+    if (!teamNum) {
+      alert("팀 정보를 먼저 등록해주세요!");
+      return;
+    } else {
+      navigate("/quest", { state: { qNum: qNum } });
+    }
   };
 
   return (
@@ -62,7 +74,14 @@ const MainPg = ({ teamNum, member, setTeamInfo }) => {
       </div>
       <div className={styles.questCont}>
         {Questions.map((quest) => {
-          return <button className={styles.quest_btn}>Q{quest}</button>;
+          return (
+            <button
+              className={styles.quest_btn}
+              onClick={(event) => goQuestPg(event, { quest })}
+            >
+              Q{quest}
+            </button>
+          );
         })}
       </div>
     </div>

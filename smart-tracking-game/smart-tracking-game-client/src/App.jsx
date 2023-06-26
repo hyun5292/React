@@ -34,7 +34,10 @@ const App = () => {
               }
             />
             <Route path="map" element={<MapPg />} />
-            <Route path="quest" element={<QuestPg />} />
+            <Route
+              path="quest"
+              element={<QuestPg teamNum={teamNum} member={member} />}
+            />
           </Routes>
         </div>
         <Footer className={styles.footer} />

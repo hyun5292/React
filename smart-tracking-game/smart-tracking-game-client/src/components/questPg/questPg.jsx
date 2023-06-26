@@ -3,20 +3,30 @@ import styles from "./questPg.module.scss";
 import pStyle from "../../css/page.module.scss";
 import { MdAddPhotoAlternate, MdSubdirectoryArrowRight } from "react-icons/md";
 import { BsFillClipboardCheckFill } from "react-icons/bs";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const QuestPg = (props) => {
-  const teamName = ["팀원1", "팀원2", "팀원3", "팀원4", "팀원5", "팀원6"];
+const QuestPg = ({ teamNum, member }) => {
+  const location = useLocation();
+  const [questNum, setQuestNum] = useState(0);
+
+  useEffect(() => {
+    if (location.state) {
+      setQuestNum(location.state.qNum);
+    }
+  }, [location.state]);
 
   return (
     <div className={`${styles.questPg} ${pStyle.default}`}>
       <div className={styles.teamInfo}>
-        <span className={styles.teamJo}>00초등학교 - 16 조</span>
-        <span className={styles.teamName}>
-          팀원:{" "}
-          {teamName.map((member) => {
-            return <span>{member}, </span>;
-          })}
-        </span>
+        <span className={styles.teamJo}>00초등학교 - {teamNum} 조</span>
+        <div className={styles.teamName}>
+          <span>
+            팀<br />원
+          </span>
+          <div>{member}</div>
+        </div>
       </div>
       <div className={styles.answerCont}>
         <span className={styles.questNum}>1번</span>
