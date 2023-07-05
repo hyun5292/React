@@ -2,6 +2,14 @@
 >
 > : Create React App 대신 사용하는 웹 프로젝트 개발 빌드 도구
 
+> ## npm i concurrently nodemon
+>
+> : server랑 client 동시 실행
+
+> ## body-parser
+>
+> : node.js 모듈, client POST request data의 body로부터 파라미터를 편리하게 추출해주는 도구
+
 > 참고
 >
 > - Vite란?<br/>
