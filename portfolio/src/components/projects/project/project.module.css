@@ -14,6 +14,13 @@
   text-align: left;
 }
 
+.project a {
+  color: sudolDarkGrey;
+}
+.project a:hover {
+  color: sudolOrange;
+}
+
 .project {
   display: grid;
   grid-template-areas:
@@ -42,13 +49,6 @@
 .fileLink {
   padding-bottom: 10px;
   border-bottom: 1px solid borderGrey;
-}
-
-.fileLink a {
-  color: sudolDarkGrey;
-}
-.fileLink a:hover {
-  color: sudolOrange;
 }
 
 .imgCont {

@@ -5,8 +5,16 @@ import { HiChevronDoubleDown } from "react-icons/hi";
 const Project = ({ file }) => {
   const imgContRef = useRef();
   const explainRef = useRef();
-  const { fileName, fileImg, fileLan, fileTool, fileLink, fileDate, fileInfo } =
-    file;
+  const {
+    fileName,
+    fileImg,
+    fileGithub,
+    fileLan,
+    fileTool,
+    fileLink,
+    fileDate,
+    fileInfo,
+  } = file;
 
   const offExplain = () => {
     explainRef.current.style = "display: none";
@@ -42,6 +50,9 @@ const Project = ({ file }) => {
           })}
       </div>
       <div className={styles.infoCont}>
+        <p className={styles.infoItem}>
+          <b>깃허브:</b>&nbsp;<a href={fileGithub}>{fileGithub}</a>
+        </p>
         <p className={styles.infoItem}>
           <b>사용언어:</b>&nbsp;{fileLan}
         </p>
